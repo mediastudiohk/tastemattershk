@@ -44,7 +44,7 @@
   }
 }
 
-.collection__description > * {
+.collection__description>* {
   margin: 0;
 }
 
@@ -63,10 +63,6 @@
 
   .collection__title.title-wrapper--self-padded-tablet-down {
     padding: 0 5rem;
-  }
-
-  .collection slider-component:not(.page-width-desktop) {
-    padding: 0;
   }
 
   .collection--full-width slider-component:not(.slider-component-desktop) {
