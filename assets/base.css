@@ -3093,7 +3093,7 @@ h2 {
 h2 {
   margin-top: 0rem;
   margin-bottom: 0rem;
-  font-size: 3rem;
+  font-size: 48px;
   line-height: 1.2;
   font-weight: 700;
 }
@@ -3123,21 +3123,32 @@ input.w-button {
   padding-left: 40px;
 }
 
+.container-medium,
+.container-small,
+.container-large {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.container-large {
+  width: 100%;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.padding-section-small {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
 .max-width-large {
   width: 100%;
   max-width: 768px;
 }
 
-.margin-top {
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-}
-
-.margin-bottom {
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
+.margin-xsmall {
+  margin: 8px;
 }
 
 .margin-small {
@@ -3152,6 +3163,33 @@ input.w-button {
   margin-left: 48px;
 }
 
+.margin-top {
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.margin-bottom {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.margin-bottom.margin-xsmall {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .title-section {
   font-size: 25.6px;
   font-weight: 300;
@@ -3159,6 +3197,10 @@ input.w-button {
 
 .text-font-small-caps {
   font-variant: small-caps;
+}
+
+.text-size-small {
+  font-size: 14px;
 }
 
 .w-inline-block {
@@ -3178,6 +3220,42 @@ input.w-button {
 
 .w-embed:after {
   clear: both;
+}
+
+.w-layout-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+
+.w-richtext:before,
+.w-richtext:after {
+  content: " ";
+  display: table;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-end: 2;
+  grid-row-end: 2;
+}
+
+.w-richtext:after {
+  clear: both;
+}
+
+.w-richtext>:first-child {
+  margin-top: 0;
+}
+
+.w-richtext>:last-child,
+.w-richtext ol li:last-child,
+.w-richtext ul li:last-child {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 479) {
