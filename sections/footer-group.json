@@ -6,46 +6,40 @@
       "type": "footer",
       "blocks": {
         "footer-0": {
-          "type": "link_list",
+          "type": "text",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "Taste Matters",
+            "subtext": "<p>Being Hong Kong's first and premier online food & beverage boutique, Taste Matters provides excellence and home delivery for a wide selection of daily basic groceries and ties it together with an affordable range of hand picked premium food & beverage. Imported from Germany and Western Europe. Delivered to your home!<\/p>"
           }
         },
         "footer-1": {
-          "type": "link_list",
+          "type": "custom",
           "settings": {
-            "heading": "Info",
-            "menu": "footer"
+            "heading": "Latest News",
+            "subtext": "<p>koffee radio - time to chill<br><br>We like to share this radio station and hope you will enjoy the music. <a href='http://www.koffee.com.au/' target='_blank'><strong>http://www.koffee.com.au/<\/strong><\/a><\/p>"
           }
         },
         "footer-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Information",
+            "menu": "footer"
+          }
+        },
+        "footer-3": {
           "type": "text",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "Taste Matters",
+            "subtext": "<p>Taste Matters Company Ltd.<br>10/F, Unit 06<br>Luen Cheong Can Centre<br>8 Yip Wong Road<br>Tuen Mun<br>Hong Kong<br><br>Phone (852) 34 828 929<br>E-Mail <a href='mailto:info@tastematters.com.hk'><strong>info@tastematters.com.hk<\/strong><\/a><\/p>"
           }
         }
       },
       "block_order": [
         "footer-0",
         "footer-1",
-        "footer-2"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": false,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": false,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "footer-2",
+        "footer-3"
+      ]
     }
   },
   "order": [
