@@ -662,15 +662,12 @@ class SlideshowComponent extends SliderComponent {
     this.sliderControlLinksArray.forEach(link => link.addEventListener('click', this.linkToSlide.bind(this)));
     this.slider.addEventListener('scroll', this.setSlideVisibility.bind(this));
     this.setSlideVisibility();
-
-    if (this.slider.getAttribute('data-autoplay') === 'true') this.setAutoPlay();
+    this.setAutoPlay();
   }
 
   setAutoPlay() {
-    this.sliderAutoplayButton = this.querySelector('.slideshow__autoplay');
     this.autoplaySpeed = this.slider.dataset.speed * 1000;
 
-    this.sliderAutoplayButton.addEventListener('click', this.autoPlayToggle.bind(this));
     this.addEventListener('mouseover', this.focusInHandling.bind(this));
     this.addEventListener('mouseleave', this.focusOutHandling.bind(this));
     this.addEventListener('focusin', this.focusInHandling.bind(this));

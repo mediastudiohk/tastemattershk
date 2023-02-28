@@ -143,8 +143,8 @@ img {
     padding: 4px 8px 4px 28.8px;
     border-radius: 4px;
     background-color: #cbc8ab;
-    background-image: url(https://assets.website-files.com/638dc02…/638dc02…_cart-inv-x16.png), -webkit-gradient(linear, left top, left bottom, from(#dddbc7), color-stop(100%, #cbc8ab), to(#000));
-    background-image: url(https://assets.website-files.com/638dc02…/638dc02…_cart-inv-x16.png), linear-gradient(180deg, #dddbc7, #cbc8ab 100%, #000);
+    background-image: url('cart.png'), -webkit-gradient(linear, left top, left bottom, from(#dddbc7), color-stop(100%, #cbc8ab), to(#000));
+    background-image: url('cart.png'), linear-gradient(180deg, #dddbc7, #cbc8ab 100%, #000);
     background-position: 6px 50%, 0px 0px;
     background-size: auto, auto;
     background-repeat: no-repeat, repeat;
