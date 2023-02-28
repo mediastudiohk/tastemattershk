@@ -23,7 +23,8 @@
           "type": "link_list",
           "settings": {
             "heading": "Information",
-            "menu": "footer"
+            "menu": "footer",
+            "subtext":"<p>Dear Customers, please take notice:<\/p><p>Under the law of Hong Kong, intoxicating liquor must not be sold or supplied to a minor in the course of business.<\/p><p>根據香港法律，不得在業務過程中，向未成年人售賣或供應令人醺醉的酒類 。<\/p>"
           }
         },
         "footer-3": {
