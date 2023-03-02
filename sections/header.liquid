@@ -40,7 +40,7 @@
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
     border-bottom: 16px solid #fff;
-    z-index: 2;
+    z-index: 10;
     display: none;
   }
 
@@ -57,6 +57,22 @@
 
   .show {
     display: block !important;
+  }
+
+  .menuStyle {
+    display: flex;
+    height: 40px;
+    width: 1280px;
+    align-items: center;
+    justify-content: start;
+    z-index:2
+  }
+
+  .containerStyle {
+    position:fixed;  overflow-auto;
+    display:flex;flex-direction:column; align-items:center; justify-content:center; height:130px; width:100%; background-color:#fafaf0;
+     box-shadow:0 8px 40px 0 rgb(0 0 0 / 8%), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+     z-index:1
   }
 {% endstyle %}
 <script>
@@ -84,20 +100,23 @@ toggle between hiding and showing the dropdown content */
   };
 </script>
 
-<div
-  style="display:flex; align-items:center; justify-content:center; height:80px; width:100%; background-color:#fafaf0"
+<nav
+  class="containerStyle"
 >
-  <div style="display:flex; height:80px; width:1280px; align-items:center; justify-content:space-between">
-    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+  <div style="display:flex; height:90px; width:1280px; align-items:end; justify-content:space-between; ">
+    <a
+      href="{{ routes.root_url }}"
+      class="header__heading-link link link--text focus-inset"
+    >
       {%- if settings.logo != blank -%}
-        {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-        <img
-          src="{{ settings.logo | image_url: width: 1000 }}"
-          width="208"
-          height="46"
-          loading="lazy"
-        >
+        <div style="display:flex; height:70px; align-items:center;">
+          <img
+            src="{{ settings.logo | image_url: width: 1000 }}"
+            width="260"
+            height="53"
+            loading="lazy"
+          >
+        </div>
       {%- else -%}
         <span class="h2">{{ shop.name }}</span>
       {%- endif -%}
@@ -234,7 +253,106 @@ toggle between hiding and showing the dropdown content */
       </a>
     </div>
   </div>
-</div>
+  <div
+    class="menuStyle"
+  >
+    {% for link in section.settings.menu.links %}
+      {% style %}
+        .mainItem {
+          height: 100%;
+          font-size: 15px;
+          padding: 10px 15px;
+          white-space: nowrap;
+        }
+
+        .mainItem:hover {
+          background-color: white;
+          box-shadow: 0 -3px 8px -2px #dadbd2;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          color: #bebebe;
+        }
+
+        .childMenu {
+          display: none;
+          position: absolute;
+          left: -3px;
+          right: -3px;
+          height: 200px;
+          top: 40px;
+        }
+
+        .gridContainer {
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          border-radius: 8px;
+          padding: 10px 10px;
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: white;
+          box-shadow: 0 -1px 5px -2px #dadbd2;
+          padding: 10px 10px;
+          left: -3px;
+          height: min-content;
+          min-width: 1280px;
+          top: 30px;
+          z-index: 1;
+          border-radius: 6px;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+      {% endstyle %}
+      <div class="dropdown">
+        <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
+        <div class="dropdown-content">
+          <div class="gridContainer">
+            {% if link.links.size > 0 %}
+              {% for childLink in link.links %}
+                <div>
+                  <img
+                    src="{{ childLink.object.image.src | image_url: width: 1000 }}"
+                    width="260"
+                    height="120"
+                    loading="lazy"
+                  >
+                  <a
+                    style="border-bottom: 1px solid #e0daa7; font-size:17px"
+                    href="{{ childLink.url }}"
+                  >
+                    {{- childLink.title -}}
+                  </a>
+                  {% if childLink.links.size > 0 %}
+                    {% for onChildLink in childLink.links %}
+                      <a style=" font-size:13px" href="{{ onChildLink.url }}">
+                        {{- onChildLink.title -}}
+                      </a>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <hr style="position:fixed;left:0;top:0;margin-top:90px;border-bottom: 1px solid #e0daa7; width:100vw;height:0px">
+  <hr style="position:fixed;left:0;top:0;margin-top:130px;border-bottom: 1px solid #e0daa7; width:100vw;height:0px">
+</nav>
 
 {% schema %}
 {
@@ -250,8 +368,8 @@ toggle between hiding and showing the dropdown content */
       "content": "t:sections.header.settings.logo_help.content"
     },
     {
-      "type": "link_list",
       "id": "menu",
+      "type": "link_list",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
     }

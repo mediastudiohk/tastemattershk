@@ -263,7 +263,9 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="body" role="main" tabindex="-1">
-      {{ content_for_layout }}
+      <div style="margin-top:130px">
+        {{ content_for_layout }}
+      </div>
     </main>
 
     {% sections 'footer-group' %}
