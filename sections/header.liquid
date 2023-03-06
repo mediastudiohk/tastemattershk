@@ -12,12 +12,12 @@
     background-color: transparent;
   }
 
-  .dropdown {
+  .dropdownLang {
     position: relative;
     display: inline-block;
   }
 
-  .dropdown-content {
+  .dropdownLang-content {
     right: -48px;
     top: 17px;
     width: 112px;
@@ -26,7 +26,7 @@
     background-color: #fff;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 3;
   }
 
   .triangle {
@@ -44,14 +44,14 @@
     display: none;
   }
 
-  .dropdown-content a {
+  .dropdownLang-content a {
     color: #716359;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
 
-  .dropdown a:hover {
+  .dropdownLang a:hover {
     color: #cbc8ab;
   }
 
@@ -65,7 +65,8 @@
     width: 1280px;
     align-items: center;
     justify-content: start;
-    z-index:2
+    z-index:2;
+    position: relative
   }
 
   .containerStyle {
@@ -86,7 +87,7 @@ toggle between hiding and showing the dropdown content */
   // Close the dropdown if the user clicks outside of it
   window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName('dropdown-content');
+      var dropdowns = document.getElementsByClassName('dropdownLang-content');
       var triangle = document.getElementsByClassName('triangle');
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -154,7 +155,7 @@ toggle between hiding and showing the dropdown content */
           </svg>
         </button>
       </form>
-      <div class="dropdown">
+      <div class="dropdownLang">
         <img
           class="dropbtn"
           onclick="dropDownFunc()"
@@ -164,7 +165,7 @@ toggle between hiding and showing the dropdown content */
           loading="lazy"
         >
         <div id="triangle" class="triangle">a</div>
-        <div id="dropDownLang" class="dropdown-content">
+        <div id="dropDownLang" class="dropdownLang-content">
           <a
             style="cursor:pointer; display:flex;gap:4px"
             ><img
@@ -294,8 +295,13 @@ toggle between hiding and showing the dropdown content */
         }
 
         .dropdown {
-          position: relative;
-          display: inline-block;
+        }
+
+        .dropdown-content a {
+          color: #716359;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
         }
 
         .dropdown-content {
@@ -307,7 +313,7 @@ toggle between hiding and showing the dropdown content */
           left: -3px;
           height: min-content;
           min-width: 1280px;
-          top: 30px;
+          top: 40px;
           z-index: 1;
           border-radius: 6px;
         }
