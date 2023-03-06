@@ -1,6 +1,5 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding"
   data-section="{{ section.id }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
@@ -11,20 +10,6 @@
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-
-  {%- style -%}
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
-    }
-  {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -56,18 +41,43 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
 
-  <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-    <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
+  <div class="padding-global">
+    <div class="container-large-modified">
+      <div class="padding-section-small">
+        <div class="product product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} product-page_component">
+    {% comment %} <div class="product-image_wrapper">
+      <div class="product-image">
       {% render 'product-media-gallery', variant_images: variant_images %}
+      </div>
+    </div> {% endcomment %}
+    <div class="product-page_content-left">
+    <div class="product-image_wrapper">
+      <img src="{{product.images.first | image_url }}" class="product-image" loading="lazy">
     </div>
-    <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}">
+    </div>
+    <div class="product-page_content-right">
       <product-info
         id="ProductInfo-{{ section.id }}"
         data-section="{{ section.id }}"
         data-url="{{ product.url }}"
-        class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
       >
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<div class="margin-bottom margin-small">
+  <h2 class="product-page-name">
+    {{ product.title | escape }}
+  </h2>
+</div>
+
+<hr class="page-seperator" />
+
+{%-if product.description-%}
+<div class="margin-bottom margin-medium">
+  <p>
+    {{ product.description }}
+  </p>
+</div>
+{%-endif-%}
 
         {%- for block in section.blocks -%}
           {%- case block.type -%}
@@ -80,23 +90,15 @@
               >
                 {{- block.settings.text -}}
               </p>
-            {%- when 'title' -%}
-              <div class="product__title" {{ block.shopify_attributes }}>
-                <h1>{{ product.title | escape }}</h1>
-                <a href="{{ product.url }}" class="product__title">
-                  <h2 class="h1">
-                    {{ product.title | escape }}
-                  </h2>
-                </a>
-              </div>
             {%- when 'price' -%}
               <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                {%- render 'price',
-                  product: product,
-                  use_variant: true,
-                  show_badges: true,
-                  price_class: 'price--large'
-                -%}
+                <div class="margin-bottom margin-small">
+                  <div class="product-page_price-wrapper">
+                    <div class="price-style">
+                      <span class="text-dollar-sign">$</span>55
+                    </div>
+                  </div>
+                </div>
               </div>
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
@@ -122,52 +124,23 @@
                 id="Inventory-{{ section.id }}"
                 role="status"
               >
-                {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                  {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                    {%- if product.selected_or_first_available_variant.inventory_quantity <= block.settings.inventory_threshold -%}
-                      <svg width="15" height="15" aria-hidden="true">
-                        <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(238,148,65, 0.3)"/>
-                        <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(238,148,65)"/>
-                      </svg>
-                      {%- if block.settings.show_inventory_quantity -%}
-                        {{- 'products.product.inventory_low_stock_show_count' | t: quantity: product.selected_or_first_available_variant.inventory_quantity -}}
-                      {%- else -%}
-                        {{- 'products.product.inventory_low_stock' | t -}}
-                      {%- endif -%}
-                    {%- else -%}
-                      <svg width="15" height="15" aria-hidden="true">
-                        <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(62,214,96, 0.3)"/>
-                        <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(62,214,96)"/>
-                      </svg>
-                      {%- if block.settings.show_inventory_quantity -%}
-                        {{- 'products.product.inventory_in_stock_show_count' | t: quantity: product.selected_or_first_available_variant.inventory_quantity -}}
-                      {%- else -%}
-                          {{- 'products.product.inventory_in_stock' | t -}}
-                      {%- endif -%}
+                <div class="margin-bottom margin-small">
+                  <div class="product-details">
+                    {%- if product.metafields.custom.pack -%}
+                    <div>Pack of {{ product.metafields.custom.pack }}</div>
                     {%- endif -%}
-                  {%- else -%}
-                    {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                      <svg width="15" height="15" aria-hidden="true">
-                        <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(62,214,96, 0.3)"/>
-                        <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(62,214,96)"/>
-                      </svg>
-                      {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
-                    {%- else -%}
-                      <svg width="15" height="15" aria-hidden="true">
-                        <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(200,200,200, 0.3)"/>
-                        <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(200,200,200)"/>
-                      </svg>
-                      {{- 'products.product.inventory_out_of_stock' | t -}}
-                    {%- endif -%}
-                  {%- endif -%}
-                {%- endif -%}
-              </p>
-            {%- when 'description' -%}
-              {%- if product.description != blank -%}
-                <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                  {{ product.description }}
+                    <div class="product-availability">
+                      <div>Availability:  
+                      {%- if product.selected_or_first_available_variant.inventory_quantity -%}
+                        <span class="text-style-in-stock">{{- 'products.product.inventory_in_stock' | t -}}</span>
+                      {%- else -%}
+                        <span class="text-style-out-of-stock">{{- 'products.product.inventory_out_of_stock' | t -}}</span>
+                      {%- endif -%}
+                    </div>
+                    </div>
+                  </div>
                 </div>
-              {%- endif -%}
+              </p>
             {%- when 'sku' -%}
               <p
                 class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -207,9 +180,10 @@
                 {% # theme-check-disable %}
                 {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
                 {% # theme-check-enable %}
-                <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
-                  {{ 'products.product.quantity.label' | t }}
-                  <span class="quantity__rules-cart no-js-hidden{% if cart_qty == 0 %} hidden{% endif %}">
+                <div class="product-page_form-wrapper">
+                <label class="quantity-text" for="Quantity-{{ section.id }}">
+                  Select Quantity
+                  {% comment %} <span class="quantity__rules-cart no-js-hidden{% if cart_qty == 0 %} hidden{% endif %}">
                     <span class="loading-overlay hidden">
                       <span class="loading-overlay__spinner">
                         <svg
@@ -224,17 +198,11 @@
                       </span>
                     </span>
                     <span>({{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}})</span>
-                  </span>
+                  </span> {% endcomment %}
                 </label>
                 <quantity-input class="quantity">
-                  <button class="quantity__button no-js-hidden" name="minus" type="button">
-                    <span class="visually-hidden">
-                      {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                    </span>
-                    {% render 'icon-minus' %}
-                  </button>
                   <input
-                    class="quantity__input"
+                    class="quantity__input quantity_form_input is-quantity-form-input w-input"
                     type="number"
                     name="quantity"
                     id="Quantity-{{ section.id }}"
@@ -249,14 +217,8 @@
                     value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                     form="{{ product_form_id }}"
                   />
-                  <button class="quantity__button no-js-hidden" name="plus" type="button">
-                    <span class="visually-hidden">
-                      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                    </span>
-                    {% render 'icon-plus' %}
-                  </button>
                 </quantity-input>
-                <div class="quantity__rules caption no-js-hidden">
+                {% comment %} <div class="quantity__rules caption no-js-hidden">
                   {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                     <span class="divider">
                       {{-
@@ -281,6 +243,7 @@
                       -}}
                     </span>
                   {%- endif -%}
+                </div> {% endcomment %}
                 </div>
               </div>
             {%- when 'popup' -%}
@@ -310,8 +273,31 @@
 
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-            {%- when 'buy_buttons' -%}
-              {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
+              {%- when 'buy_buttons' -%}
+                <div class="product-page_add-to-cart_wrapper">
+                  <div class="product-page-other-link product-page-other-link-child">
+                    <div class="product-page-other-link-child margin-bottom margin-medium">
+                      {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
+                    </div>
+                    <a href="#" class="product-other-link w-inline-block">
+                      <div class="icon-embed-xxsmall w-embed">
+                      {% render 'icon-wishlist' %}
+                      </div>
+                      <div>Add to Wishlist</div>
+                    </a>
+                    <a href="#" class="product-other-link w-inline-block">
+                      <div class="icon-embed-xxsmall w-embed">
+                      {% render 'icon-email' %}
+                      </div>
+                      <div>Email to a Friend</div>
+                    </a>
+                  </div>
+            <div class="hk-law-notice">
+              <div class="footer-disclaimer-product w-richtext">
+                {{ section.settings.noti_law }}
+              </div>
+            </div>  
+            </div>
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
                 {% liquid
@@ -441,15 +427,77 @@
         </a>
       </product-info>
     </div>
-    {%- if section.settings.media_position == 'right' -%}
-      {% comment %} Duplicate gallery to display after product content on tablet/desktop breakpoint {% endcomment %}
-      <div class="grid__item product__media-wrapper small-hide">
-        {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
+  </div>
       </div>
-    {%- endif -%}
+
+  <script>
+    function handleClickTab(event, paneId) {
+      var paneActive = document.getElementById(paneId)
+      const tabRemove = document.querySelectorAll(".tab-active")
+      const paneRemove = document.querySelectorAll(".pane-active")
+      for(tab of tabRemove) {
+        tab.classList.remove("tab-active")
+      }
+      for(pane of paneRemove) {
+        pane.classList.remove("pane-active")
+      }
+      event.classList.add("tab-active")
+      paneActive.classList.add("pane-active")
+    }
+  </script>
+
+      <div class="padding-section-small">
+        <div class="product-page_tabs">
+          <div class="product-page_tabs-menu text-font-small-caps w-tab-menu">
+            <div onclick="handleClickTab(this,'storage_information')" class="product-page_tab-link w-inline-block w-tab-link tab-active">Storage Information</div>
+            <div onclick="handleClickTab(this,'country_of_origin')" class="product-page_tab-link w-inline-block w-tab-link">Country of Origin</div>
+            <div onclick="handleClickTab(this,'ingredients')" class="product-page_tab-link w-inline-block w-tab-link">Ingredients</div>
+            <div onclick="handleClickTab(this,'nutrition')" class="product-page_tab-link w-inline-block w-tab-link">Nutrition</div>
+            <div onclick="handleClickTab(this,'allergens')" class="product-page_tab-link w-inline-block w-tab-link">Allergens</div>
+          </div>
+          <div class="product-page_tabs-content w-tab-content">
+            <div id="storage_information" class="product-page_tab-details w-tab-pane pane-active">
+              {%- if product.metafields.custom.storage_information -%}
+                {{ product.metafields.custom.storage_information }}
+              {%- else -%}
+                n.a
+              {%- endif -%}
+            </div>
+            <div id="country_of_origin" class="product-page_tab-details w-tab-pane">
+              {%- if product.metafields.custom.country_of_origin -%}
+                {{ product.metafields.custom.country_of_origin }}
+              {%- else -%}
+                n.a
+              {%- endif -%}
+            </div>
+            <div id="ingredients" class="product-page_tab-details w-tab-pane">
+              {%- if product.metafields.custom.ingredients -%}
+                {{ product.metafields.custom.ingredients }}
+              {%- else -%}
+                n.a
+              {%- endif -%}
+            </div>
+            <div id="nutrition" class="product-page_tab-details w-tab-pane">
+              {%- if product.metafields.custom.nutrition -%}
+                {{ product.metafields.custom.nutrition }}
+              {%- else -%}
+                n.a
+              {%- endif -%}
+            </div>
+            <div id="allergens" class="product-page_tab-details w-tab-pane">
+              {%- if product.metafields.custom.allergens -%}
+                {{ product.metafields.custom.allergens }}
+              {%- else -%}
+                n.a
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  {% render 'product-media-modal' variant_images: variant_images %}
+  {% render 'product-media-modal', variant_images: variant_images %}
 
   {% assign popups = section.blocks | where: 'type', 'popup' %}
   {%- for block in popups -%}
@@ -612,11 +660,6 @@
       ]
     },
     {
-      "type": "title",
-      "name": "t:sections.main-product.blocks.title.name",
-      "limit": 1
-    },
-    {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
@@ -651,45 +694,7 @@
     {
       "type": "inventory",
       "name": "t:sections.main-product.blocks.inventory.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.main-product.blocks.inventory.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.main-product.blocks.inventory.settings.text_style.options__2.label"
-            },
-            {
-              "value": "uppercase",
-              "label": "t:sections.main-product.blocks.inventory.settings.text_style.options__3.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.main-product.blocks.inventory.settings.text_style.label"
-        },
-        {
-          "type": "range",
-          "id": "inventory_threshold",
-          "label": "t:sections.main-product.blocks.inventory.settings.inventory_threshold.label",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "info": "t:sections.main-product.blocks.inventory.settings.inventory_threshold.info",
-          "default": 10
-        },
-        {
-          "type": "checkbox",
-          "id": "show_inventory_quantity",
-          "label": "t:sections.main-product.blocks.inventory.settings.show_inventory_quantity.label",
-          "default": true
-        }
-      ]
+      "limit": 1
     },
     {
       "type": "quantity_selector",
@@ -732,11 +737,6 @@
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
         }
       ]
-    },
-    {
-      "type": "description",
-      "name": "t:sections.main-product.blocks.description.name",
-      "limit": 1
     },
     {
       "type": "share",
@@ -1908,33 +1908,6 @@
     },
     {
       "type": "select",
-      "id": "media_size",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:sections.main-product.settings.media_size.options__1.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.main-product.settings.media_size.options__2.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.main-product.settings.media_size.options__3.label"
-        }
-      ],
-      "default": "large",
-      "label": "t:sections.main-product.settings.media_size.label",
-      "info": "t:sections.main-product.settings.media_size.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "constrain_to_viewport",
-      "default": true,
-      "label": "t:sections.main-product.settings.constrain_to_viewport.label"
-    },
-    {
-      "type": "select",
       "id": "media_fit",
       "options": [
         {
@@ -1972,23 +1945,6 @@
       ],
       "default": "stacked",
       "label": "t:sections.main-product.settings.gallery_layout.label"
-    },
-    {
-      "type": "select",
-      "id": "media_position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.main-product.settings.media_position.options__1.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.main-product.settings.media_position.options__2.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.main-product.settings.media_position.label",
-      "info": "t:sections.main-product.settings.media_position.info"
     },
     {
       "type": "select",
@@ -2040,27 +1996,13 @@
     },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "custom content"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "richtext",
+      "id": "noti_law",
+      "label": "Law notification",
+      "default": "<p>Under the law of Hong Kong, intoxicating liquor must not be sold or supplied to a minor in the course of business.</p><p>根據香港法律，不得在業務過程中，向未成年人售賣或供應令人醺醉的酒類 。</p>"
     }
   ]
 }
