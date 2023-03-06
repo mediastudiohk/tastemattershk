@@ -3359,11 +3359,7 @@ input.w-button {
   background-color: #cbc8ab;
 }
 
-@media screen and (max-width: 479) {
-  .w-tab-link {
-    display: block;
-  }
-
+@media screen and (max-width: 991px) {
   .margin-top {
     margin-right: 0px;
     margin-bottom: 0px;
@@ -3374,6 +3370,14 @@ input.w-button {
     margin-top: 0px;
     margin-right: 0px;
     margin-left: 0px;
+  }
+
+  .margin-large {
+    margin: 40px;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
   }
 }
 
@@ -3408,7 +3412,11 @@ input.w-button {
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 479px) {
+  .w-tab-link {
+    display: block;
+  }
+
   .margin-top {
     margin-right: 0px;
     margin-bottom: 0px;
@@ -3419,13 +3427,5 @@ input.w-button {
     margin-top: 0px;
     margin-right: 0px;
     margin-left: 0px;
-  }
-
-  .margin-large {
-    margin: 40px;
-    margin-top: 40px;
-    margin-right: 40px;
-    margin-bottom: 40px;
-    margin-left: 40px;
   }
 }
