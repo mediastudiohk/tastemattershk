@@ -324,9 +324,9 @@ toggle between hiding and showing the dropdown content */
       {% endstyle %}
       <div class="dropdown">
         <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
-        <div class="dropdown-content">
-          <div class="gridContainer">
-            {% if link.links.size > 0 %}
+        {% if link.links.size > 0 %}
+          <div class="dropdown-content">
+            <div class="gridContainer">
               {% for childLink in link.links %}
                 <div>
                   <img
@@ -350,9 +350,9 @@ toggle between hiding and showing the dropdown content */
                   {% endif %}
                 </div>
               {% endfor %}
-            {% endif %}
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
     {% endfor %}
   </div>
