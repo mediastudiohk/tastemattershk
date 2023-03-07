@@ -62,18 +62,17 @@
     <div class="container-large-modified">
       <div class="padding-section-small">
         <div class="product product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} product-page_component">
-        {% comment %}
-          <div class="product-image_wrapper">
-            <div class="product-image">
-              {% render 'product-media-gallery', variant_images: variant_images %}
+          {%- if product.images.size > 1 -%}
+            
+                {% render 'product-media-gallery', variant_images: variant_images %}
+              
+          {%- else -%}
+            <div class="product-page_content-left">
+              <div class="product-image_wrapper">
+                <img src="{{product.images.first | image_url }}" class="product-image" loading="lazy">
+              </div>
             </div>
-          </div>
-        {% endcomment %}
-          <div class="product-page_content-left">
-            <div class="product-image_wrapper">
-              <img src="{{product.images.first | image_url }}" class="product-image" loading="lazy">
-            </div>
-          </div>
+          {%- endif -%}
           <div class="product-page_content-right">
             <product-info
             id="ProductInfo-{{ section.id }}"
@@ -109,7 +108,7 @@
                       {{- block.settings.text -}}
                     </p>
                   {%- when 'price' -%}
-                    <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                    {% comment %} <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                       <div class="margin-bottom margin-small">
                         <div class="product-page_price-wrapper">
                           <div class="price-style">
@@ -117,6 +116,14 @@
                           </div>
                         </div>
                       </div>
+                    </div> {% endcomment %}
+                    <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                      {%- render 'price',
+                        product: product,
+                        use_variant: true,
+                        show_badges: true,
+                        price_class: 'price-style'
+                      -%}
                     </div>
                     {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                       <div class="product__tax caption rte">
@@ -136,29 +143,31 @@
                       {%- endform -%}
                     </div>
                   {%- when 'inventory' -%}
-                    <p
-                      class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
-                      {{ block.shopify_attributes }}
-                      id="Inventory-{{ section.id }}"
-                      role="status"
-                    >
-                      <div class="margin-bottom margin-small">
-                        <div class="product-details">
-                          {%- if product.metafields.custom.pack -%}
-                          <div>Pack of {{ product.metafields.custom.pack }}</div>
-                          {%- endif -%}
-                          <div class="product-availability">
-                            <div>Availability:  
-                            {%- if product.selected_or_first_available_variant.inventory_quantity -%}
-                              <span class="text-style-in-stock">{{- 'products.product.inventory_in_stock' | t -}}</span>
+                    <div class="margin-bottom margin-small">
+                      <div class="product-details">
+                        {%- if product.metafields.custom.pack -%}
+                        <div>Pack of {{ product.metafields.custom.pack }}</div>
+                        {%- endif -%}
+                        <div class="product-availability">
+                          <p
+                            class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                            {{ block.shopify_attributes }}
+                            id="Inventory-{{ section.id }}"
+                            role="status"
+                          >
+                            {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                              <span>Availability:  
+                                <span class="text-style-in-stock">{{- 'products.product.inventory_in_stock' | t -}}</span>
+                              </span>
                             {%- else -%}
-                              <span class="text-style-out-of-stock">{{- 'products.product.inventory_out_of_stock' | t -}}</span>
+                              <span>Availability:  
+                                <span class="text-style-out-of-stock">{{- 'products.product.inventory_out_of_stock' | t -}}</span>
+                              </span>
                             {%- endif -%}
-                          </div>
-                          </div>
+                          </p>
                         </div>
                       </div>
-                    </p>
+                    </div>
                   {%- when 'sku' -%}
                     <p
                       class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -310,12 +319,14 @@
                             <div>Email to a Friend</div>
                           </a>
                         </div>
-                  <div class="hk-law-notice">
-                    <div class="footer-disclaimer-product w-richtext">
-                      {{ section.settings.noti_law }}
-                    </div>
-                  </div>  
-                  </div>
+                        {%- if product.metafields.custom.alcohol_warning -%}
+                          <div class="hk-law-notice">
+                            <div class="footer-disclaimer-product w-richtext">
+                              {{ section.settings.noti_law }}
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      </div>
                   {%- when 'rating' -%}
                     {%- if product.metafields.reviews.rating.value != blank -%}
                       {% liquid
