@@ -7,6 +7,12 @@
           "type": "price",
           "settings": {}
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
         "inventory": {
           "type": "inventory",
           "settings": {}
@@ -26,6 +32,7 @@
         "title",
         "description",
         "price",
+        "variant_picker",
         "inventory",
         "quantity_selector",
         "buy_buttons"

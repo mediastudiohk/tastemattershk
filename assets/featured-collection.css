@@ -183,7 +183,12 @@
   .product1_list {
     margin-right: -4px;
     margin-left: -4px;
-    grid-column-gap: 12px;
-    grid-row-gap: 12px;
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    justify-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
   }
 }

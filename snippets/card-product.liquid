@@ -18,21 +18,25 @@
       {% endif %}
     </a>
     <a href="{{ card_product.url}}" class="margin-top margin-small">
-      <div class="text-style-3lines">{{ card_product.title }}</div>
+      <div class="text-style-4lines">{{ card_product.title }}</div>
+      {%- if card_product.metafields.custom.best_before -%}
+        <div>best brefore {{ card_product.metafields.custom.best_before }}</div>
+      {%- endif -%}
     </a>
     <div class="product-item-form w-form">
-      <div class="product-badge-wrapper"><div class="text-best-before">best before 30.12.22</div></div>
       <div class="product-bottom-wrapper">
         <div class="product-price-wrapper">
           {%- if card_product.compare_at_price %}
             <div class="product-original-price-row">
-              <div class="text-dollar-sign">$</div>
-              <div class="text-display-inline">{{ card_product.compare_at_price }}</div>
+              <div class="text-display-inline">
+                {{ card_product.compare_at_price | money_without_trailing_zeros }}
+              </div>
             </div>
           {% endif %}
           <div class="product-price-row">
-            <div class="text-dollar-sign">$</div>
-            <div class="text-product-price-number">{{ card_product.price }}</div>
+            <div class="text-product-price-number">
+              {{ card_product.price | money_without_trailing_zeros }}
+            </div>
           </div>
         </div>
         {% comment %} quick add to cart {% endcomment %}

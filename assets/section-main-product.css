@@ -1589,8 +1589,8 @@ a.product__text {
 }
 
 .price-style {
-  color: #867c75;
-  font-size: 32px;
+  color: #867c75 !important;
+  font-size: 32px !important;
 }
 
 .text-dollar-sign {
@@ -1802,6 +1802,15 @@ a.product__text {
   background-image: url("cart.png"),
     -webkit-gradient(linear, left bottom, left top, from(#dddbc7), to(#cbc8ab));
   background-image: url("cart.png"), linear-gradient(0deg, #dddbc7, #cbc8ab);
+  background-position: 10% 50%, 0px 0px;
+  background-size: 22px 22px, auto;
+  background-attachment: scroll, scroll;
+}
+
+.add-to-cart-button:disabled {
+  background-image: url("cart.png"),
+    -webkit-gradient(linear, left bottom, left top, from(#ccc), to(#ccc));
+  background-image: url("cart.png"), linear-gradient(0deg, #ccc, #ccc);
   background-position: 10% 50%, 0px 0px;
   background-size: 22px 22px, auto;
   background-attachment: scroll, scroll;
