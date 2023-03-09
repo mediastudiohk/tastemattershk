@@ -163,6 +163,11 @@ img {
   font-weight: 600;
 }
 
+.add-to-basket-button:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
 .w-form-done {
   display: none;
   padding: 20px;
