@@ -109,6 +109,17 @@
   width: 100%;
 }
 
+.home_grid-heading {
+  position: relative;
+  z-index: 1;
+  padding-top: 16px;
+  padding-right: 32px;
+  color: #fff;
+  font-size: 44px;
+  text-align: right;
+  text-shadow: 1px 1px 14px rgb(0 0 0 / 30%);
+}
+
 @media screen and (max-width: 479px) {
   .home_component {
     height: auto;
@@ -135,6 +146,15 @@
 
   .hide-mobile-portrait {
     display: none;
+  }
+
+  .home_grid-heading {
+    position: absolute;
+    left: auto;
+    top: 0%;
+    right: 0%;
+    bottom: auto;
+    font-size: 24px;
   }
 }
 
