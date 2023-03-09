@@ -1,7 +1,35 @@
 {
   "sections": {
-     "image-banner": {
+    "image-banner": {
       "type": "image-banner",
+      "blocks": {
+        "50bcd403-3869-445a-aa7e-0090b41c8dcb": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slide3.jpg",
+            "heading": "Organic Juice"
+          }
+        },
+        "2cbf17ee-0e24-4fc0-a20b-7d88c145a459": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slide5.jpg",
+            "heading": "Image slide"
+          }
+        },
+        "109d7fa0-96a7-47c1-995f-04e5f131f200": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slide4.jpg",
+            "heading": "Italian Antipasti"
+          }
+        }
+      },
+      "block_order": [
+        "50bcd403-3869-445a-aa7e-0090b41c8dcb",
+        "2cbf17ee-0e24-4fc0-a20b-7d88c145a459",
+        "109d7fa0-96a7-47c1-995f-04e5f131f200"
+      ],
       "settings": {
         "change_slides_speed": 5
       }
@@ -10,27 +38,8 @@
       "type": "featured-collection",
       "settings": {
         "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-2",
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 28,
-        "padding_bottom": 36
+        "products_to_show": 8
       }
     }
   },
