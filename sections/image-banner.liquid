@@ -33,7 +33,7 @@
               >
                 <div class="slideshow__media banner__media {% if block.settings.image == blank %} placeholder{% endif %}">
                   {%- if block.settings.image -%}
-                    <h2 class="home_grid-heading text-font-small-caps">{{ block.settings.heading }}</h2>
+                    <h2 class="home_grid-heading">{{ block.settings.heading }}</h2>
                     <img
                       src="{{ block.settings.image | image_url }}"
                       loading="lazy"

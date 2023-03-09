@@ -5,7 +5,8 @@
       "blocks": {
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -15,11 +16,13 @@
         },
         "inventory": {
           "type": "inventory",
-          "settings": {}
+          "settings": {
+          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -29,8 +32,6 @@
         }
       },
       "block_order": [
-        "title",
-        "description",
         "price",
         "variant_picker",
         "inventory",
@@ -44,11 +45,11 @@
         "image_zoom": "none",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "enable_video_looping": false
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

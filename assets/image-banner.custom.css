@@ -122,11 +122,11 @@
 
 @media screen and (max-width: 479px) {
   .home_component {
-    height: auto;
+    height: 350px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto;
-    grid-template-rows: auto;
+    grid-template-rows: 2fr 1fr;
   }
 
   #home-banner-layout {
