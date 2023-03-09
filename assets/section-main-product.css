@@ -1606,7 +1606,7 @@ a.product__text {
 }
 
 .text-style-out-of-stock {
-  color: darkorange;
+  color: #d83820;
 }
 
 .product-page_form-wrapper {
@@ -1808,12 +1808,10 @@ a.product__text {
 }
 
 .add-to-cart-button:disabled {
-  background-image: url("cart.png"),
-    -webkit-gradient(linear, left bottom, left top, from(#ccc), to(#ccc));
-  background-image: url("cart.png"), linear-gradient(0deg, #ccc, #ccc);
-  background-position: 10% 50%, 0px 0px;
-  background-size: 22px 22px, auto;
-  background-attachment: scroll, scroll;
+  opacity: 0.4;
+  cursor: default;
+  border-color: silver;
+  background-color: #b8b7b6;
 }
 
 .product-page_tabs {

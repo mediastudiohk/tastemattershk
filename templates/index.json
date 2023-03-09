@@ -1,37 +1,40 @@
 {
   "sections": {
-    "image-banner": {
+    "59b79c8e-fb36-4300-98b3-aac56d3cad5c": {
       "type": "image-banner",
       "blocks": {
-        "50bcd403-3869-445a-aa7e-0090b41c8dcb": {
+        "template--17916243542313__59b79c8e-fb36-4300-98b3-aac56d3cad5c-16783549921595e6ca-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slide1.jpg",
+            "heading": "Italian Antipasti"
+          }
+        },
+        "f69311a3-f930-4998-8d51-d499882132dd": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/slide3.jpg",
             "heading": "Organic Juice"
           }
         },
-        "2cbf17ee-0e24-4fc0-a20b-7d88c145a459": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/slide5.jpg",
-            "heading": "Image slide"
-          }
-        },
-        "109d7fa0-96a7-47c1-995f-04e5f131f200": {
+        "4fef4e16-4125-45d4-9b85-047a71dd05a9": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/slide4.jpg",
-            "heading": "Italian Antipasti"
+            "heading": "Genuine German Sausages"
           }
         }
       },
       "block_order": [
-        "50bcd403-3869-445a-aa7e-0090b41c8dcb",
-        "2cbf17ee-0e24-4fc0-a20b-7d88c145a459",
-        "109d7fa0-96a7-47c1-995f-04e5f131f200"
+        "template--17916243542313__59b79c8e-fb36-4300-98b3-aac56d3cad5c-16783549921595e6ca-0",
+        "f69311a3-f930-4998-8d51-d499882132dd",
+        "4fef4e16-4125-45d4-9b85-047a71dd05a9"
       ],
       "settings": {
-        "change_slides_speed": 5
+        "change_slides_speed": 5,
+        "image_link": "shopify:\/\/collections\/bbq-sauces-dips-co",
+        "image_2": "shopify:\/\/shop_images\/30302006_Rostbratwurst_Fraenkische_Art_bearbeitet.jpg",
+        "image_link_2": "shopify:\/\/collections\/beer"
       }
     },
     "featured_collection": {
@@ -44,7 +47,7 @@
     }
   },
   "order": [
-    "image-banner",
+    "59b79c8e-fb36-4300-98b3-aac56d3cad5c",
     "featured_collection"
   ]
 }
