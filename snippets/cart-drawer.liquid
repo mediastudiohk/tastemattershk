@@ -134,7 +134,7 @@
     font-size: 14px;
   }
 
-  .cart-footer > button {
+  .cart-footer > .child {
     color: white;
     background-color: #cbc8ab;
     padding: 2px 8px 4px 31px;
@@ -354,16 +354,17 @@
         <!-- CTAs -->
 
         <div class="cart-footer">
-          <button
-            class="cart_button"
+          <a
+            href="{{ routes.cart_url }}"
+            class="cart_button child"
           >
             {{ 'sections.cart.review_basket' | t }}
-          </button>
+          </a>
 
           <button
             type="submit"
             id="CartDrawer-Checkout"
-            class="checkout_button"
+            class="checkout_button child"
             name="checkout"
             form="CartDrawer-Form"
             {% if cart == empty %}

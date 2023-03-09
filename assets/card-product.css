@@ -163,9 +163,11 @@ img {
   font-weight: 600;
 }
 
-.add-to-basket-button:disabled {
-  opacity: 0.8;
+.add-to-basket-button:disabled,
+.add-to-basket-button[aria-disabled="true"] {
+  opacity: 0.4;
   cursor: default;
+  background-color: #b8b7b6;
 }
 
 .w-form-done {
@@ -216,6 +218,21 @@ img {
 
 .text-display-inline {
   display: inline;
+}
+
+.sold-out {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ff0f0f;
+  text-align: right;
+  float: right;
+  padding-bottom: 8px;
+}
+
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 479px) {

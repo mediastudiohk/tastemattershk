@@ -89,7 +89,7 @@
               {%- form 'product',
                 card_product,
                 id: product_form_id,
-                class: 'form',
+                class: 'form flexcolumn',
                 novalidate: 'novalidate',
                 data-type: 'add-to-cart-form'
               -%}
@@ -99,6 +99,14 @@
                   value="{{ card_product.selected_or_first_available_variant.id }}"
                   disabled
                 >
+                {% if card_product.selected_or_first_available_variant.available == false %}
+                  <span class="sold-out">
+                    {{ 'products.product.inventory_out_of_stock' | t }}
+                  </span>
+                {% endif %}
+                <span class="sold-out-message hidden sold-out">
+                  {{ 'products.product.inventory_out_of_stock' | t }}
+                </span>
                 <button
                   id="{{ product_form_id }}-submit"
                   type="submit"
@@ -113,14 +121,7 @@
                   {% endif %}
                 >
                   <span>
-                    {%- if card_product.selected_or_first_available_variant.available -%}
-                      {{ 'products.product.add_to_cart' | t }}
-                    {%- else -%}
-                      {{ 'products.product.sold_out' | t }}
-                    {%- endif -%}
-                  </span>
-                  <span class="sold-out-message hidden">
-                    {{ 'products.product.sold_out' | t }}
+                    {{ 'products.product.add_to_basket' | t }}
                   </span>
                   <div class="loading-overlay__spinner hidden">
                     <svg
