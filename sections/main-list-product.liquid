@@ -148,53 +148,9 @@
       </aside>
     {%- endif -%}
 
-    <div class="mainContainter padding-global container-large-modified">
-      <div class="filterSpan">
-        <div class="categoryStyle">
-          {% for link in section.settings.menu.links %}
-            {% style %}
-              .childStyle {
-                border-top: 0.25px solid #d8d8d8;
-              }
-              .this-padding {
-                padding: 16px 16px;
-              }
-              .child-decore {
-                display: flex;
-                flex-direction: column;
-              }
-              .first {
-                border-top-left-radius: 4px;
-                border-top-right-radius: 4px;
-              }
-            {% endstyle %}
-            {% if link.child_active or link.active %}
-              <a class="childStyle this-padding first" style="border-top: 0" href="{{ link.url }}">{{ link.title }}</a>
-              {% for childLink in link.links %}
-                <div class="childStyle child-decore">
-                  <a class="this-padding" style="padding: 16px 16px 16px 24px" href="{{ childLink.url }}">
-                    {{- childLink.title -}}
-                  </a>
-                  {% if childLink.child_active or childLink.active %}
-                    {% for childOfChild in childLink.links %}
-                      <a
-                        class="this-padding"
-                        style="padding: 16px 16px 16px 24px; background-color:white; font-size:16px; color:#2f2f2f"
-                        href="{{ childOfChild.url }}"
-                      >
-                        {{- childOfChild.title -}}
-                      </a>
-                    {% endfor %}
-                  {% endif %}
-                </div>
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
+    <div class="padding-global container-large-modified">
       <div class="productListSpan">
         <div class="product-grid-container" id="ProductGridContainer">
-          {% comment %} {%- paginate collection.products by section.settings.products_per_page -%} {% endcomment %}
           {%- if collection.products.size == 0 -%}
             <div class="collection collection--empty" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
@@ -247,7 +203,6 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-          {% comment %} {%- endpaginate -%} {% endcomment %}
         </div>
       </div>
     </div>

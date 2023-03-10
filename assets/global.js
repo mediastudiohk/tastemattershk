@@ -812,6 +812,7 @@ class SlideshowComponent extends SliderComponent {
   }
 
   onButtonClick(event) {
+    this.pause();
     super.onButtonClick(event);
     const isFirstSlide = this.currentPage === 1;
     const isLastSlide = this.currentPage === this.sliderItemsToShow.length;
@@ -828,6 +829,7 @@ class SlideshowComponent extends SliderComponent {
     this.slider.scrollTo({
       left: this.slideScrollPosition,
     });
+    this.play();
   }
 
   update() {

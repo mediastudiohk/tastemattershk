@@ -115,7 +115,9 @@
         {%- endif -%}
       </slideshow-component>
       {% comment %} sliderbanner foot {% endcomment %}
-      <a class="home_grid-item">
+      {%if section.settings.image_link%}
+        <a href="{{ section.settings.image_link }}" class="home_grid-item">
+      {%endif%}
         {%- if section.settings.image -%}
           <img
             src="{{ section.settings.image | image_url }}"
@@ -129,8 +131,12 @@
             class="home_grid-image"
           >
         {%- endif -%}
-      </a>
-      <a class="home_grid-item">
+      {%if section.settings.image_link %}
+        </a>
+      {% endif %}
+      {% if section.settings.image_link_2 %}
+        <a href="{{ section.settings.image_link_2 }}"  class="home_grid-item">
+      {% endif %}
         {%- if section.settings.image_2 -%}
           <img
             src="{{ section.settings.image_2 | image_url }}"
@@ -144,7 +150,9 @@
             class="home_grid-image"
           >
         {%- endif -%}
-      </a>
+      {% if section.settings.image_link_2 %}
+        </a>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -176,9 +184,19 @@
       "label": "t:sections.image-banner.settings.image.label"
     },
     {
+      "type": "url",
+      "id": "image_link",
+      "label": "t:sections.image-banner.settings.image.link"
+    },
+    {
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "url",
+      "id": "image_link_2",
+      "label": "t:sections.image-banner.settings.image_2.link"
     }
   ],
   "blocks": [
