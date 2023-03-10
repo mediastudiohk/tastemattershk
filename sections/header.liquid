@@ -77,7 +77,7 @@
     width: 1280px;
     align-items: center;
     justify-content: start;
-    z-index: 2;
+    z-index: 10;
     position: relative;
   }
 
@@ -91,7 +91,7 @@
     width: 100%;
     background-color: #fafaf0;
     box-shadow: 0 8px 40px 0 rgb(0 0 0 / 8%), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-    z-index: 1;
+    z-index: 10;
   }
 
   .linkhover:hover {
@@ -387,11 +387,12 @@ toggle between hiding and showing the dropdown content */
             <div class="gridContainer">
               {% for childLink in link.links %}
                 <div>
-                  <img
-                    src="{{ childLink.object.image.src | image_url: width: 1000 }}"
-                    loading="lazy"
-                    style="width:100%; aspect-ratio: 3 / 1.5"
-                  >
+                  <a href="{{ childLink.url }}">
+                    <img
+                      src="{{ childLink.object.image.src | image_url: width: 1000 }}"
+                      loading="lazy"
+                      style="width:100%; aspect-ratio: 3 / 1.5"
+                  ></a>
                   <a
                     style="border-bottom: 1px solid #e0daa7; font-size:20px"
                     href="{{ childLink.url }}"

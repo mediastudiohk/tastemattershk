@@ -194,7 +194,6 @@
       </div>
       <div class="productListSpan">
         <div class="product-grid-container" id="ProductGridContainer">
-          {% comment %} {%- paginate collection.products by section.settings.products_per_page -%} {% endcomment %}
           {%- if collection.products.size == 0 -%}
             <div class="collection collection--empty" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
@@ -247,7 +246,6 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-          {% comment %} {%- endpaginate -%} {% endcomment %}
         </div>
       </div>
     </div>
