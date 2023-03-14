@@ -115,9 +115,7 @@
         {%- endif -%}
       </slideshow-component>
       {% comment %} sliderbanner foot {% endcomment %}
-      {%if section.settings.image_link%}
-        <a href="{{ section.settings.image_link }}" class="home_grid-item">
-      {%endif%}
+      <a href="{{ section.settings.image_link }}" class="home_grid-item">
         {%- if section.settings.image -%}
           <img
             src="{{ section.settings.image | image_url }}"
@@ -131,12 +129,8 @@
             class="home_grid-image"
           >
         {%- endif -%}
-      {%if section.settings.image_link %}
-        </a>
-      {% endif %}
-      {% if section.settings.image_link_2 %}
-        <a href="{{ section.settings.image_link_2 }}"  class="home_grid-item">
-      {% endif %}
+      </a>
+      <a href="{{ section.settings.image_link_2 }}" class="home_grid-item">
         {%- if section.settings.image_2 -%}
           <img
             src="{{ section.settings.image_2 | image_url }}"
@@ -150,9 +144,7 @@
             class="home_grid-image"
           >
         {%- endif -%}
-      {% if section.settings.image_link_2 %}
-        </a>
-      {% endif %}
+      </a>
     </div>
   </div>
 </div>

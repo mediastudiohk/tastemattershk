@@ -3,8 +3,7 @@
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "link": "/"
       }
     },
     "cart-footer": {
@@ -12,34 +11,25 @@
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
-      "block_order": [
-        "subtotal",
-        "buttons"
-      ],
-      "settings": {
-      }
+      "block_order": ["subtotal", "buttons"],
+      "settings": {}
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured collection",
+        "title": "Promotions & Bargains - Always a New Offer",
+        "color_title": "#DF0505",
         "collection": "all",
-        "products_to_show": 4
+        "products_to_show": 5
       }
     }
   },
-  "order": [
-    "cart-items",
-    "cart-footer",
-    "featured-collection"
-  ]
+  "order": ["cart-items", "featured-collection", "cart-footer"]
 }

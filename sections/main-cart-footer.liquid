@@ -3,90 +3,139 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
-<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
-  <div>
-    <div class="cart__footer">
-      {%- if settings.show_cart_note -%}
-        <cart-note class="cart__note field">
-          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
-          <textarea
-            class="text-area field__input"
-            name="note"
-            form="cart"
-            id="Cart-note"
-            placeholder="{{ 'sections.cart.note' | t }}"
-          >{{ cart.note }}</textarea>
-        </cart-note>
-      {%- endif -%}
+{% style %}
+  .check-out_wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
 
-      <div class="cart__blocks">
-        {% for block in section.blocks %}
-          {%- case block.type -%}
-            {%- when '@app' -%}
-              {% render block %}
-            {%- when 'subtotal' -%}
-              <div class="js-contents" {{ block.shopify_attributes }}>
-                <div class="totals">
-                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
-                  <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+  .flex {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  .hide-mobile-landscape:empty,
+  .hide-mobile-portrait:empty {
+    display: block;
+  }
+
+  .check-out_item {
+    width: 320px;
+    margin-left: 64px;
+  }
+
+  .total-amount {
+    display: -ms-grid;
+    display: grid;
+    padding-top: 16px;
+    padding-bottom: 0px;
+    padding-left: 16px;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    font-size: 19.2px;
+    font-weight: 300;
+  }
+
+  .text-style-grand-total {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .discount-code-seperator {
+    height: 1px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #d8d8d8;
+  }
+
+  .check-out_button {
+    width: 90%;
+    max-height: 48px;
+    margin-right: 0px;
+    margin-left: 5%;
+    padding: 12px 0px 12px 24px;
+    border-radius: 8px;
+    background-color: #cbc8ab;
+    background-position: 10% 50%, 0px 0px;
+    background-size: 22px 22px, auto;
+    background-repeat: no-repeat, repeat;
+    background-attachment: scroll, scroll;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .delivery-fee-text-box {
+    width: 100%;
+    padding: 8px;
+    color: rgba(47, 47, 47, 0.52);
+    font-size: 6.4px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .hide-mobile-portrait {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<div class="padding-global" id="main-cart-footer" data-id="{{ section.id }}">
+  <div class="container-large-modified">
+    <div class="padding-section-small">
+      <div class="js-contents" {{ block.shopify_attributes }}>
+        <div class="check-out_wrapper">
+          <div class="flex hide-mobile-portrait"></div>
+          <div class="checkout_discount-wrapper hide-mobile-landscape"></div>
+          <div class="checkout_item-wrapper">
+            <div class="check-out_item">
+              <div class="total-amount">
+                <div class="gridspan1">{{ 'sections.cart.subtotal' | t }}</div>
+                <div style="-ms-grid-column-align: end; justify-self: end;" class="gridspan1">
+                  {{ cart.total_price | money }}
                 </div>
-
-                <div>
-                  {%- if cart.cart_level_discount_applications.size > 0 -%}
-                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                      {%- for discount in cart.cart_level_discount_applications -%}
-                        <li class="discounts__discount discounts__discount--position">
-                          {%- render 'icon-discount' -%}
-                          {{ discount.title }}
-                          (-{{ discount.total_allocated_amount | money }})
-                        </li>
-                      {%- endfor -%}
-                    </ul>
-                  {%- endif -%}
-                </div>
-
-                <small class="tax-note caption-large rte">
-                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                  {%- elsif cart.taxes_included -%}
-                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-                  {%- elsif shop.shipping_policy.body != blank -%}
-                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-                  {%- else -%}
-                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-                  {%- endif -%}
-                </small>
-              </div>
-            {%- else -%}
-              <div class="cart__ctas" {{ block.shopify_attributes }}>
-                <noscript>
-                  <button type="submit" class="cart__update-button button button--secondary" form="cart">
-                    {{ 'sections.cart.update' | t }}
-                  </button>
-                </noscript>
-
-                <button
-                  type="submit"
-                  id="checkout"
-                  class="cart__checkout-button button"
-                  name="checkout"
-                  {% if cart == empty %}
-                    disabled
-                  {% endif %}
-                  form="cart"
+                <div class="text-style-grand-total gridspan1">Grand Total</div>
+                <div
+                  style="-ms-grid-column-align: end; justify-self: end;"
+                  class="gridspan1"
+                  class="text-style-grand-total"
                 >
-                  {{ 'sections.cart.checkout' | t }}
-                </button>
-              </div>
-
-              {%- if additional_checkout_buttons -%}
-                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-                  {{ content_for_additional_checkout_buttons }}
+                  {{ cart.total_price | money }}
                 </div>
-              {%- endif -%}
-          {%- endcase -%}
-        {% endfor %}
-
+              </div>
+              <hr class="discount-code-seperator">
+              <a href="/checkout" class="check-out_button w-button icon-checkout-button">Proceed to Checkout</a>
+              <div class="delivery-fee-text-box">
+                <a href="#"
+                  >The minimum order amount is $500.<br>
+                  For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers<br>
+                  a delivery fee of $150 may apply for orders below $1000.<br>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="cart-errors"></div>
       </div>
     </div>

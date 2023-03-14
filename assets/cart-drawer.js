@@ -96,7 +96,6 @@ class CartDrawer extends HTMLElement {
         section.selector
       );
     });
-    console.log("abc");
     setTimeout(() => {
       this.querySelector("#CartDrawer-Overlay").addEventListener(
         "click",
