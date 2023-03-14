@@ -19,7 +19,9 @@
           <div class="product1_heading-wrapper">
             <div class="product1_heading">
               <div class="max-width-large">
-                <h2 class="title-section text-font-small-caps">{{ section.settings.title | escape }}</h2>
+                <h2 style="color:{{ section.settings.color_title }}" class="title-section text-font-small-caps">
+                  {{ section.settings.title | escape }}
+                </h2>
               </div>
             </div>
             <div class="product1_button-row hide-mobile-landscape">
@@ -68,6 +70,12 @@
       "id": "title",
       "default": "Featured collection",
       "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "default": "#716539",
+      "label": "Title color"
     },
     {
       "type": "collection",

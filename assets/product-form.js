@@ -54,11 +54,10 @@ if (!customElements.get("product-form")) {
               soldOutMessage.classList.remove("hidden");
               this.error = true;
               return;
-            } else if (!this.cart) {
+            } else if (window.routes.cart_url === window.location.pathname) {
               window.location = window.routes.cart_url;
               return;
             }
-
             if (!this.error)
               publish(PUB_SUB_EVENTS.cartUpdate, { source: "product-form" });
             this.error = false;

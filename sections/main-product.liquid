@@ -167,7 +167,10 @@
                           >
                             {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                               <span>Availability:  
-                                <span class="text-style-in-stock">{{- 'products.product.inventory_in_stock' | t -}}</span>
+                                <span class="text-style-in-stock">
+                                  {{ product.selected_or_first_available_variant.inventory_quantity }}
+                                  {{- 'products.product.inventory_in_stock' | t -}}
+                                </span>
                               </span>
                             {%- else -%}
                               <span>Availability:  
