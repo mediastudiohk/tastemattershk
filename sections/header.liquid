@@ -149,7 +149,7 @@ toggle between hiding and showing the dropdown content */
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
-      <div style="display:flex; align-items:center;padding:10px 0px; height:56px;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end">
+      <div style="display:flex; align-items:end;padding:10px 0px; height:56px;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end">
         <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
           <input
             type="text"
@@ -194,9 +194,9 @@ toggle between hiding and showing the dropdown content */
           >
           <div id="triangle" class="triangle">a</div>
           <div id="dropDownLang" class="dropdownLang-content">
-            <div style="display:flex; flex-direction:column; align-items:center">
+            <div style="display:flex; flex-direction:column; align-items:end">
               <a
-                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:center"
+                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:end"
                 ><img
                   src="{{ 'ge.png' | asset_url }}"
                   width="16"
@@ -206,7 +206,7 @@ toggle between hiding and showing the dropdown content */
                 >Deutsch</a
               >
               <a
-                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:center"
+                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:end"
                 ><img
                   src="{{ 'uk.png' | asset_url }}"
                   width="16"
@@ -220,7 +220,7 @@ toggle between hiding and showing the dropdown content */
         </div>
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
-            <a class="linkhover" style="display:flex; align-items:center;gap:4px" href="{{ routes.account_url }}">
+            <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_url }}">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -237,7 +237,7 @@ toggle between hiding and showing the dropdown content */
               <span>Account</span>
             </a>
           {% else %}
-            <a class="linkhover" style="display:flex; align-items:center;gap:4px" href="{{ routes.account_login_url }}">
+            <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_login_url }}">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -256,7 +256,7 @@ toggle between hiding and showing the dropdown content */
           {% endif %}
         {% endif %}
 
-        <a class="linkhover" style="display:flex; align-items:center;gap:4px" href="/cart">
+        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -272,7 +272,7 @@ toggle between hiding and showing the dropdown content */
           </svg>
           <span>Wishlist</span>
         </a>
-        <a class="linkhover" style="display:flex; align-items:center;gap:4px" href="/checkout">
+        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/checkout">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -289,7 +289,7 @@ toggle between hiding and showing the dropdown content */
           <span>Checkout</span>
         </a>
         <div style="position:relative;">
-          <a id="cart_link" class="linkhover" style="display:flex; align-items:center;gap:4px" href="/cart">
+          <a id="cart_link" class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -357,7 +357,7 @@ toggle between hiding and showing the dropdown content */
 
         .dropdown-content a {
           color: #716359;
-          padding: 12px 0px;
+          padding: 4px 0px;
           text-decoration: none;
           display: block;
         }
@@ -367,7 +367,6 @@ toggle between hiding and showing the dropdown content */
           position: absolute;
           background-color: white;
           box-shadow: 0 -1px 5px -2px #dadbd2;
-          padding: 10px 10px;
           left: -3px;
           height: min-content;
           min-width: 1280px;

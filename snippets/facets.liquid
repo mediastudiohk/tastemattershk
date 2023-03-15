@@ -341,7 +341,8 @@
                         {%- endif -%}
                       </div>
                       <price-range class="facets__price">
-                        <span class="field-currency">{{ cart.currency.symbol }}</span>
+                        {% comment %} <span class="field-currency">{{ cart.currency.symbol }}</span> {% endcomment %}
+                        <span class="field-currency">$</span>
                         <div class="field">
                           <input
                             class="field__input"
@@ -368,7 +369,8 @@
                           </label>
                         </div>
                         {%- if filter_type != 'vertical' -%}
-                          <span class="field-currency">{{ cart.currency.symbol }}</span>
+                          {% comment %} <span class="field-currency">{{ cart.currency.symbol }}</span> {% endcomment %}
+                          <span class="field-currency">$</span>
                         {%- endif -%}
                         <div class="field">
                           <input
@@ -779,7 +781,8 @@
                           </p>
 
                           <price-range class="facets__price">
-                            <span class="field-currency">{{ cart.currency.symbol }}</span>
+                            {% comment %} <span class="field-currency">{{ cart.currency.symbol }}</span> {% endcomment %}
+                            <span class="field-currency">$</span>
                             <div class="field">
                               <input
                                 class="field__input"
@@ -807,7 +810,8 @@
                               </label>
                             </div>
 
-                            <span class="field-currency">{{ cart.currency.symbol }}</span>
+                            {% comment %} <span class="field-currency">{{ cart.currency.symbol }}</span> {% endcomment %}
+                            <span class="field-currency">$</span>
                             <div class="field">
                               <input
                                 class="field__input"
