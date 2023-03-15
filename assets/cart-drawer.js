@@ -14,7 +14,7 @@ class CartDrawer extends HTMLElement {
   }
 
   setHeaderCartIconAccessibility() {
-    const cartLink = document.querySelector("#cart-icon-bubble");
+    const cartLink = document.querySelector("#cart_link");
     cartLink.setAttribute("role", "button");
     cartLink.setAttribute("aria-haspopup", "dialog");
     cartLink.addEventListener("click", (event) => {

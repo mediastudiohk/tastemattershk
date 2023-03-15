@@ -598,6 +598,15 @@ cart-items {
   background-image: url("cart.png"), linear-gradient(0deg, #cbc8ab, #dddbc7);
 }
 
+.check-out_button:hover {
+  background-image: url("cart.png"),
+    -webkit-gradient(linear, left bottom, left top, from(#dddbc7), to(#cbc8ab));
+  background-image: url("cart.png"), linear-gradient(0deg, #dddbc7, #cbc8ab);
+  background-position: 10% 50%, 0px 0px;
+  background-size: 22px 22px, auto;
+  background-attachment: scroll, scroll;
+}
+
 @media screen and (max-width: 991px) {
   .my-basket_heading-wrapper {
     grid-column-gap: 48px;
