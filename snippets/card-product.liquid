@@ -2,7 +2,13 @@
 
 {%- if card_product and card_product != empty -%}
   <div class="product-collection-item">
-    <a href="{{ card_product.url}}" class="product-item-image-link w-inline-block">
+    <a
+      href="{{ card_product.url}}"
+      class="product-item-image-link w-inline-block"
+      {% if card_product.selected_or_first_available_variant.available == false %}
+        style="opacity:0.3"
+      {% endif %}
+    >
       <img
         src="{{ card_product.featured_media | image_url: width: 533 }}"
         alt="{{ card_product.featured_media.alt | escape }}"
