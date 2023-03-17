@@ -27,7 +27,8 @@
         "title": "Promotions & Bargains - Always a New Offer",
         "color_title": "#DF0505",
         "collection": "all",
-        "products_to_show": 5
+        "products_to_show": 5,
+        "redirect_all": false
       }
     }
   },

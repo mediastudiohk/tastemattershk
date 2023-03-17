@@ -1,5 +1,4 @@
 {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-{{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
@@ -20,17 +19,10 @@
       </div>
 
       <div class="cart__warnings">
-        <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
-        <a href="{{ section.settings.link }}" class="button">
-          {{ 'general.continue_shopping' | t }}
-        </a>
-
-        {%- if shop.customer_accounts_enabled and customer == null -%}
-          <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
-          <p class="cart__login-paragraph">
-            {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
-          </p>
-        {%- endif -%}
+        <h1 class="cart__empty-text" style="display:flex; flex-direction: column;">
+          <span>There are currently no items in the basket</span>
+          <span><a href="{{ section.settings.link }}">Click here</a> to continue shopping.</span>
+        </h1>
       </div>
 
       <div class="cart-form_block w-form">

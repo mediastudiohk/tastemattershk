@@ -24,26 +24,28 @@
                 </h2>
               </div>
             </div>
-            <div class="product1_button-row hide-mobile-landscape">
-              <a href="/collections/all" class="button_arrow-text">
-                <div class="button_arrow-text-icon w-embed">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    aria-hidden="true"
-                    role="img"
-                    class="iconify iconify--ic"
-                    width="100%"
-                    height="100%"
-                    preserveAspectRatio="xMidYMid meet"
-                    viewBox="0 0 24 24"
-                  >
-                    <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z"></path>
-                  </svg>
-                </div>
-                <div>Show all products</div>
-              </a>
-            </div>
+            {% if section.settings.redirect_all %}
+              <div class="product1_button-row hide-mobile-landscape">
+                <a href="/collections/all" class="button_arrow-text">
+                  <div class="button_arrow-text-icon w-embed">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      aria-hidden="true"
+                      role="img"
+                      class="iconify iconify--ic"
+                      width="100%"
+                      height="100%"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z"></path>
+                    </svg>
+                  </div>
+                  <div>Show all products</div>
+                </a>
+              </div>
+            {% endif %}
           </div>
         </div>
         <div class="w-layout-grid product1_list">
@@ -90,6 +92,12 @@
       "step": 1,
       "default": 10,
       "label": "t:sections.featured-collection.settings.products_to_show.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "redirect_all",
+      "label": "show all products",
+      "default": true
     }
   ],
   "presets": [
