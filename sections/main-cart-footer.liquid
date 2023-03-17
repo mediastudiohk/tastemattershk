@@ -1,5 +1,4 @@
 {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-{{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
@@ -125,7 +124,26 @@
                 </div>
               </div>
               <hr class="discount-code-seperator">
-              <a href="/checkout" class="check-out_button w-button icon-checkout-button">Proceed to Checkout</a>
+              {% if cart.total_price < 50000 %}
+                <div
+                  class="check-out_button w-button icon-checkout-button"
+                  style="
+                    opacity: 0.6;
+                    cursor: default;
+                    border-color: silver;
+                    background-color: #b8b7b6;
+                  "
+                >
+                  {{ 'sections.cart.process_to_checkout' | t }}
+                </div>
+              {% else %}
+                <a
+                  href="/checkout"
+                  class="check-out_button w-button icon-checkout-button"
+                >
+                  {{- 'sections.cart.process_to_checkout' | t -}}
+                </a>
+              {% endif %}
               <div class="delivery-fee-text-box">
                 <a href="#"
                   >The minimum order amount is $500.<br>

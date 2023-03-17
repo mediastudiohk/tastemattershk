@@ -674,6 +674,10 @@ cart-items {
     font-size: 12.8px;
   }
 
+  .product-list-detail_name-link:hover {
+    color: #df0505;
+  }
+
   .cart-button_wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

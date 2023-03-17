@@ -173,3 +173,10 @@ table .price {
     );
   background-color: #cbc8ab;
 }
+
+.checkout_button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  border-color: silver;
+  background-color: #b8b7b6;
+}
