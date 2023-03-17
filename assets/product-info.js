@@ -8,6 +8,12 @@ if (!customElements.get("product-info")) {
         this.currentVariant = this.querySelector(".product-variant-id");
         this.variantSelects = this.querySelector("variant-radios");
         this.submitButton = this.querySelector('[type="submit"]');
+
+        this.input.addEventListener("blur", (e) => {
+          if (e.currentTarget.value < 1 || e.currentTarget.value % 1 !== 0) {
+            this.input.value = 1;
+          }
+        });
       }
 
       cartUpdateUnsubscriber = undefined;
