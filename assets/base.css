@@ -3073,11 +3073,11 @@ a,
   -moz-appearance: textfield;
 }
 
-/* .quantity__input::-webkit-outer-spin-button,
-.quantity__input::-webkit-inner-spin-button {
+.number_not_arrow::-webkit-outer-spin-button,
+.number_not_arrow::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-} */
+}
 
 .w-input,
 .w-select,
@@ -3322,6 +3322,18 @@ input.w-button {
 .padding-section-medium {
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+#loading_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 9999;
+  display: none;
 }
 
 @media screen and (max-width: 991px) {
