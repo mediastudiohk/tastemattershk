@@ -125,7 +125,8 @@
               </div>
               <hr class="discount-code-seperator">
               {% if cart.total_price < 50000 %}
-                <div
+                <button
+                  disabled
                   class="check-out_button w-button icon-checkout-button"
                   style="
                     opacity: 0.6;
@@ -135,7 +136,7 @@
                   "
                 >
                   {{ 'sections.cart.process_to_checkout' | t }}
-                </div>
+                </button>
               {% else %}
                 <a
                   href="/checkout"
