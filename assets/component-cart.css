@@ -607,6 +607,10 @@ cart-items {
   background-attachment: scroll, scroll;
 }
 
+.product-list-detail_name-link:hover {
+  color: #df0505;
+}
+
 @media screen and (max-width: 991px) {
   .my-basket_heading-wrapper {
     grid-column-gap: 48px;
@@ -672,10 +676,6 @@ cart-items {
 
   .product-list-detail_name-link {
     font-size: 12.8px;
-  }
-
-  .product-list-detail_name-link:hover {
-    color: #df0505;
   }
 
   .cart-button_wrapper {

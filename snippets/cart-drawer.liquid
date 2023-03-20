@@ -19,9 +19,7 @@
       tabindex="-1"
     >
       {%- if cart == empty -%}
-        <div style="padding: 16px;">
-          There are currently no items in the basket. <a href="/">Click here</a> to continue shopping.
-        </div>
+        <div style="padding: 16px;">There are currently no items in the basket.</div>
       {%- else -%}
         <cart-drawer-items
           {% if cart == empty %}
@@ -157,7 +155,10 @@
               <div style="width: 160px; font-size: 16px;">
                 <div class="totals__subtotal" style="color: #867C75;">
                   {{ 'sections.cart.subtotal' | t }}
-                  <span style="font-size: 16px;">({{ cart.items.size }} items)</span>
+                  <span style="font-size: 16px;"
+                    >({{ cart.item_count }}
+                    {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span
+                  >
                 </div>
                 {% if cart.total_price < 50000 %}
                   <div
@@ -222,6 +223,6 @@
     document.querySelector('#cart').appendChild(cartSubmitInput);
     document.querySelector('#checkout').addEventListener('click', function (event) {
       document.querySelector('#cart').submit();
-    });
+    }); <a href="/">Click here</a> to continue shopping.
   });
 </script>
