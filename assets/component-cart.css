@@ -598,13 +598,19 @@ cart-items {
   background-image: url("cart.png"), linear-gradient(0deg, #cbc8ab, #dddbc7);
 }
 
-.check-out_button:hover {
+.icon-checkout-button:hover {
   background-image: url("cart.png"),
     -webkit-gradient(linear, left bottom, left top, from(#dddbc7), to(#cbc8ab));
   background-image: url("cart.png"), linear-gradient(0deg, #dddbc7, #cbc8ab);
   background-position: 10% 50%, 0px 0px;
   background-size: 22px 22px, auto;
   background-attachment: scroll, scroll;
+}
+
+.icon-checkout-button:disabled {
+background-image: url("cart.png"),
+    -webkit-gradient(linear, left bottom, left top, from(#b8b7b6), to(#b8b7b6));
+  background-image: url("cart.png"), linear-gradient(0deg, #b8b7b6, #b8b7b6);
 }
 
 .product-list-detail_name-link:hover {
