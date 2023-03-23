@@ -698,10 +698,17 @@ details > * {
   transition: text-decoration-thickness ease 100ms;
 }
 
-.underlined-link:hover,
-.customer a:hover {
+.underlined-link:hover {
   color: rgb(var(--color-link));
   text-decoration-thickness: 0.2rem;
+}
+
+.customer a {
+  color: #2f2f2f;
+}
+
+.customer a:hover {
+  color: #bebebe;
 }
 
 .icon-arrow {
