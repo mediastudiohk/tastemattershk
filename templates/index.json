@@ -42,7 +42,7 @@
       "settings": {
         "title": "Featured Products",
         "collection": "all",
-        "products_to_show": 8
+        "products_to_show": 10
       }
     }
   },
