@@ -29,10 +29,11 @@
   }
 
   .dropdownLang-content {
-    border-radius: 15px;
+    border-radius: 10px;
     right: -40px;
-    top: 17px;
-    width: 100px;
+    top: 25px;
+    padding: 5px 15px;
+    width: fit-content;
     display: none;
     position: absolute;
     background-color: #fff;
@@ -44,7 +45,7 @@
   .triangle {
     position: absolute;
     color: white;
-    top: 7px;
+    top: 15px;
     left: 50%;
     translate: -50%;
     width: 0;
@@ -58,7 +59,7 @@
 
   .dropdownLang-content a {
     color: #716359;
-    padding: 8px 8px;
+    padding: 3px;
     text-decoration: none;
     display: block;
   }
@@ -149,8 +150,8 @@ toggle between hiding and showing the dropdown content */
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
-      <div style="display:flex; align-items:end; height:56px;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end">
-        <form action="{{ routes.search_url }}" style="display:flex; align-items:end;gap:4px">
+      <div style="display:flex; align-items:center; height:fit-content;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end">
+        <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
           <input
             type="text"
             placeholder="Search..."
@@ -159,7 +160,7 @@ toggle between hiding and showing the dropdown content */
             style="border: 1px solid #bebebe; width:160px; height:28px;padding: 10px 10px"
             required
           >
-          <button class="iconhover" type="submit" style="border:0; background-color:transparent; cursor:pointer">
+          <button class="iconhover" type="submit" style="border:0; background-color:transparent; cursor:pointer; display:flex;">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
@@ -188,29 +189,29 @@ toggle between hiding and showing the dropdown content */
             class="dropbtn iconhover"
             onclick="dropDownFunc()"
             src="{{ 'uk.png' | asset_url }}"
-            width="16"
-            height="16"
+            width="18"
+            height="18"
             loading="lazy"
           >
           <div id="triangle" class="triangle">a</div>
           <div id="dropDownLang" class="dropdownLang-content">
-            <div style="display:flex; flex-direction:column; align-items:end">
+            <div style="display:flex; flex-direction:column; align-items:end; width:max-content;">
               <a
-                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:end"
+                style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
                 ><img
                   src="{{ 'ge.png' | asset_url }}"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   loading="lazy"
 
                 >Deutsch</a
               >
               <a
-                style="cursor:pointer; display:flex;gap:8px;font-size:12px; align-items:end"
+                style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
                 ><img
                   src="{{ 'uk.png' | asset_url }}"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   loading="lazy"
 
                 >English</a
@@ -360,6 +361,10 @@ toggle between hiding and showing the dropdown content */
           padding: 4px 0px;
           text-decoration: none;
           display: block;
+        }
+
+        .dropdown-content a:hover {
+          color: #bebebe;
         }
 
         .dropdown-content {
