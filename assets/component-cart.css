@@ -556,6 +556,7 @@ cart-items {
   font-size: 12.8px;
   font-weight: 600;
   text-decoration: none;
+  text-transform: capitalize;
 }
 
 .my-basket_link:hover {
