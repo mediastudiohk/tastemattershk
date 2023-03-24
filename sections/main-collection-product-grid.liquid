@@ -152,7 +152,7 @@
       </aside>
     {%- endif -%}
 
-    <div class="mainContainter padding-global container-large-modified">
+    <div class="mainContainter container-large-modified padding-category">
       <div class="filterSpan">
         <div class="categoryStyle">
           {% for link in section.settings.menu.links %}
@@ -161,40 +161,46 @@
                 border-top: 0.25px solid #d8d8d8;
               }
               .this-padding {
-                padding: 16px;
+                padding: 9px 27px;
+              }
+              .that-padding {
+                padding: 9px;
+                margin-left: 4px;
+              }
+              .that-padding:hover {
+                color: #bebebe !important;
               }
               .child-decore {
                 display: flex;
                 flex-direction: column;
               }
-
               .child-decore .this-padding:hover {
                 color: #bebebe !important;
               }
-
               .first {
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
               }
             {% endstyle %}
             {% if link.child_active or link.active %}
+            <div class="that-padding text-font-small-caps">
               <a
-                class="childStyle this-padding first"
-                style="border-top: 0"
-                href="{{ link.url }}">{{ link.title }}</a>
+                href="{{ link.url }}">{{ link.title }}
+              </a>
+            </div>
               {% for childLink in link.links %}
-                <div class="childStyle child-decore">
-                  <a
-                    class="this-padding"
-                    style="padding: 16px 16px 16px 24px"
-                    href="{{ childLink.url }}">
-                    {{- childLink.title -}}
+                <div class="childStyle child-decore text-font-small-caps">
+                  <div class="this-padding">
+                    <a
+                      href="{{ childLink.url }}">
+                        {{- childLink.title -}}
                   </a>
+                  </div>
                   {% if childLink.child_active or childLink.active %}
                     {% for childOfChild in childLink.links %}
                       <a
-                        class="this-padding"
-                        style="padding: 16px 16px 16px 24px; background-color:white; font-size:16px; color:#2f2f2f"
+                        class="this-padding text-font-small-caps"
+                        style="background-color:white; font-size:16px; color:#2f2f2f; "
                         href="{{ childOfChild.url }}">
                         {{- childOfChild.title -}}
                       </a>
