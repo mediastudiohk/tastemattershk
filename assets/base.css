@@ -3173,6 +3173,11 @@ input.w-button {
   padding-left: 40px;
 }
 
+.padding-category {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .container-medium,
 .container-small,
 .container-large {
