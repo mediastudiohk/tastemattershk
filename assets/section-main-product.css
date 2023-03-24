@@ -1279,11 +1279,13 @@ a.product__text {
 .product__view-details {
   display: block;
   text-decoration: none;
+  color: #2f2f2f;
 }
 
 .product__view-details:hover {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
+  color: #bebebe;
 }
 
 .product__view-details .icon {
