@@ -573,6 +573,74 @@ table:not([class]) th {
   opacity: 0.7;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.text-display-inline {
+  display: inline;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.discount-code-seperator {
+  height: 1px;
+  margin: 16px 0;
+  background-color: #d8d8d8;
+}
+
+.text-block-3 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text-block-3-copy {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.text-style-grand-total {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.text-style-grand-total-copy {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 a:empty,
 ul:empty,
 dl:empty,

@@ -1,0 +1,256 @@
+{{ 'pre-checkout.css' | asset_url | stylesheet_tag }}
+
+<div class="main-pre-checkout">
+  <div class="pre-checkout-overlay">
+    <span class="hidden">Overlay</span>
+  </div>
+  <div class="padding-global h-full">
+    <div class="container-large-modified h-full">
+      <div class="pre-checkout-content h-full">
+        <div class="pre-checkout-left padding-section-medium">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
+            <div style="display:flex; height:56.72px; align-items:center; justify-content: center;">
+              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy"
+                style="height:100%; aspect-ratio: 5 / 1">
+            </div>
+          </a>
+
+          <div class="pre-checkout-left_breadcrumbs flex items-center">
+            <a href="#">Basket</a>
+            <div class="flex" style="width: 16px; height: 16px">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
+              </svg>
+            </div>
+            <a href="#">Delivery Calendar</a>
+            <div class="flex" style="width: 16px; height: 16px">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
+              </svg>
+            </div>
+            <a href="#">Check Out</a>
+          </div>
+
+
+          <div class="delivery-heading margin-bottom margin-medium">Delivery District</div>
+
+          <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
+            <div class="flex flex-col">
+              <label for="Area" class="checkout_section-label">Area *</label>
+              <select name="" id="Area" class="checkout_section-select w-select">
+                <option value="">Select one...</option>
+                <option value="">Hong Kong</option>
+                <option value="">Kowloon</option>
+                <option value="">New Territories</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col">
+              <label for="'District" class="checkout_section-label">District *</label>
+              <select name="" id="District" class="checkout_section-select w-select">
+                <option value="">Select one...</option>
+                <option value="">Central and Western</option>
+                <option value="">Wan Chai</option>
+                <option value="">Eastern</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="delivery-district-description text-size-small margin-bottom margin-medium">
+            For Discovery Bay, Tung Chung & Yat Tung Estate customers
+            <br />
+            a delivery fee of $200 may apply for orders below $1000.
+          </div>
+
+          <div class="delivery-heading margin-bottom margin-tiny">Delivery Schedule</div>
+          <div class="margin-bottom margin-medium">
+            <div class="text-display-inline">These are the next possible delivery dates for your shipping address
+              in:&nbsp;</div>
+            <div id="delivery-location" class="checkout_delivery-location">New Territories/Sai Kung</div>
+            <div>Please select a day and time.</div>
+          </div>
+
+          <div class="margin-medium" style="margin-left: 0; margin-right: 0">
+            <div class="delivery-schedule-wrapper flex flex-col">
+              <div class="delivery-schedule-item-date-wrapper">
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+                <div class="delivery-schedule-item-date flex flex-col">
+                  <span>Sunday</span>
+                  <span>20 Mar</span>
+                </div>
+              </div>
+
+              <div class="delivery-schedule-item-time-wrapper">
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+
+                <div class="delivery-schedule-item-time">
+                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="delivery-heading margin-bottom margin-small">Delivery Option</div>
+          <div class="checkout_field-wrapper margin-bottom margin-small">
+            <label for="Area-2" class="checkout_section-label">What should we do if the delivery has arrived but you are
+              not there and we couldn't reach you?</label>
+            <select id="Area-2" name="Area-2" data-name="Area 2" class="checkout_section-select w-select">
+              <option value="Hong Kong">Leave the package at the door</option>
+              <option value="Kowloon">Reschedule the delivery on another day</option>
+            </select>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <a href="#" class="flex items-center">
+              <div class="flex" style="width: 16px; height: 16px;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                  role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.41z" />
+                </svg>
+              </div>
+
+
+              <span>Back to basket</span>
+            </a>
+            <a href="#" class="flex items-center">
+              <button type="button" class="uppercase pre-checkout-button">
+                Check out
+              </button>
+            </a>
+
+          </div>
+
+
+        </div>
+
+        <div class="pre-checkout-right">
+          <div class="padding-section-medium">
+            <div class="div-block-4-copy gridspan1">
+              {%- for item in cart.items -%}
+              <div class="flex cart-item-details">
+                <div class="cart-item-img">
+                  <img src="{{ item.image | image_url: width: 64 }}" alt="{{ item.image.alt | escape }}" loading="lazy"
+                    width="64" height="64">
+
+                </div>
+
+                <div class="cart-item-name flex flex-col">
+                  <span>{{- item.title -}}</span>
+                  <span>
+                    {{- item.product.metafields.custom.pack -}}&nbsp;-&nbsp;{{- item.final_price | money -}}
+                  </span>
+                </div>
+
+                <div class="cart-item-price">
+                  <span>{{ item.final_line_price | money }}</span>
+                </div>
+              </div>
+              {%- endfor -%}
+            </div>
+
+            <div class="discount-code-seperator">
+              <span class="hidden">Line</span>
+            </div>
+
+            <div class="total-amount flex flex-col">
+              <div class="flex justify-between items-center">
+                <span class="text-block-3">Discount</span>
+                <span>Calculated on the next step</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-block-3">Subtotal</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-block-3">Shipping</span>
+                <span>Calculated on the next step</span>
+              </div>
+            </div>
+
+            <div class="discount-code-seperator">
+              <span class="hidden">Line</span>
+            </div>
+
+            <div class="total-amount">
+              <div class="flex justify-between items-center">
+                <span class="text-style-grand-total-copy">Total</span>
+                <div class="flex items-center">
+                  <span class="text-block-3-copy">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span class="text-style-grand-total">
+                    {{ cart.total_price | money }}</span>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="discount-code-seperator">
+              <span class="hidden">Line</span>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  console.log({{ cart.items | json }})
+</scri >
