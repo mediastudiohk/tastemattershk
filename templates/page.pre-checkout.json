@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "pre-checkout": {
+      "type": "main-pre-checkout",
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": ["pre-checkout"]
+}
