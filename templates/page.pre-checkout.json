@@ -3,9 +3,10 @@
     "pre-checkout": {
       "type": "main-pre-checkout",
       "settings": {
-        "heading": ""
       }
     }
   },
-  "order": ["pre-checkout"]
+  "order": [
+    "pre-checkout"
+  ]
 }

@@ -150,7 +150,6 @@ const onSelectItemValue = (item) => {
   console.log('item', item);
 }
 
-window.onSelectItemValue = onSelectItemValue;
 
 const renderTime = () => {
   scheduleDateHtml = '';
@@ -162,7 +161,7 @@ const renderTime = () => {
        : `
        <div class="delivery-schedule-item-time-value-wrapper">
         ${time.times.map((i) => {
-          return `<div class="delivery-schedule-item-time-value" onclick="onSelectItemValue(${time})">
+          return `<div class="delivery-schedule-item-time-value">
               ${i}
             </div>`
         }).join(" ")}
