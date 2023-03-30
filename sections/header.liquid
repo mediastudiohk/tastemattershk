@@ -1,108 +1,247 @@
-<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print"
-  onload="this.media='all'">
+<link
+  rel="stylesheet"
+  href="{{ 'component-cart-notification.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
 <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
-input:focus-visible {
-outline-width: 0px;
-outline-offset: 0rem;
-box-shadow: 0 0 0 0;
-border: 1px solid #717171;
-}
+  input:focus-visible {
+    outline-width: 0px;
+    outline-offset: 0rem;
+    box-shadow: 0 0 0 0;
+    border: 1px solid #717171;
+  }
 
-.dropbtn {
-cursor: pointer;
-border: 0;
-background-color: transparent;
-}
+  .dropbtn {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+  }
 
-.dropdownLang {
-position: relative;
-display: inline-block;
-}
+  .dropdownLang {
+    position: relative;
+    display: inline-block;
+  }
 
-.dropdownLang-content {
-border-radius: 10px;
-right: -40px;
-top: 25px;
-padding: 5px 15px;
-width: fit-content;
-display: none;
-position: absolute;
-background-color: #fff;
-overflow: auto;
-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-z-index: 11;
-}
+  .dropdownLang-content {
+    border-radius: 10px;
+    right: -40px;
+    top: 25px;
+    padding: 5px 15px;
+    width: fit-content;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+  }
 
-.triangle {
-position: absolute;
-color: white;
-top: 15px;
-left: 50%;
-translate: -50%;
-width: 0;
-height: 0;
-border-left: 16px solid transparent;
-border-right: 16px solid transparent;
-border-bottom: 16px solid #fff;
-z-index: 10;
-display: none;
-}
+  .triangle {
+    position: absolute;
+    color: white;
+    top: 15px;
+    left: 50%;
+    translate: -50%;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid #fff;
+    z-index: 10;
+    display: none;
+  }
 
-.dropdownLang-content a {
-color: #716359;
-padding: 3px;
-text-decoration: none;
-display: block;
-}
+  .dropdownLang-content a {
+    color: #716359;
+    padding: 3px;
+    text-decoration: none;
+    display: block;
+  }
 
-.dropdownLang a:hover {
-color: #cbc8ab;
-}
+  .dropdownLang a:hover {
+    color: #cbc8ab;
+  }
 
-.show {
-display: block !important;
-}
+  .show {
+    display: block !important;
+  }
 
-.menuStyle {
-display: flex;
-height: 45.54px;
-width: 1280px;
-align-items: center;
-justify-content: start;
-z-index: 10;
-position: relative;
-}
+  .menuStyle {
+    display: flex;
+    height: 45.54px;
+    max-width: 1280px;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    z-index: 10;
+    position: relative;
+    flex-wrap: wrap;
+    height: auto;
+  }
 
-.containerStyle {
-position: fixed;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 136.16px;
-width: 100%;
-background-color: #fafaf0;
-box-shadow: 0 8px 40px 0 rgb(0 0 0 / 8%), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-z-index: 10;
-}
+  .containerStyle {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fafaf0;
+    box-shadow: 0 8px 40px 0 rgb(0 0 0 / 8%), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
 
-.linkhover:hover {
-color: #bebebe;
-text-decoration: none;
-}
+  .linkhover:hover {
+    color: #bebebe;
+    text-decoration: none;
+  }
 
-.iconhover:hover {
-opacity: 0.66;
-}
+  .iconhover:hover {
+    opacity: 0.66;
+  }
+
+  .w-nav-button {
+    position: relative;
+    float: right;
+    padding: 20px;
+    font-size: 24px;
+    display: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .page-padding {
+    padding: 0px 40px;
+  }
+
+  #menu-mobile {
+    display: none;
+  }
+
+  .nav_container-bottom {
+    position: relative;
+    z-index: 5;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 8px;
+    padding-left: 8px;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  .nav_category-menu-text {
+    z-index: 1;
+    display: block;
+    margin-right: 0px;
+    margin-left: 0px;
+    color: #716359;
+    font-size: 14px;
+  }
+
+  .dropLang {
+    display: none;
+  }
+
+  .dropLang .show {
+    display: flex;
+  }
+
+  .dropLang {
+    width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px 2px rgba(134, 124, 117, 0.25);
+  }
+
+  .nav-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 4px 20px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+    font-size: 12.8px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 991px) {
+    .w-nav-button {
+      background-color: #f3f3e1;
+      color: #cbc8ab;
+      display: block;
+    }
+
+    .nav_category-menu-text {
+      margin-top: 8px;
+      margin-right: 16px;
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      padding: 20px 40px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .w-nav-button {
+      padding: 16px;
+    }
+
+    .page-padding {
+      padding: 0px 20px;
+    }
+
+    .nav-link {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .nav_container-bottom {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
 {% endstyle %}
 <script>
-  /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
   function dropDownFunc() {
     document.getElementById('dropDownLang').classList.toggle('show');
     document.getElementById('triangle').classList.toggle('show');
@@ -122,30 +261,70 @@ toggle between hiding and showing the dropdown content */
         }
       }
     }
+
+    if (!event.target.matches('.preven-icon-menu') && !event.target.matches('.dropbtnTablet')) {
+      const menuMobile = document.getElementById('menu-mobile');
+      if (menuMobile.classList.contains('show')) {
+        menuMobile.classList.remove('show');
+      }
+    }
   };
+
+  function dropDownFuncMenu() {
+    document.getElementById('menu-mobile').classList.toggle('show');
+  }
+
+  function dropDownFuncTablet() {
+    document.querySelector('.dropLang').classList.toggle('show');
+  }
 </script>
 
-<nav class=" header-menu containerStyle">
-  <div style="display:flex; height:90.62px; width:1280px; align-items:center; justify-content:space-between; ">
-    <div style="display:flex; height:56.72px; width:1280px; align-items:end; justify-content:space-between; ">
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+<nav
+  class=" header-menu containerStyle"
+>
+  <div
+    class="page-padding"
+    style="display:flex; height:90.62px; width:100%; align-items:center; justify-content:space-between"
+  >
+    <div style="display:flex; height:56.72px; width:100%; max-width:1280px; align-items:end; justify-content:space-between; ">
+      <a
+        href="{{ routes.root_url }}"
+        class="header__heading-link link link--text focus-inset"
+      >
         {%- if settings.logo != blank -%}
-        <div style="display:flex; height:56.72px; align-items:center;">
-          <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
-        </div>
+          <div style="display:flex; height:56.72px; align-items:center;">
+            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
+          </div>
         {%- else -%}
-        <span class="h2">{{ shop.name }}</span>
+          <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
       <div
-        style="display:flex; align-items:center; height:fit-content;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end">
+        class="hide-tablet"
+        style="display:flex; align-items:center; height:fit-content;color:#867c75;font-size:12px;font-weight:600 ; width:60%; gap:30px; justify-content:end"
+      >
         <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
-          <input type="text" placeholder="Search..." name="q" value="{{ search.terms | escape }}"
-            style="border: 1px solid #bebebe; width:160px; height:28px;padding: 10px 10px" required>
-          <button class="iconhover" type="submit"
-            style="border:0; background-color:transparent; cursor:pointer; display:flex;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" id="Layer_2" data-name="Layer 2"
-              viewBox="0 0 242.68 242.68">
+          <input
+            type="text"
+            placeholder="Search..."
+            name="q"
+            value="{{ search.terms | escape }}"
+            style="border: 1px solid #bebebe; width:160px; height:28px;padding: 10px 10px"
+            required
+          >
+          <button
+            class="iconhover"
+            type="submit"
+            style="border:0; background-color:transparent; cursor:pointer; display:flex;"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14px"
+              height="14px"
+              id="Layer_2"
+              data-name="Layer 2"
+              viewBox="0 0 242.68 242.68"
+            >
               <defs>
                 <style>
                   .cls-1 {
@@ -163,59 +342,108 @@ toggle between hiding and showing the dropdown content */
           </button>
         </form>
         <div class="dropdownLang">
-          <img class="dropbtn iconhover" onclick="dropDownFunc()" src="{{ 'uk.png' | asset_url }}" width="18"
-            height="18" loading="lazy">
+          <img
+            class="dropbtn iconhover"
+            onclick="dropDownFunc()"
+            src="{{ 'uk.png' | asset_url }}"
+            width="18"
+            height="18"
+            loading="lazy"
+          >
           <div id="triangle" class="triangle">a</div>
           <div id="dropDownLang" class="dropdownLang-content">
             <div style="display:flex; flex-direction:column; align-items:end; width:max-content;">
-              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"><img
-                  src="{{ 'ge.png' | asset_url }}" width="18" height="18" loading="lazy">Deutsch</a>
-              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"><img
-                  src="{{ 'uk.png' | asset_url }}" width="18" height="18" loading="lazy">English</a>
+              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
+                ><img
+                  src="{{ 'ge.png' | asset_url }}"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+
+                >Deutsch</a
+              >
+              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
+                ><img
+                  src="{{ 'uk.png' | asset_url }}"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+
+                >English</a
+              >
             </div>
           </div>
         </div>
         {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_url }}">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-            role="img" class="iconify iconify--ic" width="18px" height="18px" preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-            </path>
-          </svg>
-          <span>Account</span>
-        </a>
-        {% else %}
-        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_login_url }}">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-            role="img" class="iconify iconify--ic" width="18px" height="18px" preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-            </path>
-          </svg>
-          <span>Log In</span>
-        </a>
-        {% endif %}
+          {% if customer %}
+            <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_url }}">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="18px"
+                height="18px"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path fill="currentColor"
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                </path>
+              </svg>
+              <span>Account</span>
+            </a>
+          {% else %}
+            <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_login_url }}">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="18px"
+                height="18px"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path fill="currentColor"
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                </path>
+              </svg>
+              <span>Log In</span>
+            </a>
+          {% endif %}
         {% endif %}
 
-        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-            role="img" class="iconify iconify--tabler" width="18px" height="18px" preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-              <path d="m9 11l3 3l8-8"></path>
-              <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path>
-            </g>
+        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ section.settings.linkwishlist }}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--tabler"
+            width="18px"
+            height="18px"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3l8-8"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path></g>
           </svg>
           <span>Wishlist</span>
         </a>
         <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/checkout">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-            role="img" class="iconify iconify--ic" width="18px" height="18px" preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--ic"
+            width="18px"
+            height="18px"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
             <path fill="currentColor"
               d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z">
             </path>
@@ -224,142 +452,375 @@ toggle between hiding and showing the dropdown content */
         </a>
         <div style="position:relative;">
           <a id="cart_link" class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-              role="img" class="iconify iconify--ph" width="18px" height="18px" preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 256 256">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--ph"
+              width="18px"
+              height="18px"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 256 256"
+            >
               <path fill="currentColor"
                 d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z">
               </path>
             </svg>
-            <div style="display: flex;">
+            <div style="display: flex; white-space: nowrap">
               Basket (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
             </div>
           </a>
           {%- render 'cart-drawer' -%}
         </div>
       </div>
-    </div>
-  </div>
-  <div class="menuStyle">
-    {% for link in section.settings.menu.links %}
-    {% style %}
-    .mainItem {
-    height: 100%;
-    font-size: 18.4px;
-    padding: 8px 16px;
-    white-space: nowrap;
-    }
-
-    .mainItem:hover {
-    background-color: white;
-    box-shadow: 0 -3px 8px -2px #dadbd2;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    color: #bebebe;
-    }
-
-    .childMenu {
-    display: none;
-    position: absolute;
-    left: -3px;
-    right: -3px;
-    height: 200px;
-    top: 40px;
-    }
-
-    .gridContainer {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 8px;
-    padding: 10px 10px;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 20px;
-    }
-
-    .dropdown {
-    }
-
-    .dropdown-content a {
-    color: #716359;
-    padding: 4px 0px;
-    text-decoration: none;
-    display: block;
-    }
-
-    .dropdown-content a:hover {
-    color: #bebebe;
-    }
-
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 -1px 5px -2px #dadbd2;
-    left: -3px;
-    height: min-content;
-    min-width: 1280px;
-    top: 40px;
-    z-index: 1;
-    border-radius: 6px;
-    }
-
-    .dropdown:hover .dropdown-content {
-    display: block;
-    }
-    {% endstyle %}
-    <div class="dropdown text-font-small-caps">
-      <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
-      {% if link.links.size > 0 %}
-      <div class="dropdown-content">
-        <div class="gridContainer">
-          {% for childLink in link.links %}
-          <div>
-            <a href="{{ childLink.url }}">
-              <img src="{{ childLink.object.image.src | image_url: width: 1000 }}" loading="lazy"
-                style="width:100%; aspect-ratio: 3 / 1.5"></a>
-            <a style="border-bottom: 1px solid #e0daa7; font-size:20px" href="{{ childLink.url }}">
-              {{- childLink.title -}}
-            </a>
-            {% if childLink.links.size > 0 %}
-            {% for onChildLink in childLink.links %}
-            <a style=" font-size:inherit" href="{{ onChildLink.url }}">
-              {{- onChildLink.title -}}
-            </a>
-            {% endfor %}
-            {% endif %}
-          </div>
-          {% endfor %}
+      <div
+        class="w-nav-button preven-icon-menu"
+        style="-webkit-user-select: text;"
+        aria-label="menu"
+        role="button"
+        tabindex="0"
+        aria-controls="w-nav-overlay-0"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        onclick="dropDownFuncMenu()"
+      >
+        <div
+          class="w-icon-nav-menu preven-icon-menu"
+          style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center"
+        >
+          <svg
+            width="24px"
+            height="24px"
+            viewBox="0 -5.5 21 21"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="preven-icon-menu"
+          >
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-179.000000, -205.000000)" fill="#cbc8ab">
+                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                        <path class="preven-icon-menu" d="M123,55 L144,55 L144,53 L123,53 L123,55 Z M123,47 L144,47 L144,45 L123,45 L123,47 Z M123,51 L144,51 L144,49 L123,49 L123,51 Z" id="menu_list-[#1527]">
+                        </path>
+                    </g>
+                </g>
+            </g>
+          </svg>
         </div>
       </div>
-      {% endif %}
     </div>
+  </div>
+  <div
+    class="menuStyle hide-tablet"
+  >
+    {% for link in section.settings.menu.links %}
+      {% style %}
+        .mainItem {
+          height: 100%;
+          font-size: 18.4px;
+          white-space: nowrap;
+        }
+
+        .dropdown:hover {
+          background-color: white;
+          box-shadow: 0 -3px 8px -2px #dadbd2;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          color: #bebebe;
+        }
+
+        .childMenu {
+          display: none;
+          position: absolute;
+          left: -3px;
+          right: -3px;
+          height: 200px;
+          top: 40px;
+        }
+
+        .gridContainer {
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          border-radius: 8px;
+          padding: 10px 10px;
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .dropdown {
+          padding: 8px 16px;
+        }
+
+        .dropdown-content a {
+          color: #716359;
+          padding: 4px 0px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+          color: #bebebe;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: white;
+          box-shadow: 0 -1px 5px -2px #dadbd2;
+          left: -3px;
+          height: min-content;
+          min-width: 1280px;
+          top: 40px;
+          z-index: 1;
+          border-radius: 6px;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+      {% endstyle %}
+      <div class="dropdown text-font-small-caps">
+        <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
+        {% if link.links.size > 0 %}
+          <div class="dropdown-content">
+            <div class="gridContainer">
+              {% for childLink in link.links %}
+                <div>
+                  <a href="{{ childLink.url }}">
+                    <img
+                      src="{{ childLink.object.image.src | image_url: width: 1000 }}"
+                      loading="lazy"
+                      style="width:100%; aspect-ratio: 3 / 1.5"
+                  ></a>
+                  <a style="border-bottom: 1px solid #e0daa7; font-size:20px" href="{{ childLink.url }}">
+                    {{- childLink.title -}}
+                  </a>
+                  {% if childLink.links.size > 0 %}
+                    {% for onChildLink in childLink.links %}
+                      <a style=" font-size:inherit" href="{{ onChildLink.url }}">
+                        {{- onChildLink.title -}}
+                      </a>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
     {% endfor %}
   </div>
   <hr style="position:fixed;left:0;top:0;margin-top:90.62px;border-bottom: 1px solid #e0daa7; width:100vw;height:0px">
-  <hr style="position:fixed;left:0;top:0;margin-top:136.16px;border-bottom: 1px solid #e0daa7; width:100vw;height:0px">
+  <div style="background-color: white" id="menu-mobile">
+    <div class="page-padding show-tablet">
+      <div class="nav_container-bottom">
+        {% for itemLink in section.settings.menu.links %}
+          <a href="{{ itemLink.url }}" class="nav_category-menu-text">{{ itemLink.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
+      <input
+        type="text"
+        placeholder="Search..."
+        name="q"
+        value="{{ search.terms | escape }}"
+        style="border: 1px solid #bebebe; width:160px; height:28px;padding: 10px 10px"
+        required
+      >
+      <button
+        class="iconhover"
+        type="submit"
+        style="border:0; background-color:transparent; cursor:pointer; display:flex;"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14px"
+          height="14px"
+          id="Layer_2"
+          data-name="Layer 2"
+          viewBox="0 0 242.68 242.68"
+        >
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #716359;
+              }
+            </style>
+          </defs>
+          <g id="Layer_2-2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1-2">
+              <path class="cls-1" d="m173.44,152.62h-10.96l-3.88-3.75c14.07-16.32,21.8-37.15,21.78-58.69,0-49.8-40.38-90.18-90.19-90.18S0,40.38,0,90.19s40.38,90.19,90.19,90.19c22.34,0,42.87-8.19,58.69-21.78l3.75,3.88v10.96l69.38,69.24,20.67-20.67-69.24-69.38h0Zm-83.25-.01c-34.55,0-62.44-27.89-62.44-62.44s27.89-62.44,62.44-62.44,62.44,27.89,62.44,62.44-27.89,62.44-62.44,62.44Z"/>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </form>
+
+    <div>
+      <img
+        class="dropbtnTablet"
+        onclick="dropDownFuncTablet()"
+        src="{{ 'uk.png' | asset_url }}"
+        width="18"
+        height="18"
+        loading="lazy"
+        style="margin-left: 20px"
+      >
+      <div class="dropLang" style="flex-direction:column; align-items:end">
+        <a
+          style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
+          ><img
+            src="{{ 'ge.png' | asset_url }}"
+            width="18"
+            height="18"
+            loading="lazy"
+
+          >Deutsch</a
+        >
+        <a
+          style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
+          ><img
+            src="{{ 'uk.png' | asset_url }}"
+            width="18"
+            height="18"
+            loading="lazy"
+
+          >English</a
+        >
+      </div>
+    </div>
+
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_url }}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--ic"
+            width="18px"
+            height="18px"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+          </svg>
+          <span>Account</span>
+        </a>
+      {% else %}
+        <a
+          class="linkhover nav-link"
+          style="display:flex; align-items:end;gap:4px"
+          href="{{ routes.account_login_url }}"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--ic"
+            width="18px"
+            height="18px"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+          </svg>
+          <span>Log In</span>
+        </a>
+      {% endif %}
+    {% endif %}
+
+    <a
+      class="linkhover nav-link"
+      style="display:flex; align-items:end;gap:4px"
+      href="{{ section.settings.linkwishlist }}"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="iconify iconify--tabler"
+        width="18px"
+        height="18px"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3l8-8"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path></g>
+      </svg>
+      <span>Wishlist</span>
+    </a>
+    <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/checkout">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="iconify iconify--ic"
+        width="18px"
+        height="18px"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path fill="currentColor" d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"></path>
+      </svg>
+      <span>Checkout</span>
+    </a>
+    <div style="position:relative;">
+      <a id="cart_link" class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/cart">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="iconify iconify--ph"
+          width="18px"
+          height="18px"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 256 256"
+        >
+          <path fill="currentColor" d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z"></path>
+        </svg>
+        <div style="display: flex; white-space: nowrap">
+          Basket (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
+        </div>
+      </a>
+      {%- render 'cart-drawer' -%}
+    </div>
+  </div>
 </nav>
 
 {% schema %}
 {
-"name": "t:sections.header.name",
-"class": "section-header",
-"settings": [
-{
-"type": "header",
-"content": "t:sections.header.settings.logo_header.content"
-},
-{
-"type": "paragraph",
-"content": "t:sections.header.settings.logo_help.content"
-},
-{
-"id": "menu",
-"type": "link_list",
-"default": "main-menu",
-"label": "t:sections.header.settings.menu.label"
-}
-]
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.logo_header.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.header.settings.logo_help.content"
+    },
+    {
+      "id": "menu",
+      "type": "link_list",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "id": "linkwishlist",
+      "type": "url",
+      "label": "link wish list"
+    }
+  ]
 }
 {% endschema %}
