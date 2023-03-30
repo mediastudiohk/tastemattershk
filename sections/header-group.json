@@ -5,7 +5,8 @@
     "header": {
       "type": "header",
       "settings": {
-        "menu": "top-menu"
+        "menu": "top-menu",
+        "linkwishlist": "#wishlist"
       }
     }
   },

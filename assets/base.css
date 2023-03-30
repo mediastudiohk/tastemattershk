@@ -3441,6 +3441,10 @@ input.w-button {
     padding-top: 64px;
     padding-bottom: 64px;
   }
+
+  .hide-tablet {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -3470,7 +3474,7 @@ input.w-button {
   }
 
   .hide-mobile-landscape {
-    display: none;
+    display: none !important;
   }
 
   .padding-section-medium {

@@ -6,21 +6,21 @@
         "template--17916243542313__59b79c8e-fb36-4300-98b3-aac56d3cad5c-16783549921595e6ca-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/slide1.jpg",
+            "image": "shopify:\/\/shop_images\/slide1.jpg",
             "heading": "Italian Antipasti"
           }
         },
         "f69311a3-f930-4998-8d51-d499882132dd": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/slide3.jpg",
+            "image": "shopify:\/\/shop_images\/slide3.jpg",
             "heading": "Organic Juice"
           }
         },
         "4fef4e16-4125-45d4-9b85-047a71dd05a9": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/slide4.jpg",
+            "image": "shopify:\/\/shop_images\/slide4.jpg",
             "heading": "Genuine German Sausages"
           }
         }
@@ -33,7 +33,7 @@
       "settings": {
         "change_slides_speed": 5,
         "image_link": "#",
-        "image_2": "shopify://shop_images/30302006_Rostbratwurst_Fraenkische_Art_bearbeitet.jpg",
+        "image_2": "shopify:\/\/shop_images\/30302006_Rostbratwurst_Fraenkische_Art_bearbeitet.jpg",
         "image_link_2": "#"
       }
     },
@@ -41,10 +41,15 @@
       "type": "featured-collection",
       "settings": {
         "title": "Featured Products",
+        "color_title": "#716539",
         "collection": "all",
-        "products_to_show": 10
+        "products_to_show": 10,
+        "redirect_all": true
       }
     }
   },
-  "order": ["59b79c8e-fb36-4300-98b3-aac56d3cad5c", "featured_collection"]
+  "order": [
+    "59b79c8e-fb36-4300-98b3-aac56d3cad5c",
+    "featured_collection"
+  ]
 }

@@ -254,6 +254,8 @@
                             data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
                             max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
                           {% endif %}
+                          max="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+                          data-max="{{ product.selected_or_first_available_variant.inventory_quantity }}"
                           step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
                           value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                           form="{{ product_form_id }}"
