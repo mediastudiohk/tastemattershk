@@ -10,8 +10,7 @@
         <div class="pre-checkout-left padding-section-medium">
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
             <div style="display:flex; height:56.72px; align-items:center; justify-content: center;">
-              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy"
-                style="height:100%; aspect-ratio: 5 / 1">
+              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%; width: 256px">
             </div>
           </a>
 
@@ -43,9 +42,9 @@
               <label for="Area" class="checkout_section-label">Area *</label>
               <select name="" id="Area" class="checkout_section-select w-select">
                 <option value="">Select one...</option>
-                <option value="">Hong Kong</option>
-                <option value="">Kowloon</option>
-                <option value="">New Territories</option>
+                <option value="Kr">Hong Kong</option>
+                <option value="Kl">Kowloon</option>
+                <option value="New">New Territories</option>
               </select>
             </div>
 
@@ -74,70 +73,21 @@
             <div>Please select a day and time.</div>
           </div>
 
-          <div class="margin-medium" style="margin-left: 0; margin-right: 0">
-            <div class="delivery-schedule-wrapper flex flex-col">
+          <div class="margin-medium" style="margin-left: 0; margin-right: 0; position: relative">
+
+            <div class="icon back" onclick="onSchedule('back')">
+              <span class="left"></span>
+            </div>
+            <div class="icon next" onclick="onSchedule('next')">
+              <span class="right"></span>
+            </div>
+
+            <div class="delivery-schedule-wrapper flex flex-col" id="delivery-schedule-wrapper"
+              onmousedown="return false">
               <div class="delivery-schedule-item-date-wrapper">
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
-                <div class="delivery-schedule-item-date flex flex-col">
-                  <span>Sunday</span>
-                  <span>20 Mar</span>
-                </div>
               </div>
 
               <div class="delivery-schedule-item-time-wrapper">
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
-
-                <div class="delivery-schedule-item-time">
-                  <div class="delivery-schedule-item-time-no-delivery">No Delivery</div>
-                </div>
               </div>
             </div>
 
@@ -145,7 +95,8 @@
 
           <div class="delivery-heading margin-bottom margin-small">Delivery Option</div>
           <div class="checkout_field-wrapper margin-bottom margin-small">
-            <label for="Area-2" class="checkout_section-label">What should we do if the delivery has arrived but you are
+            <label for="Area-2" class="checkout_section-label">What should we do if the delivery has arrived but you
+              are
               not there and we couldn't reach you?</label>
             <select id="Area-2" name="Area-2" data-name="Area 2" class="checkout_section-select w-select">
               <option value="Hong Kong">Leave the package at the door</option>
@@ -154,7 +105,7 @@
           </div>
 
           <div class="flex items-center justify-between">
-            <a href="#" class="flex items-center">
+            <a href="/cart" class="flex items-center back-to-basket">
               <div class="flex" style="width: 16px; height: 16px;">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                   role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
@@ -162,8 +113,6 @@
                   <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.41z" />
                 </svg>
               </div>
-
-
               <span>Back to basket</span>
             </a>
             <a href="#" class="flex items-center">
@@ -250,7 +199,4 @@
   </div>
 </div>
 
-<script>
-
-  console.log({{ cart.items | json }})
-</scri >
+<script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>

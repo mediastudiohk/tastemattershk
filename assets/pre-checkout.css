@@ -4,16 +4,15 @@ footer {
 }
 
 .main-pre-checkout {
-  margin-top: -130px;
+  margin-top: -136px;
   position: relative;
   color: #2f2f2f;
-  height: 100vh;
 }
 
 .pre-checkout-overlay {
   position: absolute;
   height: 100%;
-  width: 50%;
+  width: 55%;
   left: 0;
   background-color: #fff;
   z-index: 0;
@@ -25,7 +24,7 @@ footer {
 }
 
 .pre-checkout-left {
-  width: 50%;
+  width: 57%;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #dddbc7;
@@ -77,10 +76,18 @@ footer {
   background-color: #fff;
   cursor: pointer;
   outline: none;
+  font-family: inherit;
+  color: #2f2f2f;
+  font-size: inherit;
 }
 
 .checkout_section-select:focus-visible {
-  border: none;
+  box-shadow: none;
+}
+
+.checkout_section-select:focus{
+  border-color: #3898EC;
+  outline: 0;
 }
 
 .delivery-heading {
@@ -115,6 +122,8 @@ footer {
   text-transform: uppercase;
   border: none;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
 }
 
 a:hover .pre-checkout-button {
@@ -183,35 +192,66 @@ a:hover .pre-checkout-button {
 
 .delivery-schedule-wrapper {
   overflow-x: auto;
+  position: relative;
+}
+
+.delivery-schedule-wrapper::-webkit-scrollbar { 
+  display: none;
+}
+
+
+.delivery-schedule-section.transform {
+  transform: translateX(-775px); 
+  transition: transform 500ms ease 0s;
 }
 
 .delivery-schedule-item-date-wrapper{
-  display: grid; 
-  grid-auto-columns: 1fr;
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: auto;
-  grid-template-rows: auto;
-  border-top: 0.0625rem solid #d8d8d8;
-  border-bottom: 0.0625rem solid #d8d8d8;
+  grid-column-gap: 8px;
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  /* display: flex; */
+  /* width: max-content; */
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .delivery-schedule-item-date {
   margin: 16px;
 }
 
+.animation-next {
+  animation: 200ms 1 next;
+  animation-timing-function: ease-in, linear, ease-out;
+}
+
+@keyframes next {
+  0% {
+    transform: translateX(678px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animation-back {
+  animation: 200ms 1 back;
+  animation-timing-function: ease-in, linear, ease-out;
+}
+
+@keyframes back {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(678px);
+  }
+}
+
 .delivery-schedule-item-time-wrapper {
   padding: 16px 0;
   display: grid; 
-  grid-auto-columns: 1fr;
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: auto;
-  grid-template-rows: auto;
+  grid-column-gap: 8px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .delivery-schedule-item-time {
@@ -227,6 +267,66 @@ a:hover .pre-checkout-button {
   border-color: #d8d8d8;
   border-radius: 8px;
   background-color: #e9e9e9;
-  font-size: 12px;
-  /* white-space: nowrap; */
+  font-size: 14px;
+}
+
+.delivery-schedule-item-time-value {
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #d8d8d8;
+  padding: 8px;
+  line-height: 1.2;
+}
+
+.delivery-schedule-item-time-value:nth-child(even) {
+  margin: 8px 0;
+}
+
+.delivery-schedule-item-time-value:last-child {
+  margin-bottom: 0;
+}
+
+.icon {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #d8d8d8;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon.back{
+  left: 0;
+  visibility: hidden;
+}
+
+.icon span {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+}
+
+.icon span.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-left: -4px;
+}
+
+.icon span.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-right: -4px;
+}
+
+.back-to-basket{
+  color: #716359;
+  font-weight: 700;
 }
