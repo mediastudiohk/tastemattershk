@@ -121,47 +121,58 @@ let scheduleTimes = [
       times: []
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 2 Mar",
       times: ["14:00 - 16:00"]
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 3 Mar",
       times: []
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 4 Mar",
       times: ["14:00 - 16:00"]
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 5 Mar",
       times: []
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 6 Mar",
       times: ["14:00 - 16:00", '15:00 - 17:00', "14:00 - 16:00", '15:00 - 17:00']
   },
   {
-      date: "Sunday 1 Mar",
+      date: "Sunday 7 Mar",
       times: []
   },
 ]
 
+let times = [];
+
 const onSelectItemValue = (item) => {
-  console.log('item', item);
+  console.log('item', item.innerText);
+
+  if (item.classList.contains('selected')) {
+    item.classList.remove('selected');
+  } else {
+    item.classList.add('selected');
+     times = [...times, item.innerText]
+     console.log('times', times);
+    window.localStorage.setItem('times', JSON.stringify(times))
+  } 
 }
 
 
 const renderTime = () => {
   scheduleDateHtml = '';
-  scheduleTimes.forEach((time) => {
+  scheduleTimes.forEach((item) => {
     scheduleTimeHtml += `
       <div class="delivery-schedule-item-time">
-      ${!time.times.length
+      ${!item.times.length
        ? `<div class="delivery-schedule-item-time-no-delivery">No Delivery</div>` 
        : `
        <div class="delivery-schedule-item-time-value-wrapper">
-        ${time.times.map((i) => {
-          return `<div class="delivery-schedule-item-time-value">
+        ${item.times.map((i) => {
+          return `<div class="delivery-schedule-item-time-value" id="${item.date}" onclick="onSelectItemValue(this)">
               ${i}
             </div>`
         }).join(" ")}
@@ -174,7 +185,3 @@ const renderTime = () => {
 }
 
 renderTime();
-
-
-
-
