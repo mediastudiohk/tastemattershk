@@ -4,7 +4,7 @@
     date: "",
     times: []
   }
-
+  window.localStorage.removeItem('timeByDate')
 
 const options = { weekday: 'long', month: 'short', day: 'numeric', };
 const tomorrow = new Date();
@@ -138,7 +138,7 @@ let scheduleTimes = [
   },
   {
       date: "Sunday 6 Mar",
-      times: ["14:00 - 16:00", '15:00 - 17:00', "14:00 - 16:00", '15:00 - 17:00']
+      times: ["11:00 - 12:00", '12:00 - 13:00', "14:00 - 16:00", '15:00 - 17:00']
   },
   {
       date: "Sunday 7 Mar",
@@ -146,19 +146,51 @@ let scheduleTimes = [
   },
 ]
 
-let times = [];
+let timeByDate = {
+  date: "",
+  times: []
+}
 
 const onSelectItemValue = (item) => {
-  console.log('item', item.innerText);
+  const timeByDateLocal = window.localStorage.getItem('timeByDate') 
+                          ? JSON.parse(window.localStorage.getItem('timeByDate')) 
+                          : null;
 
-  if (item.classList.contains('selected')) {
-    item.classList.remove('selected');
+  if (timeByDateLocal?.date === item.id) {
+    if (item.classList.contains('selected')) {
+      item.classList.remove('selected');
+
+      timeByDate = {
+        ...timeByDate,
+        times: timeByDate.times.filter(i => i !== item.innerText)
+      }
+
+      if (!timeByDate.times.length) {
+        window.localStorage.removeItem('timeByDate')
+      } else {
+        window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+      }
+    } else {
+      item.classList.add('selected');
+      timeByDate = {
+        ...timeByDate,
+        times: [...timeByDate.times, item.innerText]
+      }
+      window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+    }
   } else {
+    const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
+    for (timeSelected of timeValuesSelected) {
+      timeSelected.classList.remove('selected');
+    }
+
     item.classList.add('selected');
-     times = [...times, item.innerText]
-     console.log('times', times);
-    window.localStorage.setItem('times', JSON.stringify(times))
-  } 
+    timeByDate = {
+      date: item.id,
+      times:  [item.innerText]
+    }
+    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+  }
 }
 
 
