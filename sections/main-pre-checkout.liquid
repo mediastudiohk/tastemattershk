@@ -7,6 +7,10 @@
   <div class="padding-global h-full">
     <div class="container-large-modified h-full">
       <div class="pre-checkout-content h-full">
+        <div class="pre-checkout-overlay-left">
+          <span class="hidden">Overlay</span>
+        </div>
+
         <div class="pre-checkout-left padding-section-medium">
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
             <div style="display:flex; height:56.72px; align-items:center; justify-content: center;">
@@ -55,21 +59,15 @@
           <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
             <div class="flex flex-col">
               <label for="Area" class="checkout_section-label">Area *</label>
-              <select name="" id="Area" class="checkout_section-select w-select">
+              <select name="" id="Area" class="checkout_section-select area w-select">
                 <option value="">Select one...</option>
-                <option value="Kr">Hong Kong</option>
-                <option value="Kl">Kowloon</option>
-                <option value="New">New Territories</option>
               </select>
             </div>
 
             <div class="flex flex-col">
               <label for="'District" class="checkout_section-label">District *</label>
-              <select name="" id="District" class="checkout_section-select w-select">
+              <select name="" id="District" class="checkout_section-select district w-select">
                 <option value="">Select one...</option>
-                <option value="">Central and Western</option>
-                <option value="">Wan Chai</option>
-                <option value="">Eastern</option>
               </select>
             </div>
           </div>
@@ -154,8 +152,8 @@
                       src="{{ item.image | image_url: width: 64 }}"
                       alt="{{ item.image.alt | escape }}"
                       loading="lazy"
-                      width="64"
-                      height="64"
+                      width="62"
+                      height="62"
                     >
                   </div>
 
