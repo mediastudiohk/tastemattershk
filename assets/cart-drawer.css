@@ -52,8 +52,12 @@ table {
   font-size: 100%;
 }
 
+table.cart-items { 
+  width: 100%;
+}
+
 table td {
-  padding: 9px 5px 9px 0px;
+  padding: 9px 6px;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid #efeeec;
@@ -66,9 +70,9 @@ table .edge {
 }
 
 table .quantity {
-  padding-left: 11px;
+  padding-left: 24px;
   text-align: right;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 table .imagetable img {
@@ -84,12 +88,18 @@ table .name {
   color: #5d5d5d;
 }
 
+table .name a.h4{
+  color: #867C75;
+  font-size: 17px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
 table .price {
   text-align: right;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   color: #867c75;
-  padding: 11px 4px 7px 0 !important;
+  padding-right: 24px;
 }
 
 .product-option {

@@ -39,7 +39,6 @@
                     <tbody role="rowgroup">
                       {%- for item in cart.items -%}
                         <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
-                          <td class="edge"></td>
                           <td class="quantity" role="cell" headers="CartDrawer-ColumnProductImage">
                             {{ item.quantity }}x
                           </td>
@@ -59,7 +58,7 @@
                           </td>
 
                           <td class="name" role="cell" headers="CartDrawer-ColumnProduct">
-                            <a href="{{ item.url }}" class="cart-item__name h4 break" style="color: #867C75;">
+                            <a href="{{ item.url }}" class="cart-item__name h4 break">
                               {{- item.product.title | escape -}}
                             </a>
 
@@ -126,12 +125,11 @@
                             </div>
 
                             <div class="cart-item__price-wrapper">
-                              <span class="price price--end">
+                              <span class="price--end">
                                 {{ item.original_line_price | money }}
                               </span>
                             </div>
                           </td>
-                          <td class="edge"></td>
                         </tr>
                       {%- endfor -%}
                     </tbody>
