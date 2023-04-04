@@ -92,6 +92,7 @@ table .name a.h4{
   color: #867C75;
   font-size: 17px;
   font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.2;
 }
 
 table .price {

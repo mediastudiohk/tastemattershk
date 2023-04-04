@@ -117,6 +117,7 @@
   font-size: 44px;
   text-align: right;
   text-shadow: 1px 1px 14px rgb(0 0 0 / 30%);
+  font-variant: small-caps;
 }
 
 @media screen and (max-width: 479px) {

@@ -274,8 +274,6 @@ const renderDate = (count) => {
 renderDate();
 
 const onSelectItemValue = (item) => {
-  console.log('item', item.name);
-
   const timeByDateLocal = window.localStorage.getItem('timeByDate') 
                         ? JSON.parse(window.localStorage.getItem('timeByDate')) 
                         : null;
@@ -473,5 +471,3 @@ const fetchData = async (area = '', district = '') => {
   } catch (error) {
     console.log('error', error);
   }
-}
-
