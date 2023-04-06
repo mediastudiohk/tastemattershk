@@ -385,7 +385,8 @@
       "password": "Password",
       "title": "Login",
       "sign_in": "Sign in",
-      "submit": "Submit"
+      "submit": "Submit",
+      "login_create_account_title": "Login or Create an Account"
     },
     "order": {
       "title": "Order {{ name }}",
