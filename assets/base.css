@@ -862,7 +862,7 @@ summary::-webkit-details-marker {
 }
 
 *:focus-visible {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline: 0;
   outline-offset: 0.3rem;
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
@@ -1812,8 +1812,7 @@ details[open] > .share-button__fallback {
 .customer .field input:focus,
 .customer select:focus,
 .localization-form__select:focus.localization-form__select:after {
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width))
-    rgba(var(--color-foreground));
+  box-shadow: none;
   outline: 0;
   border-radius: var(--inputs-radius);
 }
@@ -1889,6 +1888,7 @@ details[open] > .share-button__fallback {
   color: rgba(var(--color-foreground), 0.75);
   letter-spacing: 0.1rem;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 .field__input:focus ~ .field__label,
@@ -3160,6 +3160,7 @@ a {
   color: inherit;
   text-decoration: inherit;
   font-size: inherit;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .w-richtext:after {

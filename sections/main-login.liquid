@@ -68,7 +68,7 @@
   </div>
 
   <h1 id="login" tabindex="-1">
-    {{ 'customer.login_page.title' | t }}
+    {{ 'customer.login_page.login_create_account_title' | t }}
   </h1>
   <div>
     {%- if recover_success == true -%}
@@ -109,7 +109,7 @@
           {% endif %}
           placeholder="{{ 'customer.login_page.email' | t }}"
         >
-        <label for="CustomerEmail">
+        <label for="CustomerEmail" style="font-weight: 400">
           {{ 'customer.login_page.email' | t }}
         </label>
       </div>
@@ -127,7 +127,7 @@
             {% endif %}
             placeholder="{{ 'customer.login_page.password' | t }}"
           >
-          <label for="CustomerPassword">
+          <label for="CustomerPassword" style="font-weight: 400">
             {{ 'customer.login_page.password' | t }}
           </label>
         </div>

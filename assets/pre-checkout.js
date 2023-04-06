@@ -471,3 +471,4 @@ const fetchData = async (area = '', district = '') => {
   } catch (error) {
     console.log('error', error);
   }
+}

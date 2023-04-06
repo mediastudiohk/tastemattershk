@@ -23,6 +23,27 @@
 
 .customer button {
   margin: 4rem 0 1.5rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #867c75;
+  background: #FFF;
+  border-radius: 4px !important;
+  border: 1px solid #ddddda;
+  padding: 1rem 3rem;
+  min-height: auto;
+}
+
+.customer .field input {
+  border: 1px solid #ddddda;
+  border-radius: 4px !important;
+  outline: none;
+}
+
+.customer button::after, 
+.customer button::before,
+.customer .field::before,
+.customer .field::after {
+  display: none;
 }
 
 .customer ul {
@@ -58,6 +79,8 @@
 .customer .field:first-of-type {
   margin-top: 0;
 }
+
+
 
 /* Customer Table */
 .customer table {
@@ -380,6 +403,13 @@
 #recover,
 #login {
   scroll-margin-top: 20rem;
+}
+
+.customer #login,
+.customer h1 {
+  font-variant: small-caps;
+  line-height: 1.15;
+  font-weight: normal;
 }
 
 #recover {
