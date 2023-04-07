@@ -1,0 +1,23 @@
+.header-menu .page-padding {
+    padding: 1.6rem 4rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-menu .header-menu-top {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-width: 1280px;
+    align-items: end;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.header-menu .header__heading-link-logo {
+    display: flex;
+    width: 25.6rem;
+    align-items: center
+}
