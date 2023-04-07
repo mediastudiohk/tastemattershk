@@ -393,8 +393,8 @@ cart-items {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 16px;
-  padding-left: 16px;
+  padding-right: 1.6rem;
+  padding-left: 1.6rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -415,6 +415,7 @@ cart-items {
 
 .my-basket_product-name .gridspan1{
   font-size: 1.6rem;
+  line-height: 2.25rem;
 }
 
 .my-basket_column-title {
@@ -625,6 +626,8 @@ background-image: url("cart.png"),
   color: #df0505;
 }
 
+
+
 @media screen and (max-width: 991px) {
   .my-basket_heading-wrapper {
     grid-column-gap: 48px;
@@ -700,3 +703,4 @@ background-image: url("cart.png"),
     flex-direction: column;
   }
 }
+

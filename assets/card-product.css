@@ -159,7 +159,8 @@ img {
   background-position: 6px 50%, 0px 0px;
   background-size: auto, auto;
   background-repeat: no-repeat, repeat;
-  font-size: 13.6px;
+  font-size: 1.36rem;
+  font-family: inherit;
   font-weight: 600;
 }
 
@@ -182,6 +183,10 @@ img {
   margin-top: 10px;
   padding: 10px;
   background-color: #ffdede;
+}
+
+.product-price-wrapper {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .product-original-price-row {
@@ -221,13 +226,13 @@ img {
 }
 
 .sold-out {
-  font-family: "Merriweather Sans", sans-serif;
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 300;
-  color: #ff0f0f;
+  color: #df0505;
   text-align: right;
   float: right;
-  padding-bottom: 8px;
+  padding-bottom: 0.6rem;
+  padding-right: 0.3rem;
 }
 
 .flexcolumn {
