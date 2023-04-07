@@ -5,9 +5,11 @@
   onload="this.media='all'"
 >
 <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+{{ 'header.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
   input:focus-visible {
@@ -72,9 +74,14 @@
     display: block !important;
   }
 
+  .menuStyle-wrapper {
+    width: 100%;
+    margin: auto;
+    border-top: 1px solid #e0daa7;
+  }
+
   .menuStyle {
     display: flex;
-    height: 45.54px;
     max-width: 1280px;
     width: 100%;
     align-items: center;
@@ -83,6 +90,7 @@
     position: relative;
     flex-wrap: wrap;
     height: auto;
+    margin: auto;
   }
 
   .containerStyle {
@@ -282,18 +290,19 @@
 <nav
   class=" header-menu containerStyle"
 >
-  <div
-    class="page-padding"
-    style="display:flex; height:90.62px; width:100%; align-items:center; justify-content:space-between"
-  >
-    <div style="display:flex; height:56.72px; width:100%; max-width:1280px; align-items:end; justify-content:space-between; margin: auto">
+  <div class="page-padding">
+    <div class="header-menu-top">
       <a
         href="{{ routes.root_url }}"
         class="header__heading-link link link--text focus-inset"
       >
         {%- if settings.logo != blank -%}
-          <div style="display:flex; height:56.72px; align-items:center;">
-            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
+          <div class="header__heading-link-logo">
+            <img
+              src="{{ settings.logo | image_url: width: 1000 }}"
+              loading="lazy"
+              style="height:100%; width: 100%"
+            >
           </div>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
@@ -511,109 +520,110 @@
       </div>
     </div>
   </div>
-  <div
-    class="menuStyle hide-tablet"
-  >
-    {% for link in section.settings.menu.links %}
-      {% style %}
-        .mainItem {
-          height: 100%;
-          font-size: 1.84rem;
-          white-space: nowrap;
-        }
+  <div class="menuStyle-wrapper hide-tablet">
+    <div
+      class="menuStyle"
+    >
+      {% for link in section.settings.menu.links %}
+        {% style %}
+          .mainItem {
+            height: 100%;
+            font-size: 1.84rem;
+            white-space: nowrap;
+          }
 
-        .dropdown:hover {
-          background-color: white;
-          box-shadow: 0 -3px 8px -2px #dadbd2;
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-          color: #bebebe;
-        }
+          .dropdown:hover {
+            background-color: white;
+            box-shadow: 0 -3px 8px -2px #dadbd2;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            color: #bebebe;
+          }
 
-        .childMenu {
-          display: none;
-          position: absolute;
-          left: -3px;
-          right: -3px;
-          height: 200px;
-          top: 40px;
-        }
+          .childMenu {
+            display: none;
+            position: absolute;
+            left: -3px;
+            right: -3px;
+            height: 200px;
+            top: 40px;
+          }
 
-        .gridContainer {
-          width: 100%;
-          height: 100%;
-          background-color: white;
-          border-radius: 8px;
-          padding: 10px 10px;
-          display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 20px;
-        }
+          .gridContainer {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 10px;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 20px;
+          }
 
-        .dropdown {
-          padding: 8px 16px;
-        }
+          .dropdown {
+            padding: 8px 16px;
+          }
 
-        .dropdown-content a {
-          color: #716359;
-          padding: 4px 0px;
-          text-decoration: none;
-          display: block;
-        }
+          .dropdown-content a {
+            color: #716359;
+            padding: 4px 0px;
+            text-decoration: none;
+            display: block;
+          }
 
-        .dropdown-content a:hover {
-          color: #bebebe;
-        }
+          .dropdown-content a:hover {
+            color: #bebebe;
+          }
 
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: white;
-          box-shadow: 0 -1px 5px -2px #dadbd2;
-          left: -3px;
-          height: min-content;
-          min-width: 1280px;
-          top: 40px;
-          z-index: 1;
-          border-radius: 6px;
-        }
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 -1px 5px -2px #dadbd2;
+            left: -3px;
+            height: min-content;
+            min-width: 1280px;
+            top: 40px;
+            z-index: 1;
+            border-radius: 6px;
+          }
 
-        .dropdown:hover .dropdown-content {
-          display: block;
-        }
-      {% endstyle %}
-      <div class="dropdown text-font-small-caps">
-        <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
-        {% if link.links.size > 0 %}
-          <div class="dropdown-content">
-            <div class="gridContainer">
-              {% for childLink in link.links %}
-                <div>
-                  <a href="{{ childLink.url }}">
-                    <img
-                      src="{{ childLink.object.image.src | image_url: width: 1000 }}"
-                      loading="lazy"
-                      style="width:100%; aspect-ratio: 3 / 1.5"
-                  ></a>
-                  <a style="border-bottom: 1px solid #e0daa7; font-size:20px" href="{{ childLink.url }}">
-                    {{- childLink.title -}}
-                  </a>
-                  {% if childLink.links.size > 0 %}
-                    {% for onChildLink in childLink.links %}
-                      <a style=" font-size:inherit" href="{{ onChildLink.url }}">
-                        {{- onChildLink.title -}}
-                      </a>
-                    {% endfor %}
-                  {% endif %}
-                </div>
-              {% endfor %}
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+        {% endstyle %}
+        <div class="dropdown text-font-small-caps">
+          <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <div class="dropdown-content">
+              <div class="gridContainer">
+                {% for childLink in link.links %}
+                  <div>
+                    <a href="{{ childLink.url }}">
+                      <img
+                        src="{{ childLink.object.image.src | image_url: width: 1000 }}"
+                        loading="lazy"
+                        style="width:100%; aspect-ratio: 3 / 1.5"
+                    ></a>
+                    <a style="border-bottom: 1px solid #e0daa7; font-size:20px" href="{{ childLink.url }}">
+                      {{- childLink.title -}}
+                    </a>
+                    {% if childLink.links.size > 0 %}
+                      {% for onChildLink in childLink.links %}
+                        <a style=" font-size:inherit" href="{{ onChildLink.url }}">
+                          {{- onChildLink.title -}}
+                        </a>
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
             </div>
-          </div>
-        {% endif %}
-      </div>
-    {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
-  <hr style="position:fixed;left:0;top:0;margin-top:90.62px;border-bottom: 1px solid #e0daa7; width:100vw;height:0px">
   <div style="background-color: white" id="menu-mobile">
     <div class="page-padding show-tablet">
       <div class="nav_container-bottom">
