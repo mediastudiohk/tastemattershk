@@ -156,7 +156,7 @@
                     <div class="margin-bottom margin-small" style="color:#2f2f2f">
                       <div class="product-details">
                         {%- if product.metafields.custom.pack -%}
-                        <div>Pack of {{ product.metafields.custom.pack }}</div>
+                        <div class="product-pack">Pack of {{ product.metafields.custom.pack }}</div>
                         {%- endif -%}
                         <div class="product-availability">
                           <p
@@ -168,7 +168,7 @@
                             {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                               <span>Availability:  
                                 <span class="text-style-in-stock">
-                                  {{ product.selected_or_first_available_variant.inventory_quantity }}
+                                  {% comment %} {{ product.selected_or_first_available_variant.inventory_quantity }} {% endcomment %}
                                   {{- 'products.product.inventory_in_stock' | t -}}
                                 </span>
                               </span>
