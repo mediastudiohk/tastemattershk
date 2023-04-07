@@ -184,6 +184,22 @@ variant-selects {
   padding-left: 0;
 }
 
+.product-form__input--dropdown .select::before,
+.product-form__input--dropdown .select::after {
+  display: none;
+}
+
+.product-form__input--dropdown select {
+  min-height: auto;
+  height: auto;
+  border-radius: 0.4rem;
+  padding: 0.8rem 3.1rem 0.8rem 2rem;
+  border: 1px solid #eaeaea;
+  color: #716359;
+  font-family: inherit;
+  font-size: 1.6rem;
+}
+
 fieldset.product-form__input .form__label {
   margin-bottom: 0.2rem;
 }

@@ -11,7 +11,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "inventory": {
@@ -42,10 +42,11 @@
         "enable_sticky_info": false,
         "media_fit": "contain",
         "gallery_layout": "thumbnail",
-        "image_zoom": "none",
+        "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
-        "enable_video_looping": false
+        "enable_video_looping": false,
+        "noti_law": "<p>Under the law of Hong Kong, intoxicating liquor must not be sold or supplied to a minor in the course of business.<\/p><p>根據香港法律，不得在業務過程中，向未成年人售賣或供應令人醺醉的酒類 。<\/p>"
       }
     }
   },
