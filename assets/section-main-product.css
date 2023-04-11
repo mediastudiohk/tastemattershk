@@ -192,12 +192,12 @@ variant-selects {
 .product-form__input--dropdown select {
   min-height: auto;
   height: auto;
-  border-radius: 0.4rem;
+  border-radius: 0.8rem;
   padding: 0.8rem 3.1rem 0.8rem 2rem;
   border: 1px solid #eaeaea;
   color: #716359;
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 fieldset.product-form__input .form__label {
@@ -1581,7 +1581,7 @@ a.product__text {
 }
 
 .text-style-out-of-stock {
-  color: #d83820;
+  color: #ac1b17;
 }
 
 .product-page_form-wrapper {
@@ -1610,10 +1610,6 @@ a.product__text {
   grid-template-rows: auto;
 }
 
-.quantity {
-  background-color: #fcfcfc;
-}
-
 .quantity-text {
   font-size: 14.4px;
   font-weight: 300;
@@ -1625,7 +1621,7 @@ a.product__text {
   min-height: 48px;
   margin-bottom: 12px;
   padding: 8px 16px;
-  background-color: transparent;
+  background-color: #FFF;
   color: #867c75;
 }
 
@@ -1776,6 +1772,8 @@ a.product__text {
   color: #fff;
   font-weight: 400;
   text-align: center;
+  font-family: inherit;
+  font-size: 1.4rem;
 }
 
 .add-to-cart-button:hover {
