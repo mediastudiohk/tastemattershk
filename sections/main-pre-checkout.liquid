@@ -13,7 +13,7 @@
 
         <div class="pre-checkout-left padding-section-medium">
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
-            <div style="display:flex; height:56.72px; align-items:center; justify-content: center;">
+            <div style="display:flex; height:56.72px; align-items:center">
               <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
             </div>
           </a>
@@ -54,11 +54,11 @@
             <a href="#">Check Out</a>
           </div>
 
-          <div class="delivery-heading margin-bottom margin-medium">Delivery District</div>
+          <div class="delivery-heading margin-bottom margin-medium">Delivery Details</div>
 
           <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
             <div class="flex flex-col">
-              <label for="Area" class="checkout_section-label">Area *</label>
+              <label for="Area" class="checkout_section-label">Region *</label>
               <select name="" id="Area" class="checkout_section-select area w-select">
                 <option value="">Select one...</option>
               </select>
@@ -73,6 +73,8 @@
           </div>
 
           <div class="delivery-district-description text-size-small margin-bottom margin-medium">
+            The minimum order amount is $500.
+            <br>
             For Discovery Bay, Tung Chung & Yat Tung Estate customers
             <br>
             a delivery fee of $200 may apply for orders below $1000.
@@ -107,14 +109,22 @@
           </div>
 
           <div class="delivery-heading margin-bottom margin-small">Delivery Option</div>
-          <div class="checkout_field-wrapper margin-bottom margin-small">
+          <div class="checkout_field-wrapper margin-bottom margin-small delivery-option">
             <label for="Area-2" class="checkout_section-label"
-              >What should we do if the delivery has arrived but you are not there and we couldn't reach you?</label
+              >What should we do, if at the time of delivery, nobody is home?</label
             >
-            <select id="Area-2" name="Area-2" data-name="Area 2" class="checkout_section-select w-select">
-              <option value="Hong Kong">Leave the package at the door</option>
-              <option value="Kowloon">Reschedule the delivery on another day</option>
-            </select>
+            <div class="flex items-center">
+              <input type="radio" id="doorstep" name="delivery-option" value="doorstep" checked>
+              <label for="doorstep">Please deposit the delivery at my doorstep</label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="concierge" name="delivery-option" value="concierge">
+              <label for="concierge">Please deposit with my concierge</label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="contact-me" name="delivery-option" value="contact-me">
+              <label for="contact-me">Please do not deposit my delivery and contact me to reschedule</label>
+            </div>
           </div>
 
           <div class="flex items-center justify-between">
@@ -155,6 +165,8 @@
                       width="62"
                       height="62"
                     >
+
+                      <div class="cart-item-quantity">{{- item.quantity -}}</div>
                   </div>
 
                   <div class="cart-item-name flex flex-col">
@@ -217,3 +229,7 @@
 </div>
 
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
+
+<script>
+console.log({{ cart.items | json }})
+</script>
