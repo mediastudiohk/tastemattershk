@@ -14,6 +14,12 @@ if (!customElements.get("product-info")) {
             this.input.value = 1;
           }
         });
+
+        this.emailSubject = document.getElementsByClassName('product-page-name')[0].innerHTML.trim()
+        this.emailBody = window.location.href;
+
+        this.emailSharing = this.querySelector('.product-other-link.email-sharing');
+        this.emailSharing.href = `mailto:?subject=${this.emailSubject}&body=${this.emailBody}`;
       }
 
       cartUpdateUnsubscriber = undefined;
