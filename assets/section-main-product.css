@@ -1959,8 +1959,24 @@ a.product__text {
   color: #2f2f2f;
 }
 
-#wishlist-whale-button {
-  display: none;
+.wishlist-whale-button-container #wishlist-whale-button {
+  font-family: inherit !important;
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: #867c75 !important;
+  padding: 0;
+  height: fit-content;
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+
+.wishlist-whale-button-container #wishlist-whale-button::before {
+  content: url('./icon-wishlist.svg');
+  width: 1.6rem;
+  height: 1.6rem;
+  background-size: 1.6rem 1.6rem;
+  display: block;
+  margin-right: 2px;
 }
 
 .product-pack {

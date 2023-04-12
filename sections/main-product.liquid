@@ -319,15 +319,9 @@
                     {%- when 'buy_buttons' -%}
                       <div class="product-page_add-to-cart_wrapper">
                         <div class="product-page-other-link product-page-other-link-child">
-                          <div class="product-page-other-link-child margin-bottom margin-medium">
+                          <div class="product-page-other-link-child">
                             {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
                           </div>
-                          <a href="#" class="product-other-link w-inline-block">
-                            <div class="icon-embed-xxsmall w-embed">
-                            {% render 'icon-wishlist' %}
-                            </div>
-                            <div>Add to Wishlist</div>
-                          </a>
                           <a href="#" class="product-other-link w-inline-block">
                             <div class="icon-embed-xxsmall w-embed">
                             {% render 'icon-email' %}
