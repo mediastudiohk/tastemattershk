@@ -96,7 +96,7 @@
                       <div
                         class="my-basket_product-details gridspan1"
                       >
-                        {{ item.final_price | money }}
+                          <span class="price-custom">{{ item.final_price | money }}</span>
                       </div>
                       <div class="div-block-7 gridspan1 center">
                         <input
@@ -121,7 +121,7 @@
                       <div
                         class="my-basket_product-details gridspan1"
                       >
-                        {{ item.final_line_price | money }}
+                        <span class="price-custom">{{ item.final_line_price | money }}</span>
                       </div>
                     {%- endfor -%}
                   </div>

@@ -186,7 +186,7 @@ img {
 }
 
 .product-price-wrapper {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .product-original-price-row {
@@ -225,6 +225,10 @@ img {
   display: inline;
 }
 
+.text-display-inline::first-letter {
+  font-size: smaller;
+}
+
 .sold-out {
   font-size: 1.2rem;
   font-weight: 400;
@@ -238,6 +242,10 @@ img {
 .flexcolumn {
   display: flex;
   flex-direction: column;
+}
+
+.text-product-price-number::first-letter {
+  font-size: smaller;
 }
 
 @media screen and (max-width: 479px) {

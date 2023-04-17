@@ -140,6 +140,7 @@
                 headers="Row{{ line_item.key }} ColumnPrice"
                 role="cell"
                 data-label="{{ 'customer.order.price' | t }}"
+                class="price-custom"
               >
                 {%- if line_item.original_price != line_item.final_price or line_item.unit_price_measurement -%}
                   <dl>
@@ -202,6 +203,7 @@
                 headers="Row{{ line_item.key }} ColumnTotal"
                 role="cell"
                 data-label="{{ 'customer.order.total' | t }}"
+                class="price-custom"
               >
                 {%- if line_item.original_line_price != line_item.final_line_price -%}
                   <dl>
@@ -230,7 +232,7 @@
             <td id="RowSubtotal" role="rowheader" scope="row" colspan="4">
               {{ 'customer.order.subtotal' | t }}
             </td>
-            <td headers="RowSubtotal" role="cell" data-label="{{ 'customer.order.subtotal' | t }}">
+            <td headers="RowSubtotal" role="cell" data-label="{{ 'customer.order.subtotal' | t }}" class="price-custom">
               {{ order.line_items_subtotal_price | money }}
             </td>
           </tr>
@@ -246,9 +248,14 @@
                     {{- discount_application.title -}}
                   </span>
                 </td>
-                <td headers="RowDiscount" role="cell" data-label="{{ 'customer.order.discount' | t }}">
+                <td
+                  headers="RowDiscount"
+                  role="cell"
+                  data-label="{{ 'customer.order.discount' | t }}"
+                  class="price-custom"
+                >
                   <div>
-                    <span>-{{ discount_application.total_allocated_amount | money }}</span>
+                    <span class="price-custom">-{{ discount_application.total_allocated_amount | money }}</span>
                     <span class="cart-discount">
                       <svg aria-hidden="true" focusable="false" viewBox="0 0 12 12">
                         <use href="#icon-discount" />
@@ -269,6 +276,7 @@
                 headers="RowShipping"
                 role="cell"
                 data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})"
+                class="price-custom"
               >
                 {{ shipping_method.price | money }}
               </td>
@@ -284,6 +292,7 @@
                 headers="RowTax"
                 role="cell"
                 data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)"
+                class="price-custom"
               >
                 {{ tax_line.price | money }}
               </td>
@@ -293,7 +302,7 @@
             <tr role="row">
               <td id="RowDuties" role="rowheader" scope="row" colspan="4">{{ 'customer.order.total_duties' | t }}</td>
               <td headers="RowDuties" role="cell" data-label="{{ 'customer.order.total_duties' | t }}">
-                {{ order.total_duties | money }}
+                <span class="price-custom">{{ order.total_duties | money }}</span>
               </td>
             </tr>
           {%- endif -%}
@@ -314,7 +323,13 @@
           {%- endif -%}
           <tr role="row">
             <td id="RowTotal" role="rowheader" scope="row" colspan="3">{{ 'customer.order.total' | t }}</td>
-            <td headers="RowTotal" role="cell" colspan="2" data-label="{{ 'customer.order.total' | t }}">
+            <td
+              headers="RowTotal"
+              role="cell"
+              colspan="2"
+              data-label="{{ 'customer.order.total' | t }}"
+              class="price-custom"
+            >
               {{ order.total_net_amount | money_with_currency }}
             </td>
           </tr>

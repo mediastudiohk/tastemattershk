@@ -3417,6 +3417,14 @@ input.w-button {
   display: none;
 }
 
+.price-custom {
+  font-family: "Open Sans", sans-serif;
+}
+
+.price-custom::first-letter {
+  font-size: smaller;
+}
+
 @media screen and (max-width: 991px) {
   .margin-top {
     margin-right: 0px;
