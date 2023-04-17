@@ -97,10 +97,14 @@ table .name a.h4 {
 
 table .price {
   text-align: right;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.8rem;
   color: #867c75;
   padding-right: 24px;
+}
+
+table .price::first-letter {
+  font-size: smaller !important;
 }
 
 .product-option {
@@ -126,7 +130,11 @@ table .price {
 .totals__subtotal-value {
   font-size: 1.8rem;
   color: #867c75;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+.totals__subtotal-value::first-letter {
+  font-size: smaller;
 }
 
 .cart-footer {
@@ -193,3 +201,4 @@ table .price {
   border-color: silver;
   background-color: #b8b7b6;
 }
+

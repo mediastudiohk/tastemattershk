@@ -77,7 +77,7 @@
             <br>
             For Discovery Bay, Tung Chung & Yat Tung Estate customers
             <br>
-            a delivery fee of $200 may apply for orders below $1000.
+            a delivery fee of $150 may apply for orders below $1000.
           </div>
 
           <div class="delivery-heading margin-bottom margin-tiny">Delivery Schedule</div>
@@ -111,11 +111,12 @@
           <div class="delivery-heading margin-bottom margin-small">Delivery Option</div>
           <div class="checkout_field-wrapper margin-bottom margin-small delivery-option">
             <label for="Area-2" class="checkout_section-label"
-              >What should we do, if at the time of delivery, nobody is home?</label
+              >What should we do, if at the time of delivery, nobody is home? <br>
+              Please select one of the following:</label
             >
             <div class="flex items-center">
               <input type="radio" id="doorstep" name="delivery-option" value="doorstep" checked>
-              <label for="doorstep">Please deposit the delivery at my doorstep</label>
+              <label for="doorstep">Please deposit the delivery at my doorstep </label>
             </div>
             <div class="flex items-center">
               <input type="radio" id="concierge" name="delivery-option" value="concierge">
@@ -166,7 +167,7 @@
                       height="62"
                     >
 
-                      <div class="cart-item-quantity">{{- item.quantity -}}</div>
+                    <div class="cart-item-quantity">{{- item.quantity -}}</div>
                   </div>
 
                   <div class="cart-item-name flex flex-col">
@@ -174,11 +175,11 @@
                     <span>
                       {{- item.product.metafields.custom.pack -}}
                       &nbsp;-&nbsp;
-                      {{- item.final_price | money -}}
+                      <div class="price-custom" style="display: inline-block">{{- item.final_price | money -}}</div>
                     </span>
                   </div>
 
-                  <div class="cart-item-price">
+                  <div class="cart-item-price price-custom">
                     <span>{{ item.final_line_price | money }}</span>
                   </div>
                 </div>
@@ -196,7 +197,9 @@
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-block-3">Subtotal</span>
-                <span>{{ cart.total_price | money }}</span>
+                <div class="price-custom" style="display: inline-block">
+                  {{ cart.total_price | money }}
+                </div>
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-block-3">Shipping</span>
@@ -213,7 +216,9 @@
                 <span class="text-style-grand-total-copy">Total</span>
                 <div class="flex items-center">
                   <span class="text-block-3-copy">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span class="text-style-grand-total"> {{ cart.total_price | money }}</span>
+                  <div class="text-style-grand-total price-custom" style="display: inline-block">
+                    {{ cart.total_price | money }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,5 +236,5 @@
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
 
 <script>
-console.log({{ cart.items | json }})
+  console.log({{ cart.items | json }})
 </script>

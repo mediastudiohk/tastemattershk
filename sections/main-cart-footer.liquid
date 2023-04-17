@@ -113,14 +113,13 @@
             <div class="check-out_item">
               <div class="total-amount">
                 <div class="gridspan1">{{ 'sections.cart.subtotal' | t }}</div>
-                <div style="-ms-grid-column-align: end; justify-self: end;" class="gridspan1">
+                <div style="-ms-grid-column-align: end; justify-self: end;" class="gridspan1 price-custom">
                   {{ cart.total_price | money }}
                 </div>
                 <div class="text-style-grand-total gridspan1">Grand Total</div>
                 <div
                   style="-ms-grid-column-align: end; justify-self: end;"
-                  class="gridspan1"
-                  class="text-style-grand-total"
+                  class="gridspan1 price-custom text-style-grand-total"
                 >
                   {{ cart.total_price | money }}
                 </div>

@@ -124,7 +124,7 @@
                               </div>
                             </div>
 
-                            <div class="cart-item__price-wrapper">
+                            <div class="cart-item__price-wrapper price-custom">
                               <span class="price--end">
                                 {{ item.original_line_price | money }}
                               </span>
@@ -159,7 +159,7 @@
                   >
                 </div>
                 {% if cart.total_price < 50000 %}
-                  <div
+                  <span
                     class="text-font-small-caps"
                     style="
                       margin-top: 0px;
@@ -167,7 +167,16 @@
                       line-height: 1.2;
                     "
                   >
-                    Please note the minimum order amount is $500
+                    Please note the minimum order amount is
+                  </span>
+                  <div
+                    class="price-custom"
+                    style="
+                      display: inline-block; color: #df0505;
+                      line-height: 1.2;
+                    "
+                  >
+                    $500
                   </div>
                 {% endif %}
               </div>
