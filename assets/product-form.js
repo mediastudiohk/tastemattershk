@@ -76,6 +76,13 @@ if (!customElements.get("product-form")) {
             } else {
               this.cart.renderContents(response);
             }
+            const popoverAddToBasket = this.submitButton.querySelector(".popover-add-to-basket");
+            if(popoverAddToBasket){
+              popoverAddToBasket.classList.add('show')
+              setTimeout(() => {
+                popoverAddToBasket.classList.remove('show')
+              }, 3000)
+            }
           })
           .catch((e) => {
             console.error(e);

@@ -162,6 +162,58 @@ img {
   font-size: 1.36rem;
   font-family: inherit;
   font-weight: 600;
+  position: relative;
+}
+
+.popover-add-to-basket {
+  border: 1px solid #30b90e;
+  padding: 0.5rem;
+  position: absolute;
+  top: -38px;
+  color: #30b90e;
+  white-space: nowrap;
+  right: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  border-radius: 4px;
+  box-shadow: 0 4px 11px -3px #dadbd2;
+  background: #FFF;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px;
+  visibility: hidden;
+}
+
+.popover-add-to-basket.show {
+  visibility: visible;
+  animation-name: addToBasket;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes addToBasket {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+.popover-add-to-basket svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.popover-add-to-basket::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 45%;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #30b90e;
+  background-color: #FFF;
+  rotate: 135deg;
+  border-color: #30b90e #30b90e transparent transparent;
 }
 
 .add-to-basket-button:disabled,
