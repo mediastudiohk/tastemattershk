@@ -101,7 +101,7 @@ class CartDrawer extends HTMLElement {
         "click",
         this.close.bind(this)
       );
-      this.open();
+      // this.open();
     });
   }
 
