@@ -1,9 +1,8 @@
-  window.localStorage.removeItem('timeByDate');
-
   let areaParam = '';
   let districtParam = '';
 
   const areaElement = document.querySelector('.checkout_section-select.area');
+  const deliveryLocation = document.querySelector('#delivery-location');
   let areaElementHtml = '<option value="" class="area-item">Select one...</option>';
   const districtElement = document.querySelector('.checkout_section-select.district');
   let districtHtml = '<option value="" class="area-item">Select one...</option>';
@@ -150,20 +149,19 @@
   ]
 
   let districts = [];
-  const renderDistricts = () => {
-   
-    districts.forEach((district) => {
+  const renderDistricts = (arr) => {
+    districtHtml = '<option value="" class="area-item">Select one...</option>'
+    arr.forEach((district) => {
       districtHtml += `
       <option value="${district.value}" class="district-item">${district.label}</option>
       `
     })
     districtElement.innerHTML = districtHtml;
-    districtElement.addEventListener('change', () => {
+    districtElement.addEventListener('change', (event) => {
+      deliveryLocation.innerHTML = `${areaElement.value} / ${event.target.value}`;
       fetchData(encodeURIComponent(areaElement.value), encodeURIComponent(districtElement.value))
     })
-
   }
-
 
   areas.forEach((area) => {
     areaElementHtml += `
@@ -172,18 +170,18 @@
   })
 
   areaElement.innerHTML = areaElementHtml;
-  areaElement.addEventListener('change', () => {
-    if(areaElement.value === '') {
-      districts = [];
-    }else{
-      districts = areas.find((area) => area.value === areaElement.value).districts;
-    }
-    renderDistricts();
+  areaElement.addEventListener('change', (event) => {
+    deliveryLocation.innerHTML = event.target.value;
+    districts = areas.find((area) => area.value === event.target.value).districts || [];
+    renderDistricts(districts);
     fetchData(encodeURIComponent(areaElement.value))
   })
 
 
 // delivery schedule
+const isEmptyObject = (obj) => {
+  return Object.keys(obj).length === 0;
+}
 
 const formatDate = (date) => {
   let d = new Date(date),
@@ -209,16 +207,14 @@ let dates = Array.from({ length: 28 }, (_, i) => {
     const dateArray = date.toLocaleString('en-US', options).replace(',', '').split(" ");
     const newDateString = dateArray[0] + " " + dateArray[2] + " " + dateArray[1];
     return {
+      shortTitle: date.toLocaleString('en-US', {
+        weekday: 'short'
+      }),
       title: newDateString,
       value: formatDate(date),
-      time: {
-        identity: "",
-        maximum_order: "",
-        values: []
-      }
+      times: []
     };
 });
-
 
 let scheduleDateElement = document.querySelector(".delivery-schedule-item-date-wrapper");
 let scheduleDateHtml = "";
@@ -226,11 +222,12 @@ let scheduleTimeElement = document.querySelector(".delivery-schedule-item-time-w
 let scheduleTimeHtml = "";
 
 let timeByDate = {
+  id_schedule_default: null,
   date: "",
-  scheduleIdentity: "",
+  order_name: "",
   times: [],
+  id_schedule: null
 }
-
 
 const renderDate = (count) => {
   scheduleDateHtml = "";
@@ -274,46 +271,20 @@ const renderDate = (count) => {
 renderDate();
 
 const onSelectItemValue = (item) => {
-  const timeByDateLocal = window.localStorage.getItem('timeByDate') 
-                        ? JSON.parse(window.localStorage.getItem('timeByDate')) 
-                        : null;
-  if (timeByDateLocal?.date === item.title) {
-      if (item.classList.contains('selected')) {
-        item.classList.remove('selected');
-
-        timeByDate = {
-          ...timeByDate,
-          times: timeByDate.times.filter(i => i !== item.innerText)
-        }
-
-        if (!timeByDate.times.length) {
-          window.localStorage.removeItem('timeByDate')
-        } else {
-          window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-        }
-      } else {
-        item.classList.add('selected');
-        timeByDate = {
-          ...timeByDate,
-          times: [...timeByDate.times, item.innerText]
-        }
-        window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-      }
-  }else{
-    const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
-    for (timeSelected of timeValuesSelected) {
-      timeSelected.classList.remove('selected');
-    }
-
-    item.classList.add('selected');
-    timeByDate = {
-      date: item.title,
-      scheduleIdentity: item.id,
-      times: [item.innerText]
-    }
-    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+  const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
+  for (timeSelected of timeValuesSelected) {
+    timeSelected.classList.remove('selected');
   }
 
+  item.classList.add('selected');
+  timeByDate = {
+    id_schedule_default: Number(item.id),
+    id_schedule: Number(item.id),
+    date: item.title,
+    time: item.innerText
+  }
+
+  window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
 }
 
 const renderTime = (count) => {
@@ -323,16 +294,28 @@ const renderTime = (count) => {
     arr.forEach((item) => {
       scheduleTimeHtml += `
         <div class="delivery-schedule-item-time">
-        ${!item.time.values.length
+        ${!item.times.length
         ? `<div class="delivery-schedule-item-time-no-delivery">No Delivery</div>` 
         : `
         <div class="delivery-schedule-item-time-value-wrapper">
-          ${item.time.values.map((i) => {
-            return `<div class="delivery-schedule-item-time-value" id="${item.time.identity}" title="${item.value}"
-             onclick="onSelectItemValue(this)"
-             >
-                ${i}
-              </div>`
+          ${item.times.map((i) => {
+              return `<div class="delivery-schedule-item-time-value ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
+                onclick="onSelectItemValue(this)"
+                >
+                  <span>${i.comment}</span>
+                  <span>
+                    <svg
+                      class="icon icon-checkmark color-foreground-text"
+                      aria-hidden="true"
+                      focusable="false"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 12 9"
+                      fill="none"
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="#30b90e"/>
+                    </svg>
+                  </span>
+                </div>`
           }).join(" ")}
         </div>`
         }
@@ -361,7 +344,6 @@ const renderTime = (count) => {
         return scheduleTimeElement.innerHTML = "";
     }
   }
-
 }
 
 renderTime();
@@ -370,8 +352,8 @@ let nextCount = 0;
 let backCount = 0;
 
 const onSchedule = (type) => {
-  const iconNextElement = document.querySelector(".icon.next");
-  const iconBackElement = document.querySelector(".icon.back");
+  const iconNextElement = document.querySelector(".icon-schedule.next");
+  const iconBackElement = document.querySelector(".icon-schedule.back");
   const element = document.getElementById("delivery-schedule-wrapper");
 
   if (type === 'next' && nextCount < 5) {
@@ -421,54 +403,34 @@ const onSchedule = (type) => {
   }
 }
 
-
 const fetchData = async (area = '', district = '') => {
+  const controller = new AbortController();
+  const signal = controller.signal;
+  const url = 'https://intl-rolled-beth-precious.trycloudflare.com';
+
   try {
-    const res = await fetch(`http://172.16.2.117:80/api/schedule?area=${area}&district=${district}`);
+    const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
     const data = await res.json();
     if(data.response){
-      window.localStorage.removeItem('timeByDate')
-      const nonCustomed = data.response.nonCustomed;
-      const isCustomed = data.response.isCustomed;
+      const scheduleDefault = data.response.scheduleDefault;
+      const schedule = data.response.schedule;
 
-      if(nonCustomed){
-        dates = dates.map((date) => ({
+      dates = dates.map((date) => {
+        return {
           ...date,
-          time: {
-            identity: nonCustomed[0].identity,
-            maximum_order: nonCustomed[0].maximum_order,
-            values: [nonCustomed[0].comment]
-          }
-        }))
-      }else{
-        dates = dates.map((date) => ({
-          ...date,
-          time: {
-            identity: "",
-            maximum_order: "",
-            values: []
-          }
-        }))
-      }
-
-      if(isCustomed) {
-        dates = dates.map((date) => {
-        const identity = isCustomed[date.value]?.[0].identity || '';
-        const maximum_order = isCustomed[date.value]?.[0].maximum_order || '';
-
-          return {
-              ...date,
-              time: {
-                maximum_order,
-                identity,
-                values: (isCustomed[date.value] || []).map((value) => value.comment)
-              }
-          }
-        })
-      }
+          times: (schedule[date.value] || scheduleDefault[date.shortTitle] || []).filter((i) => i.maximum_order > 0).sort((a, b) => a.priority - b.priority)
+        }
+      })
+     
       renderTime(nextCount);
     }
   } catch (error) {
     console.log('error', error);
   }
+}
+
+fetchData();
+
+const onCheckout = () => {
+  console.log('onCheckout');
 }

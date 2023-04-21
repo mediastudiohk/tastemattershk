@@ -1,7 +1,3 @@
-.header-menu,
-footer {
-  display: none;
-}
 
 .main-pre-checkout {
   margin-top: -136px;
@@ -134,7 +130,13 @@ footer {
   font-size: 16px;
 }
 
-a:hover .pre-checkout-button {
+.pre-checkout-button:disabled {
+  background-color: #d8d8d8;
+  cursor: not-allowed;
+  background-image: none;
+}
+
+.pre-checkout-button:not(:disabled):hover  {
   background-color: #006bbf;
   -webkit-filter: brightness(110%);
   filter: brightness(110%);
@@ -282,30 +284,51 @@ a:hover .pre-checkout-button {
   border-radius: 4px;
 }
 
-.delivery-schedule-item-time-no-delivery {
-  padding: 6px;
-  border-style: none;
-  border-width: 1px;
-  border-color: #d8d8d8;
+.delivery-schedule-item-time-no-delivery,
+.delivery-schedule-item-time-value
+{
+  padding: 8px;
+  border: 1px solid #d8d8d8;
   border-radius: 8px;
-  background-color: #e9e9e9;
   font-size: 1.6rem;
+  line-height: 1.2;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.delivery-schedule-item-time-no-delivery,
+.delivery-schedule-item-time-value.maximum-order {
+  background-color: #e9e9e9;
+  cursor: not-allowed;
 }
 
 .delivery-schedule-item-time-value {
-  font-size: 1.6rem;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 1px solid #d8d8d8;
-  padding: 8px;
-  line-height: 1.2;
-  text-align: center;
   background-color: #FFF;
+  min-height: 56px;
+  height: auto;
+}
+
+.delivery-schedule-item-time-value svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  visibility: hidden;
 }
 
 .delivery-schedule-item-time-value.selected {
   border: 1px solid #30b90e;
+}
+
+.delivery-schedule-item-time-value.selected svg {
+  visibility: visible;
 }
 
 .delivery-schedule-item-time-value:nth-child(even) {
@@ -316,7 +339,7 @@ a:hover .pre-checkout-button {
   margin-bottom: 0;
 }
 
-.icon {
+.icon-schedule {
   position: absolute;
   top: -15px;
   right: 0;
@@ -331,25 +354,25 @@ a:hover .pre-checkout-button {
   cursor: pointer;
 }
 
-.icon.back{
+.icon-schedule.back{
   left: 0;
   visibility: hidden;
 }
 
-.icon span {
+.icon-schedule span {
   border: solid white;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 5px;
 }
 
-.icon span.right {
+.icon-schedule span.right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-left: -4px;
 }
 
-.icon span.left {
+.icon-schedule span.left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   margin-right: -4px;
