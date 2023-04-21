@@ -85,15 +85,15 @@
             <div class="text-display-inline">
               These are the next possible delivery dates for your shipping address in:&nbsp;
             </div>
-            <div id="delivery-location" class="checkout_delivery-location">New Territories/Sai Kung</div>
+            <div id="delivery-location" class="checkout_delivery-location"></div>
             <div>Please select a day and time.</div>
           </div>
 
           <div class="margin-medium" style="margin-left: 0; margin-right: 0; position: relative">
-            <div class="icon back" onclick="onSchedule('back')">
+            <div class="icon-schedule back" onclick="onSchedule('back')">
               <span class="left"></span>
             </div>
-            <div class="icon next" onclick="onSchedule('next')">
+            <div class="icon-schedule next" onclick="onSchedule('next')">
               <span class="right"></span>
             </div>
 
@@ -147,9 +147,8 @@
               </div>
               <span>Back to basket</span>
             </a>
-            <a href="#" class="flex items-center">
-              <button type="button" class="uppercase pre-checkout-button">Check out</button>
-            </a>
+
+            <button type="button" class="uppercase pre-checkout-button" onclick="onCheckout()">Check out</button>
           </div>
         </div>
 
@@ -234,7 +233,3 @@
 </div>
 
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
-
-<script>
-  console.log({{ cart.items | json }})
-</script>
