@@ -57,18 +57,21 @@
           <div class="delivery-heading margin-bottom margin-medium">Delivery Details</div>
 
           <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
-            <div class="flex flex-col">
+            <div class="flex flex-col region">
               <label for="Area" class="checkout_section-label">Region *</label>
               <select name="" id="Area" class="checkout_section-select area w-select">
                 <option value="">Select one...</option>
               </select>
+              <span class="validate-schedule">Region can not be blank!</span>
             </div>
 
-            <div class="flex flex-col">
+            <div class="flex flex-col district">
               <label for="'District" class="checkout_section-label">District *</label>
               <select name="" id="District" class="checkout_section-select district w-select">
                 <option value="">Select one...</option>
               </select>
+
+              <span class="validate-schedule">District can not be blank!</span>
             </div>
           </div>
 
@@ -98,13 +101,14 @@
             </div>
 
             <div
-              class="delivery-schedule-wrapper flex flex-col"
+              class="delivery-schedule-wrapper flex flex-col timeslot"
               id="delivery-schedule-wrapper"
               onmousedown="return false"
             >
               <div class="delivery-schedule-item-date-wrapper"></div>
 
               <div class="delivery-schedule-item-time-wrapper"></div>
+              <span class="validate-schedule">Timeslot can not be blank!</span>
             </div>
           </div>
 
@@ -115,15 +119,15 @@
               Please select one of the following:</label
             >
             <div class="flex items-center">
-              <input type="radio" id="doorstep" name="delivery-option" value="doorstep" checked>
+              <input type="radio" id="doorstep" name="delivery-option" value="Please deposit the delivery at my doorstep" checked>
               <label for="doorstep">Please deposit the delivery at my doorstep </label>
             </div>
             <div class="flex items-center">
-              <input type="radio" id="concierge" name="delivery-option" value="concierge">
+              <input type="radio" id="concierge" name="delivery-option" value="Please deposit with my concierge">
               <label for="concierge">Please deposit with my concierge</label>
             </div>
             <div class="flex items-center">
-              <input type="radio" id="contact-me" name="delivery-option" value="contact-me">
+              <input type="radio" id="contact-me" name="delivery-option" value="Please do not deposit my delivery and contact me to reschedule">
               <label for="contact-me">Please do not deposit my delivery and contact me to reschedule</label>
             </div>
           </div>
@@ -148,7 +152,13 @@
               <span>Back to basket</span>
             </a>
 
-            <button type="button" class="uppercase pre-checkout-button" onclick="onCheckout()">Check out</button>
+            <button 
+              {% unless cart.total_price < 50000 %} disabled="disabled" {% endunless %} 
+              type="button" 
+              class="uppercase pre-checkout-button" 
+              onclick="onCheckout()">
+              Check out
+            </button>
           </div>
         </div>
 
@@ -233,3 +243,7 @@
 </div>
 
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
+<script>
+
+  console.log('{{ cart.total_price | money }}')
+</script>

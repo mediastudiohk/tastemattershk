@@ -1,11 +1,48 @@
   let areaParam = '';
   let districtParam = '';
+  const TIME_BY_DATE_DEFAULT = {
+    region: "",
+    district: "",
+    schedule: {
+      id_schedule_default: null,
+      date: "",
+      order_name: "",
+      time: "",
+      id_schedule: ""
+    },
+    option: ""
+  }
 
-  const areaElement = document.querySelector('.checkout_section-select.area');
+  const areaSelect = document.querySelector('.checkout_section-select.area');
   const deliveryLocation = document.querySelector('#delivery-location');
   let areaElementHtml = '<option value="" class="area-item">Select one...</option>';
-  const districtElement = document.querySelector('.checkout_section-select.district');
+  const districtSelect = document.querySelector('.checkout_section-select.district');
   let districtHtml = '<option value="" class="area-item">Select one...</option>';
+  const regionElement = document.querySelector(".region")
+  const areaValidate = regionElement.querySelector(".validate-schedule");
+
+  const districtElement = document.querySelector(".district")
+  const districtValidate = districtElement.querySelector(".validate-schedule");
+
+  const timeSlotElement = document.querySelector(".timeslot")
+  const timeSlotValidate = timeSlotElement.querySelector(".validate-schedule");
+
+  const timeByDateStorage = window.localStorage.getItem('timeByDate');
+
+const inputRadio = document.querySelectorAll('input[name="delivery-option"]')
+
+  let timeByDate = {
+    region: JSON.parse(timeByDateStorage)?.region || "",
+    district: JSON.parse(timeByDateStorage)?.district || "",
+    schedule: {
+      id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
+      date: JSON.parse(timeByDateStorage)?.schedule?.date || "",
+      order_name: JSON.parse(timeByDateStorage)?.schedule?.order_name || "",
+      time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
+      id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
+    },
+    option: JSON.parse(timeByDateStorage)?.option || document.querySelector('input[name="delivery-option"]:checked').value || ""
+  }
 
   // delivery district
   const areas = [
@@ -148,7 +185,8 @@
     },
   ]
 
-  let districts = [];
+  let districts = areas[0].districts;
+
   const renderDistricts = (arr) => {
     districtHtml = '<option value="" class="area-item">Select one...</option>'
     arr.forEach((district) => {
@@ -156,10 +194,22 @@
       <option value="${district.value}" class="district-item">${district.label}</option>
       `
     })
-    districtElement.innerHTML = districtHtml;
-    districtElement.addEventListener('change', (event) => {
-      deliveryLocation.innerHTML = `${areaElement.value} / ${event.target.value}`;
-      fetchData(encodeURIComponent(areaElement.value), encodeURIComponent(districtElement.value))
+    districtSelect.innerHTML = districtHtml;
+    districtSelect.addEventListener('change', (event) => {
+      const { value } = event.target;
+      timeSlotValidate.classList.remove('invalid');
+      if(value !== "") {
+        districtValidate.classList.remove('invalid');
+        districtSelect.classList.remove('invalid');
+      }
+      deliveryLocation.innerHTML = `${areaSelect.value} / ${value}`;
+      timeByDate = {
+        ...timeByDate,
+        district: value,
+        schedule: TIME_BY_DATE_DEFAULT.schedule
+      }
+      window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+      fetchData(encodeURIComponent(areaSelect.value), encodeURIComponent(districtSelect.value))
     })
   }
 
@@ -169,14 +219,29 @@
     `
   })
 
-  areaElement.innerHTML = areaElementHtml;
-  areaElement.addEventListener('change', (event) => {
-    deliveryLocation.innerHTML = event.target.value;
-    districts = areas.find((area) => area.value === event.target.value).districts || [];
+  areaSelect.innerHTML = areaElementHtml;
+  areaSelect.addEventListener('change', (event) => {
+    const { value } = event.target;
+    deliveryLocation.innerHTML = value;
+    districtValidate.classList.remove('invalid');
+    districtSelect.classList.remove('invalid');
+    timeSlotValidate.classList.remove('invalid');
+    if(value !== "") {
+      areaValidate.classList.remove('invalid');
+      areaSelect.classList.remove('invalid');
+    }
+    const districtsByArea = areas.find((area) => area.value === value)
+    districts = districtsByArea ? districtsByArea.districts : [];
     renderDistricts(districts);
-    fetchData(encodeURIComponent(areaElement.value))
+    timeByDate = {
+      ...timeByDate,
+      region: value,
+      district: "",
+      schedule: TIME_BY_DATE_DEFAULT.schedule
+    }
+    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+    fetchData(encodeURIComponent(areaSelect.value))
   })
-
 
 // delivery schedule
 const isEmptyObject = (obj) => {
@@ -221,13 +286,7 @@ let scheduleDateHtml = "";
 let scheduleTimeElement = document.querySelector(".delivery-schedule-item-time-wrapper");
 let scheduleTimeHtml = "";
 
-let timeByDate = {
-  id_schedule_default: null,
-  date: "",
-  order_name: "",
-  times: [],
-  id_schedule: null
-}
+
 
 const renderDate = (count) => {
   scheduleDateHtml = "";
@@ -275,21 +334,38 @@ const onSelectItemValue = (item) => {
   for (timeSelected of timeValuesSelected) {
     timeSelected.classList.remove('selected');
   }
+  timeSlotValidate.classList.remove('invalid');
 
   item.classList.add('selected');
-  timeByDate = {
+  const scheduleTimeByDate = {
     id_schedule_default: Number(item.id),
     id_schedule: Number(item.id),
     date: item.title,
     time: item.innerText
   }
+  timeByDate = {
+    ...timeByDate,
+    schedule: scheduleTimeByDate
+  }
 
   window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+
+
+  dates = dates.map((date) => ({
+    ...date,
+    times: date.times.map((time) => {
+      const isSelected = item.title === time.schedule_date && item.innerText === time.comment;
+
+      return {
+        ...time,
+        selected: isSelected
+      }
+    })
+  }))
 }
 
 const renderTime = (count) => {
   scheduleTimeHtml = '';
-
   const renderTimeHtml = (arr) => {
     arr.forEach((item) => {
       scheduleTimeHtml += `
@@ -299,7 +375,7 @@ const renderTime = (count) => {
         : `
         <div class="delivery-schedule-item-time-value-wrapper">
           ${item.times.map((i) => {
-              return `<div class="delivery-schedule-item-time-value ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
+              return `<div class="delivery-schedule-item-time-value ${i.selected ? "selected" : ""} ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
                 onclick="onSelectItemValue(this)"
                 >
                   <span>${i.comment}</span>
@@ -406,7 +482,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://intl-rolled-beth-precious.trycloudflare.com';
+  const url = 'https://keywords-taxi-pe-cleaners.trycloudflare.com';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
@@ -418,10 +494,20 @@ const fetchData = async (area = '', district = '') => {
       dates = dates.map((date) => {
         return {
           ...date,
-          times: (schedule[date.value] || scheduleDefault[date.shortTitle] || []).filter((i) => i.maximum_order > 0).sort((a, b) => a.priority - b.priority)
+          times: (schedule[date.value] || scheduleDefault[date.shortTitle] || [])
+          .filter((i) => i.maximum_order > 0)
+          .sort((a, b) => a.priority - b.priority)
+          .map((i) => {
+            const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && 
+            date.value === JSON.parse(timeByDateStorage)?.schedule?.date) || false
+            return {
+                ...i,
+                selected: isSelected
+            }
+          })
         }
       })
-     
+
       renderTime(nextCount);
     }
   } catch (error) {
@@ -429,8 +515,61 @@ const fetchData = async (area = '', district = '') => {
   }
 }
 
-fetchData();
+
+  areaSelect.value = timeByDate.region || areas[0].value;
+  renderDistricts(districts);
+  districtSelect.value = timeByDate.district || "";
+
+  timeByDate = {
+    ...timeByDate,
+    region: timeByDate.region || areas[0].value,
+    option: timeByDate.option || inputRadio[0].value
+  }
+  window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+
+fetchData(encodeURIComponent(areaSelect.value),encodeURIComponent(districtSelect.value));
+
+
+// delivery option
+if(inputRadio) {
+  for (const radio of inputRadio) {
+    radio.checked = JSON.parse(timeByDateStorage)?.option === radio.value;
+    radio.addEventListener('change', (event) => {
+      radio.checked = true;
+  
+      timeByDate = {
+        ...timeByDate,
+        option: event.target.value
+      }
+      window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+    })
+  }
+}
 
 const onCheckout = () => {
-  console.log('onCheckout');
+
+  if(timeByDate?.region === "") {
+    areaValidate.classList.add('invalid');
+    areaSelect.classList.add('invalid');
+    regionElement.scrollIntoView({
+      behavior: "smooth"
+    })
+    return;
+  } else if(timeByDate?.district === ""){
+    districtValidate.classList.add('invalid');
+    districtSelect.classList.add('invalid');
+    districtElement.scrollIntoView({
+      behavior: "smooth"
+    })
+    return;
+  } else if (timeByDate?.schedule?.time === "") {
+    timeSlotValidate.classList.add('invalid');
+    timeSlotElement.scrollIntoView({
+      behavior: "smooth"
+    })
+    return;
+  }
+
+  // console.log('123123123');
+  return window.location.href = "/checkout"
 }
