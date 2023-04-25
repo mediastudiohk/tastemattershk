@@ -78,6 +78,10 @@
   
 }
 
+.checkout_section-select.invalid {
+  border: 1px solid #df0505;
+}
+
 .checkout_section-select.area,
 .checkout_section-select.district {
   width: 191px;
@@ -398,4 +402,15 @@
 
 .delivery-district-description {
   font-size: 0.64rem;
+}
+
+.validate-schedule {
+  font-size: 12px;
+  color: #df0505;
+  font-weight: 600;
+  display: none;
+}
+
+.validate-schedule.invalid {
+  display: block;
 }
