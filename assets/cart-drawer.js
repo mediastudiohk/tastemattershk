@@ -15,9 +15,11 @@ class CartDrawer extends HTMLElement {
   }
 
   redirectPreCheckoutPage = () =>  {
-    this.querySelector("#CartDrawer-Checkout").addEventListener("click", () => {
-      return window.location.href = "/pages/pre-checkout"
-    })
+    const processPreCheckoutButton =  this.querySelector("#CartDrawer-Checkout");
+    if(processPreCheckoutButton)
+      processPreCheckoutButton.addEventListener("click", () => {
+        return window.location.href = "/pages/pre-checkout"
+      })
   }
 
   setHeaderCartIconAccessibility() {

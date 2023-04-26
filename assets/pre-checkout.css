@@ -3,6 +3,7 @@
   margin-top: -136px;
   position: relative;
   color: #2f2f2f;
+  background-color: #FFF;
 }
 
 .pre-checkout-overlay {
@@ -10,7 +11,7 @@
   height: 100%;
   width: 55%;
   left: 0;
-  background-color: #fff;
+  background-color: #fafaf0;
   z-index: 0;
 }
 
@@ -31,7 +32,7 @@
 .pre-checkout-overlay-left {
   position: absolute;
   width: 57%;
-  background: #FFF;
+  background: #fafaf0;
   height: 100%;
   z-index: 0;
 }

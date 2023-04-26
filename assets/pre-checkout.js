@@ -482,7 +482,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://keywords-taxi-pe-cleaners.trycloudflare.com';
+  const url = 'https://indicator-f-physically-yrs.trycloudflare.com';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
@@ -499,7 +499,10 @@ const fetchData = async (area = '', district = '') => {
           .sort((a, b) => a.priority - b.priority)
           .map((i) => {
             const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && 
-            date.value === JSON.parse(timeByDateStorage)?.schedule?.date) || false
+            date.value === JSON.parse(timeByDateStorage)?.schedule?.date && 
+            (i.id_schedule_default === JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || 
+            i.id_schedule === JSON.parse(timeByDateStorage)?.schedule?.id_schedule)) 
+            || false
             return {
                 ...i,
                 selected: isSelected

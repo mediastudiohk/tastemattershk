@@ -127,6 +127,9 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/banner.png",
+    "checkout_body_background_color": "#fafaf0",
+    "checkout_sidebar_background_color": "#ffffff",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
