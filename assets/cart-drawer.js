@@ -11,6 +11,13 @@ class CartDrawer extends HTMLElement {
       this.close.bind(this)
     );
     this.setHeaderCartIconAccessibility();
+    this.redirectPreCheckoutPage();
+  }
+
+  redirectPreCheckoutPage = () =>  {
+    this.querySelector("#CartDrawer-Checkout").addEventListener("click", () => {
+      return window.location.href = "/pages/pre-checkout"
+    })
   }
 
   setHeaderCartIconAccessibility() {
