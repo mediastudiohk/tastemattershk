@@ -27,10 +27,8 @@
           {% endif %}
         >
           <form
-            action="{{ routes.cart_url }}"
             id="CartDrawer-Form"
             class="cart__contents cart-drawer__form"
-            method="post"
           >
             <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
               {%- if cart != empty -%}
@@ -199,7 +197,6 @@
               id="CartDrawer-Checkout"
               class="checkout_button child"
               name="checkout"
-              form="CartDrawer-Form"
               {% if cart == empty or cart.total_price < 50000 %}
                 disabled
               {% endif %}
