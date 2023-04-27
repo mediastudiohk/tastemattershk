@@ -185,7 +185,9 @@ const inputRadio = document.querySelectorAll('input[name="delivery-option"]')
     },
   ]
 
-  let districts = areas[0].districts;
+  let districts = timeByDate.region 
+                  ? areas.find((area) => area.value === timeByDate.region).districts
+                  : areas[0].districts;
 
   const renderDistricts = (arr) => {
     districtHtml = '<option value="" class="area-item">Select one...</option>'
@@ -482,7 +484,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://indicator-f-physically-yrs.trycloudflare.com';
+  const url = 'https://partly-side-lodging-computed.trycloudflare.com';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
