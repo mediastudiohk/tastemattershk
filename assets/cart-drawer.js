@@ -11,7 +11,7 @@ class CartDrawer extends HTMLElement {
       this.close.bind(this)
     );
     this.setHeaderCartIconAccessibility();
-    this.redirectPreCheckoutPage();
+    
   }
 
   redirectPreCheckoutPage = () =>  {
@@ -63,6 +63,7 @@ class CartDrawer extends HTMLElement {
     );
 
     document.body.classList.add("overflow-hidden");
+    this.redirectPreCheckoutPage();
   }
 
   close() {
