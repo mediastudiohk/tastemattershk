@@ -332,38 +332,41 @@ const renderDate = (count) => {
 renderDate();
 
 const onSelectItemValue = (item) => {
-  const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
-  for (timeSelected of timeValuesSelected) {
-    timeSelected.classList.remove('selected');
+  const isMaximumOrder = item.classList.contains('maximum-order');
+  if(!isMaximumOrder) {
+    const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
+    for (timeSelected of timeValuesSelected) {
+      timeSelected.classList.remove('selected');
+    }
+    timeSlotValidate.classList.remove('invalid');
+
+    item.classList.add('selected');
+    const scheduleTimeByDate = {
+      id_schedule_default: Number(item.id),
+      id_schedule: Number(item.id),
+      date: item.title,
+      time: item.innerText
+    }
+    timeByDate = {
+      ...timeByDate,
+      schedule: scheduleTimeByDate
+    }
+
+    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+
+
+    dates = dates.map((date) => ({
+      ...date,
+      times: date.times.map((time) => {
+        const isSelected = item.title === time.schedule_date && item.innerText === time.comment;
+
+        return {
+          ...time,
+          selected: isSelected
+        }
+      })
+    }))
   }
-  timeSlotValidate.classList.remove('invalid');
-
-  item.classList.add('selected');
-  const scheduleTimeByDate = {
-    id_schedule_default: Number(item.id),
-    id_schedule: Number(item.id),
-    date: item.title,
-    time: item.innerText
-  }
-  timeByDate = {
-    ...timeByDate,
-    schedule: scheduleTimeByDate
-  }
-
-  window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-
-
-  dates = dates.map((date) => ({
-    ...date,
-    times: date.times.map((time) => {
-      const isSelected = item.title === time.schedule_date && item.innerText === time.comment;
-
-      return {
-        ...time,
-        selected: isSelected
-      }
-    })
-  }))
 }
 
 const renderTime = (count) => {
@@ -497,8 +500,6 @@ const fetchData = async (area = '', district = '') => {
         return {
           ...date,
           times: (schedule[date.value] || scheduleDefault[date.shortTitle] || [])
-          .filter((i) => i.maximum_order > 0)
-          .sort((a, b) => a.priority - b.priority)
           .map((i) => {
             const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && 
             date.value === JSON.parse(timeByDateStorage)?.schedule?.date && 
