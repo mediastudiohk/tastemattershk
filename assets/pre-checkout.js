@@ -487,7 +487,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://partly-side-lodging-computed.trycloudflare.com';
+  const url = 'https://premises-article-confidence-indonesian.trycloudflare.com';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
@@ -495,16 +495,17 @@ const fetchData = async (area = '', district = '') => {
     if(data.response){
       const scheduleDefault = data.response.scheduleDefault;
       const schedule = data.response.schedule;
+      const parseTimeByDate = JSON.parse(timeByDateStorage)
 
       dates = dates.map((date) => {
         return {
           ...date,
           times: (schedule[date.value] || scheduleDefault[date.shortTitle] || [])
           .map((i) => {
-            const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && 
-            date.value === JSON.parse(timeByDateStorage)?.schedule?.date && 
-            (i.id_schedule_default === JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || 
-            i.id_schedule === JSON.parse(timeByDateStorage)?.schedule?.id_schedule)) 
+            const isSelected = (i.comment === parseTimeByDate?.schedule?.time && 
+            date.value === parseTimeByDate?.schedule?.date && 
+            (i.id_schedule_default === parseTimeByDate?.schedule?.id_schedule_default || 
+            i.id_schedule === parseTimeByDate?.schedule?.id_schedule)) 
             || false
             return {
                 ...i,
@@ -576,6 +577,5 @@ const onCheckout = () => {
     return;
   }
 
-  // console.log('123123123');
   return window.location.href = "/checkout"
 }

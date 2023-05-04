@@ -3144,15 +3144,15 @@ a,
   border: 1px solid #cccccc;
 }
 
-.quantity__input[type="number"] {
+/* .quantity__input[type="number"] {
   -moz-appearance: textfield;
-}
+} */
 
-.number_not_arrow::-webkit-outer-spin-button,
+/* .number_not_arrow::-webkit-outer-spin-button,
 .number_not_arrow::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 .w-input,
 .w-select,
