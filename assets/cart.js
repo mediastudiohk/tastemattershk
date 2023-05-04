@@ -90,6 +90,11 @@ class CartItems extends HTMLElement {
         section: document.getElementById("main-cart-footer").dataset.id,
         selector: ".js-contents",
       },
+      {
+        id: "CartDrawer",
+        section: "cart-drawer",
+        selector: "#CartDrawer",
+      },
     ];
   }
 
@@ -145,6 +150,18 @@ class CartItems extends HTMLElement {
             section.selector
           );
         });
+        const cartDrawerElement = document.querySelector("#CartDrawer-Overlay");
+        if(cartDrawerElement){
+          setTimeout(() => {
+            cartDrawerElement.addEventListener(
+              "click", () => {
+                cartDrawerElement.parentElement.parentElement.classList.remove("active");
+                document.body.classList.remove("overflow-hidden");
+              }
+            );
+          });
+        }
+       
         const updatedValue = parsedState.items[line - 1]
           ? parsedState.items[line - 1].quantity
           : undefined;
