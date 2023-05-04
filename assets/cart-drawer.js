@@ -112,6 +112,7 @@ class CartDrawer extends HTMLElement {
         this.close.bind(this)
       );
       // this.open();
+      this.redirectPreCheckoutPage();
     });
   }
 
