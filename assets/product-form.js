@@ -80,11 +80,12 @@ if (!customElements.get("product-form")) {
             if (response.status) {
               this.handleErrorMessage(response.description);
 
-              const soldOutMessage = this.querySelector(".sold-out-message");
+              const soldOutMessage = this.querySelector(".sold-out-wrapper");
               if (!soldOutMessage) return;
               this.submitButton.setAttribute("aria-disabled", true);
               // this.submitButton.querySelector("span").classList.add("hidden");
               soldOutMessage.classList.remove("hidden");
+              soldOutMessage.querySelector('.sold-out-message').innerText = response.description;
               this.error = true;
               return;
             } else if (window.routes.cart_url === window.location.pathname) {
