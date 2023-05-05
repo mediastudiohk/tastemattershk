@@ -9,11 +9,11 @@ if (!customElements.get("product-info")) {
         this.variantSelects = this.querySelector("variant-radios");
         this.submitButton = this.querySelector('[type="submit"]');
 
-        this.input.addEventListener("blur", (e) => {
-          if (e.currentTarget.value < 1 || e.currentTarget.value % 1 !== 0) {
-            this.input.value = 1;
-          }
-        });
+        // this.input.addEventListener("blur", (e) => {
+        //   if (e.currentTarget.value < 1 || e.currentTarget.value % 1 !== 0) {
+        //     this.input.value = 1;
+        //   }
+        // });
 
         this.emailSubject = document.getElementsByClassName('product-page-name')[0].innerHTML.trim()
         this.emailBody = window.location.href;
@@ -59,23 +59,23 @@ if (!customElements.get("product-info")) {
       }
 
       setQuantityBoundries() {
-        const data = {
-          cartQuantity: this.input.dataset.cartQuantity
-            ? parseInt(this.input.dataset.cartQuantity)
-            : 0,
-          min: this.input.dataset.min ? parseInt(this.input.dataset.min) : 1,
-          max: this.input.dataset.max ? parseInt(this.input.dataset.max) : null,
-          step: this.input.step ? parseInt(this.input.step) : 1,
-        };
+        // const data = {
+        //   cartQuantity: this.input.dataset.cartQuantity
+        //     ? parseInt(this.input.dataset.cartQuantity)
+        //     : 0,
+        //   min: this.input.dataset.min ? parseInt(this.input.dataset.min) : 1,
+        //   max: this.input.dataset.max ? parseInt(this.input.dataset.max) : null,
+        //   step: this.input.step ? parseInt(this.input.step) : 1,
+        // };
 
-        let min = data.min;
-        const max = data.max === null ? data.max : data.max - data.cartQuantity;
-        if (max !== null) min = Math.min(min, max);
-        if (data.cartQuantity >= data.min) min = Math.min(min, data.step);
+        // let min = data.min;
+        // const max = data.max === null ? data.max : data.max - data.cartQuantity;
+        // if (max !== null) min = Math.min(min, max);
+        // if (data.cartQuantity >= data.min) min = Math.min(min, data.step);
 
-        this.input.min = min;
-        this.input.max = max;
-        this.input.value = min;
+        // this.input.min = min;
+        // this.input.max = max;
+        // this.input.value = min;
         publish(PUB_SUB_EVENTS.quantityUpdate, undefined);
       }
 
