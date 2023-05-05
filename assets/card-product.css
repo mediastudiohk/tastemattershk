@@ -284,11 +284,22 @@ img {
 .sold-out {
   font-size: 1.2rem;
   font-weight: 400;
-  color:  #ac1b17;
+  color: #ac1b17;
   text-align: right;
   float: right;
   padding-bottom: 0.6rem;
   padding-right: 0.3rem;
+}
+
+.sold-out-wrapper svg {
+  flex-shrink: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.sold-out-wrapper .sold-out-message {
+  color: #df0505;
 }
 
 .flexcolumn {
