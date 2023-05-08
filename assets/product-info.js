@@ -9,11 +9,11 @@ if (!customElements.get("product-info")) {
         this.variantSelects = this.querySelector("variant-radios");
         this.submitButton = this.querySelector('[type="submit"]');
 
-        // this.input.addEventListener("blur", (e) => {
-        //   if (e.currentTarget.value < 1 || e.currentTarget.value % 1 !== 0) {
-        //     this.input.value = 1;
-        //   }
-        // });
+        this.input.addEventListener("blur", (e) => {
+          if (e.currentTarget.value < 1 || e.currentTarget.value % 1 !== 0) {
+            this.input.value = 1;
+          }
+        });
 
         this.emailSubject = document.getElementsByClassName('product-page-name')[0].innerHTML.trim()
         this.emailBody = window.location.href;

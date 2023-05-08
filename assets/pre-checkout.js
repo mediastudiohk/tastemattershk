@@ -487,7 +487,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://herbal-therapist-five-pleasant.trycloudflare.com';
+  const url = 'https://fabrics-s-warner-nuts.trycloudflare.com';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
