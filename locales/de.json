@@ -165,7 +165,8 @@
       "inventory_low_stock_show_count": "Niedriger Lagerbestand: {{ quantity }} verbleibend",
       "inventory_out_of_stock": "Nicht vorrätig",
       "inventory_out_of_stock_continue_selling": "Auf Lager",
-      "sku": "SKU"
+      "sku": "SKU",
+      "add_to_basket": "Zum Warenkorb hinzufügen"
     },
     "modal": {
       "label": "Medien-Galerie"
@@ -285,13 +286,16 @@
         "price": "Preis",
         "total": "Gesamtsumme",
         "quantity": "Anzahl",
-        "image": "Produktbild"
+        "image": "Produktbild",
+        "remove": "Entfernen"
       },
       "update": "Aktualisieren",
       "login": {
         "title": "Hast du ein Konto?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logge dich ein<\/a>, damit es beim Checkout schneller geht."
-      }
+      },
+      "review_basket": "Warenkorb überprüfen",
+      "process_to_checkout": "Prozess zur Kasse"
     },
     "footer": {
       "payment": "Zahlungsmethoden"
@@ -386,7 +390,8 @@
       "password": "Passwort",
       "title": "Login",
       "sign_in": "Anmelden",
-      "submit": "Senden"
+      "submit": "Senden",
+      "login_create_account_title": "einloggen oder Konto erstellen"
     },
     "orders": {
       "title": "Bestellhistorie",
