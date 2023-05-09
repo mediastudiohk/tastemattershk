@@ -39,6 +39,9 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'localization.js' | asset_url }}" defer="defer"></script>
+    <link rel="stylesheet" href="{{ 'disclosure.css' | asset_url }}">
+
     {{ content_for_header }}
 
     {%- liquid
@@ -338,7 +341,5 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
-      <script src="{{ 'schedule.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

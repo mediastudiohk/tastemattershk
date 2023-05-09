@@ -258,7 +258,12 @@
       "cart_count": {
         "one": "{{ count }} Artikel",
         "other": "{{ count }} Artikel"
-      }
+      },
+      "account": "Konto",
+      "login": "Anmeldung",
+      "wishlist": "Wunschzettel",
+      "checkout": "Kasse",
+      "basket": "Korb"
     },
     "cart": {
       "title": "Dein Warenkorb",
