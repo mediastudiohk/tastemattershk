@@ -259,7 +259,12 @@
       "cart_count": {
         "one": "{{ count }} item",
         "other": "{{ count }} items"
-      }
+      },
+      "account": "Account",
+      "login": "Log In",
+      "wishlist": "Wishlist",
+      "checkout": "Checkout",
+      "basket": "Basket"
     },
     "cart": {
       "title": "My Basket",

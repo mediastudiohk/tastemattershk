@@ -258,7 +258,12 @@
       "cart_count": {
         "one": "{{ count }} 件商品",
         "other": "{{ count }} 件商品"
-      }
+      },
+      "account": "帳戶",
+      "login": "登錄",
+      "wishlist": "心願單",
+      "checkout": "查看",
+      "basket": "籃子"
     },
     "cart": {
       "title": "您的購物車",

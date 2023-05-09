@@ -247,45 +247,6 @@
     }
   }
 {% endstyle %}
-<script>
-  /* When the user clicks on the button,
-  toggle between hiding and showing the dropdown content */
-  function dropDownFunc() {
-    document.getElementById('dropDownLang').classList.toggle('show');
-    document.getElementById('triangle').classList.toggle('show');
-  }
-
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName('dropdownLang-content');
-      var triangle = document.getElementsByClassName('triangle');
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-          triangle[i].classList.remove('show');
-        }
-      }
-    }
-
-    if (!event.target.matches('.preven-icon-menu') && !event.target.matches('.dropbtnTablet')) {
-      const menuMobile = document.getElementById('menu-mobile');
-      if (menuMobile.classList.contains('show')) {
-        menuMobile.classList.remove('show');
-      }
-    }
-  };
-
-  function dropDownFuncMenu() {
-    document.getElementById('menu-mobile').classList.toggle('show');
-  }
-
-  function dropDownFuncTablet() {
-    document.querySelector('.dropLang').classList.toggle('show');
-  }
-</script>
 
 <nav
   class=" header-menu containerStyle"
@@ -350,39 +311,70 @@
             </svg>
           </button>
         </form>
-        <div class="dropdownLang">
-          <img
-            class="dropbtn iconhover"
-            onclick="dropDownFunc()"
-            src="{{ 'uk.png' | asset_url }}"
-            width="16"
-            height="16"
-            loading="lazy"
-          >
-          <div id="triangle" class="triangle">a</div>
-          <div id="dropDownLang" class="dropdownLang-content">
-            <div style="display:flex; flex-direction:column; align-items:end; width:max-content;">
-              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
-                ><img
-                  src="{{ 'ge.png' | asset_url }}"
-                  width="16"
-                  height="16"
-                  loading="lazy"
 
-                >Deutsch</a
-              >
-              <a style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
-                ><img
-                  src="{{ 'uk.png' | asset_url }}"
-                  width="16"
-                  height="16"
-                  loading="lazy"
+        {% if localization.available_languages.size > 1 %}
+          <localization-form>
+            {% assign iso_code = localization.language.iso_code %}
+            {% assign imgSrc = '' %}
 
-                >English</a
-              >
-            </div>
-          </div>
-        </div>
+            {% case iso_code %}
+              {% when 'de' %}
+                {% assign imgSrc = 'ge.png' %}
+              {% when 'zh-TW' %}
+                {% assign imgSrc = 'cn.png' %}
+              {% else %}
+                {% assign imgSrc = 'uk.png' %}
+            {% endcase %}
+
+            {% form 'localization' %}
+              <div class="disclosure">
+                <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
+                  <img
+                    class="disclosure_img iconhover"
+                    src="{{ imgSrc | asset_url }}"
+                    width="16"
+                    height="auto"
+                    loading="lazy"
+                  >
+                </button>
+
+                <ul id="LanguageList" role="list" class="disclosure__list" hidden>
+                  {% for language in localization.available_languages %}
+                    <li class="disclosure__item" tabindex="-1">
+                      <a
+                        style="cursor:pointer; display:flex; gap:8px; font-size:16px; align-items:center; width:100%;"
+                        hreflang="{{ language.iso_code }}"
+                        lang="{{ language.iso_code }}"
+                        data-value="{{ language.iso_code }}"
+                        {% if language.iso_code == localization.language.iso_code %}
+                          aria-current="true"
+                        {% endif %}
+                        href="#"
+                      >
+                        <img
+                          {% if language.iso_code == 'de' %}
+                            src="{{ 'ge.png' | asset_url }}"
+                          {% elsif language.iso_code == 'zh-TW' %}
+                            src="{{ 'cn.png' | asset_url }}"
+                          {% else %}
+                            src="{{ 'uk.png' | asset_url }}"
+                          {% endif %}
+                          width="16"
+                          height="auto"
+                          loading="lazy"
+                        >
+                        {{ language.endonym_name | capitalize }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+
+                <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+              </div>
+            {% endform %}
+          </localization-form>
+        {% endif %}
+
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
             <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_url }}">
@@ -401,7 +393,7 @@
                   d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
                 </path>
               </svg>
-              <span>Account</span>
+              <span>{{ 'sections.header.account' | t }}</span>
             </a>
           {% else %}
             <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="{{ routes.account_login_url }}">
@@ -420,7 +412,7 @@
                   d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
                 </path>
               </svg>
-              <span>Log In</span>
+              <span>{{ 'sections.header.login' | t }}</span>
             </a>
           {% endif %}
         {% endif %}
@@ -439,7 +431,7 @@
           >
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3l8-8"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path></g>
           </svg>
-          <span>Wishlist</span>
+          <span>{{ 'sections.header.wishlist' | t }}</span>
         </a>
         <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/pages/pre-checkout">
           <svg
@@ -457,7 +449,7 @@
               d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z">
             </path>
           </svg>
-          <span>Checkout</span>
+          <span>{{ 'sections.header.checkout' | t }}</span>
         </a>
         <div style="position:relative;">
           <a id="cart_link" class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
@@ -477,7 +469,7 @@
               </path>
             </svg>
             <div style="display: flex; white-space: nowrap">
-              Basket (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
+              {{ 'sections.header.basket' | t }} (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
             </div>
           </a>
           {%- render 'cart-drawer' -%}
@@ -492,7 +484,7 @@
         aria-controls="w-nav-overlay-0"
         aria-haspopup="menu"
         aria-expanded="false"
-        onclick="dropDownFuncMenu()"
+        {% comment %} onclick="dropDownFuncMenu()" {% endcomment %}
       >
         <div
           class="w-icon-nav-menu preven-icon-menu"
@@ -767,7 +759,7 @@
       </svg>
       <span>Wishlist</span>
     </a>
-    <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/checkout">
+    <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/pages/pre-checkout">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
