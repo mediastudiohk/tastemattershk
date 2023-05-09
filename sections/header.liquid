@@ -276,7 +276,7 @@
         <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="{{ 'general.search.search' | t }}..."
             name="q"
             value="{{ search.terms | escape }}"
             style="border: 1px solid #eaeaea; width:160px; height:28px;padding: 10px 10px"
@@ -315,26 +315,22 @@
         {% if localization.available_languages.size > 1 %}
           <localization-form>
             {% assign iso_code = localization.language.iso_code %}
-            {% assign imgSrc = '' %}
-
-            {% case iso_code %}
-              {% when 'de' %}
-                {% assign imgSrc = 'ge.png' %}
-              {% when 'zh-TW' %}
-                {% assign imgSrc = 'cn.png' %}
-              {% else %}
-                {% assign imgSrc = 'uk.png' %}
-            {% endcase %}
 
             {% form 'localization' %}
               <div class="disclosure">
                 <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
                   <img
                     class="disclosure_img iconhover"
-                    src="{{ imgSrc | asset_url }}"
                     width="16"
                     height="auto"
                     loading="lazy"
+                    {% if iso_code == 'de' %}
+                      src="{{ 'ge.png' | asset_url }}"
+                    {% elsif iso_code == 'zh-TW' %}
+                      src="{{ 'cn.png' | asset_url }}"
+                    {% else %}
+                      src="{{ 'uk.png' | asset_url }}"
+                    {% endif %}
                   >
                 </button>
 
@@ -484,7 +480,7 @@
         aria-controls="w-nav-overlay-0"
         aria-haspopup="menu"
         aria-expanded="false"
-        {% comment %} onclick="dropDownFuncMenu()" {% endcomment %}
+        onclick="dropDownFuncMenu()"
       >
         <div
           class="w-icon-nav-menu preven-icon-menu"
@@ -628,7 +624,7 @@
     <form action="{{ routes.search_url }}" style="display:flex; align-items:center;gap:4px">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="{{ 'general.search.search' | t }}..."
         name="q"
         value="{{ search.terms | escape }}"
         style="border: 1px solid #eaeaea; width:160px; height:28px;padding: 10px 10px"
@@ -663,39 +659,64 @@
       </button>
     </form>
 
-    <div>
-      <img
-        class="dropbtnTablet"
-        onclick="dropDownFuncTablet()"
-        src="{{ 'uk.png' | asset_url }}"
-        width="18"
-        height="18"
-        loading="lazy"
-        style="margin-left: 20px"
-      >
-      <div class="dropLang" style="flex-direction:column; align-items:end">
-        <a
-          style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
-          ><img
-            src="{{ 'ge.png' | asset_url }}"
-            width="18"
-            height="18"
-            loading="lazy"
+    {% if localization.available_languages.size > 1 %}
+      <localization-form>
+        {% assign iso_code = localization.language.iso_code %}
 
-          >Deutsch</a
-        >
-        <a
-          style="cursor:pointer; display:flex;gap:8px;font-size:16px; align-items:center; width:100%;"
-          ><img
-            src="{{ 'uk.png' | asset_url }}"
-            width="18"
-            height="18"
-            loading="lazy"
+        {% form 'localization' %}
+          <div class="disclosure mobile">
+            <button type="button" class="disclosure__button mobile" aria-expanded="false" aria-controls="LanguageList">
+              <img
+                class="disclosure_img iconhover"
+                width="16"
+                height="auto"
+                loading="lazy"
+                {% if iso_code == 'de' %}
+                  src="{{ 'ge.png' | asset_url }}"
+                {% elsif iso_code == 'zh-TW' %}
+                  src="{{ 'cn.png' | asset_url }}"
+                {% else %}
+                  src="{{ 'uk.png' | asset_url }}"
+                {% endif %}
+              >
+            </button>
 
-          >English</a
-        >
-      </div>
-    </div>
+            <ul id="LanguageList" role="list" class="disclosure__list mobile" hidden>
+              {% for language in localization.available_languages %}
+                <li class="disclosure__item mobile" tabindex="-1">
+                  <a
+                    style="cursor:pointer; display:flex; gap:8px; font-size:16px; align-items:center; width:100%;"
+                    hreflang="{{ language.iso_code }}"
+                    lang="{{ language.iso_code }}"
+                    data-value="{{ language.iso_code }}"
+                    {% if language.iso_code == localization.language.iso_code %}
+                      aria-current="true"
+                    {% endif %}
+                    href="#"
+                  >
+                    <img
+                      {% if language.iso_code == 'de' %}
+                        src="{{ 'ge.png' | asset_url }}"
+                      {% elsif language.iso_code == 'zh-TW' %}
+                        src="{{ 'cn.png' | asset_url }}"
+                      {% else %}
+                        src="{{ 'uk.png' | asset_url }}"
+                      {% endif %}
+                      width="16"
+                      height="auto"
+                      loading="lazy"
+                    >
+                    {{ language.endonym_name | capitalize }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+
+            <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+          </div>
+        {% endform %}
+      </localization-form>
+    {% endif %}
 
     {% if shop.customer_accounts_enabled %}
       {% if customer %}
@@ -713,7 +734,7 @@
           >
             <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
           </svg>
-          <span>Account</span>
+          <span>{{ 'sections.header.account' | t }}</span>
         </a>
       {% else %}
         <a
@@ -734,7 +755,7 @@
           >
             <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
           </svg>
-          <span>Log In</span>
+          <span>{{ 'sections.header.login' | t }}</span>
         </a>
       {% endif %}
     {% endif %}
@@ -757,7 +778,7 @@
       >
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 11l3 3l8-8"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path></g>
       </svg>
-      <span>Wishlist</span>
+      <span>{{ 'sections.header.wishlist' | t }}</span>
     </a>
     <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/pages/pre-checkout">
       <svg
@@ -773,7 +794,7 @@
       >
         <path fill="currentColor" d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"></path>
       </svg>
-      <span>Checkout</span>
+      <span>{{ 'sections.header.checkout' | t }}</span>
     </a>
     <div style="position:relative;">
       <a id="cart_link" class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/cart">
@@ -791,7 +812,7 @@
           <path fill="currentColor" d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z"></path>
         </svg>
         <div style="display: flex; white-space: nowrap">
-          Basket (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
+          {{ 'sections.header.basket' | t }} (<span id="cart-icon-bubble">{{ cart.item_count }}</span>)
         </div>
       </a>
       {%- render 'cart-drawer' -%}
@@ -826,3 +847,13 @@
   ]
 }
 {% endschema %}
+
+<script>
+  function dropDownFuncMenu() {
+    document.getElementById('menu-mobile').classList.toggle('show');
+  }
+
+  function dropDownFuncTablet() {
+    document.querySelector('.dropLang').classList.toggle('show');
+  }
+</script>
