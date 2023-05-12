@@ -464,5 +464,39 @@
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
     }
+  },
+  "pre-checkout": {
+    "delivery_calendar": "Delivery Calendar",
+    "delivery_details": {
+      "title": "Delivery Details",
+      "region": "Region",
+      "district": "District",
+      "description": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers \n a delivery fee of $150 may apply for orders below $1000."
+    },
+    "delivery_schedule": {
+      "title": "Delivery Schedule",
+      "location": "These are the next possible delivery dates for your shipping address in:",
+      "select_time": "Please select a day and time.",
+      "time_slot": "Timeslot"
+    },
+    "delivery_option": {
+      "title": "Delivery Option",
+      "label": "What should we do, if at the time of delivery, nobody is home? \n Please select one of the following:",
+      "option1": "Please deposit the delivery at my doorstep",
+      "option2": "Please deposit with my concierge",
+      "option3": "Please do not deposit my delivery and contact me to reschedule"
+    },
+    "no_delivery": "No Delivery",
+    "back_to_basket": "Back to basket",
+    "checkout": "Check out",
+    "select_one": "Select one...",
+    "blank_field": "can not be blank!",
+    "summary": {
+      "discount": "Discount",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "calculated_on_the_next_step": "Calculated on the next step"
+    }
   }
 }

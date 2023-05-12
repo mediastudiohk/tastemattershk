@@ -289,9 +289,9 @@
     </div>
     {% assign pre_checkout_page = '/pages/pre-checkout' %}
 
-    {% if request.path != pre_checkout_page %}
+    {% unless request.path contains pre_checkout_page %}
       {% sections 'header-group' %}
-    {% endif %}
+    {% endunless %}
 
     <main id="MainContent" class="body" role="main" tabindex="-1">
       <div style="margin-top:136px">
@@ -299,9 +299,9 @@
       </div>
     </main>
 
-    {% if request.path != pre_checkout_page %}
+    {% unless request.path contains pre_checkout_page %}
       {% sections 'footer-group' %}
-    {% endif %}
+    {% endunless %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

@@ -19,7 +19,7 @@
           </a>
 
           <div class="pre-checkout-left_breadcrumbs flex items-center">
-            <a href="/cart" style="color: #1773b0">Basket</a>
+            <a href="/cart" style="color: #1773b0">{{ 'sections.header.basket' | t }}</a>
             <div class="flex" style="width: 16px; height: 16px">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@
                 <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
               </svg>
             </div>
-            <span style="color: #000; font-weight: 600; cursor: auto">Delivery Calendar</span>
+            <span style="color: #000; font-weight: 600; cursor: auto">{{ 'pre-checkout.delivery_calendar' | t }}</span>
             <div class="flex" style="width: 16px; height: 16px">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,45 +51,57 @@
                 <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
               </svg>
             </div>
-            <span style="color: #6b6b69; cursor: auto">Check Out</span>
+            <span style="color: #6b6b69; cursor: auto; text-transform: capitalize">
+              {{ 'pre-checkout.checkout' | t }}
+            </span>
           </div>
 
-          <div class="delivery-heading margin-bottom margin-medium">Delivery Details</div>
+          <div class="delivery-heading margin-bottom margin-medium">
+            {{ 'pre-checkout.delivery_details.title' | t }}
+          </div>
 
           <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
             <div class="flex flex-col region">
-              <label for="Area" class="checkout_section-label">Region *</label>
+              <label for="Area" class="checkout_section-label">
+                {{- 'pre-checkout.delivery_details.region' | t }} *</label
+              >
               <select name="" id="Area" class="checkout_section-select area w-select">
-                <option value="">Select one...</option>
+                <option value="">{{ 'pre-checkout.select_one' | t }}</option>
               </select>
-              <span class="validate-schedule">Region can not be blank!</span>
+              <span class="validate-schedule">
+                {{ 'pre-checkout.delivery_details.region' | t }}
+                {{ 'pre-checkout.blank_field' | t }}
+              </span>
             </div>
 
             <div class="flex flex-col district">
-              <label for="'District" class="checkout_section-label">District *</label>
+              <label for="'District" class="checkout_section-label">
+                {{- 'pre-checkout.delivery_details.district' | t }} *</label
+              >
               <select name="" id="District" class="checkout_section-select district w-select">
-                <option value="">Select one...</option>
+                <option value="">
+                  {{ 'pre-checkout.select_one' | t -}}
+                </option>
               </select>
 
-              <span class="validate-schedule">District can not be blank!</span>
+              <span class="validate-schedule">
+                {{ 'pre-checkout.delivery_details.district' | t }}
+                {{ 'pre-checkout.blank_field' | t }}
+              </span>
             </div>
           </div>
 
           <div class="delivery-district-description text-size-small margin-bottom margin-medium">
-            The minimum order amount is $500.
-            <br>
-            For Discovery Bay, Tung Chung & Yat Tung Estate customers
-            <br>
-            a delivery fee of $150 may apply for orders below $1000.
+            {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
           </div>
 
-          <div class="delivery-heading margin-bottom margin-tiny">Delivery Schedule</div>
+          <div class="delivery-heading margin-bottom margin-tiny">
+            {{ 'pre-checkout.delivery_schedule.title' | t }}
+          </div>
           <div class="margin-bottom margin-medium">
-            <div class="text-display-inline">
-              These are the next possible delivery dates for your shipping address in:&nbsp;
-            </div>
+            <div class="text-display-inline">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
             <div id="delivery-location" class="checkout_delivery-location"></div>
-            <div>Please select a day and time.</div>
+            <div>{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
           </div>
 
           <div class="margin-medium" style="margin-left: 0; margin-right: 0; position: relative">
@@ -108,27 +120,47 @@
               <div class="delivery-schedule-item-date-wrapper"></div>
 
               <div class="delivery-schedule-item-time-wrapper"></div>
-              <span class="validate-schedule">Timeslot can not be blank!</span>
+              <span class="validate-schedule">
+                {{ 'pre-checkout.delivery_schedule.time_slot' | t }}
+                {{ 'pre-checkout.blank_field' | t }}
+              </span>
             </div>
           </div>
 
-          <div class="delivery-heading margin-bottom margin-small">Delivery Option</div>
+          <div class="delivery-heading margin-bottom margin-small">
+            {{ 'pre-checkout.delivery_option.title' | t }}
+          </div>
           <div class="checkout_field-wrapper margin-bottom margin-small delivery-option">
-            <label for="Area-2" class="checkout_section-label"
-              >What should we do, if at the time of delivery, nobody is home? <br>
-              Please select one of the following:</label
-            >
+            <label for="Area-2" class="checkout_section-label">
+              {{- 'pre-checkout.delivery_option.label' | t | newline_to_br -}}
+            </label>
             <div class="flex items-center">
-              <input type="radio" id="doorstep" name="delivery-option" value="Please deposit the delivery at my doorstep" checked>
-              <label for="doorstep">Please deposit the delivery at my doorstep </label>
+              <input
+                type="radio"
+                id="doorstep"
+                name="delivery-option"
+                value="{{ 'pre-checkout.delivery_option.option1' | t }}"
+                checked
+              >
+              <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
             </div>
             <div class="flex items-center">
-              <input type="radio" id="concierge" name="delivery-option" value="Please deposit with my concierge">
-              <label for="concierge">Please deposit with my concierge</label>
+              <input
+                type="radio"
+                id="concierge"
+                name="delivery-option"
+                value="{{ 'pre-checkout.delivery_option.option2' | t }}"
+              >
+              <label for="concierge">{{ 'pre-checkout.delivery_option.option2' | t }}</label>
             </div>
             <div class="flex items-center">
-              <input type="radio" id="contact-me" name="delivery-option" value="Please do not deposit my delivery and contact me to reschedule">
-              <label for="contact-me">Please do not deposit my delivery and contact me to reschedule</label>
+              <input
+                type="radio"
+                id="contact-me"
+                name="delivery-option"
+                value="{{ 'pre-checkout.delivery_option.option3' | t }}"
+              >
+              <label for="contact-me">{{ 'pre-checkout.delivery_option.option3' | t }}</label>
             </div>
           </div>
 
@@ -149,17 +181,18 @@
                   <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.41z" />
                 </svg>
               </div>
-              <span>Back to basket</span>
+              <span>{{ 'pre-checkout.back_to_basket' | t }}</span>
             </a>
 
-            <button 
+            <button
               {% if cart == empty or cart.total_price < 50000 %}
                 disabled
-              {% endif %} 
-              type="button" 
-              class="uppercase pre-checkout-button" 
-              onclick="onCheckout()">
-              Check out
+              {% endif %}
+              type="button"
+              class="uppercase pre-checkout-button"
+              onclick="onCheckout()"
+            >
+              {{ 'pre-checkout.checkout' | t }}
             </button>
           </div>
         </div>
@@ -203,18 +236,18 @@
 
             <div class="total-amount flex flex-col">
               <div class="flex justify-between items-center">
-                <span class="text-block-3">Discount</span>
-                <span>Calculated on the next step</span>
+                <span class="text-block-3">{{ 'pre-checkout.summary.discount' | t }}</span>
+                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-block-3">Subtotal</span>
+                <span class="text-block-3">{{ 'pre-checkout.summary.subtotal' | t }}</span>
                 <div class="price-custom" style="display: inline-block">
                   {{ cart.total_price | money }}
                 </div>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-block-3">Shipping</span>
-                <span>Calculated on the next step</span>
+                <span class="text-block-3">{{ 'pre-checkout.summary.shipping' | t }}</span>
+                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
               </div>
             </div>
 
@@ -224,7 +257,7 @@
 
             <div class="total-amount">
               <div class="flex justify-between items-center">
-                <span class="text-style-grand-total-copy">Total</span>
+                <span class="text-style-grand-total-copy">{{ 'pre-checkout.summary.total' | t }}</span>
                 <div class="flex items-center">
                   <span class="text-block-3-copy">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <div class="text-style-grand-total price-custom" style="display: inline-block">
@@ -242,8 +275,10 @@
       </div>
     </div>
   </div>
-
- 
 </div>
 
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  console.log('routes', '{{ shop.language }}')
+</script>
