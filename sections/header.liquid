@@ -429,7 +429,11 @@
           </svg>
           <span>{{ 'sections.header.wishlist' | t }}</span>
         </a>
-        <a class="linkhover" style="display:flex; align-items:end;gap:4px" href="/pages/pre-checkout">
+        <a
+          class="linkhover"
+          style="display:flex; align-items:end;gap:4px"
+          href="{% if request.locale.iso_code == 'zh-TW' %}zh{%else%}{{request.locale.iso_code}}{% endif %}/pages/pre-checkout"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -780,7 +784,11 @@
       </svg>
       <span>{{ 'sections.header.wishlist' | t }}</span>
     </a>
-    <a class="linkhover nav-link" style="display:flex; align-items:end;gap:4px" href="/pages/pre-checkout">
+    <a
+      class="linkhover nav-link"
+      style="display:flex; align-items:end;gap:4px"
+      href="{% if request.locale.iso_code == 'zh-TW' %}zh{%else%}{{request.locale.iso_code}}{% endif %}/pages/pre-checkout"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
