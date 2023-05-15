@@ -53,12 +53,12 @@
                   <div class="div-block-4-copy gridspan1">
                     {%- for item in cart.items -%}
                       <img
-                        src="{{ item.image | image_url: width: 300 }}"
+                        src="{{ item.image | image_url: width: 125 }}"
                         class="image"
                         alt="{{ item.image.alt | escape }}"
                         loading="lazy"
-                        width="300"
-                        height="300"
+                        width="125"
+                        height="auto"
                       >
                       <div class="div-block-5 gridspan1">
                         <div class="my-basket_product-name gridspan1">
