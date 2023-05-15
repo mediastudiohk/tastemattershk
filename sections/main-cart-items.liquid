@@ -31,12 +31,10 @@
             <div class="js-contents">
               {%- if cart != empty -%}
                 <div class="div-block-3" style="color: #2f2f2f;">
-                  <div class="div-block-6 gridspan1">
-                    <div class="my-basket_product-name">
+                  <div class="div-block-6-copy ">
+                    <div class="my-basket_product-name-copy">
                       <div class="my-basket_column-title">{{ 'sections.cart.headings.product' | t }}</div>
                     </div>
-                  </div>
-                  <div class="div-block-6-copy gridspan1">
                     <div class="my-basket_product-name-copy">
                       <div class="my-basket_column-title">{{ 'sections.cart.headings.remove' | t }}</div>
                     </div>
@@ -50,55 +48,55 @@
                       <div class="my-basket_column-title">{{ 'sections.cart.subtotal' | t }}</div>
                     </div>
                   </div>
-                  <div class="div-block-4-copy gridspan1">
-                    {%- for item in cart.items -%}
-                      <img
-                        src="{{ item.image | image_url: width: 125 }}"
-                        class="image"
-                        alt="{{ item.image.alt | escape }}"
-                        loading="lazy"
-                        width="125"
-                        height="auto"
-                      >
-                      <div class="div-block-5 gridspan1">
-                        <div class="my-basket_product-name gridspan1">
-                          <a
-                            href="{{ item.url }}"
-                            class="product-list-detail_name-link gridspan1"
-                          >
-                            {{- item.title -}}</a
-                          ><a
-                            href="{{ item.url }}"
-                            class="unit-text"
-                          >
-                            {{- item.product.metafields.custom.pack -}}
-                          </a>
-                        </div>
-                      </div>
-                    {%- endfor -%}
-                  </div>
                   <div class="div-block-4 gridspan1">
                     {%- for item in cart.items -%}
-                      <div class="gridspan1 center">
-                        <cart-remove-button
+                      <div class="div-block-4-copy gridspan1">
+                        <img
+                          src="{{ item.image | image_url: width: 300 }}"
+                          class="image"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="300"
+                          height="300"
+                        >
+                        <div class="div-block-5 gridspan1">
+                          <div class="my-basket_product-name gridspan1">
+                            <a
+                              href="{{ item.url }}"
+                              class="product-list-detail_name-link gridspan1"
+                            >
+                              {{- item.title -}}
+                            </a>
+                            <a
+                              href="{{ item.url }}"
+                              class="unit-text"
+                            >
+                              {{- item.product.metafields.custom.pack -}}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="div-block-5 gridspan1 center">
+                        <input
+                          type="checkbox"
+                          name="{{ item.param_name }}"
+                          value="{{ item.active }}"
                           id="Remove-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
+                          {% if item.active %}
+                            checked
+                          {% endif %}
+                          {% if item.count == 0 and item.active == false %}
+                            disabled
+                          {% endif %}
                         >
-                          <a
-                            href="{{ item.url_to_remove }}"
-                            class="button button--tertiary icon24px"
-                            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-                          >
-                            {% render 'icon-remove' %}
-                          </a>
-                        </cart-remove-button>
                       </div>
                       <div
-                        class="my-basket_product-details gridspan1"
+                        class="my-basket_product-details gridspan1 div-block-5"
                       >
-                          <span class="price-custom">{{ item.final_price | money }}</span>
+                        <span class="price-custom">{{ item.final_price | money }}</span>
                       </div>
-                      <div class="div-block-7 gridspan1 center">
+                      <div class="div-block-7 gridspan1 center div-block-5">
                         <input
                           class="quantity__input cart-quantity_form_input is-quantity-form-input w-input"
                           data-quantity-variant-id="{{ item.variant.id }}"
@@ -119,7 +117,7 @@
                         >
                       </div>
                       <div
-                        class="my-basket_product-details gridspan1"
+                        class="my-basket_product-details gridspan1 div-block-5"
                       >
                         <span class="price-custom">{{ item.final_line_price | money }}</span>
                       </div>
@@ -142,28 +140,43 @@
           </p>
         </form>
       </div>
-      <div class="cart-button_wrapper">
-        <a href="{{ section.settings.link }}" class="my-basket_link w-inline-block">
-          <div>
-            {{ 'general.continue_shopping' | t }}
-            <br>
-          </div>
-          <div class="icon-embed-xxsmall w-embed">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              class="iconify iconify--bx"
-              width="100%"
-              height="100%"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
+      <div class="cart-button-container">
+        <div class="cart-button_wrapper">
+          <a href="{{ section.settings.link }}" class="my-basket_link w-inline-block">
+            <div>
+              {{ 'general.continue_shopping' | t }}
+              <br>
+            </div>
+            <div class="icon-embed-xxsmall w-embed">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--bx"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path d="M19 12l-7-6v5H6v2h6v5z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </a>
+        </div>
+        {%- if cart != empty -%}
+          <div class="cart-button_wrapper">
+            <div
+              {% comment %} href="{{ section.settings.link }}" {% endcomment %}
+              class="my-basket_link_update w-inline-block"
             >
-              <path d="M19 12l-7-6v5H6v2h6v5z" fill="currentColor"></path>
-            </svg>
+              {% render 'icon-update' %}
+              <div>
+                {{ 'sections.cart.update' | t }}
+              </div>
+            </div>
           </div>
-        </a>
+        {%- endif -%}
       </div>
     </div>
   </div>
