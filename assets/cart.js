@@ -1,32 +1,21 @@
-class CartRemoveButton extends HTMLElement {
-  constructor() {
-    super();
-
-    this.addEventListener("click", (event) => {
-      event.preventDefault();
-      const cartItems =
-        this.closest("cart-items") || this.closest("cart-drawer-items");
-      cartItems.updateQuantity(this.dataset.index, 0);
-    });
-  }
-}
-
-customElements.define("cart-remove-button", CartRemoveButton);
-
 class CartItems extends HTMLElement {
   constructor() {
     super();
+    this.state = {
+      removeCartItem: []
+    }
     this.lineItemStatusElement =
       document.getElementById("shopping-cart-line-item-status") ||
       document.getElementById("CartDrawer-LineItemStatus");
-
     const debouncedOnChange = debounce((event) => {
       this.onChange(event);
     }, ON_CHANGE_DEBOUNCE_TIMER);
 
-    this.addEventListener("change", debouncedOnChange.bind(this));
+    this.addEventListener("change",
+      debouncedOnChange.bind(this)
+    );
+    this.querySelector('.my-basket_link_update').addEventListener("click", this.updateCart.bind(this));
   }
-
   cartUpdateUnsubscriber = undefined;
 
   connectedCallback() {
@@ -47,12 +36,64 @@ class CartItems extends HTMLElement {
     }
   }
 
+  updateCart() {
+    if (this.state.removeCartItem.length) {
+      const loading_overlay = document.getElementById("loading_overlay");
+      loading_overlay.classList.add("show");
+      fetch('/cart/update', {
+        ...fetchConfig(),
+        body: JSON.stringify({
+          ...{ updates: this.state.removeCartItem },
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname,
+        })
+      }
+      ).then((res) => res.json()).then((response) => {
+        this.state.removeCartItem = []
+        this.getSectionsToRender().forEach((section) => {
+          const elementToReplace =
+            document
+              .getElementById(section.id)
+              .querySelector(section.selector) ||
+            document.getElementById(section.id);
+          elementToReplace.innerHTML = this.getSectionInnerHTML(
+            response.sections[section.section],
+            section.selector
+          );
+        });
+        location.reload()
+      }).catch(function (error) {
+        console.error('Error updating cart', error);
+        this.state.removeCartItem = []
+        location.reload()
+      })
+        .finally(() => {
+          this.disableLoading(line);
+          loading_overlay.classList.remove("show");
+        });
+    }
+  }
+
+
   onChange(event) {
-    this.updateQuantity(
-      event.target.dataset.index,
-      event.target.value,
-      document.activeElement.getAttribute("name")
-    );
+    const items = document.querySelectorAll(".cart-item");
+    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length / 2)) {
+      for (let index = 0; index < items.length / 2; index++) {
+        this.state.removeCartItem[index] = ""
+      }
+    }
+
+    if (document.activeElement.getAttribute("name")) {
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
+    }
+    else {
+      if (this.state.removeCartItem[(event.target.dataset.index - 1)] === 0) {
+        this.state.removeCartItem[(event.target.dataset.index - 1)] = ""
+      }
+      else {
+        this.state.removeCartItem[(event.target.dataset.index - 1)] = 0
+      }
+    }
   }
 
   onCartUpdate() {
@@ -98,10 +139,9 @@ class CartItems extends HTMLElement {
     ];
   }
 
-  updateQuantity(line, quantity, name) {
+  async updateQuantity(line, quantity, name) {
     this.enableLoading(line);
     const loading_overlay = document.getElementById("loading_overlay");
-
     const body = JSON.stringify({
       line,
       quantity,
@@ -109,11 +149,12 @@ class CartItems extends HTMLElement {
       sections_url: window.location.pathname,
     });
     loading_overlay.classList.add("show");
-    fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
+    await fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
       .then((response) => {
         return response.text();
       })
       .then((state) => {
+        // debugger
         // window.location = window.routes.cart_url;
         const parsedState = JSON.parse(state);
         const quantityElement =
@@ -150,18 +191,6 @@ class CartItems extends HTMLElement {
             section.selector
           );
         });
-        const cartDrawerElement = document.querySelector("#CartDrawer-Overlay");
-        if(cartDrawerElement){
-          setTimeout(() => {
-            cartDrawerElement.addEventListener(
-              "click", () => {
-                cartDrawerElement.parentElement.parentElement.classList.remove("active");
-                document.body.classList.remove("overflow-hidden");
-              }
-            );
-          });
-        }
-       
         const updatedValue = parsedState.items[line - 1]
           ? parsedState.items[line - 1].quantity
           : undefined;
@@ -187,9 +216,9 @@ class CartItems extends HTMLElement {
         if (lineItem && lineItem.querySelector(`[name="${name}"]`)) {
           cartDrawerWrapper
             ? trapFocus(
-                cartDrawerWrapper,
-                lineItem.querySelector(`[name="${name}"]`)
-              )
+              cartDrawerWrapper,
+              lineItem.querySelector(`[name="${name}"]`)
+            )
             : lineItem.querySelector(`[name="${name}"]`).focus();
         } else if (parsedState.item_count === 0 && cartDrawerWrapper) {
           trapFocus(
