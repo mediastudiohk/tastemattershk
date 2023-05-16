@@ -3425,6 +3425,11 @@ input.w-button {
   font-size: smaller;
 }
 
+.show-all-products {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 @media screen and (max-width: 991px) {
   .margin-top {
     margin-right: 0px;
