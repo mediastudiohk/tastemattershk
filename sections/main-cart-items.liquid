@@ -7,6 +7,8 @@
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
+
+
 <cart-items class="{% if cart == empty %} is-empty{% endif %} padding-global">
   <div class="container-large-modified">
     <div class="padding-section-medium ">
@@ -97,10 +99,12 @@
                         <span class="price-custom">{{ item.final_price | money }}</span>
                       </div>
                       <div class="div-block-7 gridspan1 center div-block-5">
+                        <quantity-input class="quantity">
                         <input
                           class="quantity__input cart-quantity_form_input is-quantity-form-input w-input"
                           data-quantity-variant-id="{{ item.variant.id }}"
                           type="number"
+                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                           name="updates[]"
                           value="{{ item.quantity }}"
                           {% # theme-check-disable %}
@@ -115,6 +119,7 @@
                           id="Quantity-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
                         >
+                          <quantity-input class="quantity">
                       </div>
                       <div
                         class="my-basket_product-details gridspan1 div-block-5"
@@ -166,15 +171,12 @@
         </div>
         {%- if cart != empty -%}
           <div class="cart-button_wrapper">
-            <div
-              {% comment %} href="{{ section.settings.link }}" {% endcomment %}
+            <a
               class="my-basket_link_update w-inline-block"
             >
               {% render 'icon-update' %}
-              <div>
-                {{ 'sections.cart.update' | t }}
-              </div>
-            </div>
+              <div>{{ 'sections.cart.update_shopping_cart' | t }}</div>
+            </a>
           </div>
         {%- endif -%}
       </div>
