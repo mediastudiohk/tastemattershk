@@ -74,7 +74,6 @@ class CartItems extends HTMLElement {
     }
   }
 
-
   onChange(event) {
     const items = document.querySelectorAll(".cart-item");
     if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length / 2)) {
@@ -84,7 +83,7 @@ class CartItems extends HTMLElement {
     }
 
     if (document.activeElement.getAttribute("name")) {
-      this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
+        this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
     }
     else {
       if (this.state.removeCartItem[(event.target.dataset.index - 1)] === 0) {

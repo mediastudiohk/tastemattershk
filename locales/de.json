@@ -497,5 +497,12 @@
       "total": "Gesamt",
       "calculated_on_the_next_step": "Wird im nächsten Schritt berechnet"
     }
+  },
+  "shopify": {
+    "notices": {
+      "cart": {
+        "bundle_requires_components": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden."
+      }
+    }
   }
 }
