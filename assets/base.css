@@ -3482,9 +3482,9 @@ input.w-button {
     margin-left: 24px;
   }
 
-  .hide-mobile-landscape {
+  /* .hide-mobile-landscape {
     display: none !important;
-  }
+  } */
 
   .padding-section-medium {
     padding-top: 48px;

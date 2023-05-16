@@ -146,8 +146,17 @@
     position: static;
   }
 
-  .hide-mobile-portrait {
+  /* .hide-mobile-portrait {
     display: none;
+  } */
+
+  .hide-mobile-portrait {
+    width: 40px;
+  }
+
+  .hide-mobile-portrait .icon-left,
+  .hide-mobile-portrait .icon-right {
+    width: 25px;
   }
 
   .home_grid-heading {

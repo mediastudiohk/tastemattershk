@@ -21,3 +21,14 @@
     width: 25.6rem;
     align-items: center
 }
+
+@media screen and (max-width: 767px) {
+    .header-menu .page-padding {
+        padding: 1.6rem 2rem;
+    }
+
+    .header-menu .header__heading-link-logo {
+        width: 19.2rem;
+        margin-left: 10px;
+    }
+}
