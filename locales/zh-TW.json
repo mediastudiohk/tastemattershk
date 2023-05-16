@@ -295,7 +295,8 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">登入<\/a>以加速結帳。"
       },
       "review_basket": "審查籃",
-      "process_to_checkout": "結帳流程"
+      "process_to_checkout": "結帳流程",
+      "update_shopping_cart": "更新購物車"
     },
     "footer": {
       "payment": "付款方式"
@@ -497,6 +498,13 @@
       "shipping": "船運",
       "total": "全部的",
       "calculated_on_the_next_step": "下一步計算"
+    }
+  },
+  "shopify": {
+    "notices": {
+      "cart": {
+        "bundle_requires_components": "捆綁產品“%{name}”無法添加到購物車。"
+      }
     }
   }
 }
