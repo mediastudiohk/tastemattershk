@@ -487,7 +487,7 @@ const onSchedule = (type) => {
 const fetchData = async (area = '', district = '') => {
   const controller = new AbortController();
   const signal = controller.signal;
-  const url = 'https://msh-dev.vmodev.link';
+  const url = 'https://msh-api.vmodev.link';
 
   try {
     const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
