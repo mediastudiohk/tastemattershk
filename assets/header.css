@@ -24,11 +24,17 @@
 
 @media screen and (max-width: 767px) {
     .header-menu .page-padding {
-        padding: 1.6rem 2rem;
+        padding: 0.8rem 2rem;
     }
 
     .header-menu .header__heading-link-logo {
-        width: 19.2rem;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .header-menu .header__heading-link-logo {
+        width: 19.2rem !important;
         margin-left: 10px;
     }
 }
