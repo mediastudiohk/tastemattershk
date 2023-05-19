@@ -1,17 +1,51 @@
 class CartDrawer extends HTMLElement {
   constructor() {
     super();
-
+    this.menuMobileEl = document.querySelector("#menu-mobile");
+    this.cartDrawerEl = document.querySelectorAll(".drawer");
     this.addEventListener(
       "keyup",
       (evt) => evt.code === "Escape" && this.close()
     );
     this.querySelector("#CartDrawer-Overlay").addEventListener(
       "click",
-      this.close.bind(this)
+      () => {
+        this.close();
+        this.menuMobileEl.style.height = "auto";
+        this.cartDrawerEl[1].style.display = "none";
+      }
     );
-    this.setHeaderCartIconAccessibility();
-    
+
+    this.cartLink = "#cart_link";
+    this.cartLinkMobile = "#cart_link_mobile";
+
+    this.initialInnerWidth = window.innerWidth;
+    window.addEventListener("resize", (event) => {
+      const innerWidth = event.target.innerWidth;
+      this.onHeaderCart(innerWidth)
+      this.menuMobileEl.style.height = "auto";
+      this.cartDrawerEl[1].style.display = "none";
+    })
+
+    window.addEventListener("load", () => {
+      this.onHeaderCart(this.initialInnerWidth)
+    })
+
+  }
+
+  onHeaderCart = (innerWidth) => {
+    if(innerWidth > 991) {
+      this.setHeaderCartIconAccessibility( this.cartLink);
+      this.cartDrawerEl[0].classList.remove("active")
+    }else{
+      this.setHeaderCartIconAccessibility(this.cartLinkMobile);
+      this.cartDrawerEl[1].classList.remove("active")
+
+      document.querySelector(this.cartLinkMobile).addEventListener("click", () => {
+        this.cartDrawerEl[1].style.display = "block";
+        this.menuMobileEl.style.height ="calc(100vh - 260px)";
+      })
+    }
   }
 
   redirectPreCheckoutPage = () =>  {
@@ -22,8 +56,8 @@ class CartDrawer extends HTMLElement {
       })
   }
 
-  setHeaderCartIconAccessibility() {
-    const cartLink = document.querySelector("#cart_link");
+  setHeaderCartIconAccessibility(cartLinkId) {
+    const cartLink = document.querySelector(cartLinkId);
     cartLink.setAttribute("role", "button");
     cartLink.setAttribute("aria-haspopup", "dialog");
     cartLink.addEventListener("click", (event) => {
@@ -62,11 +96,14 @@ class CartDrawer extends HTMLElement {
       { once: true }
     );
 
-    document.body.classList.add("overflow-hidden");
+    if(this.initialInnerWidth > 991) {
+      document.body.classList.add("overflow-hidden");
+    }
     this.redirectPreCheckoutPage();
   }
 
   close() {
+    console.log('222');
     this.classList.remove("active");
     removeTrapFocus(this.activeElement);
     document.body.classList.remove("overflow-hidden");

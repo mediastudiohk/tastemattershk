@@ -143,6 +143,7 @@ img {
   line-height: 1.2;
   font-weight: 400;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .add-to-basket-button {
