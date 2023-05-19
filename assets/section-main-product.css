@@ -2060,8 +2060,8 @@ a.product__text {
   }
 
   .product-image_wrapper {
-    width: auto;
-    height: auto;
+    width: 240px;
+    height: 240px;
   }
 
   .product-page_content-right {
