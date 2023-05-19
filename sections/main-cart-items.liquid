@@ -50,18 +50,24 @@
                       <div class="my-basket_column-title">{{ 'sections.cart.subtotal' | t }}</div>
                     </div>
                   </div>
-                  <div class="div-block-4 gridspan1">
+                  
+                
                     {%- for item in cart.items -%}
-                      <div class="div-block-4-copy gridspan1">
-                        <img
-                          src="{{ item.image | image_url: width: 300 }}"
-                          class="image"
-                          alt="{{ item.image.alt | escape }}"
-                          loading="lazy"
-                          width="300"
-                          height="300"
-                        >
-                        <div class="div-block-5 gridspan1">
+                    <div class="div-block-4 gridspan1">
+                      <div class="div-block-4-copy">
+                        <div class="div-block-5-copy">
+                          <div class="div-block-8">
+                            <img
+                              src="{{ item.image | image_url: width: 300 }}"
+                              class="image"
+                              alt="{{ item.image.alt | escape }}"
+                              loading="lazy"
+                              width="70"
+                              height="70"
+                            />
+                          </div>
+                        </div>
+                        <div class="div-block-5 gridspan1 div-block-5-copy">
                           <div class="my-basket_product-name gridspan1">
                             <a
                               href="{{ item.url }}"
@@ -91,7 +97,7 @@
                           {% if item.count == 0 and item.active == false %}
                             disabled
                           {% endif %}
-                        >
+                        />
                       </div>
                       <div
                         class="my-basket_product-details gridspan1 div-block-5"
@@ -126,8 +132,9 @@
                       >
                         <span class="price-custom">{{ item.final_line_price | money }}</span>
                       </div>
+                    </div>
                     {%- endfor -%}
-                  </div>
+               
                 </div>
               {%- endif -%}
             </div>
