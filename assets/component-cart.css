@@ -286,13 +286,15 @@ cart-items {
 }
 
 .div-block-8 {
-  width: 70px;
+  height: 70px;
   /* border-bottom: 1px solid #d8d8d8; */
 }
 
 .div-block-5-copy {
-  border-right: 1px solid #d8d8d8;
   border-bottom: 1px solid #d8d8d8;
+}
+.div-block-5-copy:first-child {
+  border-right: 1px solid #d8d8d8;
 }
 
 .div-cart-items-container {
@@ -307,11 +309,11 @@ cart-items {
   background-color: #f3f3f3;
 }
 
-.div-block-4:nth-child(odd) {
+.div-block-4:nth-child(even) {
   background-color: #fff;
 }
 
-.div-block-4:nth-child(even) {
+.div-block-4:nth-child(odd) {
   background-color: #f3f3f3;
 }
 
@@ -366,6 +368,8 @@ cart-items {
   -ms-flex-align: center;
   align-items: center;
   border-bottom: 1px solid #d8d8d8;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .div-block-6 {
