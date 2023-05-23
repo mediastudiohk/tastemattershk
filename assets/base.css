@@ -3273,7 +3273,7 @@ input.w-button {
 }
 
 .padding-section-small {
-  padding-top: 32px;
+  /* padding-top: 32px; */
   padding-bottom: 32px;
 }
 
@@ -3439,6 +3439,10 @@ input.w-button {
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
+  }
+
+  .padding-section-small {
+    padding-top: 32px;
   }
 
   .content-container-custom {
