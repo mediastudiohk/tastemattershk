@@ -300,6 +300,10 @@ body,
   background-color: rgb(var(--color-background));
 }
 
+.content-container-custom {
+  margin-top: 136px;
+}
+
 .background-secondary {
   background-color: rgba(var(--color-foreground), 0.04);
 }
@@ -3437,6 +3441,10 @@ input.w-button {
     margin-left: 0px;
   }
 
+  .content-container-custom {
+    margin-top: 80px;
+  }
+
   .margin-bottom {
     margin-top: 0px;
     margin-right: 0px;
@@ -3465,6 +3473,10 @@ input.w-button {
   .padding-global {
     padding-right: 20px;
     padding-left: 20px;
+  }
+
+  .content-container-custom {
+    margin-top: 60px;
   }
 
   .margin-top {
