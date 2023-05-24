@@ -3530,3 +3530,14 @@ input.w-button {
     margin-left: 0px;
   }
 }
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 0.375rem;
+  height: 0.625rem;
+}
+::-webkit-scrollbar-thumb {
+  background: #dfdfdf;
+  height: 0.625rem;
+  border-radius: 0.375rem;
+}
