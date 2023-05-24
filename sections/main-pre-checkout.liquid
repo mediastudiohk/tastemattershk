@@ -12,6 +12,7 @@
         </div>
 
         <div class="pre-checkout-left padding-section-medium">
+          <div class="hidden pre-checkout-left-overlay"></div>
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
             <div style="display:flex; height:56.72px; align-items:center">
               <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
@@ -20,7 +21,7 @@
 
           <div class="pre-checkout-left_breadcrumbs flex items-center">
             <a href="/cart" style="color: #1773b0">{{ 'sections.header.basket' | t }}</a>
-            <div class="flex" style="width: 16px; height: 16px">
+            <div class="flex" style="width: 16px; height: 16px; flex-shrink: 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -35,8 +36,8 @@
                 <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
               </svg>
             </div>
-            <span style="color: #000; font-weight: 600; cursor: auto">{{ 'pre-checkout.delivery_calendar' | t }}</span>
-            <div class="flex" style="width: 16px; height: 16px">
+            <span>{{ 'pre-checkout.delivery_calendar' | t }}</span>
+            <div class="flex" style="width: 16px; height: 16px; flex-shrink: 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -51,7 +52,7 @@
                 <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
               </svg>
             </div>
-            <span style="color: #6b6b69; cursor: auto; text-transform: capitalize">
+            <span style="color: #6b6b69">
               {{ 'pre-checkout.checkout' | t }}
             </span>
           </div>
@@ -60,7 +61,7 @@
             {{ 'pre-checkout.delivery_details.title' | t }}
           </div>
 
-          <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px">
+          <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px; flex-wrap: wrap">
             <div class="flex flex-col region">
               <label for="Area" class="checkout_section-label">
                 {{- 'pre-checkout.delivery_details.region' | t }} *</label
@@ -115,10 +116,9 @@
             <div
               class="delivery-schedule-wrapper flex flex-col timeslot"
               id="delivery-schedule-wrapper"
-              onmousedown="return false"
+              {% comment %} onmousedown="return false" {% endcomment %}
             >
               <div class="delivery-schedule-item-date-wrapper"></div>
-
               <div class="delivery-schedule-item-time-wrapper"></div>
               <span class="validate-schedule">
                 {{ 'pre-checkout.delivery_schedule.time_slot' | t }}
@@ -198,6 +198,7 @@
         </div>
 
         <div class="pre-checkout-right">
+          <div class="hidden pre-checkout-right-overlay"></div>
           <div class="padding-section-medium">
             <div class="div-block-4-copy gridspan1">
               {%- for item in cart.items -%}

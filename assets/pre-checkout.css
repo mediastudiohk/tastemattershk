@@ -6,6 +6,17 @@
   background-color: #FFF;
 }
 
+.pre-checkout-left_breadcrumbs {
+  flex-wrap: wrap;
+}
+
+.pre-checkout-left_breadcrumbs span {
+  color: #000;
+  font-weight: 600;
+  cursor: auto;
+  white-space: nowrap;
+}
+
 .pre-checkout-overlay {
   position: absolute;
   height: 100%;
@@ -27,6 +38,7 @@
   border-right: 1px solid #dddbc7;
   padding-right: 16px;
   z-index: 1;
+  position: relative;
 }
 
 .pre-checkout-overlay-left {
@@ -151,6 +163,7 @@
 .pre-checkout-right {
   flex: 1;
   padding: 0 40px;
+  position: relative;
 }
 
 .cart-item-details {
@@ -224,24 +237,33 @@
 
 .delivery-schedule-wrapper {
   overflow-x: auto;
-  position: relative;
+  border-top: 1px solid #d8d8d8;
 }
 
+.delivery-schedule-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 83px;
+  height: 1px;
+  background: #d8d8d8;
+  left: 0;
+  right: 0;
+}
+/* 
 .delivery-schedule-wrapper::-webkit-scrollbar { 
   display: none;
-}
+} */
 
 .delivery-schedule-section.transform {
   transform: translateX(-775px); 
   transition: transform 500ms ease 0s;
 }
 
-.delivery-schedule-item-date-wrapper{
+.delivery-schedule-item-date-wrapper {
   grid-column-gap: 8px;
-  border-top: 1px solid #d8d8d8;
-  border-bottom: 1px solid #d8d8d8;
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+  overflow: auto;
 }
 
 .delivery-schedule-item-date {
@@ -280,7 +302,8 @@
   padding: 16px 0;
   display: grid; 
   grid-column-gap: 8px;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+  overflow: auto;
 }
 
 .delivery-schedule-item-time {
@@ -414,4 +437,58 @@
 
 .validate-schedule.invalid {
   display: block;
+}
+
+@media screen and (max-width: 991px) {
+
+  .main-pre-checkout {
+    margin-top: -80px;
+  }
+
+    .pre-checkout-content {
+      flex-direction: column;
+    }
+
+    .pre-checkout-overlay-left {
+      width: 100%;
+    }
+
+    .pre-checkout-left {
+      width: 100%;
+      padding-right: 0;
+      border: none;
+    }
+
+    .pre-checkout-overlay {
+      width: 100%;
+    }
+
+    .pre-checkout-left-overlay {
+      display: block !important;
+      position: absolute;
+      width: calc(100% + 80px);
+      background: #FFF;
+      z-index: -1;
+      margin-left: -40px;
+      top: 0;
+      height: 100%;
+    }
+
+    .pre-checkout-right {
+      padding: 0;
+    }
+    
+}
+
+@media screen and (max-width: 767px) {
+  .main-pre-checkout {
+    margin-top: -60px;
+  }
+  .pre-checkout-left-overlay {
+    width: calc(100% + 60px);
+  }
+  .delivery-schedule-item-date-wrapper,
+  .delivery-schedule-item-time-wrapper {
+    overflow: initial;
+  }
 }
