@@ -3068,7 +3068,7 @@ details-disclosure > details {
 
 /* new css */
 html {
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -3077,20 +3077,12 @@ body {
   margin: 0;
   min-height: 100%;
   background-color: #fafaf0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   letter-spacing: normal;
   line-height: 1.6;
   color: #716359;
 }
-
-/* body {
-  background-color: #fafaf0;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #2f2f2f;
-  font-size: 1rem;
-  line-height: 1.6;
-} */
 
 * {
   -webkit-box-sizing: border-box;
@@ -3164,7 +3156,7 @@ a {
   color: inherit;
   text-decoration: inherit;
   font-size: inherit;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: inherit;
 }
 
 .w-richtext:after {
@@ -3443,7 +3435,7 @@ input.w-button {
   color: #30b90e;
   white-space: nowrap;
   right: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: inherit;
   border-radius: 4px;
   box-shadow: 0 4px 11px -3px #dadbd2;
   background: #FFF;

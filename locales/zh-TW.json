@@ -166,7 +166,8 @@
       "inventory_out_of_stock": "無庫存",
       "inventory_out_of_stock_continue_selling": "有庫存",
       "sku": "存貨單位 (SKU)",
-      "add_to_basket": "添加到購物籃"
+      "add_to_basket": "添加到購物籃",
+      "added_to_basket": "添加到您的購物籃"
     },
     "modal": {
       "label": "媒體庫"

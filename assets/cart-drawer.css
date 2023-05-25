@@ -125,7 +125,7 @@ table .price::first-letter {
   font-size: 2rem;
   color: #292929;
   line-height: 2.4rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: inherit;
   text-transform: uppercase;
 }
 
@@ -154,7 +154,7 @@ table .price::first-letter {
   font-size: 14px;
   border: none;
   border-radius: 4px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: inherit;
   font-weight: 400;
   cursor: pointer;
 }
