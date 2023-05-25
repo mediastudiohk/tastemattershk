@@ -140,7 +140,7 @@
                 id="doorstep"
                 name="delivery-option"
                 value="{{ 'pre-checkout.delivery_option.option1' | t }}"
-                checked
+              
               >
               <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
             </div>
@@ -279,7 +279,3 @@
 </div>
 
 <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script>
-
-<script>
-  console.log('routes', '{{ shop.language }}')
-</script>

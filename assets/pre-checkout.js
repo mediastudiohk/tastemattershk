@@ -41,7 +41,7 @@ const inputRadio = document.querySelectorAll('input[name="delivery-option"]')
       time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
       id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
     },
-    option: JSON.parse(timeByDateStorage)?.option || document.querySelector('input[name="delivery-option"]:checked').value || ""
+    option: ""
   }
 
   // delivery district
@@ -546,7 +546,7 @@ fetchData(encodeURIComponent(areaSelect.value),encodeURIComponent(districtSelect
 // delivery option
 if(inputRadio) {
   for (const radio of inputRadio) {
-    radio.checked = JSON.parse(timeByDateStorage)?.option === radio.value;
+    radio.checked = (timeByDate.option || JSON.parse(timeByDateStorage)?.option) === radio.value;
     radio.addEventListener('change', (event) => {
       radio.checked = true;
   
