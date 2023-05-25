@@ -1787,6 +1787,7 @@ a.product__text {
   text-align: center;
   font-family: inherit;
   font-size: 1.4rem;
+  position: relative;
 }
 
 .add-to-cart-button:hover {
