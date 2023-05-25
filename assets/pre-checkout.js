@@ -496,28 +496,13 @@ const fetchData = async (area = '', district = '') => {
       const scheduleDefault = data.response.scheduleDefault;
       const schedule = data.response.schedule;
       const scheduleExist = data.response.scheduleExist;
-      const parseTimeByDate = JSON.parse(timeByDateStorage)
-
-      const mappingScheduleTimes = (arr, date) => {
-        return (arr || []).map((i) => {
-          const isSelected = (i.comment === parseTimeByDate?.schedule?.time && 
-          date.value === parseTimeByDate?.schedule?.date && 
-          (i.id_schedule_default === parseTimeByDate?.schedule?.id_schedule_default || 
-          i.id_schedule === parseTimeByDate?.schedule?.id_schedule)) 
-          || false
-          return {
-              ...i,
-              selected: isSelected
-          }
-        })
-      }
 
       dates = dates.map((date) => {
         const isScheduleExits = !!scheduleExist[date.value];
 
         return {
           ...date,
-          times: mappingScheduleTimes(isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle], date)
+          times: (isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || []
         }
       })
 
