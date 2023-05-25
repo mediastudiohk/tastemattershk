@@ -15,6 +15,7 @@
   font-weight: 600;
   cursor: auto;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .pre-checkout-overlay {
@@ -249,10 +250,6 @@
   left: 0;
   right: 0;
 }
-/* 
-.delivery-schedule-wrapper::-webkit-scrollbar { 
-  display: none;
-} */
 
 .delivery-schedule-section.transform {
   transform: translateX(-775px); 
