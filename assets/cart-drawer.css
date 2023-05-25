@@ -214,17 +214,3 @@ table .price::first-letter {
   border-bottom: 16px solid #fff;
   border-left: 16px solid transparent;
 }
-
-@media screen and (max-width: 991px) {
-  .drawer {
-    width: 100vw;
-    top: 55px;
-    display: none;
-  }
-
-  .drawer .white-triangle {
-    left: 26px;
-    right: auto;
-  }
-
-}
