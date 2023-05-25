@@ -422,6 +422,7 @@
 
 .delivery-option input {
   margin: 0;
+  flex-shrink: 0;
 }
 
 .delivery-district-description {
