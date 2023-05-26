@@ -645,3 +645,35 @@ noscript .localization-selector.link {
     }
   }
 }
+
+@media screen and (max-width: 479px) {
+  .footer-info-subtext {
+    line-height: 20px;
+  }
+
+  .footer-info-section {
+    display: flex;
+  }
+
+  .footer-info-section > div {
+    flex: 0 0 50%;
+  }
+
+  .footer-info-section .footer-disclaimer {
+    background: #fcfcf8;
+    border-radius: 8px;
+  }
+
+  .layout293:not(:last-child) .footer-line {
+    display: block !important;
+    height: 1px;
+    background: #fcfcf8;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 20px;
+  }
+
+  .layout293_component {
+    grid-row-gap: 28px !important;
+  }
+}
