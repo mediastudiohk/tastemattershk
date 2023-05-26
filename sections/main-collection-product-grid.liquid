@@ -81,6 +81,10 @@
     font-size: 20px
   }
 
+  .bread-scrumb {
+    display: none
+  }
+
   @media screen and (max-width: 479px) {
     .mainContainter {
         -webkit-box-orient: vertical;
@@ -97,6 +101,23 @@
     .filterSpan {
         width: 100%;
         padding-right: 0;
+    }
+
+    .bread-scrumb {
+      display: block
+    }
+
+    .bread-scrumb-header{
+        width: 100%;
+    }
+
+    .bread-scrumb-sticky{
+      position: fixed;
+      top: 6.5rem;
+      right: 0.1rem;
+      z-index: 999;
+      padding: 12px;
+      background: white;
     }
 
     .productListSpan {
@@ -250,6 +271,11 @@
           {% endfor %}
         </div>
       </div>
+
+   
+      <div class="bread-scrumb  bread-scrumb-header" id="bread-scrumb-nav">
+        {% render 'breadcrumbs' %}
+      </div>
       <div class="productListSpan">
         <div class="product-grid-container" id="ProductGridContainer">
           {%- if collection.products.size == 0 -%}
@@ -309,6 +335,27 @@
     </div>
   </div>
 </div>
+
+<script>
+  window.onscroll = function () {
+    handleOnScroll();
+  };
+
+  var header = document.getElementById('bread-scrumb-nav');
+  var sticky = header.offsetTop;
+
+  function handleOnScroll() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add('bread-scrumb-sticky');
+    } else {
+      header.classList.remove('bread-scrumb-sticky');
+    }
+  }
+
+  function getBreadScrumb() {
+    return 'Home > Beverages > Mineral Water & Spritzer';
+  }
+</script>
 
 {% schema %}
 {
