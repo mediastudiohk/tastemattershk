@@ -46,7 +46,7 @@
           </div>
         </div>
         {% comment %} quick add to cart {% endcomment %}
-        <div class="no-js-hidden">
+        <div class="no-js-hidden" style="flex: 1">
           {%- liquid
             assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
             assign qty_rules = false
@@ -106,9 +106,15 @@
                   disabled
                 >
                  {% if card_product.selected_or_first_available_variant.available == false %}
-                  <span class="sold-out">
-                    {{ 'products.product.inventory_out_of_stock' | t }}
-                  </span>
+                  {%- if card_product.metafields.custom.out_of_stock != blank -%}
+                    <span class="sold-out">
+                      {{- card_product.metafields.custom.out_of_stock -}}
+                    </span>
+                  {% else %}
+                    <span class="sold-out">
+                      {{ 'products.product.inventory_out_of_stock' | t }}
+                    </span>
+                  {%- endif -%}
                 {% endif %}
                 <div class="sold-out-wrapper hidden sold-out">
                     <svg aria-hidden="true" focusable="false" class="icon icon-error" viewBox="0 0 13 13">
@@ -165,3 +171,8 @@
     </div>
   </div>
 {% endif %}
+
+<script>
+
+  console.log("out of stock", '{{card_product.metafields.custom.out_of_stock}}')
+</script>

@@ -653,10 +653,15 @@ noscript .localization-selector.link {
 
   .footer-info-section {
     display: flex;
+    justify-content: space-between;
   }
 
   .footer-info-section > div {
     flex: 0 0 50%;
+  }
+
+  .footer-info-section > div:first-child {
+    padding-top: 8px;
   }
 
   .footer-info-section .footer-disclaimer {
@@ -667,7 +672,7 @@ noscript .localization-selector.link {
   .layout293:not(:last-child) .footer-line {
     display: block !important;
     height: 1px;
-    background: #fcfcf8;
+    background: #e0daa7;
     margin-left: -20px;
     margin-right: -20px;
     margin-top: 20px;

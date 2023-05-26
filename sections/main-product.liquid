@@ -166,15 +166,19 @@
                             role="status"
                           >
                             {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                              <span>Availability:  
+                              <span>Availability:&nbsp;
                                 <span class="text-style-in-stock">
                                   {% comment %} {{ product.selected_or_first_available_variant.inventory_quantity }} {% endcomment %}
                                   {{- 'products.product.inventory_in_stock' | t -}}
                                 </span>
                               </span>
                             {%- else -%}
-                              <span>Availability:  
-                                <span class="text-style-out-of-stock">{{- 'products.product.inventory_out_of_stock' | t -}}</span>
+                              <span>Availability:&nbsp; 
+                                {%- if product.metafields.custom.out_of_stock != blank -%}
+                                  <span class="text-style-out-of-stock">{{- product.metafields.custom.out_of_stock -}}</span>
+                                {% else %}
+                                  <span class="text-style-out-of-stock">{{- 'products.product.inventory_out_of_stock' | t -}}</span>
+                                {%- endif -%}
                               </span>
                             {%- endif -%}
                           </p>
@@ -410,7 +414,7 @@
                                             show_quick_add: block.settings.enable_quick_add,
                                             section_id: section.id,
                                             horizontal_class: true,
-                                            horizontal_quick_add: true
+                                            horizontal_quick_add: true,
                                           %}
                                         </li>
                                       {%- endfor -%}
