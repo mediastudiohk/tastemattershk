@@ -145,6 +145,7 @@ img {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  gap: 4px;
 }
 
 .add-to-basket-button {
