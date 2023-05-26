@@ -3361,6 +3361,16 @@ input.w-button {
   grid-column-gap: 16px;
 }
 
+.grid-menu-item{
+  margin-top: 12px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2rem;
+  /* padding: 1rem; */
+  /* width: 100%; */
+  /* flex-grow: 1; */
+}
+
 .w-richtext:before,
 .w-richtext:after {
   content: " ";
