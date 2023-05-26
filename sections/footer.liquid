@@ -168,23 +168,25 @@
                       {%- when '@app' -%}
                         {% render block %}
                       {%- when 'text' -%}
-                        <div class="text-size-small" style="color:#2F2F2F">
+                        <div class="text-size-small footer-info-subtext" style="color:#2F2F2F">
                           {{ block.settings.subtext }}
                         </div>
                       {%- when 'link_list' -%}
                         {%- if block.settings.menu != blank -%}
-                          <div class="margin-bottom margin-small">
-                            {%- for link in block.settings.menu.links -%}
-                              <a
-                                href="{{ link.url }}"
-                                class="footer-link"
-                              >
-                                {{ link.title }}
-                              </a>
-                            {%- endfor -%}
-                          </div>
-                          <div class="footer-disclaimer w-richtext" style="color:#2F2F2F">
-                            {{ block.settings.subtext }}
+                          <div class="footer-info-section">
+                            <div class="margin-bottom margin-small">
+                              {%- for link in block.settings.menu.links -%}
+                                <a
+                                  href="{{ link.url }}"
+                                  class="footer-link"
+                                >
+                                  {{ link.title }}
+                                </a>
+                              {%- endfor -%}
+                            </div>
+                            <div class="footer-disclaimer w-richtext" style="color:#2F2F2F">
+                              {{ block.settings.subtext }}
+                            </div>
                           </div>
                         {%- endif -%}
                       {%- when 'custom' -%}
@@ -209,6 +211,7 @@
                           {{ block.settings.subtext }}
                         </div>
                     {%- endcase -%}
+                    <div class="footer-line hidden"> </div>
                   </div>
                 {%- endfor -%}
               </div>
