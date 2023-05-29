@@ -146,7 +146,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "12795042946931334281": {
+        "type": "shopify:\/\/apps\/wishlist-rocket\/blocks\/main\/8d81315d-6d32-4a20-960a-67cfb6cf9e73",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
