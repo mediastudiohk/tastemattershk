@@ -438,7 +438,7 @@
         <a
           class="linkhover"
           style="display:flex; align-items:end;gap:4px"
-          href="{% if request.locale.iso_code != 'en' %}{% if request.locale.iso_code == 'zh-TW' %}zh{%else%}{{request.locale.iso_code}}{% endif %}{% endif %}/pages/pre-checkout"
+          href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -819,7 +819,7 @@
       <a
         class="linkhover nav-link"
         style="display:flex; align-items:end;gap:4px"
-        href="{% if request.locale.iso_code != 'en' %}{% if request.locale.iso_code == 'zh-TW' %}zh{%else%}{{request.locale.iso_code}}{% endif %}{% endif %}/pages/pre-checkout"
+        href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -992,7 +992,7 @@
         <a
           class="linkhover nav-link"
           style="display:flex; align-items:end;gap:4px"
-          href="{% if request.locale.iso_code != 'en' %}{% if request.locale.iso_code == 'zh-TW' %}zh{%else%}{{request.locale.iso_code}}{% endif %}{% endif %}/pages/pre-checkout"
+          href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
