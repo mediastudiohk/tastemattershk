@@ -154,8 +154,8 @@ img {
   padding: 4px 8px 4px 28.8px;
   border-radius: 4px;
   background-color: #cbc8ab;
-  background-image: url("cart.png"),
-    -webkit-gradient(linear, left top, left bottom, from(#dddbc7), color-stop(100%, #cbc8ab), to(#000));
+  /* background-image: url("cart.png"),
+    -webkit-gradient(linear, left top, left bottom, from(#dddbc7), color-stop(100%, #cbc8ab), to(#000)); */
   background-image: url("cart.png"),
     linear-gradient(180deg, #dddbc7, #cbc8ab 100%, #000);
   background-position: 6px 50%, 0px 0px;
@@ -172,7 +172,9 @@ img {
 .add-to-basket-button[aria-disabled="true"] {
   opacity: 0.4;
   cursor: default;
-  background: #b8b7b6;
+  background-color: #b8b7b6;
+  background-image: url("cart.png"),
+    linear-gradient(180deg, #dddbc7, #b8b7b6 100%, #000);
 }
 
 .w-form-done {
