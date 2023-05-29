@@ -75,15 +75,16 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-    const items = document.querySelectorAll(".cart-item");
-    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length / 2)) {
-      for (let index = 0; index < items.length / 2; index++) {
+    const items = document.getElementsByClassName('items-list')
+    console.log('items', items)
+    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
+      for (let index = 0; index < items.length; index++) {
         this.state.removeCartItem[index] = ""
       }
     }
 
     if (document.activeElement.getAttribute("name")) {
-        this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
     }
     else {
       if (this.state.removeCartItem[(event.target.dataset.index - 1)] === 0) {
