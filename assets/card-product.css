@@ -165,9 +165,6 @@ img {
   font-family: inherit;
   font-weight: 600;
   position: relative;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 
@@ -175,7 +172,7 @@ img {
 .add-to-basket-button[aria-disabled="true"] {
   opacity: 0.4;
   cursor: default;
-  background-color: #b8b7b6;
+  background: #b8b7b6;
 }
 
 .w-form-done {
