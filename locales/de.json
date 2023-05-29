@@ -503,7 +503,8 @@
   "shopify": {
     "notices": {
       "cart": {
-        "bundle_requires_components": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden."
+        "bundle_requires_components": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden.",
+        "gift_card_with_components_not_supported": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden."
       }
     }
   }

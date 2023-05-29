@@ -504,7 +504,8 @@
   "shopify": {
     "notices": {
       "cart": {
-        "bundle_requires_components": "捆綁產品“%{name}”無法添加到購物車。"
+        "bundle_requires_components": "捆綁產品“%{name}”無法添加到購物車。",
+        "gift_card_with_components_not_supported": "捆綁產品“%{name}”無法添加到購物車。"
       }
     }
   }
