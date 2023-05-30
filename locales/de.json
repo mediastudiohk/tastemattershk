@@ -311,7 +311,11 @@
       "grand_total": "Gesamtsumme",
       "delivery_fee": "Der Mindestbestellwert beträgt 500 $.\nFür Kunden von Discovery Bay, Tung Chung &amp; Yat Tung Estate\nFür Bestellungen unter 1.000 US-Dollar kann eine Liefergebühr von 150 US-Dollar anfallen.",
       "item": "Artikel",
-      "items": "Artikel"
+      "items": "Artikel",
+      "cart_empty_description": "Derzeit befinden sich keine Artikel im Warenkorb",
+      "click": "Klicken",
+      "here": "Hier",
+      "to_continue_shopping": "um weiter einzukaufen."
     },
     "footer": {
       "payment": "Zahlungsmethoden"
