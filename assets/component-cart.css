@@ -524,6 +524,9 @@ cart-items {
   background-color: transparent;
   color: #867c75;
 }
+.input-disable {
+  pointer-events: none;
+}
 
 .cart-quantity_form_input.is-quantity-form-input {
   position: static;
