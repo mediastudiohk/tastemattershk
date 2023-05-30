@@ -363,7 +363,7 @@
 
   const timeByDateStorage = window.localStorage.getItem('timeByDate');
 
-  const inputRadio = document.querySelectorAll('input[name="delivery-option"]')
+  const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
 
   let timeByDate = {
     region: JSON.parse(timeByDateStorage)?.region || "",
@@ -817,11 +817,20 @@
     areaSelect.value = timeByDate.region || areas[0].value;
     renderDistricts(districts);
     districtSelect.value = timeByDate.district || "";
+    let optionExits = false;
+
+    if(inputRadio.length) {
+      for (let i of inputRadio) {
+        if(i.value === timeByDate.option) {
+          optionExits = true;
+        }
+      }
+    }
   
     timeByDate = {
       ...timeByDate,
       region: timeByDate.region || areas[0].value,
-      option: timeByDate.option || inputRadio[0].value
+      option: optionExits ? timeByDate.option : inputRadio[0].value
     }
     window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
   
