@@ -281,6 +281,8 @@
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
       "subtotal": "Subtotal",
+      "item": "item",
+      "items": "items",
       "new_subtotal": "New subtotal",
       "note": "Order special instructions",
       "checkout": "Check out",

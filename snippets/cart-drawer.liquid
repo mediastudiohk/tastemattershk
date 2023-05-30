@@ -153,7 +153,7 @@
                   {{ 'sections.cart.subtotal' | t }}
                   <span style="font-size: 16px; text-transform: lowercase"
                     >({{ cart.item_count }}
-                    {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span
+                    {% if cart.item_count == 1 %}{{ 'sections.cart.item' | t }}{% else %}{{ 'sections.cart.items' | t }}{% endif %})</span
                   >
                 </div>
                 {% if cart.total_price < 50000 %}
