@@ -167,7 +167,16 @@
       "inventory_out_of_stock_continue_selling": "Auf Lager",
       "sku": "SKU",
       "add_to_basket": "Zum Warenkorb hinzufügen",
-      "added_to_basket": "Zum Warenkorb hinzugefügt"
+      "added_to_basket": "Zum Warenkorb hinzugefügt",
+      "back_to_previous": "Zurück zum vorherigen",
+      "availability": "Verfügbarkeit",
+      "select_quantity": "Wählen Sie die Menge",
+      "email_to_a_friend": "E-Mail an einen Freund",
+      "storage_information": "Speicherinformationen",
+      "country_of_origin": "Herkunftsland",
+      "ingredients": "Zutaten",
+      "nutrition": "Ernährung",
+      "allergens": "Allergene"
     },
     "modal": {
       "label": "Medien-Galerie"
@@ -297,7 +306,10 @@
       },
       "review_basket": "Warenkorb überprüfen",
       "process_to_checkout": "Prozess zur Kasse",
-      "update_shopping_cart": "Warenkorb aktualisieren"
+      "update_shopping_cart": "Warenkorb aktualisieren",
+      "minimum_order": "Bitte beachten Sie den Mindestbestellwert",
+      "grand_total": "Gesamtsumme",
+      "delivery_fee": "Der Mindestbestellwert beträgt 500 $.\nFür Kunden von Discovery Bay, Tung Chung &amp; Yat Tung Estate\nFür Bestellungen unter 1.000 US-Dollar kann eine Liefergebühr von 150 US-Dollar anfallen."
     },
     "footer": {
       "payment": "Zahlungsmethoden"
@@ -507,5 +519,8 @@
         "gift_card_with_components_not_supported": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden."
       }
     }
+  },
+  "home": {
+    "show_all_product": "Alle Produkte anzeigen"
   }
 }

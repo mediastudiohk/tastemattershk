@@ -167,7 +167,16 @@
       "inventory_out_of_stock_continue_selling": "有庫存",
       "sku": "存貨單位 (SKU)",
       "add_to_basket": "添加到購物籃",
-      "added_to_basket": "添加到您的購物籃"
+      "added_to_basket": "添加到您的購物籃",
+      "back_to_previous": "回到上一個",
+      "availability": "可用性",
+      "select_quantity": "選擇數量",
+      "email_to_a_friend": "給朋友發郵件",
+      "storage_information": "存儲信息",
+      "country_of_origin": "原產地",
+      "ingredients": "原料",
+      "nutrition": "營養",
+      "allergens": "過敏原"
     },
     "modal": {
       "label": "媒體庫"
@@ -297,7 +306,10 @@
       },
       "review_basket": "審查籃",
       "process_to_checkout": "結帳流程",
-      "update_shopping_cart": "更新購物車"
+      "update_shopping_cart": "更新購物車",
+      "minimum_order": "請注意最低訂購量為",
+      "grand_total": "累計",
+      "delivery_fee": "最低訂單金額為 500 美元。\n愉景灣、東涌及逸東村客戶\n低於 1000 美元的訂單可能需要支付 150 美元的送貨費。"
     },
     "footer": {
       "payment": "付款方式"
@@ -508,5 +520,8 @@
         "gift_card_with_components_not_supported": "捆綁產品“%{name}”無法添加到購物車。"
       }
     }
+  },
+  "home": {
+    "show_all_product": "顯示所有產品"
   }
 }
