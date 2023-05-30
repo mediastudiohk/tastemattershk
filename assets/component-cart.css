@@ -690,6 +690,14 @@ cart-items {
   color: #df0505;
 }
 
+.cart-here {
+  color: #b8b7b6;
+}
+
+.cart-here:hover {
+  color: #ac1b17;
+}
+
 @media screen and (max-width: 991px) {
   .my-basket_heading-wrapper {
     grid-column-gap: 48px;

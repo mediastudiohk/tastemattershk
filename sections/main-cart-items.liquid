@@ -22,8 +22,11 @@
 
       <div class="cart__warnings">
         <h1 class="cart__empty-text" style="display:flex; flex-direction: column;">
-          <span>There are currently no items in the basket</span>
-          <span><a href="{{ section.settings.link }}">Click here</a> to continue shopping.</span>
+          <span>{{ 'sections.cart.cart_empty_description' | t }}</span>
+          <span> {{ 'sections.cart.click' | t }}
+            <a href="{{ section.settings.link }}" class="cart-here"> {{ 'sections.cart.here' | t }} </a>
+            {{ 'sections.cart.to_continue_shopping' | t }}
+        </span>
         </h1>
       </div>
 
