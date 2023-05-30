@@ -1037,29 +1037,25 @@
         </div>
       </div>
       <div class="page-padding show-tablet category-container text-font-small-caps">
-        <div class="nav_container-bottom grid-menu-item">
-          {% comment %} {% for itemLink in section.settings.menu.links %}
-            <a href="{{ itemLink.url }}" class="nav_category-menu-text">{{ itemLink.title }}</a>
-          {% endfor %} {% endcomment %}
-          {% for itemLink in section.settings.menu.links %}
-            {% for childLink in itemLink.links %}
-              <div class="item-container">
-                <a href="{{ childLink.url }}" class="image-item">
-                  <img
-                    height="133"
-                    width="177"
-                    src="{{ childLink.object.image.src | image_url: width: 1000 }}"
-                    loading="lazy"
-                    style="aspect-ratio: 3 / 1.5"
-                ></a>
-                <a class="item-title-container" href="{{ childLink.url }}">
-                  {{- childLink.title -}}
-                </a>
-              </div>
-              {% endfor %}
-          {% endfor %}
        
-      </div>
+        <div class="nav_container-bottom grid-menu-item">
+          {% for itemLink in section.settings.menu.links %}
+            <div class="item-container">
+              <a href="{{ itemLink.url }}" class="image-item">
+                <img
+                  height="113"
+                  width="177"
+                  src="{{ itemLink.links.first.object.image.src | image_url: width: 1000 }}"
+                  loading="lazy"
+                  style="aspect-ratio: 3 / 1.5"
+              ></a>
+              <a class="item-title-container" href="{{ itemLink.links.first.url }}">
+                {{- itemLink.title -}}
+              </a>
+            </div>
+          {% endfor %}
+          </div> 
+      
     </div>
   </div>
 </nav>
@@ -1095,6 +1091,7 @@
 <script>
   function dropDownFuncMenu() {
     document.getElementById('menu-mobile').classList.toggle('show');
+    document.body.classList.toggle("overflow-hidden");
   }
 
   function dropDownFuncTablet() {

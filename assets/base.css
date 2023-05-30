@@ -3361,14 +3361,13 @@ input.w-button {
   grid-column-gap: 16px;
 }
 
-.grid-menu-item{
+.grid-menu-item {
   margin-top: 12px;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 2rem;
-  /* padding: 1rem; */
-  /* width: 100%; */
-  /* flex-grow: 1; */
+  overflow: auto;
+  max-height: calc(100vh - 12rem);
 }
 
 .w-richtext:before,
@@ -3436,7 +3435,6 @@ input.w-button {
   margin-right: 0 !important;
 }
 
-
 .popover-add-to-basket {
   border: 1px solid #30b90e;
   padding: 0.5rem;
@@ -3448,7 +3446,7 @@ input.w-button {
   font-family: inherit;
   border-radius: 4px;
   box-shadow: 0 4px 11px -3px #dadbd2;
-  background: #FFF;
+  background: #fff;
   font-weight: 600;
   font-size: 12px;
   display: flex !important;
@@ -3471,8 +3469,12 @@ input.w-button {
 }
 
 @keyframes addToBasket {
-  from { opacity: 1 }
-  to { opacity: 0 }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .popover-add-to-basket svg {
@@ -3488,7 +3490,7 @@ input.w-button {
   width: 12px;
   height: 12px;
   border: 1px solid #30b90e;
-  background-color: #FFF;
+  background-color: #fff;
   rotate: 135deg;
   border-color: #30b90e #30b90e transparent transparent;
 }
