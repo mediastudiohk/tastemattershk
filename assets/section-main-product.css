@@ -1982,6 +1982,7 @@ a.product__text {
   height: fit-content;
   margin-top: 20px;
   margin-bottom: 4px;
+  background-color: transparent !important;
 }
 
 .wishlist-whale-button-container #wishlist-whale-button::before {

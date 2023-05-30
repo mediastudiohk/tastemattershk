@@ -116,7 +116,9 @@
                 <div style="-ms-grid-column-align: end; justify-self: end;" class="gridspan1 price-custom">
                   {{ cart.total_price | money }}
                 </div>
-                <div class="text-style-grand-total gridspan1">Grand Total</div>
+                <div class="text-style-grand-total gridspan1">
+                  {{ 'sections.cart.grand_total' | t }}
+                </div>
                 <div
                   style="-ms-grid-column-align: end; justify-self: end;"
                   class="gridspan1 price-custom text-style-grand-total"
@@ -140,17 +142,15 @@
                 </button>
               {% else %}
                 <a
-                  href="/pages/pre-checkout"
+                  href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
                   class="check-out_button w-button icon-checkout-button"
                 >
                   {{- 'sections.cart.process_to_checkout' | t -}}
                 </a>
               {% endif %}
               <div class="delivery-fee-text-box">
-                <a href="#"
-                  >The minimum order amount is $500.<br>
-                  For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers<br>
-                  a delivery fee of $150 may apply for orders below $1000.<br>
+                <a href="#">
+                  {{- 'sections.cart.delivery_fee' | t | newline_to_br -}}
                 </a>
               </div>
             </div>

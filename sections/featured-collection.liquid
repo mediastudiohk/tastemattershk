@@ -26,7 +26,7 @@
             </div>
             {% if section.settings.redirect_all %}
               <div class="product1_button-row hide-mobile-landscape">
-                <a href="/collections/all" class="button_arrow-text">
+                <a href="{{ routes.all_products_collection_url }}" class="button_arrow-text">
                   <div class="button_arrow-text-icon w-embed">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@
                       <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z"></path>
                     </svg>
                   </div>
-                  <div>Show all products</div>
+                  <div>{{ 'home.show_all_product' | t }}</div>
                 </a>
               </div>
             {% endif %}
