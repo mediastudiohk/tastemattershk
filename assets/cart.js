@@ -47,13 +47,19 @@ class CartItems extends HTMLElement {
   }
 
   changeQuantity(event) {
+    const value  = event.target.value;
     const items = document.getElementsByClassName('items-list')
     if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
       for (let index = 0; index < items.length; index++) {
         this.state.removeCartItem[index] = ''
       }
     }
-    this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
+
+    if (value < 1 || value % 1 !== 0) {
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = 1
+    } else{
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = value
+    }
   }
 
   checkRemove(event) {
