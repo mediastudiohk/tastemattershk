@@ -7,14 +7,15 @@ class CartItems extends HTMLElement {
     this.lineItemStatusElement =
       document.getElementById("shopping-cart-line-item-status") ||
       document.getElementById("CartDrawer-LineItemStatus");
-    const debouncedOnChange = debounce((event) => {
-      this.onChange(event);
-    }, ON_CHANGE_DEBOUNCE_TIMER);
-
-    this.addEventListener("change",
-      debouncedOnChange.bind(this)
-    );
     this.querySelector('.my-basket_link_update').addEventListener("click", this.updateCart.bind(this));
+    this.quantityInput = this.querySelectorAll(".quantity__input");
+    for (let i of this.quantityInput) {
+      i.addEventListener("change", this.changeQuantity.bind(this))
+    }
+    this.removeItem = this.querySelectorAll('.check-box-remove');
+    for (let j of this.removeItem) {
+      j.addEventListener("change", this.checkRemove.bind(this))
+    }
   }
   cartUpdateUnsubscriber = undefined;
 
@@ -33,6 +34,41 @@ class CartItems extends HTMLElement {
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
       this.cartUpdateUnsubscriber();
+    }
+  }
+
+  onClick() {
+    const items = document.getElementsByClassName('items-list')
+    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
+      for (let index = 0; index < items.length; index++) {
+        this.state.removeCartItem[index] = ''
+      }
+    }
+  }
+
+  changeQuantity(event) {
+    const items = document.getElementsByClassName('items-list')
+    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
+      for (let index = 0; index < items.length; index++) {
+        this.state.removeCartItem[index] = ''
+      }
+    }
+    this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
+  }
+
+  checkRemove(event) {
+    const items = document.getElementsByClassName('items-list')
+    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
+      for (let index = 0; index < items.length; index++) {
+        this.state.removeCartItem[index] = ''
+      }
+    }
+    if (this.state.removeCartItem[(event.target.dataset.index - 1)] === "0") {
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = ''
+      document.getElementById(`Quantity-${event.target.dataset.index}`).classList.remove('input-disable');
+    } else {
+      document.getElementById(`Quantity-${event.target.dataset.index}`).classList.add('input-disable');
+      this.state.removeCartItem[(event.target.dataset.index - 1)] = "0"
     }
   }
 
@@ -74,27 +110,7 @@ class CartItems extends HTMLElement {
     }
   }
 
-  onChange(event) {
-    const items = document.getElementsByClassName('items-list')
-    console.log('items', items)
-    if (!this.state.removeCartItem.length && this.state.removeCartItem.length != (items.length)) {
-      for (let index = 0; index < items.length; index++) {
-        this.state.removeCartItem[index] = ""
-      }
-    }
 
-    if (document.activeElement.getAttribute("name")) {
-      this.state.removeCartItem[(event.target.dataset.index - 1)] = event.target.value
-    }
-    else {
-      if (this.state.removeCartItem[(event.target.dataset.index - 1)] === 0) {
-        this.state.removeCartItem[(event.target.dataset.index - 1)] = ""
-      }
-      else {
-        this.state.removeCartItem[(event.target.dataset.index - 1)] = 0
-      }
-    }
-  }
 
   onCartUpdate() {
     fetch("/cart?section_id=main-cart-items")

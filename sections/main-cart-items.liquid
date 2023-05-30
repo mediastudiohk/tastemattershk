@@ -86,6 +86,7 @@
                       </div>
                       <div class="div-block-5 gridspan1 center">
                         <input
+                          class="check-box-remove"
                           type="checkbox"
                           name="{{ item.param_name }}"
                           value="{{ item.active }}"
@@ -107,13 +108,16 @@
                       <div class="div-block-7 gridspan1 center div-block-5">
                         <quantity-input class="quantity">
                         <input
-                          class="quantity__input cart-quantity_form_input is-quantity-form-input w-input"
+                          class="quantity__input cart-quantity_form_input is-quantity-form-input w-input "
                           data-quantity-variant-id="{{ item.variant.id }}"
                           type="number"
+                          {% comment %} onchange="alert(this.value)" {% endcomment %}
                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                          {% comment %} onkeypress="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" {% endcomment %}
                           name="updates[]"
+                     
                           value="{{ item.quantity }}"
-                          {% # theme-check-disable %}
+                          {% comment %} {% # theme-check-disable %} {% endcomment %}
                           data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                           min="{{ item.variant.quantity_rule.min }}"
                           {% if item.variant.quantity_rule.max != null %}
