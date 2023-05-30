@@ -19,7 +19,7 @@
       tabindex="-1"
     >
       {%- if cart == empty -%}
-        <div style="padding: 16px;">There are currently no items in the basket.</div>
+        <div style="padding: 10px 16px 22px; text-align: right">{{ 'sections.cart.empty' | t }}</div>
       {%- else -%}
         <cart-drawer-items
           {% if cart == empty %}
@@ -165,7 +165,7 @@
                       line-height: 1.2;
                     "
                   >
-                    Please note the minimum order amount is
+                    {{ 'sections.cart.minimum_order' | t }}
                   </span>
                   <div
                     class="price-custom"
@@ -192,23 +192,31 @@
               {{ 'sections.cart.review_basket' | t }}
             </a>
 
-            <button
-              id="CartDrawer-Checkout"
-              class="checkout_button child"
-              name="checkout"
-              {% if cart == empty or cart.total_price < 50000 %}
+            {% if cart == empty or cart.total_price < 50000 %}
+              <button
+                id="CartDrawer-Checkout"
+                class="checkout_button child"
+                name="checkout"
                 disabled
-              {% endif %}
-            >
-              {{ 'sections.cart.process_to_checkout' | t }}
-            </button>
+              >
+                {{ 'sections.cart.process_to_checkout' | t }}
+              </button>
+              {%else %}
+              <a
+                class="checkout_button child"
+                href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
+              >
+                {{ 'sections.cart.process_to_checkout' | t }}
+              </a>
+            {% endif %}
           </div>
+        </div>
+        <div class="white-triangle">
+          <span class="hidden">line</span>
         </div>
       {%- endif -%}
 
-      <div class="white-triangle">
-        <span class="hidden">line</span>
-      </div>
+      
     </div>
   </div>
 </cart-drawer>

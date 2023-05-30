@@ -167,7 +167,16 @@
       "xr_button": "View in your space",
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "back_to_previous": "Back to previous",
+      "availability": "Availability",
+      "select_quantity": "Select Quantity",
+      "email_to_a_friend": "Email to a Friend",
+      "storage_information": "Storage Information",
+      "country_of_origin": "Country of Origin",
+      "ingredients": "Ingredients",
+      "nutrition": "Nutrition",
+      "allergens": "Allergens"
     },
     "modal": {
       "label": "Media gallery"
@@ -275,7 +284,7 @@
       "new_subtotal": "New subtotal",
       "note": "Order special instructions",
       "checkout": "Check out",
-      "empty": "Your cart is empty",
+      "empty": "Your basket is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
@@ -297,7 +306,10 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in<\/a> to check out faster."
       },
       "review_basket": "Review basket",
-      "process_to_checkout": "Process to Checkout"
+      "process_to_checkout": "Process to Checkout",
+      "minimum_order": "Please note the minimum order amount is",
+      "grand_total": "Grand Total",
+      "delivery_fee": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers \n a delivery fee of $150 may apply for orders below $1000."
     },
     "footer": {
       "payment": "Payment methods"
@@ -466,6 +478,9 @@
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
     }
+  },
+  "home": {
+    "show_all_product": "Show all products"
   },
   "pre-checkout": {
     "delivery_calendar": "Delivery Calendar",

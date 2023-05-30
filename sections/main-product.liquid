@@ -66,7 +66,7 @@
             <div class="icon-embed-xxsmall w-embed">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><g fill="none"><g clip-path="url(#IconifyId184e5d35f51560f328)"><path fill="currentColor" fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16a8 8 0 0 0 0 16Zm3.25-7.25a.75.75 0 0 0 0-1.5H8.66l2.1-1.95a.75.75 0 1 0-1.02-1.1l-3.5 3.25a.75.75 0 0 0 0 1.1l3.5 3.25a.75.75 0 0 0 1.02-1.1l-2.1-1.95h4.59Z" clip-rule="evenodd"></path></g><defs><clipPath id="IconifyId184e5d35f51560f328"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></g></svg>
             </div>
-            <div>Back to previous</div>
+            <div>{{ 'products.product.back_to_previous' | t }}</div>
           </div>
         </div>
 
@@ -166,14 +166,14 @@
                             role="status"
                           >
                             {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                              <span>Availability:&nbsp;
+                              <span>{{ 'products.product.availability' | t }}:&nbsp;
                                 <span class="text-style-in-stock">
                                   {% comment %} {{ product.selected_or_first_available_variant.inventory_quantity }} {% endcomment %}
                                   {{- 'products.product.inventory_in_stock' | t -}}
                                 </span>
                               </span>
                             {%- else -%}
-                              <span>Availability:&nbsp; 
+                              <span>{{ 'products.product.availability' | t }}:&nbsp; 
                                 {%- if product.metafields.custom.out_of_stock != blank -%}
                                   <span class="text-style-out-of-stock">{{- product.metafields.custom.out_of_stock -}}</span>
                                 {% else %}
@@ -227,7 +227,7 @@
                       {% # theme-check-enable %}
                       <div class="product-page_form-wrapper">
                       <label class="quantity-text" for="Quantity-{{ section.id }}">
-                        Select Quantity
+                        {{ 'products.product.select_quantity' | t }}
                         {% comment %} <span class="quantity__rules-cart no-js-hidden{% if cart_qty == 0 %} hidden{% endif %}">
                           <span class="loading-overlay hidden">
                             <span class="loading-overlay__spinner">
@@ -330,7 +330,7 @@
                             <div class="icon-embed-xxsmall w-embed">
                             {% render 'icon-email' %}
                             </div>
-                            <div>Email to a Friend</div>
+                            <div>{{ 'products.product.email_to_a_friend' | t }}</div>
                           </a>
                         </div>
                         {%- if product.metafields.custom.alcohol_warning -%}
@@ -476,11 +476,21 @@
       <div class="padding-section-small">
         <div class="product-page_tabs">
           <div class="product-page_tabs-menu text-font-small-caps w-tab-menu">
-            <div onclick="handleClickTab(this,'storage_information')" class="product-page_tab-link w-inline-block w-tab-link tab-active">Storage Information</div>
-            <div onclick="handleClickTab(this,'country_of_origin')" class="product-page_tab-link w-inline-block w-tab-link">Country of Origin</div>
-            <div onclick="handleClickTab(this,'ingredients')" class="product-page_tab-link w-inline-block w-tab-link">Ingredients</div>
-            <div onclick="handleClickTab(this,'nutrition')" class="product-page_tab-link w-inline-block w-tab-link">Nutrition</div>
-            <div onclick="handleClickTab(this,'allergens')" class="product-page_tab-link w-inline-block w-tab-link">Allergens</div>
+            <div onclick="handleClickTab(this,'storage_information')" class="product-page_tab-link w-inline-block w-tab-link tab-active">
+              {{ 'products.product.storage_information' | t }}
+            </div>
+            <div onclick="handleClickTab(this,'country_of_origin')" class="product-page_tab-link w-inline-block w-tab-link">
+              {{ 'products.product.country_of_origin' | t }}
+            </div>
+            <div onclick="handleClickTab(this,'ingredients')" class="product-page_tab-link w-inline-block w-tab-link">
+              {{ 'products.product.ingredients' | t }}
+            </div>
+            <div onclick="handleClickTab(this,'nutrition')" class="product-page_tab-link w-inline-block w-tab-link">
+              {{ 'products.product.nutrition' | t }}
+            </div>
+            <div onclick="handleClickTab(this,'allergens')" class="product-page_tab-link w-inline-block w-tab-link">
+              {{ 'products.product.allergens' | t }}
+            </div>
           </div>
           <div class="product-page_tabs-content w-tab-content">
             <div id="storage_information" class="product-page_tab-details w-tab-pane pane-active">
