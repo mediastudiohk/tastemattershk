@@ -173,8 +173,7 @@ img {
   opacity: 0.4;
   cursor: default;
   background-color: #b8b7b6;
-  background-image: url("cart.png"),
-    linear-gradient(180deg, #dddbc7, #b8b7b6 100%, #000);
+  background-image: url("cart.png");
 }
 
 .w-form-done {
@@ -276,6 +275,10 @@ img {
     background-image: none;
     padding-left: 8px;
     width: fit-content;
+  }
+
+  .add-to-basket-button:disabled {
+    background-image: none;
   }
 
   .product-bottom-wrapper {
