@@ -176,10 +176,6 @@ img {
   background-image: url("cart.png");
 }
 
-.add-to-basket-button[aria-disabled="true"] {
-  background-image: none;
-}
-
 .w-form-done {
   display: none;
   padding: 20px;
@@ -282,7 +278,8 @@ img {
     width: fit-content;
   }
 
-  .add-to-basket-button:disabled {
+  .add-to-basket-button:disabled,
+  .add-to-basket-button[aria-disabled="true"] {
     background-image: none;
   }
 
