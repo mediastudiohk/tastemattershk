@@ -1995,7 +1995,8 @@ a.product__text {
 }
 
 .product-pack {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: -10px;
 }
 
 @media screen and (forced-colors: active) {
