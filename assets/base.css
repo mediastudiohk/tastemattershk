@@ -3466,6 +3466,7 @@ input.w-button {
   animation-duration: 5s;
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
+  display: flex !important;
 }
 
 @keyframes addToBasket {
@@ -3589,6 +3590,14 @@ input.w-button {
     margin-top: 0px;
     margin-right: 0px;
     margin-left: 0px;
+  }
+
+  .popover-add-to-basket {
+    width: 100%;
+    top: auto;
+    bottom: calc(100% + 8px);
+    height: max-content;
+    white-space: normal;
   }
 }
 
