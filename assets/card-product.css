@@ -200,7 +200,7 @@ img {
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
-  color: #df0505;
+  color: #ac1b17;
   font-size: 13.6px;
   line-height: 0.8;
   text-decoration: line-through;
@@ -250,7 +250,7 @@ img {
 }
 
 .sold-out-wrapper .sold-out-message {
-  color: #df0505;
+  color: #ac1b17;
 }
 
 .flexcolumn {
