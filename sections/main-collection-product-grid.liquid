@@ -113,9 +113,9 @@
 
     .bread-scrumb-sticky{
       position: fixed;
-      top: 6.44rem;
+      top: 6.4rem;
       right: 0.1rem;
-      z-index: 99;
+      z-index: 9;
       padding: 12px;
       background: white;
     }
@@ -250,7 +250,10 @@
               {% for childLink in link.links %}
                 <div class="childStyle child-decore text-font-small-caps">
                   <div class="this-padding" style="color:{% if childLink.active %}#bebebe{% else %}#2f2f2f{% endif %};">
-                    <a href="{{ childLink.url }}">
+                    <a
+                      {% comment %} href="{{ link.url }}/{{ childLink.url }}" {% endcomment %}
+                      href="{{ childLink.url }}"
+                    >
                       {{- childLink.title -}}
                     </a>
                   </div>
@@ -272,7 +275,6 @@
         </div>
       </div>
 
-   
       <div class="bread-scrumb  bread-scrumb-header" id="bread-scrumb-nav">
         {% render 'breadcrumbs' %}
       </div>
