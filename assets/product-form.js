@@ -95,6 +95,15 @@ if (!customElements.get("product-form")) {
             if (!this.error)
               publish(PUB_SUB_EVENTS.cartUpdate, { source: "product-form" });
             this.error = false;
+
+            const popoverAddToBasket = this.submitButton.querySelector(".popover-add-to-basket");
+            if(popoverAddToBasket){
+              popoverAddToBasket.classList.add('show')
+              setTimeout(() => {
+                popoverAddToBasket.classList.remove('show')
+              }, 3000)
+            }
+
             const quickAddModal = this.closest("quick-add-modal");
             if (quickAddModal) {
               document.body.addEventListener(
@@ -106,16 +115,11 @@ if (!customElements.get("product-form")) {
                 },
                 { once: true }
               );
-              quickAddModal.hide(true);
+              setTimeout(() => {
+                quickAddModal.hide(true);
+              }, 1000)
             } else {
               this.cart.renderContents(response);
-            }
-            const popoverAddToBasket = this.submitButton.querySelector(".popover-add-to-basket");
-            if(popoverAddToBasket){
-              popoverAddToBasket.classList.add('show')
-              setTimeout(() => {
-                popoverAddToBasket.classList.remove('show')
-              }, 3000)
             }
           })
           .catch((e) => {
