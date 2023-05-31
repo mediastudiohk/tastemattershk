@@ -3598,6 +3598,12 @@ input.w-button {
     bottom: calc(100% + 8px);
     height: max-content;
     white-space: normal;
+    box-sizing: content-box;
+  }
+
+  .popover-add-to-basket::after {
+    width: 10px;
+    height: 10px;
   }
 }
 
