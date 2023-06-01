@@ -20,6 +20,10 @@
   padding: 0;
 }
 
+.flex-button-style {
+  display: flex;
+}
+
 .disclosure__button.mobile {
   margin-left: 20px;
 }
