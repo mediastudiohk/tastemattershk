@@ -293,6 +293,10 @@
       {% sections 'header-group' %}
     {% endunless %}
 
+    {%- if settings.show_breadcrumb_nav -%}
+      {% render 'breadcrumbs-custom' %}
+    {%- endif -%}
+
     <main id="MainContent" class="body" role="main" tabindex="-1">
       <div class="content-container-custom">
         {{ content_for_layout }}

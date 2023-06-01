@@ -39,10 +39,10 @@
 .menu-list-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-evenly;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 2px;
 }
 .item-title-container {
   font-size: 0.85 rem;
