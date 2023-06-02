@@ -1557,39 +1557,5 @@
         "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
       }
     ]
-  },
-  {
-    "name": "Breadcrumb Navigation",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "show_breadcrumb_nav",
-        "label": "Show breadcrumb navigation",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "breadcrumb_delimeter",
-        "info": "The icon that is between every link in the breadcrumb",
-        "label": "Breadcrumb Delimeter Icon",
-        "options": [
-          {
-            "value": "angle_right",
-            "label": "Angle Right"
-          },
-          {
-            "value": "slash",
-            "label": "Slash"
-          }
-        ],
-        "default": "angle_right"
-      },
-      {
-        "type": "color",
-        "id": "breadcrumb_text_color",
-        "label": "Breadcrumb Color",
-        "default": "#465076"
-      }
-    ]
   }
 ]

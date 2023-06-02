@@ -2,138 +2,53 @@
   <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
     <a href="/" title="Home">Home</a>
 
-    {% if template contains 'page' %}
-      <span aria-hidden="true">&rsaquo;</span>
-
-      <span>{{ page.title }}</span>
-
-    {% elsif template contains 'product' %}
-      {% if collection.url %}
-        <span aria-hidden="true">&rsaquo;</span>
-
-        {{ collection.title | link_to: collection.url }}
-      {% endif %}
-
-      <span aria-hidden="true">&rsaquo;</span>
-
-      <span>{{ product.title }}</span>
-
-      {% comment %}
-         {% elsif template contains 'collection' and collection.handle %}
-        <span aria-hidden="true">&rsaquo;</span>
-
-          {% if current_tags %}
-            {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-
-            {{ collection.title | link_to: url }}
-
-            <span aria-hidden="true">&rsaquo;</span>
-
-            <span>{{ current_tags | join: ' + ' }}</span>
-
-          {% else %}
-            <span>{{ collection.title }}</span>
-          {% endif %}
-      {% endcomment %}
-
-    {%- elsif template contains 'collection' -%}
-      {%- capture collection_collection_url_string -%}{%- for collection in collection.collections -%}{{collection.url }}|{%- endfor -%}{%- endcapture -%}
-      {%- assign str_size = collection_collection_url_string | size | minus: 1 -%}
-      {%- assign collection_collection_url_string = collection_collection_url_string | slice: 0, str_size -%}
-      {%- assign collection_collection_urls = collection_collection_url_string | split: '|' -%}
-
+    {%- if template contains 'collection' -%}
       {%- for link in linklists['top-menu'].links -%}
-        {%- if collection_collection_urls contains link.url and link.type == 'collection_link' -%}
-          {%- for childlist in linklists -%}
-            {%- if childlist.title == link.title -%}
-              {%- assign bc1_collection_handle = link.url | split: '/' | last -%}
-              {%- assign bc1_linklist_handle = childlist.handle -%}
-            {%- endif -%}
+        {% if  link.active or link.child_active %}
+          <span aria-hidden="true">&rsaquo;</span>
+          <a
+            href="{{ link.url }}"
+            {% if link.active %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{ link.title }}
+          </a>
+        {% endif %}
+
+        {%- if link.links != blank -%}
+          {%- for child_link in link.links -%}
+            {% if child_link.active or child_link.child_active %}
+              <span aria-hidden="true">&rsaquo;</span>
+              <a
+                href="{{ child_link.url }}"
+                {% if child_link.active %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{ child_link.title }}
+              </a>
+            {% endif %}
+
+            {%- if child_link.links != blank -%}
+                
+              {%- for grand_child in child_link.links -%}
+                {% if grand_child.active or grand_child.child_active %}
+                  <span aria-hidden="true">&rsaquo;</span>
+                  <a
+                    href="{{ grand_child.url }}"
+                    {% if grand_child.active %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ grand_child.title }}
+                  </a>
+                {% endif %}
+              {%- endfor -%}
+            {% endif %}
           {%- endfor -%}
-          {%- capture bc1 -%}{{ link.title | link_to: link.url, link.title }}{%- endcapture -%}
-        {%- endif -%}
+        {% endif%}
       {%- endfor -%}
-
-      {%- unless bc1_linklist_handle == blank -%}
-        {%- capture child_url_string -%}{%- for link in linklists[bc1_linklist_handle].links -%}{{ link.url }}|{%- endfor -%}{%- endcapture -%}
-        {%- assign str_size = child_url_string | size | minus: 1 -%}
-        {%- assign child_url_string = child_url_string | slice: 0, str_size -%}
-        {%- assign child_urls = child_url_string | split: '|' -%}
-
-        {%- for link in linklists[bc1_linklist_handle].links -%}
-          {%- if child_urls contains link.url
-            and product_collection_urls contains link.url
-            and link.type == 'collection_link'
-          -%}
-            {%- for childlist in linklists -%}
-              {%- if childlist.title == link.title -%}
-                {%- assign bc2_collection_handle = link.url | split: '/' | last -%}
-                {%- assign bc2_linklist_handle = childlist.handle -%}
-              {%- endif -%}
-            {%- endfor -%}
-            {%- capture bc2 -%}{{ link.title | link_to: link.url, link.title }}{%- endcapture -%}
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endunless -%}
-
-      {%- unless bc2_linklist_handle == blank -%}
-        {%- capture child_url_string -%}{%- for link in linklists[bc2_linklist_handle].links -%}{{ link.url }}|{%- endfor -%}{%- endcapture -%}
-        {%- assign str_size = child_url_string | size | minus: 1 -%}
-        {%- assign child_url_string = child_url_string | slice: 0, str_size -%}
-        {%- assign child_urls = child_url_string | split: '|' -%}
-
-        {%- for link in linklists[bc2_linklist_handle].links -%}
-          {%- if child_urls contains link.url
-            and collection_collection_urls contains link.url
-            and link.type == 'collection_link'
-          -%}
-            {%- capture bc3 -%}{{ link.title | link_to: link.url, link.title }}{%- endcapture -%}
-          {%- endif -%}
-        {%- endfor -%}
-      {% endunless %}
-
-      {%- if bc1 -%}
-        <span aria-hidden="true">&rsaquo;</span>
-        {{ bc1 }}
-      {%- endif -%}
-      {%- if bc2 -%}
-        <span aria-hidden="true">&rsaquo;</span>
-        {{ bc2 }}
-      {%- endif -%}
-      {%- if bc3 -%}
-        <span aria-hidden="true">&rsaquo;</span>
-        {{ bc3 }}
-      {%- endif -%}
-      <span aria-hidden="true">&rsaquo;</span>
-      <span>{{ collection.title }}</span>
-
-    {% elsif template == 'blog' %}
-      <span aria-hidden="true">&rsaquo;</span>
-
-      {% if current_tags %}
-        {{ blog.title | link_to: blog.url }}
-
-        <span aria-hidden="true">&rsaquo;</span>
-
-        <span>{{ current_tags | join: ' + ' }}</span>
-
-      {% else %}
-        <span>{{ blog.title }}</span>
-      {% endif %}
-
-    {% elsif template == 'article' %}
-      <span aria-hidden="true">&rsaquo;</span>
-
-      {{ blog.title | link_to: blog.url }}
-
-      <span aria-hidden="true">&rsaquo;</span>
-
-      <span>{{ article.title }}</span>
-
-    {% else %}
-      <span aria-hidden="true">&rsaquo;</span>
-
-      <span>{{ page_title }}</span>
     {% endif %}
   </nav>
 {% endunless %}

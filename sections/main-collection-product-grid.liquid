@@ -44,6 +44,19 @@
     grid-template-rows: auto;
   }
 
+  .mainContainter-v2 {
+    position: relative;
+    display: -ms-grid;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    -ms-grid-columns: 4fr;
+    grid-template-columns: 4fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+  }
+
   .productListSpan {
     position: relative;
   }
@@ -102,6 +115,17 @@
         -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     }
+
+    .mainContainter-v2 {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+      -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      grid-column-gap: 48px;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  }
 
     .filterSpan {
         width: 100%;
@@ -215,9 +239,18 @@
       </aside>
     {%- endif -%}
 
-    <div class="mainContainter container-large-modified padding-category">
+    <div
+      class="
+        {%if collection.url != '/collections/all'%}
+        mainContainter
+        {%else%}
+        mainContainter-v2
+        {%endif%}
+        container-large-modified padding-category
+      "
+    >
       <div class="filterSpan">
-        <div class="categoryStyle">
+        <div class="categoryStyle" style=" {% if collection.url == '/collections/all' %}  display:none {% endif %}">
           {% for link in section.settings.menu.links %}
             {% style %}
               .childStyle {
@@ -294,9 +327,12 @@
         {%- endif -%}
       </div>
 
-      <div class="bread-scrumb bread-scrumb-header" id="bread-scrumb-nav">
-        {% render 'breadcrumbs' %}
-      </div>
+      {% if collection.url != '/collections/all' %}
+        <div class="bread-scrumb bread-scrumb-header" id="bread-scrumb-nav">
+          {% render 'breadcrumbs' %}
+        </div>
+      {% endif %}
+
       <div class="productListSpan">
         <div class="product-grid-container" id="ProductGridContainer">
           {%- if collection.products.size == 0 -%}
@@ -321,8 +357,14 @@
                 id="product-grid"
                 data-id="{{ section.id }}"
                 class="
+                  {%if collection.url != '/collections/all'%}
                   grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                   grid--{{ section.settings.columns_desktop }}-col-desktop
+                  {%else%}
+                  grid product-grid grid--5-col-tablet-down
+                  grid--5-col-desktop
+                  {%endif%}
+                      grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                 "
                 style="margin:0"
               >
@@ -359,7 +401,9 @@
 
 <script>
   window.onscroll = function () {
-    handleOnScroll();
+    if (header?.classList != null) {
+      handleOnScroll();
+    }
   };
 
   var header = document.getElementById('bread-scrumb-nav');
@@ -367,14 +411,10 @@
 
   function handleOnScroll() {
     if (window.pageYOffset > sticky) {
-      header.classList.add('bread-scrumb-sticky');
+      header?.classList?.add('bread-scrumb-sticky');
     } else {
-      header.classList.remove('bread-scrumb-sticky');
+      header?.classList?.remove('bread-scrumb-sticky');
     }
-  }
-
-  function getBreadScrumb() {
-    return 'Home > Beverages > Mineral Water & Spritzer';
   }
 </script>
 

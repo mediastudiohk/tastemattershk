@@ -113,7 +113,7 @@
                         <input
                           class="quantity__input cart-quantity_form_input is-quantity-form-input w-input "
                           data-quantity-variant-id="{{ item.variant.id }}"
-                          type="number"
+                          {% comment %} type="number" {% endcomment %}
                           {% comment %} onchange="alert(this.value)" {% endcomment %}
                           oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
                           {% comment %} onkeypress="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" {% endcomment %}
