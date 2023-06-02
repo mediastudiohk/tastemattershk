@@ -528,6 +528,7 @@
     }
   },
   "home": {
-    "show_all_product": "顯示所有產品"
+    "show_all_product": "顯示所有產品",
+    "home_title": "家"
   }
 }
