@@ -527,6 +527,7 @@
     }
   },
   "home": {
-    "show_all_product": "Alle Produkte anzeigen"
+    "show_all_product": "Alle Produkte anzeigen",
+    "home_title": "Heim"
   }
 }
