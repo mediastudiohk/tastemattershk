@@ -118,7 +118,7 @@
   .w-nav-button {
     position: relative;
     float: right;
-    padding: 20px;
+    padding: 0;
     font-size: 24px;
     display: none;
     cursor: pointer;
@@ -140,7 +140,7 @@
     display: none;
   }
 
-  .nav_container-bottom {
+  .nav_container-bottom:not(.grid-menu-item) {
     position: relative;
     z-index: 5;
     display: -webkit-box;
@@ -229,9 +229,9 @@
   }
 
   @media screen and (max-width: 767px) {
-    .w-nav-button {
+    /* .w-nav-button {
       padding: 16px;
-    }
+    } */
 
     .page-padding {
       padding: 0px 0px;
@@ -494,26 +494,19 @@
       >
         <div
           class="w-icon-nav-menu preven-icon-menu"
-          style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center"
+          style="width: 43px; height: 43px; display: flex; justify-content: center; align-items: center"
         >
-          <svg
-            width="24px"
-            height="24px"
-            viewBox="0 -5.5 21 21"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            class="preven-icon-menu"
-          >
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Dribbble-Light-Preview" transform="translate(-179.000000, -205.000000)" fill="#fff">
-                    <g id="icons" transform="translate(56.000000, 160.000000)">
-                        <path class="preven-icon-menu" d="M123,55 L144,55 L144,53 L123,53 L123,55 Z M123,47 L144,47 L144,45 L123,45 L123,47 Z M123,51 L144,51 L144,49 L123,49 L123,51 Z" id="menu_list-[#1527]">
-                        </path>
-                    </g>
-                </g>
+          <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="43" height="43" rx="6" fill="#E1E0CC"/>
+            <g clip-path="url(#clip0_1_193)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.2973 29.4414H34.8649V27.0064H9.2973V29.4414ZM9.2973 14.8314H34.8649V12.3964H9.2973V17.2664V14.8314ZM9.2973 22.1364H34.8649V19.7014H9.2973V22.1364Z" fill="white"/>
             </g>
-          </svg>
+            <defs>
+            <clipPath id="clip0_1_193">
+            <rect width="25.5676" height="25.5676" fill="white" transform="translate(9.2973 8.13513)"/>
+              </clipPath>
+              </defs>
+            </svg>
         </div>
       </div>
     </div>
@@ -604,6 +597,10 @@
             background-color: #e0daa7;
             width: 100%;
           }
+
+          .sub-cate-child-link {
+            flex: 1;
+          }
         {% endstyle %}
         <div class="dropdown text-font-small-caps">
           <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
@@ -611,7 +608,7 @@
             <div class="dropdown-content">
               <div class="gridContainer">
                 {% for childLink in link.links %}
-                  <div>
+                  <div class="flex flex-col">
                     <a href="{{ childLink.url }}">
                       <img
                         height="auto"
@@ -620,19 +617,27 @@
                         loading="lazy"
                         style="width:100%; aspect-ratio: 3 / 1.5"
                     ></a>
-                    <a style="font-size:20px" href="{{ childLink.url }}">
-                      {{- childLink.title -}}
-                    </a>
-                    <div class="nav_dropdown-separator">
-                      <span class="hidden">Line</span>
-                    </div>
-                    {% if childLink.links.size > 0 %}
-                      {% for onChildLink in childLink.links %}
-                        <a style=" font-size:inherit" href="{{ onChildLink.url }}">
-                          {{- onChildLink.title -}}
+                    <div class="flex flex-col justify-between sub-cate-child-link">
+                      <div>
+                        <a style="font-size:20px; min-height:68px;" href="{{ childLink.url }}">
+                          {{- childLink.title -}}
                         </a>
-                      {% endfor %}
-                    {% endif %}
+                        <div class="nav_dropdown-separator">
+                          <span class="hidden">Line</span>
+                        </div>
+                      </div>
+
+                      {% if childLink.links.size > 0 %}
+                        <div class="flex flex-col flex-1"> 
+                          {% for onChildLink in childLink.links %}
+                            <a style=" font-size:inherit" href="{{ onChildLink.url }}">
+                              {{- onChildLink.title -}}
+                            </a>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div>
+                   
                   </div>
                 {% endfor %}
               </div>
@@ -860,7 +865,7 @@
     </div>
 
     <div class="menu-toggle-container-v2">
-      <div class="menu-list-container">
+      <div class="menu-list-container page-padding">
         <a href="/search" style="display:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -1047,7 +1052,7 @@
                   width="177"
                   src="{{ itemLink.links.first.object.image.src | image_url: width: 1000 }}"
                   loading="lazy"
-                  style="aspect-ratio: 3 / 1.5"
+                  style="aspect-ratio: 3 / 1.5; width: 100%"
               ></a>
               <a class="item-title-container" href="{{ itemLink.links.first.url }}">
                 {{- itemLink.title -}}

@@ -126,13 +126,11 @@ table .price::first-letter {
   color: #292929;
   line-height: 2.4rem;
   font-family: inherit;
-  text-transform: uppercase;
 }
 
 .totals__subtotal-value {
   font-size: 1.8rem;
   color: #867c75;
-  font-family: "Open Sans", sans-serif;
 }
 
 .totals__subtotal-value::first-letter {

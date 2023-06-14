@@ -106,15 +106,9 @@
                   disabled
                 >
                  {% if card_product.selected_or_first_available_variant.available == false %}
-                  {%- if card_product.metafields.custom.out_of_stock != blank -%}
-                    <span class="sold-out">
-                      {{- card_product.metafields.custom.out_of_stock -}}
-                    </span>
-                  {% else %}
-                    <span class="sold-out">
-                      {{ 'products.product.inventory_out_of_stock' | t }}
-                    </span>
-                  {%- endif -%}
+                  <span class="sold-out">
+                    {{ 'products.product.inventory_out_of_stock' | t }}
+                  </span>
                 {% endif %}
                 <div class="sold-out-wrapper hidden sold-out">
                     <svg aria-hidden="true" focusable="false" class="icon icon-error" viewBox="0 0 13 13">

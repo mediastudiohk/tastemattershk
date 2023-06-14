@@ -13,6 +13,7 @@ const onScrollHeader = () => {
                 element.style.width = '19.2rem';
             }
         }
+        element.style.transition = 'width 0.2s';
     }
 }
 

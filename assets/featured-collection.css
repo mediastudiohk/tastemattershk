@@ -192,3 +192,10 @@
     align-items: stretch;
   }
 }
+
+@media screen and (max-width: 319px) {
+  .product1_list {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+}
