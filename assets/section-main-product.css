@@ -53,6 +53,10 @@
 }
 
 @media screen and (min-width: 990px) {
+  .main-product-page .padding-section-small {
+    padding-top: 0;
+  }
+
   .product--large:not(.product--no-media) .product__media-wrapper {
     max-width: 65%;
     width: calc(65% - var(--grid-desktop-horizontal-spacing) / 2);
@@ -1864,14 +1868,14 @@ a.product__text {
   background-color: #F9F9F9 ;
   color: #716359;
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
 }
 
 .product-page_tab-link.tab-active:hover {
   color: #2f2f2f;
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .product-page_tabs-content {

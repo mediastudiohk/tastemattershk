@@ -143,14 +143,14 @@
                     background-color: #b8b7b6;
                   "
                 >
-                  {{ 'sections.cart.process_to_checkout' | t }}
+                  {{ 'sections.cart.proceed_to_checkout' | t }}
                 </button>
               {% else %}
                 <a
                   href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
                   class="check-out_button w-button icon-checkout-button"
                 >
-                  {{- 'sections.cart.process_to_checkout' | t -}}
+                  {{- 'sections.cart.proceed_to_checkout' | t -}}
                 </a>
               {% endif %}
               <div class="delivery-fee-text-box">

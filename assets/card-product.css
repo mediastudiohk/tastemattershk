@@ -236,7 +236,7 @@ img {
   color: #ac1b17;
   text-align: right;
   float: right;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.3rem;
   padding-right: 0.3rem;
   max-width: 128px;
   align-self: flex-end;
@@ -260,6 +260,12 @@ img {
 
 .text-product-price-number::first-letter {
   font-size: smaller;
+}
+
+.product-price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 @media screen and (max-width: 479px) {

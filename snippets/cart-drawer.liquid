@@ -149,7 +149,7 @@
               role="status"
             >
               <div style="width: 180px; font-size: 16px;">
-                <div class="totals__subtotal" style="color: #867C75;">
+                <div class="totals__subtotal text-font-small-caps" style="color: #867C75;">
                   {{ 'sections.cart.subtotal' | t }}
                   <span style="font-size: 16px; text-transform: lowercase"
                     >({{ cart.item_count }}
@@ -199,14 +199,14 @@
                 name="checkout"
                 disabled
               >
-                {{ 'sections.cart.process_to_checkout' | t }}
+                {{ 'sections.cart.proceed_to_checkout' | t }}
               </button>
               {%else %}
               <a
                 class="checkout_button child"
                 href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
               >
-                {{ 'sections.cart.process_to_checkout' | t }}
+                {{ 'sections.cart.proceed_to_checkout' | t }}
               </a>
             {% endif %}
           </div>

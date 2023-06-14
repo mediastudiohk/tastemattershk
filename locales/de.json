@@ -305,7 +305,7 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logge dich ein<\/a>, damit es beim Checkout schneller geht."
       },
       "review_basket": "Warenkorb überprüfen",
-      "process_to_checkout": "Prozess zur Kasse",
+      "proceed_to_checkout": "Prozess zur Kasse",
       "update_shopping_cart": "Warenkorb aktualisieren",
       "minimum_order": "Bitte beachten Sie den Mindestbestellwert",
       "grand_total": "Gesamtsumme",

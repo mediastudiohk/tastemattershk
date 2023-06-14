@@ -305,7 +305,7 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">登入<\/a>以加速結帳。"
       },
       "review_basket": "審查籃",
-      "process_to_checkout": "結帳流程",
+      "proceed_to_checkout": "結帳流程",
       "update_shopping_cart": "更新購物車",
       "minimum_order": "請注意最低訂購量為",
       "grand_total": "累計",
