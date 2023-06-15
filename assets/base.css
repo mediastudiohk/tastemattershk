@@ -3452,7 +3452,7 @@ input.w-button {
 }
 
 .popover-add-to-basket.product-details {
-  left: auto;
+  left: 50%;
   right: auto;
   width: auto;
   transform: translateX(-50%);

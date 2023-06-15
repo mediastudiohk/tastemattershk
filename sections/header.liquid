@@ -601,14 +601,31 @@
           .sub-cate-child-link {
             flex: 1;
           }
+
+          .title-large .title-large-child {
+            min-height:68px;
+          }
         {% endstyle %}
-        <div class="dropdown text-font-small-caps">
+
+        {%- liquid
+           assign titleLarge = false
+
+           if link.links.size > 0
+             for childLink in link.links 
+               if childLink.title.size > 25 
+                assign titleLarge = true 
+               endif 
+             endfor 
+            endif
+        -%}
+
+        <div class="dropdown text-font-small-caps {% if titleLarge == true %}title-large{% endif %}">
           <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
           {% if link.links.size > 0 %}
             <div class="dropdown-content">
               <div class="gridContainer">
                 {% for childLink in link.links %}
-                  <div class="flex flex-col">
+                  <div>
                     <a href="{{ childLink.url }}">
                       <img
                         height="auto"
@@ -617,27 +634,21 @@
                         loading="lazy"
                         style="width:100%; aspect-ratio: 3 / 1.5"
                     ></a>
-                    <div class="flex flex-col justify-between sub-cate-child-link">
-                      <div>
-                        <a style="font-size:20px; min-height:68px;" href="{{ childLink.url }}">
-                          {{- childLink.title -}}
-                        </a>
-                        <div class="nav_dropdown-separator">
-                          <span class="hidden">Line</span>
-                        </div>
-                      </div>
-
-                      {% if childLink.links.size > 0 %}
-                        <div class="flex flex-col flex-1"> 
-                          {% for onChildLink in childLink.links %}
-                            <a style=" font-size:inherit" href="{{ onChildLink.url }}">
-                              {{- onChildLink.title -}}
-                            </a>
-                          {% endfor %}
-                        </div>
-                      {% endif %}
+                    <a style="font-size:20px" href="{{ childLink.url }}" 
+                      class="title-large-child">
+                      {{- childLink.title -}}
+                    </a>
+                    <div class="nav_dropdown-separator">
+                      <span class="hidden">Line</span>
                     </div>
-                   
+
+                    {% if childLink.links.size > 0 %}
+                      {% for onChildLink in childLink.links %}
+                        <a style=" font-size:inherit" href="{{ onChildLink.url }}">
+                          {{- onChildLink.title -}}
+                        </a>
+                      {% endfor %}
+                    {% endif %}
                   </div>
                 {% endfor %}
               </div>
