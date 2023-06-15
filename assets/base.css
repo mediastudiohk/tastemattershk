@@ -3454,6 +3454,8 @@ input.w-button {
 .popover-add-to-basket.product-details {
   left: auto;
   right: auto;
+  width: auto;
+  transform: translateX(-50%);
 }
 
 .popover-add-to-basket.show {
