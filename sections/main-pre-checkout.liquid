@@ -280,6 +280,13 @@
 
 {% comment %} <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 <script>
+  
+  
+  
+  
+  
+  
+  
   {% comment %} check empty object {% endcomment %}
   const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
@@ -658,7 +665,7 @@
       dates = dates.map((date) => ({
         ...date,
         times: date.times.map((time) => {
-          const isSelected = item.title === time.schedule_date && item.innerText === time.comment;
+          const isSelected = item.title === date.value && item.innerText === time.comment;
   
           return {
             ...time,
@@ -802,7 +809,17 @@
   
           return {
             ...date,
-            times: (isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || []
+            times: ((isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || [])
+            .map((i) => {
+              const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && date.value === JSON.parse(timeByDateStorage)?.schedule?.date
+              && (i.id_schedule_default === JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || i.id_schedule === JSON.parse(timeByDateStorage)?.schedule?.id_schedule))
+              || false;
+
+              return {
+                  ...i,
+                  selected: isSelected
+              }
+            })
           }
         })
   
@@ -879,34 +896,4 @@
   
     return window.location.href = "/checkout"
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
