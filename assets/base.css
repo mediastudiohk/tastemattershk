@@ -3365,7 +3365,6 @@ input.w-button {
   grid-column-gap: 16px;
 }
 
-
 .w-richtext:before,
 .w-richtext:after {
   content: " ";
@@ -3451,6 +3450,26 @@ input.w-button {
   visibility: hidden;
 }
 
+.popover-err-cart {
+  right: -100px;
+  border: 1px solid #ff0000;
+  padding: 0.5rem;
+  position: absolute;
+  top: -38px;
+  color: #ff0000;
+  white-space: nowrap;
+  font-family: inherit;
+  border-radius: 4px;
+  box-shadow: 0 4px 11px -3px #dadbd2;
+  background: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px;
+  visibility: hidden;
+}
+
 .popover-add-to-basket.product-details {
   left: 50%;
   right: auto;
@@ -3458,7 +3477,21 @@ input.w-button {
   transform: translateX(-50%);
 }
 
+.popover-err-cart.product-details {
+  left: auto;
+  right: auto;
+}
+
 .popover-add-to-basket.show {
+  visibility: visible;
+  animation-name: addToBasket;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  display: flex !important;
+}
+
+.popover-err-cart.show {
   visibility: visible;
   animation-name: addToBasket;
   animation-duration: 5s;
@@ -3481,6 +3514,11 @@ input.w-button {
   height: 1.6rem;
 }
 
+.popover-err-cart svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
 .popover-add-to-basket::after {
   content: "";
   position: absolute;
@@ -3492,6 +3530,20 @@ input.w-button {
   background-color: #fff;
   rotate: 135deg;
   border-color: #30b90e #30b90e transparent transparent;
+}
+
+.popover-err-cart::after {
+  visibility: hidden;
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  width: 12px;
+  left: 10%;
+  height: 12px;
+  border: 1px solid #ff0000;
+  background-color: #fff;
+  rotate: 135deg;
+  border-color: #ff0000 #ff0000 transparent transparent;
 }
 
 @media screen and (max-width: 991px) {
@@ -3589,7 +3641,6 @@ input.w-button {
     margin-right: 0px;
     margin-left: 0px;
   }
-
   .popover-add-to-basket {
     width: 100%;
     top: auto;
@@ -3599,7 +3650,23 @@ input.w-button {
     box-sizing: content-box;
   }
 
+  .popover-err-cart {
+    right: -40px;
+    width: 100%;
+    top: auto;
+    bottom: calc(100% + 8px);
+    width: 220px;
+    height: 60px;
+    white-space: normal;
+    /* box-sizing: content-box; */
+  }
+
   .popover-add-to-basket::after {
+    width: 10px;
+    height: 10px;
+  }
+
+  .popover-err-cart::after {
     width: 10px;
     height: 10px;
   }
@@ -3619,4 +3686,8 @@ input.w-button {
 /* hidden popup location */
 .recommendation-modal__container {
   display: none !important;
+}
+
+.relative-class{
+  position: relative;
 }
