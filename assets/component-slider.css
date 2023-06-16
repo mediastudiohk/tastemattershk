@@ -317,6 +317,12 @@ slider-component.slider-component-full-width {
   }
 }
 
+@media screen and (max-width: 479px) {
+  .slider-counter {
+    display: none;
+  }
+}
+
 .slider-counter__link--dots .dot {
   width: 1rem;
   height: 1rem;

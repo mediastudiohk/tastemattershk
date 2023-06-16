@@ -3653,7 +3653,7 @@ input.w-button {
   .popover-err-cart {
     right: -40px;
     width: 100%;
-    top: auto;
+    top: -60px;
     bottom: calc(100% + 8px);
     width: 220px;
     height: 60px;
@@ -3674,7 +3674,7 @@ input.w-button {
 
 /* scroll bar */
 ::-webkit-scrollbar {
-  width: 0.375rem;
+  width: 0.625rem;
   height: 0.625rem;
 }
 ::-webkit-scrollbar-thumb {
