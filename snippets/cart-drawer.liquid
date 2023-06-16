@@ -148,10 +148,10 @@
               class="totals"
               role="status"
             >
-              <div style="width: 180px; font-size: 16px;">
+              <div class="item-cart-container">
                 <div class="totals__subtotal text-font-small-caps" style="color: #867C75;">
                   {{ 'sections.cart.subtotal' | t }}
-                  <span style="font-size: 16px; text-transform: lowercase"
+                  <span class="item-cart-style"
                     >({{ cart.item_count }}
                     {% if cart.item_count == 1 %}{{ 'sections.cart.item' | t }}{% else %}{{ 'sections.cart.items' | t }}{% endif %})</span
                   >
