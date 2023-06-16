@@ -74,9 +74,20 @@ if (!customElements.get("product-form")) {
         }
         config.body = formData;
 
+
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
+            fetch(`${routes.cart_url}`, config)
+              .then((response) => response.json())
+              .then((response) => {
+                const elementToReplace = document.getElementById("cart-icon-bubble");
+                elementToReplace.innerHTML = response.item_count;
+              })
+              .catch((e) => {
+                console.error(e);
+              })
+
             if (response.status) {
               this.handleErrorMessage(response.description);
 
@@ -90,6 +101,8 @@ if (!customElements.get("product-form")) {
               return;
             } else if (window.routes.cart_url === window.location.pathname) {
               window.location = window.routes.cart_url;
+
+
               return;
             }
             if (!this.error)
@@ -97,7 +110,7 @@ if (!customElements.get("product-form")) {
             this.error = false;
 
             const popoverAddToBasket = this.submitButton.querySelector(".popover-add-to-basket");
-            if(popoverAddToBasket){
+            if (popoverAddToBasket) {
               popoverAddToBasket.classList.add('show')
               setTimeout(() => {
                 popoverAddToBasket.classList.remove('show')
@@ -120,12 +133,14 @@ if (!customElements.get("product-form")) {
               }, 1000)
             } else {
               this.cart.renderContents(response);
+
             }
           })
           .catch((e) => {
             console.error(e);
           })
           .finally(() => {
+
             this.submitButton.classList.remove("loading");
             if (this.cart && this.cart.classList.contains("is-empty"))
               this.cart.classList.remove("is-empty");

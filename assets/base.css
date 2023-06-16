@@ -3326,6 +3326,17 @@ input.w-button {
   font-weight: 300;
 }
 
+.item-cart-container {
+  width: 180px;
+  font-size: 16px;
+}
+
+.item-cart-style {
+  font-size: 16px;
+  text-transform: lowercase;
+  font-variant: no-common-ligatures;
+}
+
 .text-font-small-caps {
   font-variant: small-caps;
 }
@@ -3688,6 +3699,6 @@ input.w-button {
   display: none !important;
 }
 
-.relative-class{
+.relative-class {
   position: relative;
 }
