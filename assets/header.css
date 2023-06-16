@@ -32,6 +32,13 @@
 
 .category-container {
   background-color: #fafaf0;
+  height: calc(100vh - 6rem);
+}
+
+.category-wrapper {
+  overflow: auto;
+  max-height: 55rem;
+  align-items: self-start !important;
 }
 
 .grid-menu-item {
@@ -39,8 +46,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.6rem;
-  overflow: auto;
-  max-height: calc(100vh - 12rem);
   width: 100%;
 }
 
