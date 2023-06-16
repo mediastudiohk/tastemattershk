@@ -11,6 +11,7 @@
   font-weight: normal;
 }
 
+
 .cart-item__quantity-wrapper {
   display: flex;
 }
@@ -131,7 +132,7 @@ cart-remove-button .button {
 }
 
 cart-remove-button .button:before,
-cart-remove-button .button:after  {
+cart-remove-button .button:after {
   content: none;
 }
 
