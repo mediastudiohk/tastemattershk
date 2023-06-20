@@ -167,13 +167,16 @@ img {
   position: relative;
 }
 
-
 .add-to-basket-button:disabled,
 .add-to-basket-button[aria-disabled="true"] {
   opacity: 0.4;
   cursor: default;
+  background-color: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.35) 0,
+    rgba(255, 255, 255, 0) 100%
+  );
   background-color: #b8b7b6;
-  background-image: url("cart.png");
 }
 
 .w-form-done {
