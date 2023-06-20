@@ -7,21 +7,24 @@
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/italian_430x_129a238a-6ed5-4ccd-bdd2-bb73e23eaaca.webp",
-            "heading": "Italian Antipasti"
+            "heading": "Italian Antipasti",
+            "link": ""
           }
         },
         "f69311a3-f930-4998-8d51-d499882132dd": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/organicbeverage_430x_430x_65136dc9-cafc-4687-ad9e-e196a4d99a16.webp",
-            "heading": "Organic Juice"
+            "heading": "Organic Juice",
+            "link": ""
           }
         },
         "4fef4e16-4125-45d4-9b85-047a71dd05a9": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/image_banner_430x_d850ee93-f287-460a-9ba9-efb73b7a6e4a.jpg",
-            "heading": "Genuine German Sausages"
+            "heading": "Genuine German Sausages",
+            "link": ""
           }
         }
       },

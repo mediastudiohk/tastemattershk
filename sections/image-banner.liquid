@@ -33,6 +33,15 @@
               >
                 <div class="slideshow__media banner__media {% if block.settings.image == blank %} placeholder{% endif %}">
                   {%- if block.settings.image -%}
+                    {% comment %} check link banner {% endcomment %}
+                    {%- if block.settings.link != blank -%}
+                      <div class="slideshow__media-link">
+                        <a href="{{ block.settings.link }}" target="_blank">
+                          <span class="hidden">Link</span>
+                        </a>
+                      </div>
+                    {% endif %}
+
                     <h2 class="home_grid-heading">{{ block.settings.heading }}</h2>
                     <img
                       src="{{ block.settings.image | image_url }}"
@@ -207,6 +216,11 @@
           "id": "heading",
           "default": "Image slide",
           "label": "t:sections.slideshow.blocks.slide.settings.heading.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.slideshow.blocks.slide.settings.link.label"
         }
       ]
     }

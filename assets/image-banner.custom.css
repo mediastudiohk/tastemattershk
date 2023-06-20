@@ -122,6 +122,16 @@
   font-weight: 400;
 }
 
+.slideshow__media-link a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 479px) {
   .home_component {
     height: 350px;
