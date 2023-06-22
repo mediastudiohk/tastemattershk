@@ -81,6 +81,8 @@ if (!customElements.get("product-form")) {
             fetch(`${routes.cart_url}`, config)
               .then((response) => response.json())
               .then((response) => {
+                const checkoutNav = document.getElementById("checkout-nav");
+                (checkoutNav && response.total_price >= 50000) && checkoutNav.classList.remove('disable-button');
                 const elementToReplace = document.getElementById("cart-icon-bubble");
                 elementToReplace.innerHTML = response.item_count;
               })
