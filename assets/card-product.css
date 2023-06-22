@@ -171,12 +171,11 @@ img {
 .add-to-basket-button[aria-disabled="true"] {
   opacity: 0.4;
   cursor: default;
-  background-image: url("cart.png"),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.35) 0px,
-      rgba(255, 255, 255, 0) 100%
-    );
+  background-color: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.35) 0,
+    rgba(255, 255, 255, 0) 100%
+  );
   background-color: #b8b7b6;
 }
 
