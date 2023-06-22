@@ -13,15 +13,18 @@
 
         <div class="pre-checkout-left padding-section-medium">
           <div class="hidden pre-checkout-left-overlay"></div>
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset center">
-            <div style="display:flex; height:56.72px; align-items:center">
-              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="height:100%">
+          <a
+            href="{{ routes.root_url }}"
+            class="header__heading-link link link--text focus-inset center hidden-logo-mobile"
+          >
+            <div style="display:flex; width: 272px; align-items:center">
+              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%">
             </div>
           </a>
 
           <div class="pre-checkout-left_breadcrumbs flex items-center">
             <a href="{{ routes.cart_url }}" style="color: #1773b0">{{ 'sections.header.basket' | t }}</a>
-            <div class="flex" style="width: 16px; height: 16px; flex-shrink: 0">
+            <div class="flex breadcrumb-svg" style="width: 16px; height: 16px; flex-shrink: 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -37,7 +40,7 @@
               </svg>
             </div>
             <span>{{ 'pre-checkout.delivery_calendar' | t }}</span>
-            <div class="flex" style="width: 16px; height: 16px; flex-shrink: 0">
+            <div class="flex breadcrumb-svg" style="width: 16px; height: 16px; flex-shrink: 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -61,8 +64,8 @@
             {{ 'pre-checkout.delivery_details.title' | t }}
           </div>
 
-          <div class="flex margin-bottom margin-medium" style="grid-column-gap: 16px; flex-wrap: wrap">
-            <div class="flex flex-col region">
+          <div class="flex margin-bottom margin-medium delivery-details" style="grid-column-gap: 16px; flex-wrap: wrap">
+            <div class="flex flex-col region text-14">
               <label for="Area" class="checkout_section-label">
                 {{- 'pre-checkout.delivery_details.region' | t }} *</label
               >
@@ -75,7 +78,7 @@
               </span>
             </div>
 
-            <div class="flex flex-col district">
+            <div class="flex flex-col district text-14">
               <label for="'District" class="checkout_section-label">
                 {{- 'pre-checkout.delivery_details.district' | t }} *</label
               >
@@ -92,20 +95,20 @@
             </div>
           </div>
 
-          <div class="delivery-district-description text-size-small margin-bottom margin-medium">
+          <div class="delivery-district-description text-size-small margin-bottom margin-medium mb-14">
             {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
           </div>
 
           <div class="delivery-heading margin-bottom margin-tiny">
             {{ 'pre-checkout.delivery_schedule.title' | t }}
           </div>
-          <div class="margin-bottom margin-medium">
-            <div class="text-display-inline">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
-            <div id="delivery-location" class="checkout_delivery-location"></div>
-            <div>{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
+          <div class="margin-bottom margin-medium mb-14">
+            <div class="text-display-inline text-14">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
+            <div id="delivery-location" class="checkout_delivery-location text-14"></div>
+            <div class="text-14">{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
           </div>
 
-          <div class="margin-medium" style="margin-left: 0; margin-right: 0; position: relative">
+          <div class="margin-medium m-14" style="margin-left: 0; margin-right: 0; position: relative">
             <div class="icon-schedule back" onclick="onSchedule('back')">
               <span class="left"></span>
             </div>
@@ -118,8 +121,8 @@
               id="delivery-schedule-wrapper"
               {% comment %} onmousedown="return false" {% endcomment %}
             >
-              <div class="delivery-schedule-item-date-wrapper"></div>
-              <div class="delivery-schedule-item-time-wrapper"></div>
+              <div class="delivery-schedule-item-date-wrapper text-14"></div>
+              <div class="delivery-schedule-item-time-wrapper text-14"></div>
               <span class="validate-schedule">
                 {{ 'pre-checkout.delivery_schedule.time_slot' | t }}
                 {{ 'pre-checkout.blank_field' | t }}
@@ -130,7 +133,7 @@
           <div class="delivery-heading margin-bottom margin-small">
             {{ 'pre-checkout.delivery_option.title' | t }}
           </div>
-          <div class="checkout_field-wrapper margin-bottom margin-small delivery-option">
+          <div class="checkout_field-wrapper margin-bottom margin-small delivery-option text-14">
             <label for="Area-2" class="checkout_section-label">
               {{- 'pre-checkout.delivery_option.label' | t | newline_to_br -}}
             </label>
@@ -140,7 +143,6 @@
                 id="doorstep"
                 name="delivery-option"
                 value="{{ 'pre-checkout.delivery_option.option1' | t }}"
-              
               >
               <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
             </div>
@@ -164,8 +166,8 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-between">
-            <a href="{{ routes.cart_url }}" class="flex items-center back-to-basket">
+          <div class="flex items-center justify-between pre-checkout-bottom">
+            <a href="{{ routes.cart_url }}" class="flex items-center back-to-basket text-14">
               <div class="flex" style="width: 16px; height: 16px;">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +191,7 @@
                 disabled
               {% endif %}
               type="button"
-              class="uppercase pre-checkout-button"
+              class="uppercase pre-checkout-button text-14"
               onclick="onCheckout()"
             >
               {{ 'pre-checkout.checkout' | t }}
@@ -202,7 +204,7 @@
           <div class="padding-section-medium">
             <div class="div-block-4-copy gridspan1">
               {%- for item in cart.items -%}
-                <div class="flex cart-item-details">
+                <div class="flex cart-item-details text-14">
                   <div class="cart-item-img">
                     <img
                       src="{{ item.image | image_url: width: 64 }}"
@@ -258,10 +260,10 @@
 
             <div class="total-amount">
               <div class="flex justify-between items-center">
-                <span class="text-style-grand-total-copy">{{ 'pre-checkout.summary.total' | t }}</span>
+                <span class="text-style-grand-total-copy text-17">{{ 'pre-checkout.summary.total' | t }}</span>
                 <div class="flex items-center">
-                  <span class="text-block-3-copy">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <div class="text-style-grand-total price-custom" style="display: inline-block">
+                  <span class="text-block-3-copy text-12">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <div class="text-style-grand-total price-custom text-17" style="display: inline-block">
                     {{ cart.total_price | money }}
                   </div>
                 </div>
@@ -273,18 +275,66 @@
             </div>
           </div>
         </div>
+
+        <div class="toggle-order-summary" onclick="toggleOrderSummary()">
+          <div style="display:flex; align-items:center; color: rgb(51,79,180)" class="text-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--ph"
+              width="18px"
+              height="18px"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 256 256"
+            >
+              <path fill="rgb(51,79,180)"
+                d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z">
+              </path>
+            </svg>
+            &nbsp;&nbsp;
+            <span class="toggle-order-summary-text">Show order summary</span>
+            &nbsp;
+            <div style="width: 10px; height: 10px; margin-top: 5px" class="flex arrow-down">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+                style="rotate: 90deg; font-weight: 600"
+              >
+                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="price-custom" style="display: inline-block">
+            {{ cart.total_price | money }}
+          </div>
+        </div>
+
+        <div style="display:flex; width: 272px; align-items:center; padding: 21px 0; height: fit-content;">
+          <a
+            href="{{ routes.root_url }}"
+            class="header__heading-link link link--text focus-inset center show-logo-mobile"
+          >
+            <img src="{{ settings.logo | image_url: width: 1000 }}" 
+              loading="lazy" 
+              style="width:100%; height: 100%">
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-{% comment %} <script src="{{ 'pre-checkout.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 <script>
-  
-  
-  
-  
-  
   
   
   {% comment %} check empty object {% endcomment %}
@@ -383,6 +433,16 @@
       id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
     },
     option: JSON.parse(timeByDateStorage)?.option || ""
+  }
+
+  console.log('timeByDate', timeByDate)
+
+  if(timeByDate.region && timeByDate.district) {
+    deliveryLocation.innerHTML = `${timeByDate.region} / ${timeByDate.district}`
+  } else if (timeByDate.region && !timeByDate.district) {
+    deliveryLocation.innerHTML = timeByDate.region;
+  } else {
+    deliveryLocation.innerHTML = ""
   }
 
 
@@ -683,7 +743,7 @@
         scheduleTimeHtml += `
           <div class="delivery-schedule-item-time">
           ${!item.times.length
-          ? `<div class="delivery-schedule-item-time-no-delivery">{{ 'pre-checkout.no_delivery' | t }}</div>` 
+          ? `<div class="delivery-schedule-item-time-no-delivery text-14">{{ 'pre-checkout.no_delivery' | t }}</div>` 
           : `
           <div class="delivery-schedule-item-time-value-wrapper">
             ${item.times.map((i) => {
@@ -896,4 +956,29 @@
   
     return window.location.href = "/checkout"
   }
+
+  const toggleOrderSummary = () => {
+    const orderSummarySection = document.querySelector(".toggle-order-summary");
+    const orderSummaryOld = document.querySelector(".pre-checkout-right");
+    const orderSummaryText = orderSummarySection.querySelector(".toggle-order-summary-text");
+    const orderSummaryArrow = orderSummarySection.querySelector(".arrow-down svg");
+
+    if(orderSummarySection){
+      orderSummaryOld.classList.toggle("block");
+      orderSummarySection.classList.toggle("show");
+
+      if(orderSummarySection.classList.contains("show")){
+        console.log("'222'");
+        orderSummaryText.innerText = "Hide order summary";
+        orderSummaryArrow.style.rotate = "-90deg";
+
+      }else{
+        orderSummaryText.innerText = "Show order summary";
+        orderSummaryArrow.style.rotate = "90deg";
+
+      }
+    }
+  }
+
+
 </script>

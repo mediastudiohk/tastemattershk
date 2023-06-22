@@ -333,6 +333,10 @@ body,
   display: none !important;
 }
 
+.block {
+  display: block !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   overflow: hidden;
