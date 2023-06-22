@@ -186,7 +186,8 @@
 }
 
 .cart-item-img img {
-  padding: 8px;
+  object-fit: contain;
+  padding: 8px 0;
   border-right: 1px solid #d8d8d8;
   border-bottom: 1px solid #d8d8d8;
   border-radius: 8px;
@@ -407,8 +408,8 @@
 }
 
 .back-to-basket{
-  color: #716359;
-  font-weight: 700;
+  color: rgb(51,79,180);
+  font-weight: normal;
 }
 
 .delivery-option div {
@@ -441,8 +442,12 @@
 }
 
 .show-logo-mobile {
-  display: none;
+  display: none !important;
   z-index: 10;
+  width: 272px;
+  align-items: center;
+  margin: 21px 0;
+  height: fit-content;
 }
 
 .toggle-order-summary {
@@ -453,6 +458,10 @@
   margin-left: -20px;
   margin-right: -20px;
   background-color: rgb(242, 242, 227);
+}
+
+.sub-total .price-custom {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 991px) {
@@ -515,7 +524,7 @@
   }
 
   .show-logo-mobile {
-    display: block;
+    display: flex !important;
     max-height: 60px;
   }
 
@@ -523,9 +532,17 @@
     display: none;
   }
 
-  .pre-checkout-right {
+  /* .pre-checkout-right {
     display: none;
+    height: 0;
   }
+
+  .pre-checkout-right.block {
+    display: block;
+    transition: all 0.3s ease-in-out;
+    will-change: height;
+    height: auto;
+  } */
 
   .pre-checkout-right-overlay {
     position: absolute;
@@ -602,8 +619,13 @@
     font-size: 1.7rem;
   }
 
+  .total-amount.flex {
+    margin-bottom: 7px;
+  }
+
   .total-amount {
     padding: 0;
+    grid-row-gap: 7px;
   }
 
   .toggle-order-summary {
@@ -622,9 +644,25 @@
     display: none !important;
   }
 
-  .pre-checkout-right.show {
-    display: block;
-    transition: all 0.3s;
-    will-change: height;
+  .pre-checkout-right .padding-section-medium {
+    overflow: hidden;
+    height: 0;
+    padding: 0;
+  }
+
+  .pre-checkout-right.show .padding-section-medium {
+    overflow: hidden;
+    height: auto;
+    padding: 17px 0;
+    transition: height 1s;
+  }
+
+  .cart-item-name span:first-child,
+  .sub-total .price-custom {
+    font-weight: 600;
+  }
+
+  .discount-code-seperator {
+    display: none;
   }
 }
