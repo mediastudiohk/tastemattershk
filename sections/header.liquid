@@ -110,7 +110,11 @@
     color: #bebebe;
     text-decoration: none;
   }
-
+  .disable-button{
+    color: #bebebe;
+    text-decoration: none;
+    pointer-events: none;
+  }
   .iconhover:hover {
     opacity: 0.66;
   }
@@ -435,28 +439,32 @@
           </svg>
           <span>{{ 'sections.header.wishlist' | t }}</span>
         </a>
-        <a
-          class="linkhover"
-          style="display:flex; align-items:end;gap:4px"
-          href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            class="iconify iconify--ic"
-            width="18px"
-            height="18px"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
+          <a 
+            {% if cart.total_price < 50000 or cart == empty %}
+            class="linkhover disable-button"
+            {% else %}
+            class="linkhover"
+            {% endif %}
+            style="display:flex; align-items:end;gap:4px;"
+            href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
           >
-            <path fill="currentColor"
-              d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z">
-            </path>
-          </svg>
-          <span>{{ 'sections.header.checkout' | t }}</span>
-        </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--ic"
+              width="18px"
+              height="18px"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+            >
+              <path fill="currentColor"
+                d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z">
+              </path>
+            </svg>
+            <span>{{ 'sections.header.checkout' | t }}</span>
+          </a> 
         <div style="position:relative;">
           <a id="cart_link" class="linkhover" style="display:flex; align-items:end;gap:4px" href="/cart">
             <svg
@@ -833,7 +841,11 @@
         <span>{{ 'sections.header.wishlist' | t }}</span>
       </a>
       <a
+        {% if cart.total_price < 50000 or cart == empty %}
+          class="linkhover nav-link disable-button"
+        {% else %}
         class="linkhover nav-link"
+        {% endif %}
         style="display:flex; align-items:end;gap:4px"
         href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
       >
@@ -1006,7 +1018,11 @@
           {% endif %}
         {% endif %}
         <a
+          {% if cart.total_price < 50000 or cart == empty %}
+            class="linkhover nav-link disable-button"
+          {% else %}
           class="linkhover nav-link"
+          {% endif %}
           style="display:flex; align-items:end;gap:4px"
           href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
         >
