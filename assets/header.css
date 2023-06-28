@@ -36,13 +36,17 @@
 
 .menu-toggle-container-v2 {
   display: none !important;
-  max-width: 500px;
-  margin: 0px auto;
+}
+
+.category-box{
+  background-color: #fafaf0;
 }
 
 .category-container {
-  background-color: #fafaf0;
+  
   height: calc(100vh - 6rem);
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 .category-wrapper {
@@ -70,6 +74,8 @@
   flex-direction: row;
   justify-content: space-evenly;
   gap: 4px;
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 .item-title-container {
@@ -95,7 +101,6 @@
   .menu-toggle-container-v2 {
     display: block !important;
   }
-  
 }
 
 @media screen and (max-width: 767px) {
