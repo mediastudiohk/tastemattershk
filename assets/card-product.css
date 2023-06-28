@@ -58,6 +58,11 @@ img {
   display: inline-block;
 }
 
+img-v2 {
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .text-block-2 {
   position: absolute;
   left: -80%;
