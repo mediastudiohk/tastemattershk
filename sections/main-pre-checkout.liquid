@@ -319,9 +319,11 @@
             href="{{ routes.root_url }}"
             class="header__heading-link link link--text focus-inset center"
           >
-            <img src="{{ settings.logo | image_url: width: 1000 }}" 
-              loading="lazy" 
-              style="width:100%; height: 100%">
+            <img
+              src="{{ settings.logo | image_url: width: 1000 }}"
+              loading="lazy"
+              style="width:100%; height: 100%"
+            >
           </a>
         </div>
       </div>
@@ -413,7 +415,7 @@
   const timeSlotElement = document.querySelector(".timeslot")
   const timeSlotValidate = timeSlotElement.querySelector(".validate-schedule");
 
-  const timeByDateStorage = window.localStorage.getItem('timeByDate');
+  const timeByDateStorage = localStorage.getItem('timeByDate');
 
   const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
 
@@ -605,7 +607,7 @@
         district: value,
         schedule: TIME_BY_DATE_DEFAULT.schedule
       }
-      window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+      localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
       fetchData(encodeURIComponent(areaSelect.value), encodeURIComponent(districtSelect.value))
     })
   }
@@ -636,7 +638,7 @@
       district: "",
       schedule: TIME_BY_DATE_DEFAULT.schedule
     }
-    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+    localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
     fetchData(encodeURIComponent(areaSelect.value))
   })
 
@@ -695,6 +697,9 @@
     const isMaximumOrder = item.classList.contains('maximum-order');
     if(!isMaximumOrder) {
       const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
+
+      const timeValue = item.querySelector(".time-slot");
+
       for (timeSelected of timeValuesSelected) {
         timeSelected.classList.remove('selected');
       }
@@ -705,20 +710,19 @@
         id_schedule_default: Number(item.id),
         id_schedule: Number(item.id),
         date: item.title,
-        time: item.innerText
+        time: timeValue.innerText
       }
       timeByDate = {
         ...timeByDate,
         schedule: scheduleTimeByDate
       }
   
-      window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-  
+      localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
   
       dates = dates.map((date) => ({
         ...date,
         times: date.times.map((time) => {
-          const isSelected = item.title === date.value && item.innerText === time.comment;
+          const isSelected = item.title === date.value && timeValue.innerText === time.comment;
   
           return {
             ...time,
@@ -743,7 +747,7 @@
                 return `<div class="delivery-schedule-item-time-value ${i.selected ? "selected" : ""} ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
                   onclick="onSelectItemValue(this)"
                   >
-                    <span>${i.comment}</span>
+                    <span class="time-slot">${i.comment}</span>
                     <span>
                       <svg
                         class="icon icon-checkmark color-foreground-text"
@@ -786,8 +790,6 @@
       }
     }
   }
-  
-  renderTime();
   
   let nextCount = 0;
   let backCount = 0;
@@ -856,7 +858,8 @@
         const scheduleDefault = data.response.scheduleDefault;
         const schedule = data.response.schedule;
         const scheduleExist = data.response.scheduleExist;
-  
+        const timeByDateStorageSchedule = timeByDateStorage ? JSON.parse(timeByDateStorage).schedule : null;
+
         dates = dates.map((date) => {
           const isScheduleExits = !!scheduleExist[date.value];
   
@@ -864,8 +867,9 @@
             ...date,
             times: ((isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || [])
             .map((i) => {
-              const isSelected = (i.comment === JSON.parse(timeByDateStorage)?.schedule?.time && date.value === JSON.parse(timeByDateStorage)?.schedule?.date
-              && (i.id_schedule_default === JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || i.id_schedule === JSON.parse(timeByDateStorage)?.schedule?.id_schedule))
+              const isSelected = (i.comment === timeByDateStorageSchedule?.time && date.value === timeByDateStorageSchedule?.date
+              && (i.id_schedule === timeByDateStorageSchedule?.id_schedule || i.id_schedule_default === timeByDateStorageSchedule?.id_schedule_default) 
+              && !i?.is_maximum_order)
               || false;
 
               return {
@@ -875,36 +879,35 @@
             })
           }
         })
-  
+
         renderTime(nextCount);
+
+        areaSelect.value = timeByDate.region || areas[0].value;
+        renderDistricts(districts);
+        districtSelect.value = timeByDate.district || "";
+        let optionExits = false;
+
+        if(inputRadio.length) {
+          for (let i of inputRadio) {
+            if(i.value === timeByDate.option) {
+              optionExits = true;
+            }
+          }
+        }
+      
+        timeByDate = {
+          ...timeByDate,
+          region: timeByDate.region || areas[0].value,
+          option: optionExits ? timeByDate.option : inputRadio[0].value
+        }
+        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
       }
     } catch (error) {
       console.log('error', error);
     }
   }
   
-  
-    areaSelect.value = timeByDate.region || areas[0].value;
-    renderDistricts(districts);
-    districtSelect.value = timeByDate.district || "";
-    let optionExits = false;
-
-    if(inputRadio.length) {
-      for (let i of inputRadio) {
-        if(i.value === timeByDate.option) {
-          optionExits = true;
-        }
-      }
-    }
-  
-    timeByDate = {
-      ...timeByDate,
-      region: timeByDate.region || areas[0].value,
-      option: optionExits ? timeByDate.option : inputRadio[0].value
-    }
-    window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-  
-  fetchData(encodeURIComponent(areaSelect.value),encodeURIComponent(districtSelect.value));
+  fetchData(encodeURIComponent(timeByDate.region),encodeURIComponent(timeByDate.district));
   
   
   // delivery option
@@ -918,7 +921,7 @@
           ...timeByDate,
           option: event.target.value
         }
-        window.localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
       })
     }
   }
@@ -971,6 +974,7 @@
       }
     }
   }
+
 
 
 </script>
