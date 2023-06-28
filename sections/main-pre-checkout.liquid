@@ -203,7 +203,8 @@
           <div class="hidden pre-checkout-right-overlay"></div>
           <div class="padding-section-medium">
             <div class="div-block-4-copy gridspan1">
-              {%- for item in cart.items -%}
+              {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
+              {%- for item in sortedItems -%}
                 <div class="flex cart-item-details text-14">
                   <div class="cart-item-img">
                     <img

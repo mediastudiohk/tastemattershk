@@ -35,7 +35,8 @@
                 <div class="drawer__cart-items-wrapper">
                   <table class="cart-items" role="table">
                     <tbody role="rowgroup">
-                      {%- for item in cart.items -%}
+                      {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
+                      {% for item in sortedItems %}
                         <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                           <td class="quantity" role="cell" headers="CartDrawer-ColumnProductImage">
                             {{ item.quantity }}x
@@ -240,4 +241,6 @@
       document.querySelector('#cart').submit();
     }); <a href="/">Click here</a> to continue shopping.
   });
+
+  console.log("cart.items", {{ cart.items | json }})
 </script>
