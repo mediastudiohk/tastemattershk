@@ -1069,28 +1069,30 @@
           {%- render 'cart-drawer' -%}
         </div>
       </div>
-      <div class="category-container">
-        <div class="page-padding show-tablet category-wrapper text-font-small-caps">
-          <div class="nav_container-bottom grid-menu-item">
-            {% for itemLink in section.settings.menu.links %}
-              <div class="item-container">
-                <a href="{{ itemLink.url }}" class="image-item">
-                  <img
-                    height="113"
-                    width="177"
-                    src="{{ itemLink.links.first.object.image.src | image_url: width: 1000 }}"
-                    loading="lazy"
-                    style="aspect-ratio: 3 / 1.5; width: 100%"
-                ></a>
-                <a class="item-title-container" href="{{ itemLink.links.first.url }}">
-                  {{- itemLink.title -}}
-                </a>
-              </div>
-            {% endfor %}
-          </div> 
+      <div class="category-box">
+        <div class="category-container">
+          <div class="page-padding show-tablet category-wrapper text-font-small-caps">
+            <div class="nav_container-bottom grid-menu-item">
+              {% for itemLink in section.settings.menu.links %}
+                <div class="item-container">
+                  <a href="{{ itemLink.url }}" class="image-item">
+                    <img
+                      height="113"
+                      width="177"
+                      src="{{ itemLink.links.first.object.image.src | image_url: width: 1000 }}"
+                      loading="lazy"
+                      style="aspect-ratio: 3 / 1.5; width: 100%"
+                  ></a>
+                  <a class="item-title-container" href="{{ itemLink.links.first.url }}">
+                    {{- itemLink.title -}}
+                  </a>
+                </div>
+              {% endfor %}
+            </div> 
+          </div>
         </div>
     </div>
-  </div>
+    </div>
 </nav>
 
 {% schema %}
