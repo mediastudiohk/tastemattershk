@@ -114,6 +114,9 @@
   .header-menu .page-padding {
     padding: 0.8rem 2rem;
   }
+  .category-wrapper {
+    max-height: 70rem;
+  }
 }
 
 @media screen and (max-width: 479px) {
