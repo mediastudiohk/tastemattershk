@@ -622,6 +622,7 @@
   areaSelect.innerHTML = areaElementHtml;
   areaSelect.addEventListener('change', (event) => {
     const { value } = event.target;
+    areaSelect.value = value;
     deliveryLocation.innerHTML = value;
     districtValidate.classList.remove('invalid');
     districtSelect.classList.remove('invalid');
@@ -642,6 +643,9 @@
     localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
     fetchData(encodeURIComponent(areaSelect.value))
   })
+
+  areaSelect.value = timeByDate.region || areas[0].value;
+  districtSelect.value = timeByDate.district || "";
 
   // delivery schedule
   let scheduleDateElement = document.querySelector(".delivery-schedule-item-date-wrapper");
@@ -846,6 +850,26 @@
       iconBackElement.style.visibility = "hidden";
     }
   }
+
+  let optionExits = false;
+
+  if(inputRadio.length) {
+    for (let i of inputRadio) {
+      if(i.value === timeByDate.option) {
+        optionExits = true;
+      }
+    }
+  }
+
+  timeByDate = {
+    ...timeByDate,
+    option: optionExits ? timeByDate.option : inputRadio[0].value
+  }
+  localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+
+  if(timeByDate?.region) {
+    renderDistricts(districts);
+  }
   
   const fetchData = async (area = '', district = '') => {
     const controller = new AbortController();
@@ -882,26 +906,6 @@
         })
 
         renderTime(nextCount);
-
-        areaSelect.value = timeByDate.region || areas[0].value;
-        renderDistricts(districts);
-        districtSelect.value = timeByDate.district || "";
-        let optionExits = false;
-
-        if(inputRadio.length) {
-          for (let i of inputRadio) {
-            if(i.value === timeByDate.option) {
-              optionExits = true;
-            }
-          }
-        }
-      
-        timeByDate = {
-          ...timeByDate,
-          region: timeByDate.region || areas[0].value,
-          option: optionExits ? timeByDate.option : inputRadio[0].value
-        }
-        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
       }
     } catch (error) {
       console.log('error', error);
