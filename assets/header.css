@@ -96,7 +96,7 @@
 
 @media screen and (max-width: 991px) {
   .category-wrapper {
-    max-height: 70rem;
+    max-height: 90rem;
   }
   .header-menu .header-menu-top {
     align-items: center;
@@ -115,7 +115,7 @@
     padding: 0.8rem 2rem;
   }
   .category-wrapper {
-    max-height: 70rem;
+    max-height: 90rem;
   }
 }
 
