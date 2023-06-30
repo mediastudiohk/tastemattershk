@@ -38,12 +38,11 @@
   display: none !important;
 }
 
-.category-box{
+.category-box {
   background-color: #fafaf0;
 }
 
 .category-container {
-  
   height: calc(100vh - 6rem);
   margin: 0 auto;
   max-width: 500px;
@@ -53,6 +52,12 @@
   overflow: auto;
   max-height: 55rem;
   align-items: self-start !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.category-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .grid-menu-item {
