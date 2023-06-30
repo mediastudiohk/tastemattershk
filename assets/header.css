@@ -50,7 +50,6 @@
 
 .category-wrapper {
   overflow: auto;
-  max-height: 55rem;
   align-items: self-start !important;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -80,7 +79,7 @@
   justify-content: space-evenly;
   gap: 4px;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 450px;
 }
 
 .item-title-container {
@@ -96,6 +95,9 @@
 }
 
 @media screen and (max-width: 991px) {
+  .category-wrapper {
+    max-height: 70rem;
+  }
   .header-menu .header-menu-top {
     align-items: center;
   }
@@ -115,6 +117,9 @@
 }
 
 @media screen and (max-width: 479px) {
+  .category-wrapper {
+    max-height: 55rem;
+  }
   .header-menu .header__heading-link-logo {
     width: 19.2rem !important;
     margin-left: 0;
