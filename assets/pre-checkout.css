@@ -329,6 +329,7 @@
   cursor: pointer;
   position: relative;
   box-sizing: content-box;
+  word-wrap: anywhere;
 }
 
 .delivery-schedule-item-time-no-delivery,
