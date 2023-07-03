@@ -420,30 +420,8 @@
 
   const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
 
-  let timeByDate = {
-    region: JSON.parse(timeByDateStorage)?.region || "",
-    district: JSON.parse(timeByDateStorage)?.district || "",
-    schedule: {
-      id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
-      date: JSON.parse(timeByDateStorage)?.schedule?.date || "",
-      order_name: JSON.parse(timeByDateStorage)?.schedule?.order_name || "",
-      time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
-      id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
-    },
-    option: JSON.parse(timeByDateStorage)?.option || ""
-  }
-
-  if(timeByDate.region && timeByDate.district) {
-    deliveryLocation.innerHTML = `${timeByDate.region} / ${timeByDate.district}`
-  } else if (timeByDate.region && !timeByDate.district) {
-    deliveryLocation.innerHTML = timeByDate.region;
-  } else {
-    deliveryLocation.innerHTML = ""
-  }
-
-
-  // delivery district
-  const areas = [
+   // delivery district
+   const areas = [
     {
       label: 'Hong Kong Island',
       value: 'Hong Kong Island',
@@ -583,6 +561,30 @@
     },
   ]
 
+  let timeByDate = {
+    region: (timeByDateStorage ? JSON.parse(timeByDateStorage)?.region : areas[0].value) || "",
+    district: JSON.parse(timeByDateStorage)?.district || "",
+    schedule: {
+      id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
+      date: JSON.parse(timeByDateStorage)?.schedule?.date || "",
+      order_name: JSON.parse(timeByDateStorage)?.schedule?.order_name || "",
+      time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
+      id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
+    },
+    option: JSON.parse(timeByDateStorage)?.option || ""
+  }
+
+  if(timeByDate.region && timeByDate.district) {
+    deliveryLocation.innerHTML = `${timeByDate.region} / ${timeByDate.district}`
+  } else if (timeByDate.region && !timeByDate.district) {
+    deliveryLocation.innerHTML = timeByDate.region;
+  } else {
+    deliveryLocation.innerHTML = ""
+  }
+
+
+ 
+
   let districts = timeByDate.region 
                   ? areas.find((area) => area.value === timeByDate.region).districts
                   : areas[0].districts;
@@ -644,8 +646,8 @@
     fetchData(encodeURIComponent(areaSelect.value))
   })
 
-  areaSelect.value = timeByDate.region || areas[0].value;
-  districtSelect.value = timeByDate.district || "";
+  areaSelect.value = timeByDate.region;
+  districtSelect.value = timeByDate.district;
 
   // delivery schedule
   let scheduleDateElement = document.querySelector(".delivery-schedule-item-date-wrapper");
