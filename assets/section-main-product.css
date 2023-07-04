@@ -1785,7 +1785,6 @@ a.product__text {
       rgba(255, 255, 255, 0.35) 0,
       rgba(255, 255, 255, 0) 100%
     );
-  background-color: #b8b7b6;
   background-position: 10% 50%, 0px 0px;
   background-size: 22px 22px, auto;
   background-repeat: no-repeat, repeat;
@@ -1812,6 +1811,15 @@ a.product__text {
   cursor: default;
   border-color: silver;
   background-color: #b8b7b6;
+}
+
+.add-to-cart-button:disabled:hover {
+  background-image: url("cart.png"),
+    -webkit-gradient(linear, left bottom, left top, from(#b8b7b6), to(#bebebe));
+  background-image: url("cart.png"), linear-gradient(0deg, #bebebe, #b8b7b6);
+  background-position: 10% 50%, 0px 0px;
+  background-size: 22px 22px, auto;
+  background-attachment: scroll, scroll;
 }
 
 .product-page_tabs {
