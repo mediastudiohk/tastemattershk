@@ -113,7 +113,7 @@
 }
 
 .delivery-heading {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .pre-checkout-button {
@@ -546,6 +546,7 @@
 
   .mb-14 {
     margin-bottom: 14px;
+    font-size: 14px;
   }
 
   .m-14 {
