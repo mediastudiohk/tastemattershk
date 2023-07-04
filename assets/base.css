@@ -597,6 +597,10 @@ table:not([class]) th {
   align-items: center;
 }
 
+.breadcrumb-font-size {
+  font-size: 12px;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -3645,7 +3649,7 @@ input.w-button {
     display: block;
   }
 
-  .margin-top {
+   .margin-top {
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;

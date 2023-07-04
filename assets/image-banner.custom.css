@@ -132,15 +132,14 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 991px) {
   .home_component {
-    height: 350px;
+    height: 650px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto;
     grid-template-rows: 2fr 1fr;
   }
-
   #home-banner-layout {
     -ms-grid-row: span 1;
     grid-row-start: span 1;
@@ -176,6 +175,13 @@
     right: 0%;
     bottom: auto;
     font-size: 24px;
+  }
+}
+
+
+@media screen and (max-width: 479px) {
+  .home_component {
+    height: 350px;
   }
 }
 
