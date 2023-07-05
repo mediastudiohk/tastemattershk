@@ -69,7 +69,7 @@
               <label for="Area" class="checkout_section-label">
                 {{- 'pre-checkout.delivery_details.region' | t }} *</label
               >
-              <select name="" id="Area" class="checkout_section-select area w-select">
+              <select name="" id="Area" class="checkout_section-select area w-select text-14-all">
                 <option value="">{{ 'pre-checkout.select_one' | t }}</option>
               </select>
               <span class="validate-schedule">
@@ -82,7 +82,7 @@
               <label for="'District" class="checkout_section-label">
                 {{- 'pre-checkout.delivery_details.district' | t }} *</label
               >
-              <select name="" id="District" class="checkout_section-select district w-select">
+              <select name="" id="District" class="checkout_section-select district w-select text-14-all">
                 <option value="">
                   {{ 'pre-checkout.select_one' | t -}}
                 </option>
@@ -95,14 +95,14 @@
             </div>
           </div>
 
-          <div class="delivery-district-description text-size-small margin-bottom margin-medium mb-14">
+          <div class="delivery-district-description text-size-small margin-bottom margin-medium mb-14 text-14-all">
             {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
           </div>
 
           <div class="delivery-heading margin-bottom margin-tiny">
             {{ 'pre-checkout.delivery_schedule.title' | t }}
           </div>
-          <div class="margin-bottom margin-medium mb-14">
+          <div class="margin-bottom margin-medium mb-14 text-14-all">
             <div class="text-display-inline text-14">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
             <div id="delivery-location" class="checkout_delivery-location text-14"></div>
             <div class="text-14">{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
@@ -137,7 +137,7 @@
             <label for="Area-2" class="checkout_section-label">
               {{- 'pre-checkout.delivery_option.label' | t | newline_to_br -}}
             </label>
-            <div class="flex items-center">
+            <div class="flex items-center text-14-all">
               <input
                 type="radio"
                 id="doorstep"
@@ -146,7 +146,7 @@
               >
               <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center text-14-all">
               <input
                 type="radio"
                 id="concierge"
@@ -155,7 +155,7 @@
               >
               <label for="concierge">{{ 'pre-checkout.delivery_option.option2' | t }}</label>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center text-14-all">
               <input
                 type="radio"
                 id="contact-me"
@@ -167,7 +167,7 @@
           </div>
 
           <div class="flex items-center justify-between pre-checkout-bottom">
-            <a href="{{ routes.cart_url }}" class="flex items-center back-to-basket text-14">
+            <a href="{{ routes.cart_url }}" class="flex items-center back-to-basket text-14 text-14-all">
               <div class="flex" style="width: 12px; height: 12px;">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +218,7 @@
                     <div class="cart-item-quantity">{{- item.quantity -}}</div>
                   </div>
 
-                  <div class="cart-item-name flex flex-col">
+                  <div class="cart-item-name flex flex-col text-14-all">
                     <span>{{- item.title -}}</span>
                   </div>
 

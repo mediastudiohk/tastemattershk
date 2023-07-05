@@ -256,7 +256,7 @@ cart-items {
   position: relative;
 }
 
-.box-shadow-cart-form{
+.box-shadow-cart-form {
   box-shadow: 0 0 14px -5px rgba(0, 0, 0, 0.53);
 }
 
@@ -740,6 +740,14 @@ cart-items {
 }
 
 @media screen and (max-width: 479px) {
+  .center-small-item {
+    justify-content: center;
+  }
+
+  .cart-button-container {
+    gap: 5px;
+    flex-direction: column;
+  }
   .div-block-3 {
     overflow: auto;
     grid-column-gap: 16px;

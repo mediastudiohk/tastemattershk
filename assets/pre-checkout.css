@@ -1,9 +1,8 @@
-
 .main-pre-checkout {
   margin-top: -136px;
   position: relative;
   color: #2f2f2f;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .pre-checkout-left_breadcrumbs {
@@ -64,9 +63,11 @@
 .checkout_section-label {
   color: #2f2f2f;
   font-weight: 400;
+  font-size: 14px;
 }
 
-.w-input, .w-select {
+.w-input,
+.w-select {
   display: block;
   width: 100%;
   height: 38px;
@@ -89,7 +90,6 @@
   font-family: inherit;
   color: #2f2f2f;
   font-size: inherit;
-  
 }
 
 .checkout_section-select.invalid {
@@ -107,8 +107,8 @@
   box-shadow: none;
 }
 
-.checkout_section-select:focus{
-  border-color: #3898EC;
+.checkout_section-select:focus {
+  border-color: #3898ec;
   outline: 0;
 }
 
@@ -154,7 +154,7 @@
   background-image: none;
 }
 
-.pre-checkout-button:not(:disabled):hover  {
+.pre-checkout-button:not(:disabled):hover {
   background-color: #006bbf;
   -webkit-filter: brightness(110%);
   filter: brightness(110%);
@@ -197,8 +197,8 @@
   position: absolute;
   top: -1rem;
   right: -1rem;
-  background-color: hsla(0,0%,45%,.9);
-  color: #FFF;
+  background-color: hsla(0, 0%, 45%, 0.9);
+  color: #fff;
   width: 2.1rem;
   height: 2.1rem;
   border-radius: 50%;
@@ -231,6 +231,7 @@
   align-items: flex-start;
   text-align: left;
   flex: 1;
+  font-weight: bold;
 }
 
 .total-amount {
@@ -256,7 +257,7 @@
 }
 
 .delivery-schedule-section.transform {
-  transform: translateX(-775px); 
+  transform: translateX(-775px);
   transition: transform 500ms ease 0s;
 }
 
@@ -301,7 +302,7 @@
 
 .delivery-schedule-item-time-wrapper {
   padding: 16px 0;
-  display: grid; 
+  display: grid;
   grid-column-gap: 8px;
   grid-template-columns: repeat(7, minmax(100px, 1fr));
   overflow: auto;
@@ -314,8 +315,7 @@
 }
 
 .delivery-schedule-item-time-no-delivery,
-.delivery-schedule-item-time-value
-{
+.delivery-schedule-item-time-value {
   padding: 8px;
   border: 1px solid #d8d8d8;
   border-radius: 8px;
@@ -339,7 +339,7 @@
 }
 
 .delivery-schedule-item-time-value {
-  background-color: #FFF;
+  background-color: #fff;
   min-height: 56px;
   height: auto;
 }
@@ -385,7 +385,7 @@
   cursor: pointer;
 }
 
-.icon-schedule.back{
+.icon-schedule.back {
   left: 0;
   visibility: hidden;
 }
@@ -409,8 +409,8 @@
   margin-right: -4px;
 }
 
-.back-to-basket{
-  color: rgb(51,79,180);
+.back-to-basket {
+  color: rgb(51, 79, 180);
   font-weight: normal;
 }
 
@@ -456,7 +456,7 @@
   position: relative;
   display: none;
   padding: 17px 20px;
-  border-top: 1px solid rgb(235,235,228);
+  border-top: 1px solid rgb(235, 235, 228);
   margin-left: -20px;
   margin-right: -20px;
   background-color: rgb(242, 242, 227);
@@ -465,9 +465,11 @@
 .sub-total .price-custom {
   font-size: 14px;
 }
+.text-14-all {
+  font-size: 14px;
+}
 
 @media screen and (max-width: 991px) {
-
   .main-pre-checkout {
     margin-top: -90px;
   }
@@ -494,7 +496,7 @@
     display: block !important;
     position: absolute;
     width: calc(100% + 80px);
-    background: #FFF;
+    background: #fff;
     z-index: -1;
     margin-left: -40px;
     top: 0;
@@ -530,7 +532,7 @@
   }
 
   .pre-checkout-left_breadcrumbs a,
-  .pre-checkout-left_breadcrumbs span{ 
+  .pre-checkout-left_breadcrumbs span {
     font-size: 12px;
   }
 
@@ -546,19 +548,15 @@
 
   .mb-14 {
     margin-bottom: 14px;
-    font-size: 14px;
   }
 
   .m-14 {
     margin: 1.4rem;
   }
-  
+
   .text-14 {
     font-size: 14px;
   }
-
-
-  
 
   .pre-checkout-left .delivery-details {
     gap: 10px;
@@ -630,7 +628,7 @@
     left: -40px;
     right: -40px;
     bottom: 0;
-    background: #FFF;
+    background: #fff;
     width: calc(100% + 80px);
     display: block !important;
     z-index: 1;
