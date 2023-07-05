@@ -188,7 +188,7 @@
       </div>
       <div class="cart-button-container">
         <div class="cart-button_wrapper">
-          <a href="{{ section.settings.link }}" class="my-basket_link w-inline-block">
+          <a href="{{ section.settings.link }}" class="my-basket_link w-inline-block center-small-item">
             <div>
               {{ 'general.continue_shopping' | t }}
               <br>
@@ -213,7 +213,7 @@
         {%- if cart != empty -%}
           <div class="cart-button_wrapper">
             <a
-              class="my-basket_link_update w-inline-block"
+              class="my-basket_link_update w-inline-block center-small-item"
             >
               {% render 'icon-update' %}
               <div>{{ 'sections.cart.update_shopping_cart' | t }}</div>
