@@ -3611,7 +3611,7 @@ input.w-button {
   }
 
   .content-container-custom {
-    margin-top: 60px;
+    margin-top: 70px;
   }
 
   .margin-top {
@@ -3645,6 +3645,10 @@ input.w-button {
 }
 
 @media screen and (max-width: 479px) {
+  .content-container-custom {
+    margin-top: 60px;
+  }
+  
   .w-tab-link {
     display: block;
   }

@@ -111,11 +111,7 @@
     display: none
   }
 
-  @media screen and (max-width: 767px) {
-    .bread-scrumb-sticky{
-      top: 5.5rem!important;
-    }
-  }
+ 
   @media screen and (max-width: 991px) {
     .mainContainter {
         -webkit-box-orient: vertical;
@@ -149,14 +145,22 @@
 
     .bread-scrumb-sticky{
       position: fixed;
-      top: 7.5rem;
-      right: 0.1rem;
+      top: 7.8rem;
+      right: 0;
+      left: 0;
       z-index: 9;
-      padding: 12px;
+      padding-top: 15px;
+      padding-bottom: 15px;
       background: white;
     }
     .productListSpan {
         margin-left: 0rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .bread-scrumb-sticky{
+      top: 6.2rem;
     }
   }
 {%- endstyle -%}
@@ -246,7 +250,7 @@
     {%- endif -%}
 
     <div
-      class="{% if collection.url contains '/collections/all' %}mainContainter-v2{%else%} mainContainter{% endif %} container-large-modified padding-category"
+      class="{% if collection.url contains '/collections/all' %}mainContainter-v2{%else%} mainContainter{% endif %} container-large-modified padding-global"
     >
       <div class="filterSpan">
         <div
@@ -408,9 +412,9 @@
 
   function handleOnScroll() {
     if (window.pageYOffset > sticky) {
-      header?.classList?.add('bread-scrumb-sticky');
+      header?.classList?.add("bread-scrumb-sticky", "padding-global");
     } else {
-      header?.classList?.remove('bread-scrumb-sticky');
+      header?.classList?.remove("bread-scrumb-sticky", "padding-global");
     }
   }
 </script>
