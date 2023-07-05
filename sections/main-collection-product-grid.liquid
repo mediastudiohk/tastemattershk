@@ -103,7 +103,8 @@
     margin-top: 27px;
   }
 
-  .collection-image a {
+  .collection-image a,
+  .collection-image a img {
     width: 100%;
   }
 
@@ -322,7 +323,7 @@
           <div class="collection-image">
             <a href="{{ collection.metafields.custom.link }}" class="link" target="_blank">
               <img
-                src="{{ collection.metafields.custom.image | image_url: width: 300 }}"
+                src="{{ collection.metafields.custom.image | image_url: width: 1000 }}"
                 width="auto"
                 height="auto"
                 alt="collection image"
