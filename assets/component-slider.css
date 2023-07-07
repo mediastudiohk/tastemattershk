@@ -377,7 +377,7 @@ slider-component.slider-component-full-width {
   justify-content: center;
 }
 
-@media screen and (min-width: 990px) {
+/* @media screen and (min-width: 990px) {
   .slider:not(.slider--everywhere):not(.slider--desktop) + .slider-buttons {
     display: none;
   }
@@ -393,7 +393,7 @@ slider-component.slider-component-full-width {
   .slider--mobile + .slider-buttons {
     display: none;
   }
-}
+} */
 
 .slider-button {
   color: rgba(var(--color-foreground), 0.75);
