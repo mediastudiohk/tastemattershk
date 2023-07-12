@@ -468,7 +468,7 @@
   }
 }
 
-@media screen and (min-width: 750px) and (max-width: 989px) {
+@media screen and (min-width: 750px) and (max-width: 991px) {
   .order > div:nth-of-type(2) > div:last-of-type {
     display: flex;
   }

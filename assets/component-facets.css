@@ -1099,7 +1099,7 @@ input.mobile-facets__checkbox {
   }
 }
 
-@media screen and (min-width: 750px) and (max-width: 989px) {
+@media screen and (min-width: 750px) and (max-width: 991px) {
   .facets-vertical .active-facets__button {
     padding: 1rem;
     margin-bottom: 0;

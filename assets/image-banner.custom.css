@@ -90,6 +90,10 @@
   z-index: 99999;
 }
 
+.icon-right svg.icon-caret .icon-caret-path {
+  fill: white !important;
+}
+
 .slider-counter {
   position: absolute;
   z-index: 2;
