@@ -112,7 +112,7 @@
     display: none
   }
 
- 
+
   @media screen and (max-width: 991px) {
     .mainContainter {
         -webkit-box-orient: vertical;
@@ -365,8 +365,12 @@
                 id="product-grid"
                 data-id="{{ section.id }}"
                 class="
-                  {%if collection.url contains '/collections/all'%}grid product-grid grid--5-col-tablet-down grid--5-col-desktop{%else%} grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop
-                  {%endif%} grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                  {%if collection.url contains '/collections/all'%}
+                  grid product-grid grid--5-col-tablet-down
+                  {%else%}
+                  grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop
+                  {%endif%}
+                  grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                 "
                 style="margin:0"
               >
@@ -413,9 +417,9 @@
 
   function handleOnScroll() {
     if (window.pageYOffset > sticky) {
-      header?.classList?.add("bread-scrumb-sticky", "padding-global");
+      header?.classList?.add('bread-scrumb-sticky', 'padding-global');
     } else {
-      header?.classList?.remove("bread-scrumb-sticky", "padding-global");
+      header?.classList?.remove('bread-scrumb-sticky', 'padding-global');
     }
   }
 </script>

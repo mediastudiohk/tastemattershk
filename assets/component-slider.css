@@ -49,7 +49,7 @@ slider-component.slider-component-full-width {
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 991px) {
   .slider.slider--mobile {
     position: relative;
     flex-wrap: inherit;
@@ -87,7 +87,7 @@ slider-component.slider-component-full-width {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 992px) {
   .slider.slider--tablet-up {
     position: relative;
     flex-wrap: inherit;
@@ -103,7 +103,7 @@ slider-component.slider-component-full-width {
   }
 }
 
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 991px) {
   .slider.slider--tablet {
     position: relative;
     flex-wrap: inherit;
@@ -157,7 +157,7 @@ slider-component.slider-component-full-width {
   scroll-snap-align: center;
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 992px) {
   .slider-component-desktop.page-width {
     max-width: none;
   }
@@ -317,7 +317,7 @@ slider-component.slider-component-full-width {
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 991px) {
   .slider-counter {
     display: none;
   }

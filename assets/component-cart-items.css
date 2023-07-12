@@ -117,7 +117,7 @@
   margin-left: 1rem;
 }
 
-@media screen and (min-width: 750px) and (max-width: 989px) {
+@media screen and (min-width: 750px) and (max-width: 991px) {
   .cart-item cart-remove-button {
     width: 4.5rem;
     height: 4.5rem;
