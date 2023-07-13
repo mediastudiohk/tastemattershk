@@ -366,11 +366,10 @@
                 data-id="{{ section.id }}"
                 class="
                   {%if collection.url contains '/collections/all'%}
-                  grid product-grid grid--5-col-tablet-down
+                  grid product-grid grid--2-col-tablet-down grid--5-col-desktop
                   {%else%}
                   grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop
                   {%endif%}
-                  grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                 "
                 style="margin:0"
               >
