@@ -583,8 +583,6 @@
   }
 
 
- 
-
   let districts = timeByDate.region 
                   ? areas.find((area) => area.value === timeByDate.region).districts
                   : areas[0].districts;
@@ -613,6 +611,10 @@
       localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
       fetchData(encodeURIComponent(areaSelect.value), encodeURIComponent(districtSelect.value))
     })
+  }
+
+  if(timeByDate?.region) {
+    renderDistricts(districts);
   }
 
   areas.forEach((area) => {
@@ -871,9 +873,7 @@
   }
   localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
 
-  if(timeByDate?.region) {
-    renderDistricts(districts);
-  }
+ 
   
   const fetchData = async (area = '', district = '') => {
     const controller = new AbortController();
