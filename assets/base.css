@@ -3713,7 +3713,8 @@ input.w-button {
 }
 
 /* hidden popup location */
-.recommendation-modal__container {
+.recommendation-modal__container,
+.recommendation-modal__backdrop {
   display: none !important;
 }
 
