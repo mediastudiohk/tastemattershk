@@ -676,7 +676,13 @@ h3:empty,
 h4:empty,
 h5:empty,
 h6:empty {
-  display: none;
+  display: none !important;
+}
+
+/* hidden popup location */
+.recommendation-modal__container,
+.recommendation-modal__backdrop {
+  display: none !important;
 }
 
 .link,
@@ -3710,12 +3716,6 @@ input.w-button {
   background: #dfdfdf;
   height: 0.625rem;
   border-radius: 0.375rem;
-}
-
-/* hidden popup location */
-.recommendation-modal__container,
-.recommendation-modal__backdrop {
-  display: none !important;
 }
 
 .relative-class {
