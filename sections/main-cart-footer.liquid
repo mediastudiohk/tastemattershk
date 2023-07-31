@@ -23,7 +23,7 @@
 
   .hide-mobile-landscape:empty,
   .hide-mobile-portrait:empty {
-    display: block;
+    display: block !important;
   }
 
   .check-out_item {
@@ -101,7 +101,8 @@
       justify-content: center;
     }
 
-    .hide-mobile-portrait {
+    .hide-mobile-landscape:empty,
+    .hide-mobile-portrait:empty {
       display: none !important;
     }
   }
