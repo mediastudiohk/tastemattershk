@@ -792,7 +792,7 @@ a.product__text {
 }
 
 .product-media-modal__content {
-  max-height: 100vh;
+  height: 100vh;
   width: 100%;
   overflow: auto;
 }
@@ -839,7 +839,7 @@ a.product__text {
 
 .product-media-modal__content > * {
   display: block;
-  height: auto;
+  height: 100%;
   margin: auto;
 }
 
