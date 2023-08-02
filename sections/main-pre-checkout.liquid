@@ -599,10 +599,7 @@
     districtSelect.addEventListener('change', (event) => {
       const { value } = event.target;
       timeSlotValidate.classList.remove('invalid');
-      if(value !== "") {
-        districtValidate.classList.remove('invalid');
-        districtSelect.classList.remove('invalid');
-      }
+      
       deliveryLocation.innerHTML = `${areaSelect.value} / ${value}`;
       timeByDate = {
         ...timeByDate,
@@ -610,7 +607,16 @@
         schedule: TIME_BY_DATE_DEFAULT.schedule
       }
       localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-      fetchData(encodeURIComponent(areaSelect.value), encodeURIComponent(districtSelect.value))
+
+      if(value !== "") {
+        districtValidate.classList.remove('invalid');
+        districtSelect.classList.remove('invalid');
+        fetchData(encodeURIComponent(timeByDate?.region), encodeURIComponent(timeByDate?.district))
+      }
+
+      if(value === "") {
+        renderTime(0, "default");
+      }
     })
   }
 
