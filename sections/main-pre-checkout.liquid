@@ -387,6 +387,7 @@
   }
 
   let dates = generateDate();
+  let defaultDates = generateDate();
   let areaParam = '';
   let districtParam = '';
   const TIME_BY_DATE_DEFAULT = {
@@ -645,7 +646,8 @@
       schedule: TIME_BY_DATE_DEFAULT.schedule
     }
     localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-    fetchData(encodeURIComponent(areaSelect.value))
+    {% comment %} fetchData(encodeURIComponent(areaSelect.value)) {% endcomment %}
+    renderTime(0, "default");
   })
 
   areaSelect.value = timeByDate.region;
@@ -742,7 +744,7 @@
     }
   }
   
-  const renderTime = (count) => {
+  const renderTime = (count, type) => {
     scheduleTimeHtml = '';
     const renderTimeHtml = (arr) => {
       arr.forEach((item) => {
@@ -777,8 +779,10 @@
       })
       return scheduleTimeElement.innerHTML = scheduleTimeHtml;
     }
-  
-    if(!count || count === 0){
+
+    if (type && type === "default") {
+      renderTimeHtml(defaultDates.slice(0, 7));
+    } else if(!count || count === 0){
       renderTimeHtml(dates.slice(0, 7));
     } else{
       switch (count) {
@@ -915,9 +919,10 @@
       console.log('error', error);
     }
   }
-  
-  fetchData(encodeURIComponent(timeByDate.region),encodeURIComponent(timeByDate.district));
-  
+
+  if(timeByDate?.region && timeByDate?.district) {
+    fetchData(encodeURIComponent(timeByDate.region),encodeURIComponent(timeByDate.district));
+  }
   
   // delivery option
   if(inputRadio) {
