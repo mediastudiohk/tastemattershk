@@ -666,7 +666,7 @@ label {
 a:empty,
 ul:empty,
 dl:empty,
-div:empty,
+div:empty:not(.img-zoom-lens):not(.checkout_discount-wrapper),
 section:empty,
 article:empty,
 p:empty,

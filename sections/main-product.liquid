@@ -71,17 +71,9 @@
         </div>
 
         <div class="product product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} product-page_component">
-          {%- if product.images.size > 1 -%}
-            
-                {% render 'product-media-gallery', variant_images: variant_images %}
-              
-          {%- else -%}
-            <div class="product-page_content-left">
-              <div class="product-image_wrapper">
-                <img src="{{product.images.first | image_url }}" class="product-image" loading="lazy">
-              </div>
-            </div>
-          {%- endif -%}
+          {% render 'product-media-gallery', 
+            variant_images: variant_images,
+           %}
           <div class="product-page_content-right">
             <product-info
             id="ProductInfo-{{ section.id }}"

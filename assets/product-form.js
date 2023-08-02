@@ -17,36 +17,7 @@ if (!customElements.get("product-form")) {
           this.submitButton.setAttribute("aria-haspopup", "dialog");
         }
 
-        // // scale product image
-        // this.productImage = document.querySelector('.product-image_wrapper');
-        // if(this.productImage){
-        //   const image = this.productImage.querySelector('img');
-        //   const scale = 1.6; // set the scale factor to zoom in the image
-        //   let mouseX, mouseY, startX, startY;
 
-        //   this.productImage.addEventListener('mousemove', e => {
-        //     mouseX = e.clientX;
-        //     mouseY = e.clientY;
-        //     if (startX === undefined || startY === undefined) {
-        //       startX = e.clientX - image.offsetLeft;
-        //       startY = e.clientY - image.offsetTop;
-        //     }
-        //     const x = startX - mouseX;
-        //     const y = startY - mouseY;
-        //     const translateX = (x / this.productImage.offsetWidth) * 100;
-        //     const translateY = (y / this.productImage.offsetHeight) * 100;
-        //     const zoomX = (mouseX / this.productImage.offsetWidth) * (scale - 1);
-        //     const zoomY = (mouseY / this.productImage.offsetHeight) * (scale - 1);
-        //     image.style.transform = `translate(${translateX}%, ${translateY}%) scale(${scale})`;
-        //     image.style.transformOrigin = `${zoomX * 100}% ${zoomY * 100}%`;
-        //   });
-
-        //   this.productImage.addEventListener('mouseleave', e => {
-        //     image.style.transform = 'translate(0, 0) scale(1)';
-        //     startX = undefined;
-        //     startY = undefined;
-        //   });
-        // }
       }
 
       onSubmitHandler(evt) {
