@@ -78,20 +78,46 @@
     width: 100%;
     margin: auto;
     border-top: 1px solid #e0daa7;
-    padding: 0 40px;
   }
 
   .menuStyle {
-    display: flex;
-    max-width: 1280px;
+    margin: 0 auto;
     width: 100%;
-    align-items: center;
-    justify-content: start;
+    max-width: 1280px;
     z-index: 10;
     position: relative;
-    flex-wrap: wrap;
+  }
+
+  #tab-list {
+    display: flex;
+    justify-content: center;
     height: auto;
-    margin: auto;
+    max-width: 1200px;
+    margin-left: 40px;
+  }
+
+  #wrapper-tab-list {
+    overflow-x: hidden;
+  }
+
+  #nav-prev {
+    box-shadow: 8px 0 11px -8px #DADBD2;
+    position: absolute;
+    left: -40px;
+    cursor: pointer;
+    background-color: #FAFBF1;
+    padding: 12px 10px;
+    padding-left: 40px;
+  }
+
+  #nav-next {
+    box-shadow: -8px 0 11px -8px #DADBD2;
+    position: absolute;
+    right: -40px;
+    cursor: pointer;
+    background-color: #FAFBF1;
+    padding: 12px 10px;
+    padding-right: 40px;
   }
 
   .containerStyle {
@@ -522,149 +548,153 @@
   </div>
   <div class="menuStyle-wrapper hide-tablet">
     <div
-      class="menuStyle"
+      class="menuStyle" id="menuStyle"
     >
-      {% for link in section.settings.menu.links %}
-        {% style %}
-          .mainItem {
-            height: 100%;
-            font-size: 1.84rem;
-            white-space: nowrap;
-          }
+      <img id="nav-prev" src="/assets/nav-prev.png" style="visibility: hidden;" onclick="plusMarginLeft()">
+      <img id="nav-next" src="/assets/nav-next.png" style="visibility: hidden;" onclick="minusMarginLeft()">
+      <div id="wrapper-tab-list">
+        <div id="tab-list">
+          {% for link in section.settings.menu.links %}
+            {% style %}
+              .mainItem {
+                height: 100%;
+                font-size: 1.84rem;
+                white-space: nowrap;
+              }
 
-          .dropdown:hover {
-            background-color: white;
-            box-shadow: 0 -3px 8px -2px #dadbd2;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            color: #bebebe;
-          }
+              .dropdown:hover {
+                background-color: white;
+                box-shadow: 0 -3px 8px -2px #dadbd2;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                color: #bebebe;
+              }
 
-          .childMenu {
-            display: none;
-            position: absolute;
-            left: -3px;
-            right: -3px;
-            height: 200px;
-            top: 40px;
-          }
+              .childMenu {
+                display: none;
+                position: absolute;
+                left: -3px;
+                right: -3px;
+                height: 200px;
+                top: 40px;
+              }
 
-          .gridContainer {
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            border-radius: 8px;
-            padding: 16px;
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 20px;
-          }
+              .gridContainer {
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                border-radius: 8px;
+                padding: 16px;
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 20px;
+              }
 
-          .dropdown {
-            padding: 8px 16px;
-          }
+              .dropdown {
+                padding: 8px 16px;
+              }
 
-          .dropdown-content a {
-            color: #716359;
-            padding: 2px 0px;
-            text-decoration: none;
-            display: block;
-          }
+              .dropdown-content a {
+                color: #716359;
+                padding: 2px 0px;
+                text-decoration: none;
+                display: block;
+              }
 
-          .dropdown-content a:has(img) {
-            padding: 0;
-          }
+              .dropdown-content a:has(img) {
+                padding: 0;
+              }
 
-          .dropdown-content a img {
-            margin-bottom: 8px;
-          }
+              .dropdown-content a img {
+                margin-bottom: 8px;
+              }
 
-          .dropdown-content a:hover {
-            color: #bebebe;
-          }
+              .dropdown-content a:hover {
+                color: #bebebe;
+              }
 
-          .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            box-shadow: 1px 1px 14px 0 rgba(134, 124, 117, 0.25);
-            left: -3px;
-            height: min-content;
-            min-width: 1280px;
-            top: 100%;
-            z-index: 1;
-            border-radius: 6px;
-          }
+              .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                box-shadow: 1px 1px 14px 0 rgba(134, 124, 117, 0.25);
+                left: -3px;
+                height: min-content;
+                min-width: 1280px;
+                top: 100%;
+                z-index: 1;
+                border-radius: 6px;
+              }
 
-          .dropdown:hover .dropdown-content {
-            display: inline-table;
-          }
+              .dropdown:hover .dropdown-content {
+                display: inline-table;
+              }
 
-          .nav_dropdown-separator {
-            margin: 8px 0;
-            height: 1px;
-            background-color: #e0daa7;
-            width: 100%;
-          }
+              .nav_dropdown-separator {
+                margin: 8px 0;
+                height: 1px;
+                background-color: #e0daa7;
+                width: 100%;
+              }
 
-          .sub-cate-child-link {
-            flex: 1;
-          }
+              .sub-cate-child-link {
+                flex: 1;
+              }
 
-          .title-large .title-large-child {
-            min-height:68px;
-          }
-        {% endstyle %}
+              .title-large .title-large-child {
+                min-height:68px;
+              }
+            {% endstyle %}
+            {%- liquid
+              assign titleLarge = false
 
-        {%- liquid
-           assign titleLarge = false
-
-           if link.links.size > 0
-             for childLink in link.links 
-               if childLink.title.size > 25 
-                assign titleLarge = true 
-               endif 
-             endfor 
-            endif
-        -%}
-
-        <div class="dropdown text-font-small-caps {% if titleLarge == true %}title-large{% endif %}">
-          <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
-          {% if link.links.size > 0 %}
-            <div class="dropdown-content">
-              <div class="gridContainer">
-                {% for childLink in link.links %}
-                  <div>
-                    <a href="{{ childLink.url }}">
-                      <img
-                        height="auto"
-                        width="auto"
-                        src="{{ childLink.object.image.src | image_url: width: 1000 }}"
-                        loading="lazy"
-                        style="width:100%; aspect-ratio: 3 / 1.5"
-                    ></a>
-                    <a style="font-size:20px" href="{{ childLink.url }}" 
-                      class="title-large-child">
-                      {{- childLink.title -}}
-                    </a>
-                    <div class="nav_dropdown-separator">
-                      <span class="hidden">Line</span>
-                    </div>
-
-                    {% if childLink.links.size > 0 %}
-                      {% for onChildLink in childLink.links %}
-                        <a style=" font-size:inherit" href="{{ onChildLink.url }}">
-                          {{- onChildLink.title -}}
+              if link.links.size > 0
+                for childLink in link.links 
+                  if childLink.title.size > 25 
+                    assign titleLarge = true 
+                  endif 
+                endfor 
+                endif
+            -%}
+            <div class="category-tab-menu dropdown text-font-small-caps {% if titleLarge == true %}title-large{% endif %}">
+              <a class="mainItem" href="{{ link.url }}">{{ link.title }}</a>
+              {% if link.links.size > 0 %}
+                <div class="dropdown-content">
+                  <div class="gridContainer">
+                    {% for childLink in link.links %}
+                      <div>
+                        <a href="{{ childLink.url }}">
+                          <img
+                            height="auto"
+                            width="auto"
+                            src="{{ childLink.object.image.src | image_url: width: 1000 }}"
+                            loading="lazy"
+                            style="width:100%; aspect-ratio: 3 / 1.5"
+                        ></a>
+                        <a style="font-size:20px" href="{{ childLink.url }}" 
+                          class="title-large-child">
+                          {{- childLink.title -}}
                         </a>
-                      {% endfor %}
-                    {% endif %}
+                        <div class="nav_dropdown-separator">
+                          <span class="hidden">Line</span>
+                        </div>
+
+                        {% if childLink.links.size > 0 %}
+                          {% for onChildLink in childLink.links %}
+                            <a style=" font-size:inherit" href="{{ onChildLink.url }}">
+                              {{- onChildLink.title -}}
+                            </a>
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    {% endfor %}
                   </div>
-                {% endfor %}
-              </div>
+                </div>
+              {% endif %}
             </div>
-          {% endif %}
+          {% endfor %}
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
   <div style="background-color: white" id="menu-mobile">
@@ -1132,4 +1162,116 @@
   function dropDownFuncTablet() {
     document.querySelector('.dropLang').classList.toggle('show');
   }
+
+  function isShowPrevNavButton() {
+    const tabList = document.getElementById("tab-list");
+    const computedStyle = window.getComputedStyle(tabList);
+    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
+    const navPrev = document.getElementById("nav-prev");
+
+    console.log({currentMarginLeft})
+
+    navPrev.style.visibility = currentMarginLeft < 40 ? "visible" : "hidden";
+  }
+
+  function isShowNextNavButton() {
+    const tabList = document.getElementById("tab-list");
+    const computedStyle = window.getComputedStyle(tabList);
+    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
+
+    const categoryTabList = document.getElementsByClassName("category-tab-menu");
+    let totalWidth = 0;
+    for (let i = 0; i < categoryTabList.length; i++) {
+      const rect = categoryTabList[i].getBoundingClientRect();
+      const elementWidth = rect.width + parseFloat(getComputedStyle(categoryTabList[i]).marginLeft) + parseFloat(getComputedStyle(categoryTabList[i]).marginRight);
+      totalWidth += elementWidth;
+    }
+
+    const menuStyle = document.getElementById("menuStyle")
+    const rect_menuStyle = menuStyle.getBoundingClientRect();
+    const totalWidthMenuStyle = rect_menuStyle.width;
+
+    // 100: margin left - 40px: padding left icon
+    const isShowNextButton = (totalWidthMenuStyle - currentMarginLeft) < totalWidth - 100 + 40
+
+    const navPrev = document.getElementById("nav-next");
+    navPrev.style.visibility = isShowNextButton ? "visible" : "hidden";
+  }
+
+  function adjustMarginLeft(offset) {
+    const tabList = document.getElementById("tab-list");
+    const computedStyle = window.getComputedStyle(tabList);
+    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
+    const newMarginLeft = currentMarginLeft + offset;
+    tabList.style.marginLeft = newMarginLeft + "px";
+    
+    let start = null;
+
+    // add animation
+    function update(timestamp) {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const duration = 200; // 200ms
+      const progress = Math.min(elapsed / duration, 1);
+      const easing = t => t * (2 - t); // easeInOutQuad
+      const easedProgress = easing(progress);
+      const newMargin = currentMarginLeft + (offset * easedProgress);
+      tabList.style.marginLeft = newMargin + "px";
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        isShowPrevNavButton();
+        isShowNextNavButton();
+      }
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  function minusMarginLeft() {
+    adjustMarginLeft(-100);
+  }
+  
+  function plusMarginLeft() {
+    adjustMarginLeft(100);
+  }
+
+  function isVisibilityPrevAndNext() {
+    const categoryTabList = document.getElementsByClassName("category-tab-menu");
+    let totalWidth = 0;
+    for (let i = 0; i < categoryTabList.length; i++) {
+      const rect = categoryTabList[i].getBoundingClientRect();
+      const elementWidth = rect.width + parseFloat(getComputedStyle(categoryTabList[i]).marginLeft) + parseFloat(getComputedStyle(categoryTabList[i]).marginRight);
+      totalWidth += elementWidth;
+    }
+    
+    const menuStyle = document.getElementById("menuStyle")
+    const rect_menuStyle = menuStyle.getBoundingClientRect();
+    const totalWidthMenuStyle = rect_menuStyle.width;
+
+    const navPrev = document.getElementById("nav-prev");
+    const navNext = document.getElementById("nav-next");
+    const tabList = document.getElementById("tab-list");
+    if(totalWidth > totalWidthMenuStyle) {
+      navPrev.style.visibility ="visible";
+      navNext.style.visibility = "visible";
+      tabList.style.justifyContent = "flex-start";
+    } else {
+      navPrev.style.visibility = "hidden";
+      navNext.style.visibility = "hidden";
+      tabList.style.justifyContent = "center";
+    }
+  }
+
+  window.addEventListener("load", function() {
+    isVisibilityPrevAndNext();
+    isShowPrevNavButton();
+    isShowNextNavButton();
+  });
+
+  window.addEventListener("resize", function() {
+    isVisibilityPrevAndNext();
+    isShowPrevNavButton();
+    isShowNextNavButton();
+  });
 </script>
