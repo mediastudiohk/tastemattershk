@@ -819,14 +819,17 @@
     const iconNextElement = document.querySelector(".icon-schedule.next");
     const iconBackElement = document.querySelector(".icon-schedule.back");
     const element = document.getElementById("delivery-schedule-wrapper");
-  
     if (type === 'next' && nextCount < 5) {
       nextCount++;
       backCount++;
       element.scrollLeft += 678;
       iconBackElement.style.visibility = "visible";
       renderDate(nextCount);
-      renderTime(nextCount);
+      if(!timeByDate.region || !timeByDate.district){
+        renderTime(nextCount, "default");
+      }else{
+        renderTime(nextCount);
+      }
       const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
         for (date of dateTimes){
           date.classList.add("animation-next");
@@ -844,7 +847,11 @@
       nextCount--;
       iconNextElement.style.visibility = "visible";
       renderDate(nextCount);
-      renderTime(nextCount);
+      if(!timeByDate.region || !timeByDate.district){
+        renderTime(nextCount, "default");
+      }else{
+        renderTime(nextCount);
+      }
       const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
         for (date of dateTimes){
           date.classList.remove("animation-next");
