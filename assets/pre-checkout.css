@@ -331,6 +331,10 @@
   word-wrap: anywhere;
 }
 
+.delivery-schedule-item-time-no-delivery {
+  text-align: left;
+}
+
 .delivery-schedule-item-time-no-delivery,
 .delivery-schedule-item-time-value.maximum-order {
   background-color: #e9e9e9;
