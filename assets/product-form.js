@@ -16,8 +16,6 @@ if (!customElements.get("product-form")) {
         if (document.querySelector("cart-drawer")) {
           this.submitButton.setAttribute("aria-haspopup", "dialog");
         }
-
-
       }
 
       onSubmitHandler(evt) {
@@ -45,22 +43,21 @@ if (!customElements.get("product-form")) {
         }
         config.body = formData;
 
-
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
             fetch(`${routes.cart_url}`, config)
-              .then((response) => response.json())
-              .then((response) => {
+              .then((res) => res.json())
+              .then((data) => {
                 const checkoutNav = document.querySelectorAll("#checkout-nav");
-                if(checkoutNav && response.total_price >= 50000) {
+                if(checkoutNav && data.total_price >= 50000) {
                   for (let el of checkoutNav) {
                     el.classList.remove("disable-button");
                   }
                 }
                 const elementToReplace = document.querySelectorAll("#cart-icon-bubble");
                 for (let elBasket of elementToReplace) {
-                  elBasket.innerHTML = response.item_count;
+                  elBasket.innerHTML = data.item_count;
                 }
               })
               .catch((e) => {
@@ -142,7 +139,11 @@ if (!customElements.get("product-form")) {
         this.errorMessageWrapper.toggleAttribute("hidden", !errorMessage);
 
         if (errorMessage) {
-          this.errorMessage.textContent = errorMessage;
+          const productName = document.querySelector(".product-page-name").innerText;
+          const inputQuantity = document.querySelector(".quantity__input.quantity_form_input");
+          const maximumQuantity = inputQuantity.getAttribute("max");
+          const errorMsg = `All ${maximumQuantity} ${productName} are in your cart.`
+          this.errorMessage.textContent = errorMsg;
         }
       }
     }
