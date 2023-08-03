@@ -764,8 +764,8 @@
                 return `<div class="delivery-schedule-item-time-value ${i.selected ? "selected" : ""} ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
                   onclick="onSelectItemValue(this)"
                   >
-                    <span class="time-slot">${i.comment}</span>
-                    <span>
+                    <div class="time-slot">${i.comment}</div>
+                    <div class="icon-check">
                       <svg
                         class="icon icon-checkmark color-foreground-text"
                         aria-hidden="true"
@@ -776,7 +776,7 @@
                       >
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="#30b90e"/>
                       </svg>
-                    </span>
+                    </div>
                   </div>`
             }).join(" ")}
           </div>`
@@ -904,7 +904,8 @@
         const scheduleDefault = data.response.scheduleDefault;
         const schedule = data.response.schedule;
         const scheduleExist = data.response.scheduleExist;
-        const timeByDateStorageSchedule = timeByDateStorage ? JSON.parse(timeByDateStorage).schedule : null;
+        const timeByDateStorageOld = localStorage.getItem('timeByDate');
+        const timeByDateStorageSchedule = timeByDateStorageOld ? JSON.parse(timeByDateStorageOld).schedule : null;
 
         dates = dates.map((date) => {
           const isScheduleExits = !!scheduleExist[date.value];

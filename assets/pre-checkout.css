@@ -343,22 +343,31 @@
   height: auto;
 }
 
-.delivery-schedule-item-time-value svg {
+.delivery-schedule-item-time-value .time-slot{
+  padding: 0 10px;
+  text-align: left;
+}
+
+.delivery-schedule-item-time-value .icon-check {
+  display: none;
+}
+
+.delivery-schedule-item-time-value .icon-check svg {
   width: 1.6rem;
   height: 1.6rem;
   position: absolute;
   right: 3px;
   top: 50%;
   transform: translateY(-50%);
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .delivery-schedule-item-time-value.selected {
   border: 1px solid #30b90e;
 }
 
-.delivery-schedule-item-time-value.selected svg {
-  visibility: visible;
+.delivery-schedule-item-time-value.selected .icon-check {
+  display: block;
 }
 
 .delivery-schedule-item-time-value:nth-child(even) {
