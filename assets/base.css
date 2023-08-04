@@ -3342,7 +3342,7 @@ input.w-button {
 }
 
 .title-section {
-  font-size: 25.6px;
+  font-size: 26px;
   font-weight: 300;
 }
 
@@ -3432,8 +3432,8 @@ input.w-button {
 }
 
 .padding-section-medium {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #loading_overlay {
@@ -3450,10 +3450,6 @@ input.w-button {
 
 .price-custom {
   font-family: "Open Sans", sans-serif;
-}
-
-.price-custom::first-letter {
-  font-size: smaller;
 }
 
 .show-all-products {

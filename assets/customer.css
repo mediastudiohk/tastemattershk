@@ -138,7 +138,8 @@
 .customer thead th {
   font-size: 1.2rem;
   letter-spacing: 0.07rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-variant: small-caps;
 }
 
 .customer tbody td:first-of-type {
@@ -409,7 +410,7 @@
 .customer h1 {
   font-variant: small-caps;
   line-height: 1.15;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 #recover {

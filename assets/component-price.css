@@ -16,6 +16,9 @@
 
 .price--end {
   text-align: right;
+  font-family: "Open Sans",sans-serif;
+  font-size: 18px;
+  color: #867c75;  
 }
 
 .price .price-item {
@@ -23,10 +26,6 @@
   margin: 0 1rem 0 0;
 }
 
-.price .price-item::first-letter,
-.price--end::first-letter {
-  font-size: smaller !important;
-}
 
 .price__regular .price-item--regular {
   margin-right: 0;
