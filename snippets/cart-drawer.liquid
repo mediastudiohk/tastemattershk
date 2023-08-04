@@ -38,6 +38,7 @@
                       {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
                       {% for item in sortedItems %}
                         <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                          <td class="edge"></td>
                           <td class="quantity" role="cell" headers="CartDrawer-ColumnProductImage">
                             {{ item.quantity }}x
                           </td>
@@ -129,6 +130,7 @@
                               </span>
                             </div>
                           </td>
+                          <td class="edge"></td>
                         </tr>
                       {%- endfor -%}
                     </tbody>

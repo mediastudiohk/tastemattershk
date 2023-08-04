@@ -2,15 +2,33 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-  .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
+    .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
+
+  .account-details h2 {
+    font-size: 26px;
+    font-weight: 300;
+    font-variant: small-caps;
+  }
+
+  .order-history h2 {
+    font-size: 26px;
+    font-weight: 300;
+    font-variant: small-caps;
+  }
+
+  .customer__title {
+    font-size: 26px;
+    font-weight: 300;
+    font-variant: small-caps;
   }
 {%- endstyle -%}
 
@@ -39,7 +57,7 @@
   </div>
 
   <div>
-    <div>
+    <div class="order-history">
       <h2>{{ 'customer.orders.title' | t }}</h2>
 
       {% paginate customer.orders by 20 %}
