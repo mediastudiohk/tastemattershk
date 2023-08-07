@@ -106,7 +106,7 @@ table .price {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   color: #867c75;
-  padding-right: 16px;
+  padding-right: 0;
 }
 
 .product-option {
@@ -124,10 +124,10 @@ table .price {
 .totals__subtotal {
   font-variant: small-caps;
   font-size: 20px;
-  color: #292929;
+  color: #292929 !important; 
   line-height: 2.4rem;
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 
