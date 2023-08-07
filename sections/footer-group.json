@@ -9,14 +9,16 @@
           "type": "text",
           "settings": {
             "heading": "Taste Matters",
-            "subtext": "<p>Being Hong Kong's first and premier online food & beverage boutique, Taste Matters provides excellence and home delivery for a wide selection of daily basic groceries and ties it together with an affordable range of hand picked premium food & beverage. Imported from Germany and Western Europe. Delivered to your home!<\/p>"
+            "subtext": "<p>Being Hong Kong's first and premier online food & beverage boutique, Taste Matters provides excellence and home delivery for a wide selection of daily basic groceries and ties it together with an affordable range of hand picked premium food & beverage. Imported from Germany and Western Europe. Delivered to your home!<\/p>",
+            "hide_section_on_mobile": false
           }
         },
         "footer-1": {
           "type": "custom",
           "settings": {
             "heading": "Latest News",
-            "subtext": "<p>koffee radio - time to chill<br><br>We like to share this radio station and hope you will enjoy the music. <a href='http:\/\/www.koffee.com.au\/' target='_blank'><strong>http:\/\/www.koffee.com.au\/<\/strong><\/a><\/p>"
+            "subtext": "<p>koffee radio - time to chill<br><br>We like to share this radio station and hope you will enjoy the music. <a href='http:\/\/www.koffee.com.au\/' target='_blank'><strong>http:\/\/www.koffee.com.au\/<\/strong><\/a><\/p>",
+            "hide_section_on_mobile": false
           }
         },
         "footer-2": {
@@ -24,14 +26,16 @@
           "settings": {
             "heading": "Information",
             "menu": "footer",
-            "subtext": "<p>Dear Customers, please take notice:<\/p><p>Under the law of Hong Kong, intoxicating liquor must not be sold or supplied to a minor in the course of business.<\/p><p>根據香港法律，不得在業務過程中，向未成年人售賣或供應令人醺醉的酒類 。<\/p>"
+            "subtext": "<p>Dear Customers, please take notice:<\/p><p>Under the law of Hong Kong, intoxicating liquor must not be sold or supplied to a minor in the course of business.<\/p><p>根據香港法律，不得在業務過程中，向未成年人售賣或供應令人醺醉的酒類 。<\/p>",
+            "hide_section_on_mobile": false
           }
         },
         "footer-3": {
           "type": "text",
           "settings": {
             "heading": "Taste Matters",
-            "subtext": "<p>Taste Matters Company Ltd.<br>10\/F, Unit 06<br>Luen Cheong Can Centre<br>8 Yip Wong Road<br>Tuen Mun<br>Hong Kong<br><br>Phone (852) 34 828 929<br>E-Mail <a href='mailto:info@tastematters.com.hk'><strong>info@tastematters.com.hk<\/strong><\/a><\/p>"
+            "subtext": "<p>Taste Matters Company Ltd.<br>10\/F, Unit 06<br>Luen Cheong Can Centre<br>8 Yip Wong Road<br>Tuen Mun<br>Hong Kong<br><br>Phone (852) 34 828 929<br>E-Mail <a href='mailto:info@tastematters.com.hk'><strong>info@tastematters.com.hk<\/strong><\/a><\/p>",
+            "hide_section_on_mobile": false
           }
         }
       },
