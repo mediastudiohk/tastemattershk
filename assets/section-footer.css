@@ -11,6 +11,12 @@
   display: block;
 }
 
+@media screen and (max-width: 991px) {
+  .hide-section-on-mobile {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .footer .grid {
     display: block;

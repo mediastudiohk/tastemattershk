@@ -181,7 +181,7 @@
               <div class="w-layout-grid layout293_component">
                 {%- for block in section.blocks -%}
                   <div
-                    class="layout293"
+                    class="layout293 {%if block.settings.hide_section_on_mobile %}hide-section-on-mobile{%endif%}"
                     {{ block.shopify_attributes }}
                   >
                     {%- if block.settings.heading != blank -%}
@@ -362,6 +362,12 @@
           "type": "richtext",
           "id": "subtext",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_section_on_mobile",
+          "default": false,
+          "label": "t:sections.footer.settings.hide_section_on_mobile.label"
         }
       ]
     },
@@ -380,6 +386,12 @@
           "id": "subtext",
           "default": "<p>Being Hong Kong's first and premier online food & beverage boutique, Taste Matters provides excellence and home delivery for a wide selection of daily basic groceries and ties it together with an affordable range of hand picked premium food & beverage. Imported from Germany and Western Europe. Delivered to your home!</p>",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_section_on_mobile",
+          "default": false,
+          "label": "t:sections.footer.settings.hide_section_on_mobile.label"
         }
       ]
     },
@@ -403,6 +415,12 @@
           "id": "subtext",
           "default": "<p>koffee radio - time to chill<br><br>We like to share this radio station and hope you will enjoy the music. <a href='http://www.koffee.com.au/' target='_blank'><strong>http://www.koffee.com.au/<\/strong><\/a><\/p>",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_section_on_mobile",
+          "default": false,
+          "label": "t:sections.footer.settings.hide_section_on_mobile.label"
         }
       ]
     }
