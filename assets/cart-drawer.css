@@ -129,7 +129,15 @@ table .price {
   font-family: inherit;
   font-weight: 300;
 }
-
+.minimum-order-amount {
+  margin-top: 0px;
+  color: #df0505;
+  line-height: 13px;
+  display: block;
+  font-size: 13px;
+  padding-top: 5px;
+  width: 124px;
+}
 
 .item-cart-style {
   font-size: 14px;
