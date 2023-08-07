@@ -302,5 +302,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".h0 {font-size: 26px; font-weight: 300; font-variant: small-caps; text-align:center;}"
+    ]
   }
 }
