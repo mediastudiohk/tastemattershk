@@ -164,21 +164,15 @@
                     class="text-font-small-caps"
                     style="
                       margin-top: 0px;
-                      color: #ac1b17;
-                      line-height: 1.2;
+                      color: #df0505;
+                      line-height: 13px;
+                      display: block;
+                      font-size: 13px;
+                      padding-top: 5px;
                     "
                   >
                     {{ 'sections.cart.minimum_order' | t }}
                   </span>
-                  <div
-                    class="price-custom"
-                    style="
-                      display: inline-block; color: #ac1b17;
-                      line-height: 1.2;
-                    "
-                  >
-                    $500
-                  </div>
                 {% endif %}
               </div>
               <div class="totals__subtotal-value">{{ cart.total_price | money }}</div>

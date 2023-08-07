@@ -3717,3 +3717,7 @@ input.w-button {
 .relative-class {
   position: relative;
 }
+
+.cart-items tr#CartDrawer-Item-1 td {
+  border-bottom: none !important;
+}
