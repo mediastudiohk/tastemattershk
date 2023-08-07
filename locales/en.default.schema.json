@@ -2339,7 +2339,7 @@
       "name": "Password reset"
     },
     "main-search": {
-      "name": "Search results",
+      "name": "Search Results",
       "settings": {
         "columns_desktop": {
           "label": "Number of columns on desktop"
