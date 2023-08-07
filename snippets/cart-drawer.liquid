@@ -161,15 +161,7 @@
                 </div>
                 {% if cart.total_price < 50000 %}
                   <span
-                    class="text-font-small-caps"
-                    style="
-                      margin-top: 0px;
-                      color: #df0505;
-                      line-height: 13px;
-                      display: block;
-                      font-size: 13px;
-                      padding-top: 5px;
-                    "
+                    class="text-font-small-caps minimum-order-amount"
                   >
                     {{ 'sections.cart.minimum_order' | t }}
                   </span>
