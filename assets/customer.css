@@ -409,7 +409,6 @@
 .customer #login,
 .customer h1 {
   font-variant: small-caps;
-  line-height: 1.15;
   font-weight: 300;
   font-size: 26px !important;
 }
