@@ -1001,6 +1001,9 @@
         },
         "enable_follow_on_shop": {
           "label": "Enable Follow on Shop"
+        },
+        "hide_section_on_mobile": {
+          "label": "Hide section on mobile"
         }
       }
     },
