@@ -550,8 +550,8 @@
     <div
       class="menuStyle" id="menuStyle"
     >
-      <img id="nav-prev" src="/assets/nav-prev.png" style="visibility: hidden;" onclick="plusMarginLeft()">
-      <img id="nav-next" src="/assets/nav-next.png" style="visibility: hidden;" onclick="minusMarginLeft()">
+      <img id="nav-prev" src="{{ 'nav-prev.png' | asset_url }}" style="visibility: hidden;" onclick="plusMarginLeft()">
+      <img id="nav-next" src="{{ 'nav-next.png' | asset_url }}" style="visibility: hidden;" onclick="minusMarginLeft()">
       <div id="wrapper-tab-list">
         <div id="tab-list">
           {% for link in section.settings.menu.links %}
