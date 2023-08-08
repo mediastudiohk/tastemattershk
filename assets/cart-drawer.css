@@ -107,6 +107,7 @@ table .price {
   font-size: 18px;
   color: #867c75;
   padding-right: 0;
+  line-height: 21px;
 }
 
 .product-option {
