@@ -327,7 +327,7 @@
       </div>
       <div class="padding-global footer-wrapper">
         <div class="container-large">
-          <div class="footer-content">{{ section.settings.footer }}</div>
+          <div class="footer-content">{{ section.settings.footer }} {{ 'now' | date: '%Y' }}</div>
         </div>
       </div>
     {%- endunless -%}
@@ -429,7 +429,7 @@
     {
       "type": "text",
       "id": "footer",
-      "default": "Copyright © taste matters {{ 'now' | date: '%Y' }}",
+      "default": "Copyright © taste matters",
       "label": "Footer"
     }
   ],
