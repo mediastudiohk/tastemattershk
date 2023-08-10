@@ -176,7 +176,8 @@
       "country_of_origin": "Herkunftsland",
       "ingredients": "Zutaten",
       "nutrition": "Ernährung",
-      "allergens": "Allergene"
+      "allergens": "Allergene",
+      "submit_a_product_wish": "Senden Sie einen Produktwunsch"
     },
     "modal": {
       "label": "Medien-Galerie"
