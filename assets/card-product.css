@@ -172,6 +172,22 @@ img-v2 {
   position: relative;
 }
 
+.submit-a-product-wish {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  background-color: #cbc8ab;
+  background-image: linear-gradient(180deg, #dddbc7, #cbc8ab 100%, #000);
+  background-size: auto, auto;
+  background-repeat: no-repeat, repeat;
+  font-size: 1.36rem;
+  font-family: inherit;
+  font-weight: 600;
+  position: relative;
+}
+
 .add-to-basket-button:disabled,
 .add-to-basket-button[aria-disabled="true"] {
   opacity: 0.4;

@@ -39,11 +39,15 @@
               </div>
             </div>
           {% endif %}
-          <div class="product-price-row">
-            <div class="text-product-price-number">
-              {{ card_product.price | money_without_trailing_zeros }}
+
+          {% comment %} Show card product when requested_product != true {% endcomment %}
+          {%- if card_product.metafields.custom.requested_product != true %}
+            <div class="product-price-row">
+              <div class="text-product-price-number">
+                {{ card_product.price | money_without_trailing_zeros }}
+              </div>
             </div>
-          </div>
+          {% endif %}
         </div>
         {% comment %} quick add to cart {% endcomment %}
         <div class="no-js-hidden" style="flex: 1">
@@ -121,41 +125,58 @@
                     <span class="sold-out-message"></span>
                   {% comment %} {{ 'products.product.inventory_out_of_stock' | t }} {% endcomment %}
                 </div>
+                {%- if card_product.metafields.custom.requested_product != true %}
+                  <button
+                    id="{{ product_form_id }}-submit"
+                    type="submit"
+                    name="add"
+                    class="add-to-basket-button w-button"
+                    aria-haspopup="dialog"
+                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                    aria-live="polite"
+                    data-sold-out-message="true"
+                    {% if card_product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    <span>
+                      {{ 'products.product.add_to_basket' | t }}
+                    </span>
+
+                    <div class="popover-add-to-basket">
+                      <span>
+                        {% render 'icon-checkmark' %}
+                      </span>
+                      <span>{{ 'products.product.added_to_basket' | t }}</span>
+                    </div>
+                    <div class="loading-overlay__spinner hidden">
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        class="spinner"
+                        viewBox="0 0 66 66"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </button>
+                {% else %}
                 <button
                   id="{{ product_form_id }}-submit"
                   type="submit"
                   name="add"
-                  class="add-to-basket-button w-button"
+                  class="submit-a-product-wish w-button"
                   aria-haspopup="dialog"
                   aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                   aria-live="polite"
-                  data-sold-out-message="true"
-                  {% if card_product.selected_or_first_available_variant.available == false %}
-                    disabled
-                  {% endif %}
+                  onclick="requestHandler()"
                 >
-                  <span>
-                    {{ 'products.product.add_to_basket' | t }}
+                  <span id="request-form-text">
+                    {{ 'products.product.submit_a_product_wish' | t }}
                   </span>
-
-                  <div class="popover-add-to-basket">
-                    <span>
-                      {% render 'icon-checkmark' %}
-                    </span>
-                    <span>{{ 'products.product.added_to_basket' | t }}</span>
-                  </div>
-                  <div class="loading-overlay__spinner hidden">
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      class="spinner"
-                      viewBox="0 0 66 66"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                    </svg>
-                  </div>
                 </button>
+                {% endif %}
               {%- endform -%}
             </product-form>
           {%- endif -%}
@@ -164,4 +185,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function requestHandler() {
+      document.getElementById('request-form').classList.add("visible");
+    }
+  </script>
+
 {% endif %}
