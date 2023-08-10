@@ -246,7 +246,7 @@
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-block-3">{{ 'pre-checkout.summary.shipping' | t }}</span>
-                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
+                <span id="shipping_fee">Free</span>
               </div>
             </div>
 
@@ -320,11 +320,7 @@
             href="{{ routes.root_url }}"
             class="header__heading-link link link--text focus-inset center"
           >
-            <img
-              src="{{ settings.logo | image_url: width: 1000 }}"
-              loading="lazy"
-              style="width:100%; height: 100%"
-            >
+            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%; height: 100%" />
           </a>
         </div>
       </div>
@@ -633,6 +629,11 @@
   areaSelect.innerHTML = areaElementHtml;
   areaSelect.addEventListener('change', (event) => {
     const { value } = event.target;
+    if(value && value === 'Islands'){
+        document.getElementById('shipping_fee').innerText = '$50';
+    }else{
+        document.getElementById('shipping_fee').innerText = 'Free';
+    }
     areaSelect.value = value;
     deliveryLocation.innerHTML = value;
     districtValidate.classList.remove('invalid');
@@ -954,7 +955,7 @@
     }
   }
   
-  const onCheckout = () => {
+  const onCheckout = async () => {
   
     if(timeByDate?.region === "") {
       areaValidate.classList.add('invalid');
@@ -977,8 +978,61 @@
       })
       return;
     }
-  
-    return window.location.href = "/checkout"
+    const request = await fetch(window.Shopify.routes.root + 'cart.js');
+    const response = await request.json();
+    const items = response.items;
+    const area = areaSelect.value;
+    if(area && area === 'Islands'){
+        let hasShipping = false;
+        if(items && items.length > 0){
+            for (let i = 0; i < items.length; i++) {
+                if(items[i].product_id === 8568463524153){
+                    hasShipping = true;
+                }
+            }
+        }
+        if(!hasShipping){
+            let formData = {
+                'items': [{
+                    'product_id': 8568463524153,
+                    'quantity': 1
+                }]
+            };
+            const addRequest = await fetch(window.Shopify.routes.root + 'cart/add.js',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            const addResponse = await addRequest.json();
+            console.log(addResponse);
+        }
+    }else{
+        let variant_id = 0;
+        if(items && items.length > 0){
+            let shoppingProduct = items.find(x=>x.product_id === 8568463524153);
+            if(shoppingProduct){
+                variant_id = shoppingProduct.variant_id;
+            }
+        }
+        if(variant_id > 0){
+            const updateRequest = await fetch(window.Shopify.routes.root + 'cart/update.js',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: {
+                    updates: {
+                        variant_id: 0
+                    }
+                }
+            });
+            const updateResponse = await addRequest.json();
+            console.log(updateResponse);
+        }
+    }
+    //return window.location.href = "/checkout"
   }
 
   const toggleOrderSummary = () => {
@@ -1002,7 +1056,6 @@
       }
     }
   }
-
 
 
 </script>
