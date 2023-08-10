@@ -176,7 +176,8 @@
       "country_of_origin": "原產地",
       "ingredients": "原料",
       "nutrition": "營養",
-      "allergens": "過敏原"
+      "allergens": "過敏原",
+      "submit_a_product_wish": "提交產品願望"
     },
     "modal": {
       "label": "媒體庫"
