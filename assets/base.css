@@ -3762,7 +3762,8 @@ input.w-button {
 .globo-form-app {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 87vh;
+  max-height: 95vh;
+  padding: 0px !important;
 }
 
 .globo-form-input>select {
@@ -3777,6 +3778,11 @@ input.w-button {
   height: 38px;
 }
 
+.globo-form-control:nth-child(4) >div >select {
+  color: #867c75 !important;
+  font-size: 14.4px !important;
+  font-weight: 600 !important;
+}
 .wizard__footer {
   display: flex;
   flex-direction: row-reverse;
@@ -3829,6 +3835,9 @@ input.w-button {
   margin-left: 5px;
 }
 
+.wizard__footer {
+  padding-bottom: 22px !important;
+}
 
 .required-fields {
   font-size: 11.2px !important;
@@ -3840,7 +3849,22 @@ input.w-button {
   }
 }
 
-.globo-heading{
+.globo-heading {
   display: flex;
   justify-content: space-between;
+}
+
+.g-container {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 32px !important;
+  padding-right: 26px !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.globo-description {
+  margin-top: 16px !important;
 }

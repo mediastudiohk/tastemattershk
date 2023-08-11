@@ -1,7 +1,13 @@
 {{ 'card-product.css' | asset_url | stylesheet_tag }}
 
 {%- if card_product and card_product != empty -%}
-  <div class="product-collection-item">
+  <div class="product-collection-item"
+    {% if card_product.metafields.custom.requested_product == true %}
+      onclick="requestHandler()"
+      id="request-form-text"
+    {% endif %}
+  >
+    {%- if card_product.metafields.custom.requested_product != true %}
     <a
       href="{{ card_product.url}}"
       class="product-item-image-link w-inline-block"
@@ -29,6 +35,36 @@
         <div>best before {{ card_product.metafields.custom.best_before }}</div>
       {%- endif -%}
     </a>
+    {% else %}
+    <div
+      href="{{ card_product.url}}"
+      class="product-item-image-link w-inline-block pointer"
+      {% if card_product.selected_or_first_available_variant.available == false %}
+        style="opacity:0.3"
+      {% endif %}
+    >
+      <img
+        src="{{ card_product.featured_media | image_url: width: 533 }}"
+        alt="{{ card_product.featured_media.alt | escape }}"
+        class="product-item-image"
+        {% unless lazy_load == false %}
+          loading="lazy"
+        {% endunless %}
+        width="{{ card_product.featured_media.width }}"
+        height="{{ card_product.featured_media.height }}"
+      >
+      {%- if card_product.metafields.custom.isnew == true %}
+        <div class="text-block-2">New</div>
+      {% endif %}
+    </div>
+
+    <div href="{{ card_product.url}}" class="margin-top margin-small pointer">
+      <div class="text-style-4lines">{{ card_product.title }}</div>
+      {%- if card_product.metafields.custom.best_before -%}
+        <div>best before {{ card_product.metafields.custom.best_before }}</div>
+      {%- endif -%}
+    </div>
+  {% endif %}
     <div class="product-item-form w-form">
       <div class="product-bottom-wrapper">
         <div class="product-price-wrapper">
@@ -164,15 +200,13 @@
                 {% else %}
                 <button
                   id="{{ product_form_id }}-submit"
-                  type="submit"
-                  name="add"
                   class="submit-a-product-wish w-button"
                   aria-haspopup="dialog"
                   aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                   aria-live="polite"
                   onclick="requestHandler()"
                 >
-                  <span id="request-form-text">
+                  <span>
                     {{ 'products.product.submit_a_product_wish' | t }}
                   </span>
                 </button>
