@@ -320,7 +320,7 @@
             href="{{ routes.root_url }}"
             class="header__heading-link link link--text focus-inset center"
           >
-            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%; height: 100%" />
+            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%; height: 100%">
           </a>
         </div>
       </div>
@@ -329,733 +329,766 @@
 </div>
 
 <script>
-  
-  
   {% comment %} check empty object {% endcomment %}
-  const isEmptyObject = (obj) => {
-    return Object.keys(obj).length === 0;
-  }
-
-  {% comment %} format date {% endcomment %}
-  const formatDate = (date) => {
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-  
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-  
-    return [year, month, day].join('-');
-  }
-  {% comment %} render date {% endcomment %}
-  const generateDate = () => {
-    let pageUrl = '{{ page.url }}';
-    let locale = "en-US";
-    if(pageUrl.includes('zh')) {
-      locale = "zh-CN";
-    } else if(pageUrl.includes('de')){
-      locale = "de-DE";
-    } else{
-      locale = "en-US";
+    const isEmptyObject = (obj) => {
+      return Object.keys(obj).length === 0;
     }
 
-    const options = { weekday: 'long', month: 'short', day: 'numeric', };
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1); // set tomorrow's date
+    {% comment %} format date {% endcomment %}
+    const formatDate = (date) => {
+      let d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
 
-    return Array.from({ length: 28 }, (_, i) => {
-      let date = new Date(tomorrow);
-      date.setDate(date.getDate() + i);
-      const dateArray = date.toLocaleString(locale, options).replace(',', '').replace('.', '').split(" ");
-      const newDateString = locale === "zh-CN" ?  dateArray[0] : dateArray[0] + " " + dateArray[2] + " " + dateArray[1];
-      return {
-        shortTitle: date.toLocaleString('en-US', {
-          weekday: 'short'
-        }),
-        title: newDateString,
-        value: formatDate(date),
-        times: []
-      };
-    });
-  }
+      if (month.length < 2)
+          month = '0' + month;
+      if (day.length < 2)
+          day = '0' + day;
 
-  let dates = generateDate();
-  let defaultDates = generateDate();
-  let areaParam = '';
-  let districtParam = '';
-  const TIME_BY_DATE_DEFAULT = {
-    region: "",
-    district: "",
-    schedule: {
-      id_schedule_default: null,
-      date: "",
-      order_name: "",
-      time: "",
-      id_schedule: ""
-    },
-    option: ""
-  }
-
-  const areaSelect = document.querySelector('.checkout_section-select.area');
-  const deliveryLocation = document.querySelector('#delivery-location');
-  let areaElementHtml = `<option value="" class="area-item">{{ 'pre-checkout.select_one' | t }}</option>`;
-  const districtSelect = document.querySelector('.checkout_section-select.district');
-  let districtHtml = `<option value="" class="district-item">{{ 'pre-checkout.select_one' | t }}</option>`;
-  const regionElement = document.querySelector(".region")
-  const areaValidate = regionElement.querySelector(".validate-schedule");
-
-  const districtElement = document.querySelector(".district")
-  const districtValidate = districtElement.querySelector(".validate-schedule");
-
-  const timeSlotElement = document.querySelector(".timeslot")
-  const timeSlotValidate = timeSlotElement.querySelector(".validate-schedule");
-
-  const timeByDateStorage = localStorage.getItem('timeByDate');
-
-  const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
-
-   // delivery district
-   const areas = [
-    {
-      label: 'Hong Kong Island',
-      value: 'Hong Kong Island',
-      districts: [
-        {
-          label: 'Central & Western',
-          value: 'Central & Western',
-        },
-        {
-          label: 'Wan Chai',
-          value: 'Wan Chai',
-        },
-        {
-          label: 'Eastern',
-          value: 'Eastern',
-        },
-        {
-          label: 'Southern',
-          value: 'Southern',
-        },
-      ]
-    },
-    {
-      label: 'Hong Kong Island - Piers',
-      value: 'Hong Kong Island - Piers',
-      districts: [
-        {
-          label: 'Central & Western - Pier 4 - Lamma',
-          value: 'Central & Western - Pier 4 - Lamma',
-        },
-        {
-          label: 'Central & Western - Pier 5 - Cheung Chau North & South',
-          value: 'Central & Western - Pier 5 - Cheung Chau North & South',
-        },
-        {
-          label: 'Central & Western - Pier 6 - Lantau, Mui Wo',
-          value: 'Central & Western - Pier 6 - Lantau, Mui Wo',
+      return [year, month, day].join('-');
+    }
+    {% comment %} render date {% endcomment %}
+    const generateDate = (day_difference = 1, cutoff_time) => {
+        let pageUrl = '{{ page.url }}';
+        let locale = "en-US";
+        if(pageUrl.includes('zh')) {
+            locale = "zh-CN";
+        } else if(pageUrl.includes('de')){
+            locale = "de-DE";
+        } else{
+            locale = "en-US";
         }
-      ]
-    },
-    {
-      label: 'Kowloon',
-      value: 'Kowloon',
-      districts: [
-        {
-          label: 'Yau Tsim Mong (Yau Ma Tei / Tsim Sha Tsui / Mong Kok / Kowloon West)',
-          value: 'Yau Tsim Mong (Yau Ma Tei / Tsim Sha Tsui / Mong Kok / Kowloon West)',
-        },
-        {
-          label: 'Sham Shui Po',
-          value: 'Sham Shui Po',
-        },
-        {
-          label: 'Kowloon City',
-          value: 'Kowloon City',
-        },
-        {
-          label: 'Wong Tai Sin',
-          value: 'Wong Tai Sin',
-        },
-        {
-          label: 'Kwun Tong',
-          value: 'Kwun Tong',
+
+        const options = { weekday: 'long', month: 'short', day: 'numeric', };
+
+        let now = new Date();
+        if (day_difference === 0) {
+          let currentTime = now.toTimeString();
+          currentTime = currentTime.split(' ')[0].substr(0, 5);
+          if(cutoff_time <= currentTime) {
+            now.setDate(now.getDate() + 1);
+          }
+        }else {
+          now.setDate(now.getDate() + day_difference);
         }
-      ]
-    },
-    {
-      label: 'New Territories 1',
-      value: 'New Territories 1',
-      districts: [
-        {
-          label: 'Kwai Tsing',
-          value: 'Kwai Tsing',
-        },
-        {
-          label: 'Tsuen Wan',
-          value: 'Tsuen Wan',
-        },
-        {
-          label: 'Tuen Mun',
-          value: 'Tuen Mun',
-        },
-        {
-          label: 'Yuen Long',
-          value: 'Yuen Long',
-        }
-      ]
-    },
 
-    {
-      label: 'New Territories 2',
-      value: 'New Territories 2',
-      districts: [
-        {
-          label: 'North',
-          value: 'North',
-        },
-        {
-          label: 'Tai Po',
-          value: 'Tai Po',
-        },
-        {
-          label: 'Sha Tin',
-          value: 'Sha Tin',
-        },
-        {
-          label: 'Sai Kung',
-          value: 'Sai Kung',
-        },
-        {
-          label: 'Sai Kung - Pier 1 - Sai Kung Islands',
-          value: 'Sai Kung - Pier 1 - Sai Kung Islands',
-        }
-      ]
-    },
-    {
-      label: 'Islands',
-      value: 'Islands',
-      districts: [
-        {
-          label: 'Islands - Discovery Bay',
-          value: 'Islands - Discovery Bay',
-        },
-        {
-          label: 'Islands - Tung Chung North & South',
-          value: 'Islands - Tung Chung North & South',
-        },
-        {
-          label: 'Islands - Yat Tung Estate North & South',
-          value: 'Islands - Yat Tung Estate North & South',
-        },
-        {
-          label: 'Islands - Ma Wan',
-          value: 'Islands - Ma Wan',
-        }
-      ]
-    },
-  ]
+        return Array.from({ length: 28 }, (_, i) => {
+            let date = new Date(now);
+            date.setDate(date.getDate() + i);
+            const dateArray = date.toLocaleString(locale, options).replace(',', '').replace('.', '').split(" ");
+            const newDateString = locale === "zh-CN" ?  dateArray[0] : dateArray[0] + " " + dateArray[2] + " " + dateArray[1];
+            return {
+            shortTitle: date.toLocaleString('en-US', {
+                weekday: 'short'
+            }),
+            title: newDateString,
+            value: formatDate(date),
+            times: []
+            };
+        });
+    }
 
-  let timeByDate = {
-    region: (timeByDateStorage ? JSON.parse(timeByDateStorage)?.region : areas[0].value) || "",
-    district: JSON.parse(timeByDateStorage)?.district || "",
-    schedule: {
-      id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
-      date: JSON.parse(timeByDateStorage)?.schedule?.date || "",
-      order_name: JSON.parse(timeByDateStorage)?.schedule?.order_name || "",
-      time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
-      id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
-    },
-    option: JSON.parse(timeByDateStorage)?.option || ""
-  }
+    const areaSelect = document.querySelector('.checkout_section-select.area');
+    const deliveryLocation = document.querySelector('#delivery-location');
+    let areaElementHtml = `<option value="" class="area-item">{{ 'pre-checkout.select_one' | t }}</option>`;
+    const districtSelect = document.querySelector('.checkout_section-select.district');
+    let districtHtml = `<option value="" class="district-item">{{ 'pre-checkout.select_one' | t }}</option>`;
+    const regionElement = document.querySelector(".region")
+    const areaValidate = regionElement.querySelector(".validate-schedule");
+  
+    const districtElement = document.querySelector(".district")
+    const districtValidate = districtElement.querySelector(".validate-schedule");
+  
+    const timeSlotElement = document.querySelector(".timeslot")
+    const timeSlotValidate = timeSlotElement.querySelector(".validate-schedule");
+  
+    const timeByDateStorage = localStorage.getItem('timeByDate');
+  
+    const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
+  
+    const cutoffTimeStorage = localStorage.getItem('cutoffTime');
+    const dayDiffStorage = localStorage.getItem('dayDiff');
 
-  if(timeByDate.region && timeByDate.district) {
-    deliveryLocation.innerHTML = `${timeByDate.region} / ${timeByDate.district}`
-  } else if (timeByDate.region && !timeByDate.district) {
-    deliveryLocation.innerHTML = timeByDate.region;
-  } else {
-    deliveryLocation.innerHTML = ""
-  }
+     // delivery district
+    const areas = [
+        {
+        label: 'Hong Kong Island',
+        value: 'Hong Kong Island',
+        districts: [
+            {
+            label: 'Central & Western',
+            value: 'Central & Western',
+            },
+            {
+            label: 'Wan Chai',
+            value: 'Wan Chai',
+            },
+            {
+            label: 'Eastern',
+            value: 'Eastern',
+            },
+            {
+            label: 'Southern',
+            value: 'Southern',
+            },
+        ]
+        },
+        {
+        label: 'Hong Kong Island - Piers',
+        value: 'Hong Kong Island - Piers',
+        districts: [
+            {
+            label: 'Central & Western - Pier 4 - Lamma',
+            value: 'Central & Western - Pier 4 - Lamma',
+            },
+            {
+            label: 'Central & Western - Pier 5 - Cheung Chau North & South',
+            value: 'Central & Western - Pier 5 - Cheung Chau North & South',
+            },
+            {
+            label: 'Central & Western - Pier 6 - Lantau, Mui Wo',
+            value: 'Central & Western - Pier 6 - Lantau, Mui Wo',
+            }
+        ]
+        },
+        {
+        label: 'Kowloon',
+        value: 'Kowloon',
+        districts: [
+            {
+            label: 'Yau Tsim Mong (Yau Ma Tei / Tsim Sha Tsui / Mong Kok / Kowloon West)',
+            value: 'Yau Tsim Mong (Yau Ma Tei / Tsim Sha Tsui / Mong Kok / Kowloon West)',
+            },
+            {
+            label: 'Sham Shui Po',
+            value: 'Sham Shui Po',
+            },
+            {
+            label: 'Kowloon City',
+            value: 'Kowloon City',
+            },
+            {
+            label: 'Wong Tai Sin',
+            value: 'Wong Tai Sin',
+            },
+            {
+            label: 'Kwun Tong',
+            value: 'Kwun Tong',
+            }
+        ]
+        },
+        {
+        label: 'New Territories 1',
+        value: 'New Territories 1',
+        districts: [
+            {
+            label: 'Kwai Tsing',
+            value: 'Kwai Tsing',
+            },
+            {
+            label: 'Tsuen Wan',
+            value: 'Tsuen Wan',
+            },
+            {
+            label: 'Tuen Mun',
+            value: 'Tuen Mun',
+            },
+            {
+            label: 'Yuen Long',
+            value: 'Yuen Long',
+            }
+        ]
+        },
 
+        {
+        label: 'New Territories 2',
+        value: 'New Territories 2',
+        districts: [
+            {
+            label: 'North',
+            value: 'North',
+            },
+            {
+            label: 'Tai Po',
+            value: 'Tai Po',
+            },
+            {
+            label: 'Sha Tin',
+            value: 'Sha Tin',
+            },
+            {
+            label: 'Sai Kung',
+            value: 'Sai Kung',
+            },
+            {
+            label: 'Sai Kung - Pier 1 - Sai Kung Islands',
+            value: 'Sai Kung - Pier 1 - Sai Kung Islands',
+            }
+        ]
+        },
+        {
+        label: 'Islands',
+        value: 'Islands',
+        districts: [
+            {
+            label: 'Islands - Discovery Bay',
+            value: 'Islands - Discovery Bay',
+            },
+            {
+            label: 'Islands - Tung Chung North & South',
+            value: 'Islands - Tung Chung North & South',
+            },
+            {
+            label: 'Islands - Yat Tung Estate North & South',
+            value: 'Islands - Yat Tung Estate North & South',
+            },
+            {
+            label: 'Islands - Ma Wan',
+            value: 'Islands - Ma Wan',
+            }
+        ]
+        },
+    ]
 
-  let districts = timeByDate.region 
-                  ? areas.find((area) => area.value === timeByDate.region).districts
-                  : areas[0].districts;
+    const url = 'https://msh.api.vmodev.link/api';
+    let cutoffTime = null;
+    let dayDiff = 1;
+    let dates = [];
+    let defaultDates = [];
+    let areaParam = '';
+    let districtParam = '';
+    const TIME_BY_DATE_DEFAULT = {
+        region: "",
+        district: "",
+        schedule: {
+        id_schedule_default: null,
+        date: "",
+        order_name: "",
+        time: "",
+        id_schedule: ""
+        },
+        option: ""
+    }
 
-  const renderDistricts = (arr) => {
-    districtHtml = '<option value="" class="district-item">{{ 'pre-checkout.select_one' | t }}</option>'
-    arr.forEach((district) => {
-      districtHtml += `
-      <option value="${district.value}" class="district-item">${district.label}</option>
-      `
+    let timeByDate = {
+        region: (timeByDateStorage ? JSON.parse(timeByDateStorage)?.region : areas[0].value) || "",
+        district: JSON.parse(timeByDateStorage)?.district || "",
+        schedule: {
+          id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
+          date: JSON.parse(timeByDateStorage)?.schedule?.date || "",
+          order_name: JSON.parse(timeByDateStorage)?.schedule?.order_name || "",
+          time: JSON.parse(timeByDateStorage)?.schedule?.time || "",
+          id_schedule: JSON.parse(timeByDateStorage)?.schedule?.id_schedule || null,
+        },
+        option: JSON.parse(timeByDateStorage)?.option || ""
+    }
+    
+    if (timeByDate.region && timeByDate.district) {
+        deliveryLocation.innerHTML = `${timeByDate.region} / ${timeByDate.district}`
+    } else if (timeByDate.region && !timeByDate.district) {
+        deliveryLocation.innerHTML = timeByDate.region;
+    } else {
+        deliveryLocation.innerHTML = ""
+    }
+    
+    
+    let districts = timeByDate.region 
+                    ? areas.find((area) => area.value === timeByDate.region).districts
+                    : areas[0].districts;
+
+    const renderDistricts = (arr) => {
+        districtHtml = '<option value="" class="district-item">{{ 'pre-checkout.select_one' | t }}</option>'
+        arr.forEach((district) => {
+            districtHtml += `
+            <option value="${district.value}" class="district-item">${district.label}</option>
+            `
+        })
+        districtSelect.innerHTML = districtHtml;
+        districtSelect.addEventListener('change', (event) => {
+            const { value } = event.target;
+            timeSlotValidate.classList.remove('invalid');
+            
+            deliveryLocation.innerHTML = `${areaSelect.value} / ${value}`;
+            timeByDate = {
+            ...timeByDate,
+            district: value,
+            schedule: TIME_BY_DATE_DEFAULT.schedule
+            }
+            localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+
+            if(value !== "") {
+                districtValidate.classList.remove('invalid');
+                districtSelect.classList.remove('invalid');
+                fetchData(encodeURIComponent(timeByDate?.region), encodeURIComponent(timeByDate?.district))
+            }
+
+            if(value === "") {
+                renderTime(0, "default");
+            }
+        })
+    }
+
+    if(timeByDate?.region) {
+        renderDistricts(districts);
+    }
+
+    areas.forEach((area) => {
+        areaElementHtml += `
+        <option value="${area.value}" class="area-item">${area.label}</option>
+        `
     })
-    districtSelect.innerHTML = districtHtml;
-    districtSelect.addEventListener('change', (event) => {
-      const { value } = event.target;
-      timeSlotValidate.classList.remove('invalid');
-      
-      deliveryLocation.innerHTML = `${areaSelect.value} / ${value}`;
-      timeByDate = {
-        ...timeByDate,
-        district: value,
-        schedule: TIME_BY_DATE_DEFAULT.schedule
-      }
-      localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
 
-      if(value !== "") {
+    areaSelect.innerHTML = areaElementHtml;
+    areaSelect.addEventListener('change', (event) => {
+        const { value } = event.target;
+        if(value && value === 'Islands'){
+            document.getElementById('shipping_fee').innerText = '$50';
+        }else{
+            document.getElementById('shipping_fee').innerText = 'Free';
+        }
+        areaSelect.value = value;
+        deliveryLocation.innerHTML = value;
         districtValidate.classList.remove('invalid');
         districtSelect.classList.remove('invalid');
-        fetchData(encodeURIComponent(timeByDate?.region), encodeURIComponent(timeByDate?.district))
-      }
-
-      if(value === "") {
-        renderTime(0, "default");
-      }
-    })
-  }
-
-  if(timeByDate?.region) {
-    renderDistricts(districts);
-  }
-
-  areas.forEach((area) => {
-    areaElementHtml += `
-    <option value="${area.value}" class="area-item">${area.label}</option>
-    `
-  })
-
-  areaSelect.innerHTML = areaElementHtml;
-  areaSelect.addEventListener('change', (event) => {
-    const { value } = event.target;
-    if(value && value === 'Islands'){
-        document.getElementById('shipping_fee').innerText = '$50';
-    }else{
-        document.getElementById('shipping_fee').innerText = 'Free';
-    }
-    areaSelect.value = value;
-    deliveryLocation.innerHTML = value;
-    districtValidate.classList.remove('invalid');
-    districtSelect.classList.remove('invalid');
-    timeSlotValidate.classList.remove('invalid');
-    if(value !== "") {
-      areaValidate.classList.remove('invalid');
-      areaSelect.classList.remove('invalid');
-    }
-    const districtsByArea = areas.find((area) => area.value === value)
-    districts = districtsByArea ? districtsByArea.districts : [];
-    renderDistricts(districts);
-    timeByDate = {
-      ...timeByDate,
-      region: value,
-      district: "",
-      schedule: TIME_BY_DATE_DEFAULT.schedule
-    }
-    localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-    {% comment %} fetchData(encodeURIComponent(areaSelect.value)) {% endcomment %}
-    renderTime(0, "default");
-  })
-
-  areaSelect.value = timeByDate.region;
-  districtSelect.value = timeByDate.district;
-
-  // delivery schedule
-  let scheduleDateElement = document.querySelector(".delivery-schedule-item-date-wrapper");
-  let scheduleDateHtml = "";
-  let scheduleTimeElement = document.querySelector(".delivery-schedule-item-time-wrapper");
-  let scheduleTimeHtml = "";
-
-  const renderDate = (count) => {
-    scheduleDateHtml = "";
-  
-    const renderDateHtml = (arr) => {
-       arr.forEach((date) => {
-        const dateArr = date.title.split(" ");
-        if(dateArr.length > 1) {
-          scheduleDateHtml += `
-          <div class="delivery-schedule-item-date flex flex-col center">
-            <span>${dateArr[0]}</span>
-            <span>${dateArr[1] + " " + dateArr[2]}</span>
-          </div>`
-        } else {
-          scheduleDateHtml += `
-          <div class="delivery-schedule-item-date flex flex-col center">
-            <span>${dateArr[0]}</span>
-          </div>`
+        timeSlotValidate.classList.remove('invalid');
+        if(value !== "") {
+            areaValidate.classList.remove('invalid');
+            areaSelect.classList.remove('invalid');
         }
-      })
-      return scheduleDateElement.innerHTML = scheduleDateHtml;
-    }
-  
-    if(!count || count === 0){
-      renderDateHtml(dates.slice(0, 7));
-    } else{
-      switch (count) {
-        case 1:
-          renderDateHtml(dates.slice(7, 14));
-          break;
-  
-        case 2:
-          renderDateHtml(dates.slice(14, 21));
-          break;
-  
-        case 3:
-          renderDateHtml(dates.slice(-7));
-          break;
-  
-        default:
-          return scheduleDateElement.innerHTML = "";
-      }
-    }
-  }
-  renderDate();
+        const districtsByArea = areas.find((area) => area.value === value)
+        districts = districtsByArea ? districtsByArea.districts : [];
+        renderDistricts(districts);
+        timeByDate = {
+            ...timeByDate,
+            region: value,
+            district: "",
+            schedule: TIME_BY_DATE_DEFAULT.schedule
+        }
+        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+        {% comment %} fetchData(encodeURIComponent(areaSelect.value)) {% endcomment %}
+        renderTime(0, "default");
+    })
 
-  const onSelectItemValue = (item) => {
+    areaSelect.value = timeByDate.region;
+    districtSelect.value = timeByDate.district;
+
+    // delivery schedule
+    let scheduleDateElement = document.querySelector(".delivery-schedule-item-date-wrapper");
+    let scheduleDateHtml = "";
+    let scheduleTimeElement = document.querySelector(".delivery-schedule-item-time-wrapper");
+    let scheduleTimeHtml = "";
+
+    const onSelectItemValue = (item) => {
     const isMaximumOrder = item.classList.contains('maximum-order');
     if(!isMaximumOrder) {
-      const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
+        const timeValuesSelected = document.querySelectorAll('.delivery-schedule-item-time-value.selected');
 
-      const timeValue = item.querySelector(".time-slot");
+        const timeValue = item.querySelector(".time-slot");
 
-      for (timeSelected of timeValuesSelected) {
+        for (timeSelected of timeValuesSelected) {
         timeSelected.classList.remove('selected');
-      }
-      timeSlotValidate.classList.remove('invalid');
-  
-      item.classList.add('selected');
-      const scheduleTimeByDate = {
+        }
+        timeSlotValidate.classList.remove('invalid');
+    
+        item.classList.add('selected');
+        const scheduleTimeByDate = {
         id_schedule_default: Number(item.id),
         id_schedule: Number(item.id),
         date: item.title,
         time: timeValue.innerText
-      }
-      timeByDate = {
+        }
+        timeByDate = {
         ...timeByDate,
         schedule: scheduleTimeByDate
-      }
-  
-      localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-  
-      dates = dates.map((date) => ({
+        }
+    
+        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+    
+        dates = dates.map((date) => ({
         ...date,
         times: date.times.map((time) => {
-          const isSelected = item.title === date.value && timeValue.innerText === time.comment;
-  
-          return {
+            const isSelected = item.title === date.value && timeValue.innerText === time.comment;
+    
+            return {
             ...time,
             selected: isSelected
-          }
+            }
         })
-      }))
+        }))
     }
-  }
-  
-  const renderTime = (count, type) => {
-    scheduleTimeHtml = '';
-    const renderTimeHtml = (arr) => {
-      arr.forEach((item) => {
-        scheduleTimeHtml += `
-          <div class="delivery-schedule-item-time">
-          ${!item.times.length
-          ? `<div class="delivery-schedule-item-time-no-delivery text-14">{{ 'pre-checkout.no_delivery' | t }}</div>` 
-          : `
-          <div class="delivery-schedule-item-time-value-wrapper">
-            ${item.times.map((i) => {
-                return `<div class="delivery-schedule-item-time-value ${i.selected ? "selected" : ""} ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
-                  onclick="onSelectItemValue(this)"
-                  >
-                    <div class="time-slot">${i.comment}</div>
-                    <div class="icon-check">
-                      <svg
-                        class="icon icon-checkmark color-foreground-text"
-                        aria-hidden="true"
-                        focusable="false"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 12 9"
-                        fill="none"
-                      >
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="#30b90e"/>
-                      </svg>
-                    </div>
-                  </div>`
-            }).join(" ")}
-          </div>`
+    }
+    
+   
+    const renderDate = (count) => {
+        scheduleDateHtml = "";
+      
+        const renderDateHtml = (arr) => {
+           arr.forEach((date) => {
+            const dateArr = date.title.split(" ");
+            if(dateArr.length > 1) {
+              scheduleDateHtml += `
+              <div class="delivery-schedule-item-date flex flex-col center">
+                <span>${dateArr[0]}</span>
+                <span>${dateArr[1] + " " + dateArr[2]}</span>
+              </div>`
+            } else {
+              scheduleDateHtml += `
+              <div class="delivery-schedule-item-date flex flex-col center">
+                <span>${dateArr[0]}</span>
+              </div>`
+            }
+          })
+          return scheduleDateElement.innerHTML = scheduleDateHtml;
+        }
+      
+        if(!count || count === 0){
+          renderDateHtml(dates.slice(0, 7));
+        } else{
+          switch (count) {
+            case 1:
+                renderDateHtml(dates.slice(7, 14));
+                break;
+      
+            case 2:
+                renderDateHtml(dates.slice(14, 21));
+                break;
+      
+            case 3:
+                renderDateHtml(dates.slice(-7));
+                break;
+      
+            default:
+                return scheduleDateElement.innerHTML = "";
           }
-          </div>`
-      })
-      return scheduleTimeElement.innerHTML = scheduleTimeHtml;
+        }
     }
 
-    if (type && type === "default") {
-      renderTimeHtml(defaultDates.slice(0, 7));
-    } else if(!count || count === 0){
-      renderTimeHtml(dates.slice(0, 7));
-    } else{
-      switch (count) {
-        case 1:
-          renderTimeHtml(dates.slice(7, 14));
-          break;
-  
-        case 2:
-          renderTimeHtml(dates.slice(14, 21));
-          break;
-  
-        case 3:
-          renderTimeHtml(dates.slice(-7));
-          break;
-  
-        default:
-          return scheduleTimeElement.innerHTML = "";
-      }
-    }
-  }
-  
-  renderTime();
-  
-  let nextCount = 0;
-  let backCount = 0;
-  
-  const onSchedule = (type) => {
-    const iconNextElement = document.querySelector(".icon-schedule.next");
-    const iconBackElement = document.querySelector(".icon-schedule.back");
-    const element = document.getElementById("delivery-schedule-wrapper");
-    if (type === 'next' && nextCount < 5) {
-      nextCount++;
-      backCount++;
-      element.scrollLeft += 678;
-      iconBackElement.style.visibility = "visible";
-      renderDate(nextCount);
-      if(!timeByDate.region || !timeByDate.district){
-        renderTime(nextCount, "default");
-      }else{
-        renderTime(nextCount);
-      }
-      const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
-        for (date of dateTimes){
-          date.classList.add("animation-next");
-          date.classList.remove("animation-back");
+    const renderTime = (count, type) => {
+        scheduleTimeHtml = '';
+        const renderTimeHtml = (arr) => {
+          arr.forEach((item) => {
+            scheduleTimeHtml += `
+              <div class="delivery-schedule-item-time">
+              ${!item.times.length
+              ? `<div class="delivery-schedule-item-time-no-delivery text-14">{{ 'pre-checkout.no_delivery' | t }}</div>` 
+              : `
+              <div class="delivery-schedule-item-time-value-wrapper">
+                ${item.times.map((i) => {
+                    return `<div class="delivery-schedule-item-time-value ${i.selected ? "selected" : ""} ${i?.is_maximum_order ? "maximum-order" : ""}" id="${i.id_schedule || i.id_schedule_default}" title="${item.value}"
+                      onclick="onSelectItemValue(this)"
+                      >
+                        <div class="time-slot">${i.comment}</div>
+                        <div class="icon-check">
+                          <svg
+                            class="icon icon-checkmark color-foreground-text"
+                            aria-hidden="true"
+                            focusable="false"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 12 9"
+                            fill="none"
+                          >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="#30b90e"/>
+                          </svg>
+                        </div>
+                      </div>`
+                }).join(" ")}
+              </div>`
+              }
+              </div>`
+          })
+          return scheduleTimeElement.innerHTML = scheduleTimeHtml;
         }
-  
-        const timeValues = document.querySelectorAll('.delivery-schedule-item-time');
-        for (time of timeValues){
-          time.classList.add("animation-next");
-          time.classList.remove("animation-back");
-        }
-    } else {
-      element.scrollLeft -= 678;
-      backCount--;
-      nextCount--;
-      iconNextElement.style.visibility = "visible";
-      renderDate(nextCount);
-      if(!timeByDate.region || !timeByDate.district){
-        renderTime(nextCount, "default");
-      }else{
-        renderTime(nextCount);
-      }
-      const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
-        for (date of dateTimes){
-          date.classList.remove("animation-next");
-          date.classList.add("animation-back");
-        }
-  
-        const timeValues = document.querySelectorAll('.delivery-schedule-item-time');
-        for (time of timeValues){
-          time.classList.remove("animation-next");
-          time.classList.add("animation-back");
+    
+        if (type && type === "default") {
+          renderTimeHtml(defaultDates.slice(0, 7));
+        } else if(!count || count === 0){
+          renderTimeHtml(dates.slice(0, 7));
+        } else{
+          switch (count) {
+            case 1:
+              renderTimeHtml(dates.slice(7, 14));
+              break;
+      
+            case 2:
+              renderTimeHtml(dates.slice(14, 21));
+              break;
+      
+            case 3:
+              renderTimeHtml(dates.slice(-7));
+              break;
+      
+            default:
+              return scheduleTimeElement.innerHTML = "";
+          }
         }
     }
-  
-    if (nextCount === 3) {
-      iconNextElement.style.visibility = "hidden";
-    }
-  
-    if (backCount === 0) {
-      iconBackElement.style.visibility = "hidden";
-    }
-  }
 
-  let optionExits = false;
+    let optionExits = false;
 
-  if(inputRadio.length) {
+    if(inputRadio.length) {
     for (let i of inputRadio) {
-      if(i.value === timeByDate.option) {
-        optionExits = true;
-      }
+        if(i.value === timeByDate.option) {
+          optionExits = true;
+        }
     }
-  }
+    }
 
-  timeByDate = {
+    timeByDate = {
     ...timeByDate,
     option: optionExits ? timeByDate.option : inputRadio[0].value
-  }
-  localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-
- 
-  
-  const fetchData = async (area = '', district = '') => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const url = 'https://msh.api.vmodev.link';
-  
-    try {
-      const res = await fetch(`${url}/api/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
-      const data = await res.json();
-      if(data.response){
-        const scheduleDefault = data.response.scheduleDefault;
-        const schedule = data.response.schedule;
-        const scheduleExist = data.response.scheduleExist;
-        const timeByDateStorageOld = localStorage.getItem('timeByDate');
-        const timeByDateStorageSchedule = timeByDateStorageOld ? JSON.parse(timeByDateStorageOld).schedule : null;
-
-        dates = dates.map((date) => {
-          const isScheduleExits = !!scheduleExist[date.value];
-  
-          return {
-            ...date,
-            times: ((isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || [])
-            .map((i) => {
-              const isSelected = (i.comment === timeByDateStorageSchedule?.time && date.value === timeByDateStorageSchedule?.date
-              && (i.id_schedule === timeByDateStorageSchedule?.id_schedule || i.id_schedule_default === timeByDateStorageSchedule?.id_schedule_default) 
-              && !i?.is_maximum_order)
-              || false;
-
-              return {
-                  ...i,
-                  selected: isSelected
-              }
-            })
-          }
-        })
-
-        renderTime(nextCount);
-      }
-    } catch (error) {
-      console.log('error', error);
     }
-  }
-
-  if(timeByDate?.region && timeByDate?.district) {
-    fetchData(encodeURIComponent(timeByDate.region),encodeURIComponent(timeByDate.district));
-  }
+    localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
   
-  // delivery option
-  if(inputRadio) {
-    for (const radio of inputRadio) {
-      radio.checked = (timeByDate.option || JSON.parse(timeByDateStorage)?.option) === radio.value;
-      radio.addEventListener('change', (event) => {
-        radio.checked = true;
-    
-        timeByDate = {
-          ...timeByDate,
-          option: event.target.value
-        }
-        localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
-      })
-    }
-  }
-  
-  const onCheckout = async () => {
-  
-    if(timeByDate?.region === "") {
-      areaValidate.classList.add('invalid');
-      areaSelect.classList.add('invalid');
-      regionElement.scrollIntoView({
-        behavior: "smooth"
-      })
-      return;
-    } else if(timeByDate?.district === ""){
-      districtValidate.classList.add('invalid');
-      districtSelect.classList.add('invalid');
-      districtElement.scrollIntoView({
-        behavior: "smooth"
-      })
-      return;
-    } else if (timeByDate?.schedule?.time === "") {
-      timeSlotValidate.classList.add('invalid');
-      timeSlotElement.scrollIntoView({
-        behavior: "smooth"
-      })
-      return;
-    }
-    const request = await fetch(window.Shopify.routes.root + 'cart.js');
-    const response = await request.json();
-    const items = response.items;
-    const area = areaSelect.value;
-    if(area && area === 'Islands'){
-        let hasShipping = false;
-        if(items && items.length > 0){
-            for (let i = 0; i < items.length; i++) {
-                if(items[i].product_id === 8568463524153){
-                    hasShipping = true;
-                }
-            }
-        }
-        if(!hasShipping){
-            let formData = {
-                'items': [{
-                    'product_id': 8568463524153,
-                    'quantity': 1
-                }]
-            };
-            const addRequest = await fetch(window.Shopify.routes.root + 'cart/add.js',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            const addResponse = await addRequest.json();
-            console.log(addResponse);
-        }
-    }else{
-        let variant_id = 0;
-        if(items && items.length > 0){
-            let shoppingProduct = items.find(x=>x.product_id === 8568463524153);
-            if(shoppingProduct){
-                variant_id = shoppingProduct.variant_id;
-            }
-        }
-        if(variant_id > 0){
-            const updateRequest = await fetch(window.Shopify.routes.root + 'cart/update.js',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: {
-                    updates: {
-                        variant_id: 0
+    (async () => {
+        const getCutOffTime = async () => {
+            try {
+                const res = await fetch(`${url}/rule-order`);
+                const data = await res.json();
+                if(data.response) {
+                    const { cutoff_time, day_difference } = data.response;
+                    cutoffTime = cutoff_time;
+                    if(Number.isInteger(day_difference)) {
+                        dayDiff = Number(day_difference);
+                        dates = generateDate(day_difference, cutoff_time);
+                        defaultDates = generateDate(day_difference, cutoff_time);
                     }
                 }
-            });
-            const updateResponse = await addRequest.json();
-            console.log(updateResponse);
+            } catch (error) {
+                console.log('error cutoff', error);
+            }
+        }
+        await getCutOffTime();
+        renderDate();
+        renderTime();
+    
+        if(timeByDate?.region && timeByDate?.district) {
+            fetchData(encodeURIComponent(timeByDate.region),encodeURIComponent(timeByDate.district));
+        }
+        
+    })();
+
+    const fetchData = async (area = '', district = '') => {
+      const controller = new AbortController();
+      const signal = controller.signal;
+    
+      try {
+        const res = await fetch(`${url}/schedule-order?area=${area}&district=${district}&fromDate=${dates[0].value}&toDate=${dates[dates.length - 1].value}`, { signal });
+        const data = await res.json();
+        if(data.response){
+          const scheduleDefault = data.response.scheduleDefault;
+          const schedule = data.response.schedule;
+          const scheduleExist = data.response.scheduleExist;
+          const timeByDateStorageOld = localStorage.getItem('timeByDate');
+          const timeByDateStorageSchedule = timeByDateStorageOld ? JSON.parse(timeByDateStorageOld).schedule : null;
+  
+          dates = dates.map((date) => {
+            const isScheduleExits = !!scheduleExist[date.value];
+    
+            return {
+              ...date,
+              times: ((isScheduleExits ? schedule[date.value] : scheduleDefault[date.shortTitle]) || [])
+              .map((i) => {
+                const isSelected = (i.comment === timeByDateStorageSchedule?.time && date.value === timeByDateStorageSchedule?.date
+                && (i.id_schedule === timeByDateStorageSchedule?.id_schedule || i.id_schedule_default === timeByDateStorageSchedule?.id_schedule_default) 
+                && !i?.is_maximum_order)
+                || false;
+  
+                return {
+                    ...i,
+                    selected: isSelected
+                }
+              })
+            }
+          })
+  
+          renderTime(nextCount);
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+  }
+
+    let nextCount = 0;
+    let backCount = 0;
+
+    const onSchedule = (type) => {
+        const iconNextElement = document.querySelector(".icon-schedule.next");
+        const iconBackElement = document.querySelector(".icon-schedule.back");
+        const element = document.getElementById("delivery-schedule-wrapper");
+        if (type === 'next' && nextCount < 5) {
+            nextCount++;
+            backCount++;
+            element.scrollLeft += 678;
+            iconBackElement.style.visibility = "visible";
+            renderDate(nextCount);
+            if(!timeByDate.region || !timeByDate.district){
+                renderTime(nextCount, "default");
+            }else{
+                renderTime(nextCount);
+            }
+            const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
+            for (date of dateTimes){
+                date.classList.add("animation-next");
+                date.classList.remove("animation-back");
+            }
+        
+            const timeValues = document.querySelectorAll('.delivery-schedule-item-time');
+            for (time of timeValues){
+                time.classList.add("animation-next");
+                time.classList.remove("animation-back");
+            }
+        } else {
+            element.scrollLeft -= 678;
+            backCount--;
+            nextCount--;
+            iconNextElement.style.visibility = "visible";
+            renderDate(nextCount);
+            if(!timeByDate.region || !timeByDate.district){
+                renderTime(nextCount, "default");
+            }else{
+                renderTime(nextCount);
+            }
+            const dateTimes = document.querySelectorAll('.delivery-schedule-item-date');
+            for (date of dateTimes){
+                date.classList.remove("animation-next");
+                date.classList.add("animation-back");
+            }
+        
+            const timeValues = document.querySelectorAll('.delivery-schedule-item-time');
+            for (time of timeValues){
+                time.classList.remove("animation-next");
+                time.classList.add("animation-back");
+            }
+        }
+        
+        if (nextCount === 3) {
+            iconNextElement.style.visibility = "hidden";
+        }
+        
+        if (backCount === 0) {
+            iconBackElement.style.visibility = "hidden";
         }
     }
-    return window.location.href = "/checkout"
-  }
 
-  const toggleOrderSummary = () => {
-    const orderSummarySection = document.querySelector(".toggle-order-summary");
-    const orderSummaryOld = document.querySelector(".pre-checkout-right");
-    const orderSummaryText = orderSummarySection.querySelector(".toggle-order-summary-text");
-    const orderSummaryArrow = orderSummarySection.querySelector(".arrow-down svg");
-
-    if(orderSummarySection){
-      orderSummaryOld.classList.toggle("show");
-      orderSummarySection.classList.toggle("show");
-
-      if(orderSummarySection.classList.contains("show")){
-        orderSummaryText.innerText = "Hide order summary";
-        orderSummaryArrow.style.rotate = "-90deg";
-
-      }else{
-        orderSummaryText.innerText = "Show order summary";
-        orderSummaryArrow.style.rotate = "90deg";
-
-      }
+    // delivery option
+    if(inputRadio) {
+        for (const radio of inputRadio) {
+        radio.checked = (timeByDate.option || JSON.parse(timeByDateStorage)?.option) === radio.value;
+        radio.addEventListener('change', (event) => {
+            radio.checked = true;
+        
+            timeByDate = {
+            ...timeByDate,
+            option: event.target.value
+            }
+            localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
+        })
+        }
     }
-  }
+  
+    const onCheckout = async () => {
+  
+        if(timeByDate?.region === "") {
+        areaValidate.classList.add('invalid');
+        areaSelect.classList.add('invalid');
+        regionElement.scrollIntoView({
+            behavior: "smooth"
+        })
+        return;
+        } else if(timeByDate?.district === ""){
+        districtValidate.classList.add('invalid');
+        districtSelect.classList.add('invalid');
+        districtElement.scrollIntoView({
+            behavior: "smooth"
+        })
+        return;
+        } else if (timeByDate?.schedule?.time === "") {
+        timeSlotValidate.classList.add('invalid');
+        timeSlotElement.scrollIntoView({
+            behavior: "smooth"
+        })
+        return;
+        }
+        const request = await fetch(window.Shopify.routes.root + 'cart.js');
+        const response = await request.json();
+        const items = response.items;
+        const area = areaSelect.value;
+        if(area && area === 'Islands'){
+            let hasShipping = false;
+            if(items && items.length > 0){
+                for (let i = 0; i < items.length; i++) {
+                    if(items[i].product_id === 8568463524153){
+                        hasShipping = true;
+                    }
+                }
+            }
+            if(!hasShipping){
+                let formData = {
+                    'items': [{
+                        'product_id': 8568463524153,
+                        'quantity': 1
+                    }]
+                };
+                const addRequest = await fetch(window.Shopify.routes.root + 'cart/add.js',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                const addResponse = await addRequest.json();
+                console.log(addResponse);
+            }
+        }else{
+            let variant_id = 0;
+            if(items && items.length > 0){
+                let shoppingProduct = items.find(x=>x.product_id === 8568463524153);
+                if(shoppingProduct){
+                    variant_id = shoppingProduct.variant_id;
+                }
+            }
+            if(variant_id > 0){
+                const updateRequest = await fetch(window.Shopify.routes.root + 'cart/update.js',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: {
+                        updates: {
+                            variant_id: 0
+                        }
+                    }
+                });
+                const updateResponse = await addRequest.json();
+                console.log(updateResponse);
+            }
+        }
+        return window.location.href = "/checkout"
+    }
 
+    const toggleOrderSummary = () => {
+        const orderSummarySection = document.querySelector(".toggle-order-summary");
+        const orderSummaryOld = document.querySelector(".pre-checkout-right");
+        const orderSummaryText = orderSummarySection.querySelector(".toggle-order-summary-text");
+        const orderSummaryArrow = orderSummarySection.querySelector(".arrow-down svg");
 
+        if(orderSummarySection){
+        orderSummaryOld.classList.toggle("show");
+        orderSummarySection.classList.toggle("show");
+
+        if(orderSummarySection.classList.contains("show")){
+            orderSummaryText.innerText = "Hide order summary";
+            orderSummaryArrow.style.rotate = "-90deg";
+
+        }else{
+            orderSummaryText.innerText = "Show order summary";
+            orderSummaryArrow.style.rotate = "90deg";
+
+        }
+        }
+    }
 </script>
+
+
+
