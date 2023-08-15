@@ -3766,6 +3766,13 @@ input.w-button {
   padding: 0px !important;
 }
 
+@media screen and (max-width: 768px) {
+  .globo-form-app {
+    margin-top: -10px !important;
+    max-height: 100vh;
+  }
+}
+
 .globo-form-input>select {
   border: 1px solid #cccccc !important;
   background-color: transparent !important;
@@ -3780,8 +3787,17 @@ input.w-button {
 
 .globo-form-control:nth-child(4) >div >select {
   color: #867c75 !important;
-  font-size: 14.4px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
+  padding: 8px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 128px !important;
+}
+
+.globo-form-control:nth-child(4) >div {
+  display: block !important;
 }
 .wizard__footer {
   display: flex;
@@ -3849,16 +3865,17 @@ input.w-button {
   }
 }
 
-.globo-heading {
-  display: flex;
-  justify-content: space-between;
-}
-
 .g-container {
   width: 100% !important;
   height: 100% !important;
   padding: 32px !important;
   padding-right: 26px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .g-container {
+    padding-bottom: 100px !important;
+  }
 }
 
 .pointer {
@@ -3867,4 +3884,12 @@ input.w-button {
 
 .globo-description {
   margin-top: 16px !important;
+}
+
+.message.success {
+  background-color: transparent !important;
+}
+
+.panels{
+  height: 100% !important;
 }
