@@ -1,5 +1,6 @@
 {{ 'pre-checkout.css' | asset_url | stylesheet_tag }}
 
+<div class="hidden current-time">{{ 'now' | date: '%H:%M' }}</div>
 <div class="main-pre-checkout">
   <div class="pre-checkout-overlay">
     <span class="hidden">Overlay</span>
@@ -350,6 +351,7 @@
     }
     {% comment %} render date {% endcomment %}
     const generateDate = (day_difference = 1, cutoff_time) => {
+        const currentTimeStore = document.querySelector(".hidden.current-time").innerText || "";
         let pageUrl = '{{ page.url }}';
         let locale = "en-US";
         if(pageUrl.includes('zh')) {
@@ -364,13 +366,17 @@
 
         let now = new Date();
         if (day_difference === 0) {
-          let currentTime = now.toTimeString();
-          currentTime = currentTime.split(' ')[0].substr(0, 5);
-          if(cutoff_time <= currentTime) {
+          {% comment %} let currentTime = now.toTimeString();
+          currentTime = currentTime.split(' ')[0].substr(0, 5); {% endcomment %}
+          if(cutoff_time <= currentTimeStore) {
             now.setDate(now.getDate() + 1);
           }
         }else {
-          now.setDate(now.getDate() + day_difference);
+          if(cutoff_time > currentTimeStore){
+            now.setDate(now.getDate() + day_difference);
+          } else{
+            now.setDate(now.getDate() + day_difference + 1);
+          }
         }
 
         return Array.from({ length: 28 }, (_, i) => {
@@ -1089,6 +1095,3 @@
         }
     }
 </script>
-
-
-

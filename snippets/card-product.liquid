@@ -222,7 +222,19 @@
 
   <script>
     function requestHandler() {
+      const requestFormEle = document.getElementById('request-form-content');
+      const requestForm = document.getElementById('request-form').classList.contains('visible');
+      const successText = document.getElementsByClassName("message success")[1];
       document.getElementById('request-form').classList.add("visible");
+      document.getElementById('request-form-content').reset();
+
+      if (successText.style.display) {
+        successText.style.setProperty('display', 'none');
+      } 
+
+      if(requestFormEle.style.display) {
+        requestFormEle.style.setProperty('display', 'block');
+      }
     }
   </script>
 

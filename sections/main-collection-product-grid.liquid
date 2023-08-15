@@ -170,12 +170,11 @@
     border: 0.1rem solid rgba(var(--color-foreground), 0.1);
     border-radius: 50%;
     color: rgba(var(--color-foreground), 0.55);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     z-index: 5;
     width: 37px;
+    height: 37px;
+    float: right;
   }
 
   .required-fields {
@@ -451,7 +450,6 @@
 
     //Get ".requestFrom"
     const requestFormElement = document.getElementById('request-form');
-    console.log(requestFormElement.classList.contains('visible'));
 
     window.onload = function () {
         var x = document.getElementsByClassName("g-container")[0];
@@ -527,7 +525,6 @@
       let flyoutEl = document.getElementById('request-form-content');
       let text = document.getElementById('request-form-text');
       targetEl = evt.target; // clicked element
-      console.log(targetEl, text);
     do {
       if(targetEl == flyoutEl || targetEl == text) {
         return;
