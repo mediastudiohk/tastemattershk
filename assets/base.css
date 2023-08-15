@@ -3749,6 +3749,8 @@ input.w-button {
   background-color: transparent !important;
   box-shadow: none !important;
   border-radius: 4px !important;
+  width: 99.99999% !important; 
+  /* firefox 100% width hided bugging */
 }
 
 .globo-form-input>input {
@@ -3799,6 +3801,11 @@ input.w-button {
 .globo-form-control:nth-child(4) >div {
   display: block !important;
 }
+
+.globo-form-control.layout-2-column{
+  width: 49% !important;
+}
+
 .wizard__footer {
   display: flex;
   flex-direction: row-reverse;
@@ -3892,4 +3899,14 @@ input.w-button {
 
 .panels{
   height: 100% !important;
+}
+
+.panel {
+  column-gap: 14px !important;
+}
+
+@media only screen and (max-width: 768px) {
+.globo-form-control.layout-1-column, .globo-form-control.layout-2-column, .globo-form-control.layout-3-column {
+    width: 100% !important;
+}
 }
