@@ -247,7 +247,7 @@
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-block-3">{{ 'pre-checkout.summary.shipping' | t }}</span>
-                <span id="shipping_fee">Free</span>
+                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
               </div>
             </div>
 
@@ -648,11 +648,6 @@
     areaSelect.innerHTML = areaElementHtml;
     areaSelect.addEventListener('change', (event) => {
         const { value } = event.target;
-        if(value && value === 'Islands'){
-            document.getElementById('shipping_fee').innerText = '$50';
-        }else{
-            document.getElementById('shipping_fee').innerText = 'Free';
-        }
         areaSelect.value = value;
         deliveryLocation.innerHTML = value;
         districtValidate.classList.remove('invalid');
