@@ -9,18 +9,18 @@ class CartDrawer extends HTMLElement {
     );
     this.querySelector("#CartDrawer-Overlay").addEventListener(
       "click",
-  this.close.bind(this)
+      this.close.bind(this)
     );
     this.setHeaderCartIconAccessibility();
   }
 
-  redirectPreCheckoutPage = () =>  {
-    const processPreCheckoutButton =  this.querySelector("#CartDrawer-Checkout");
-    if(processPreCheckoutButton)
+  redirectPreCheckoutPage = () => {
+    const processPreCheckoutButton = this.querySelector("#CartDrawer-Checkout");
+    if (processPreCheckoutButton)
       processPreCheckoutButton.addEventListener("click", () => {
-        return window.location.href = "/pages/pre-checkout"
-      })
-  }
+        return (window.location.href = "/pages/pre-checkout");
+      });
+  };
 
   setHeaderCartIconAccessibility() {
     const cartLink = document.querySelector("#cart_link");
