@@ -78,7 +78,7 @@
     width: 100%;
     margin: auto;
     border-top: 1px solid #e0daa7;
-    padding: 1.6rem 4rem;
+    padding: 0rem 4rem;
     display: flex;
   }
 
@@ -92,34 +92,46 @@
 
   #tab-list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     height: auto;
     max-width: 1200px;
-    margin-left: 40px;
   }
 
   #wrapper-tab-list {
-    overflow-x: hidden;
+    overflow-x: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+    /* hide scoll bar */
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
   }
 
-  #nav-prev {
+     /* hide scoll bar */
+  #wrapper-tab-list::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+  }
+
+
+  #nav-prev-btn {
     box-shadow: 8px 0 11px -8px #DADBD2;
     position: absolute;
     left: -40px;
     cursor: pointer;
     background-color: #FAFBF1;
     padding: 12px 10px;
-    padding-left: 40px;
+    margin-left: 29px;
   }
 
-  #nav-next {
+  #nav-next-btn {
     box-shadow: -8px 0 11px -8px #DADBD2;
     position: absolute;
     right: -40px;
     cursor: pointer;
     background-color: #FAFBF1;
     padding: 12px 10px;
-    padding-right: 40px;
+    margin-right: 29px;
   }
 
   .containerStyle {
@@ -552,8 +564,8 @@
     <div
       class="menuStyle" id="menuStyle"
     >
-      <img id="nav-prev" src="{{ 'nav-prev.png' | asset_url }}" style="visibility: hidden;" onclick="plusMarginLeft()">
-      <img id="nav-next" src="{{ 'nav-next.png' | asset_url }}" style="visibility: hidden;" onclick="minusMarginLeft()">
+      <img id="nav-prev-btn" src="{{ 'nav-prev.png' | asset_url }}" style="visibility: hidden;">
+      <img id="nav-next-btn" src="{{ 'nav-next.png' | asset_url }}" style="visibility: visible;">
       <div id="wrapper-tab-list">
         <div id="tab-list">
           {% for link in section.settings.menu.links %}
@@ -1165,112 +1177,61 @@
     document.querySelector('.dropLang').classList.toggle('show');
   }
 
+  {% comment %} start nav Scrol handling {% endcomment %}
+  
+  const navNext = document.getElementById('nav-next-btn');
+  const navPrev = document.getElementById('nav-prev-btn');
+  const navContainer = document.getElementById('wrapper-tab-list');
+  const lastBouder = 5;
+  const startBounder = 10;
+  
   function isShowPrevNavButton() {
-    const tabList = document.getElementById("tab-list");
-    const computedStyle = window.getComputedStyle(tabList);
-    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
-    const navPrev = document.getElementById("nav-prev");
-
-    navPrev.style.visibility = currentMarginLeft < 40 ? "visible" : "hidden";
+    navPrev.style.visibility = navContainer.scrollLeft != 0 ? "visible" : "hidden";
   }
 
   function isShowNextNavButton() {
-    const tabList = document.getElementById("tab-list");
-    const computedStyle = window.getComputedStyle(tabList);
-    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
-
-    const categoryTabList = document.getElementsByClassName("category-tab-menu");
-    let totalWidth = 0;
-    for (let i = 0; i < categoryTabList.length; i++) {
-      const rect = categoryTabList[i].getBoundingClientRect();
-      const elementWidth = rect.width + parseFloat(getComputedStyle(categoryTabList[i]).marginLeft) + parseFloat(getComputedStyle(categoryTabList[i]).marginRight);
-      totalWidth += elementWidth;
-    }
-
-    const menuStyle = document.getElementById("menuStyle")
-    const rect_menuStyle = menuStyle.getBoundingClientRect();
-    const totalWidthMenuStyle = rect_menuStyle.width;
-
-    // 100: margin left - 40px: padding left icon
-    const isShowNextButton = (totalWidthMenuStyle - currentMarginLeft) < totalWidth - 100 + 67
-    const navPrev = document.getElementById("nav-next");
-    navPrev.style.visibility = isShowNextButton ? "visible" : "hidden";
+    navNext.style.visibility = (navContainer.scrollWidth - (navContainer.scrollLeft + navContainer.clientWidth) > lastBouder)? "visible" : "hidden";
   }
 
-  function adjustMarginLeft(offset) {
-    const tabList = document.getElementById("tab-list");
-    const computedStyle = window.getComputedStyle(tabList);
-    const currentMarginLeft = parseInt(computedStyle.marginLeft, 10);
-    const newMarginLeft = currentMarginLeft + offset;
-    tabList.style.marginLeft = newMarginLeft + "px";
-    
-    let start = null;
+  navNext.onclick = function () {
+      sideScroll(navContainer,'right', 25, 100, 10);
+  };
 
-    // add animation
-    function update(timestamp) {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const duration = 200; // 200ms
-      const progress = Math.min(elapsed / duration, 1);
-      const easing = t => t * (2 - t); // easeInOutQuad
-      const easedProgress = easing(progress);
-      const newMargin = currentMarginLeft + (offset * easedProgress);
-      tabList.style.marginLeft = newMargin + "px";
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        isShowPrevNavButton();
-        isShowNextNavButton();
-      }
-    }
-    
-    requestAnimationFrame(update);
-  }
+  navPrev.onclick = function () {
+      sideScroll(navContainer, 'left', 25, 100, 10);
+  };
 
-  function minusMarginLeft() {
-    adjustMarginLeft(-100);
-  }
-  
-  function plusMarginLeft() {
-    adjustMarginLeft(100);
-  }
-
-  function isVisibilityPrevAndNext() {
-    const categoryTabList = document.getElementsByClassName("category-tab-menu");
-    let totalWidth = 0;
-    for (let i = 0; i < categoryTabList.length; i++) {
-      const rect = categoryTabList[i].getBoundingClientRect();
-      const elementWidth = rect.width + parseFloat(getComputedStyle(categoryTabList[i]).marginLeft) + parseFloat(getComputedStyle(categoryTabList[i]).marginRight);
-      totalWidth += elementWidth;
-    }
-    
-    const menuStyle = document.getElementById("menuStyle")
-    const rect_menuStyle = menuStyle.getBoundingClientRect();
-    const totalWidthMenuStyle = rect_menuStyle.width;
-
-    const navPrev = document.getElementById("nav-prev");
-    const navNext = document.getElementById("nav-next");
-    const tabList = document.getElementById("tab-list");
-    if(totalWidth > totalWidthMenuStyle) {
-      navPrev.style.visibility ="visible";
-      navNext.style.visibility = "visible";
-      tabList.style.justifyContent = "flex-start";
-    } else {
-      navPrev.style.visibility = "hidden";
-      navNext.style.visibility = "hidden";
-      tabList.style.justifyContent = "center";
-    }
+  function sideScroll(element, direction, speed, distance, step){
+      scrollAmount = 0;
+      var slideTimer = setInterval(function(){
+          if(direction == 'left'){
+              element.scrollLeft -= step;
+          } else {
+              element.scrollLeft += step;
+          }
+          scrollAmount += step;
+          if(scrollAmount >= distance){
+              window.clearInterval(slideTimer);
+          }
+      }, speed);
   }
 
   window.addEventListener("load", function() {
-    isVisibilityPrevAndNext();
     isShowPrevNavButton();
-    isShowNextNavButton();
   });
 
   window.addEventListener("resize", function() {
-    isVisibilityPrevAndNext();
     isShowPrevNavButton();
     isShowNextNavButton();
   });
+  
+  const element = document.querySelector("#wrapper-tab-list");
+  element.addEventListener("scroll", (event) => {
+    navPrev.style.visibility = (navContainer.scrollLeft >= startBounder) ? "visible" : "hidden";
+    navNext.style.visibility = (navContainer.scrollWidth - (navContainer.scrollLeft + navContainer.clientWidth) > lastBouder)? "visible" : "hidden";
+  });
+
+  {% comment %} end nav Scrol handling {% endcomment %}
+
+  
 </script>
