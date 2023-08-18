@@ -52,7 +52,7 @@
                       <div class="my-basket_column-title">{{ 'sections.cart.subtotal' | t }}</div>
                     </div>
                   </div>
-                  {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
+                  {% assign sortedItems = cart.items | sort: 'sku' %}
 
                   {%- for item in sortedItems -%}
                     <div class="div-block-4 gridspan1 items-list">

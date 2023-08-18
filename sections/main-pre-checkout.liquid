@@ -204,7 +204,7 @@
           <div class="hidden pre-checkout-right-overlay"></div>
           <div class="padding-section-medium">
             <div class="div-block-4-copy gridspan1">
-              {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
+              {% assign sortedItems = cart.items | sort: 'sku' %}
               {%- for item in sortedItems -%}
                 <div class="flex cart-item-details text-14">
                   <div class="cart-item-img">
@@ -1011,86 +1011,108 @@
         })
         return;
       }
-      const request = await fetch(window.Shopify.routes.root + 'cart.js');
+
+
+      const request = await fetch(window.Shopify.routes.root + "cart.js");
       const response = await request.json();
       let items = response.items;
-      var buyItems = items.filter(item => item.variant_id != 46005240889638);
-      let totalAmount = 0;
-      for (let i = 0; i < buyItems.length; i++) {
-        totalAmount += buyItems[i].price;
-      }
-        const area = areaSelect.value;
-      let newItems = [];
-      let shoppingProduct = newItems.find(x=>x.variant_id === 46005240889638);
-      if(area && area === 'Islands' && totalAmount < 100000){
-          if(shoppingProduct == null){
-        newItems.push({
-          'id': 46005240889638,
-          'quantity': 1
-        });
-          }
-      }else{
-          if(shoppingProduct != null){
-              items = items.filter(item => item.variant_id != 46005240889638);
-          }
-      }
-    if(items && items.length > 0){
-      items = items.sort((a, b) => {
-        let fa = a.sku.toLowerCase(),
-          fb = b.sku.toLowerCase();
-        if (fa < fb) {
-          return 1;
-        }
-        if (fa > fb) {
-          return -1;
-        }
-        return 0;
+      await fetch(window.Shopify.routes.root + "cart/clear.js", {
+        method: "POST",
       });
+      let totalAmount = 0;
+      items = items.filter((item) => item.variant_id != 46005240889638);
       for (let i = 0; i < items.length; i++) {
-        newItems.push({
-          'id': items[i].variant_id,
-          'quantity': items[i].quantity
+        totalAmount += items[i].price * items[i].quantity;
+      }
+      const area = areaSelect.value;
+      if (items && items.length > 0) {
+        const hasSkuItems = items
+          .filter((x) => x.sku && x.sku !== "")
+          .sort((a, b) => {
+            let fa = a.sku.toLowerCase(),
+              fb = b.sku.toLowerCase();
+            if (fa < fb) {
+              return 1;
+            }
+            if (fa > fb) {
+              return -1;
+            }
+            return 0;
+          });
+        for (let i = 0; i < hasSkuItems.length; i++) {
+          let addItems = [];
+          addItems.push({
+            id: hasSkuItems[i].variant_id,
+            quantity: hasSkuItems[i].quantity,
+          });
+          const formData = {
+            items: addItems,
+          };
+          await fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+        }
+        const noneSkuItems = items.filter((x) => !x.sku || x.sku == "");
+        for (let i = 0; i < noneSkuItems.length; i++) {
+          let addItems = [];
+          addItems.push({
+            id: noneSkuItems[i].variant_id,
+            quantity: noneSkuItems[i].quantity,
+          });
+          const formData = {
+            items: addItems,
+          };
+          await fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+        }
+      }
+      if (area && area === "Islands" && totalAmount < 100000) {
+        let addItems = [];
+        addItems.push({
+          id: 46005240889638,
+          quantity: 1,
+        });
+        const formData = {
+          items: addItems,
+        };
+        await fetch(window.Shopify.routes.root + "cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         });
       }
-    }
-    await fetch(window.Shopify.routes.root + 'cart/clear.js',{
-      method: 'POST'
-    });
-    const formData = {
-                  'items': newItems
-              };
-    const addRequest = await fetch(window.Shopify.routes.root + 'cart/add.js',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    });
-    const addResponse = await addRequest.json();
-    console.log(addResponse);
-    console.log(newItems);
-      return window.location.href = "/checkout"
+      return (window.location.href = "/checkout");
     }
 
     const toggleOrderSummary = () => {
-        const orderSummarySection = document.querySelector(".toggle-order-summary");
-        const orderSummaryOld = document.querySelector(".pre-checkout-right");
-        const orderSummaryText = orderSummarySection.querySelector(".toggle-order-summary-text");
-        const orderSummaryArrow = orderSummarySection.querySelector(".arrow-down svg");
+      const orderSummarySection = document.querySelector(".toggle-order-summary");
+      const orderSummaryOld = document.querySelector(".pre-checkout-right");
+      const orderSummaryText = orderSummarySection.querySelector(".toggle-order-summary-text");
+      const orderSummaryArrow = orderSummarySection.querySelector(".arrow-down svg");
 
-        if(orderSummarySection){
+      if (orderSummarySection) {
         orderSummaryOld.classList.toggle("show");
         orderSummarySection.classList.toggle("show");
 
-        if(orderSummarySection.classList.contains("show")){
-            orderSummaryText.innerText = "Hide order summary";
-            orderSummaryArrow.style.rotate = "-90deg";
-
-        }else{
-            orderSummaryText.innerText = "Show order summary";
-            orderSummaryArrow.style.rotate = "90deg";
+        if (orderSummarySection.classList.contains("show")) {
+          orderSummaryText.innerText = "Hide order summary";
+          orderSummaryArrow.style.rotate = "-90deg";
+        } else {
+          orderSummaryText.innerText = "Show order summary";
+          orderSummaryArrow.style.rotate = "90deg";
 
         }
-        }
+      }
     }
 </script>

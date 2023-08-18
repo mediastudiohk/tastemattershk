@@ -35,7 +35,7 @@
                 <div class="drawer__cart-items-wrapper">
                   <table class="cart-items" role="table">
                     <tbody role="rowgroup">
-                      {% assign sortedItems = cart.items | sort: 'attributes.timestamp' | reverse %}
+                      {% assign sortedItems = cart.items | sort: 'sku' %}
                       {% for item in sortedItems %}
                         <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                           <td class="edge"></td>
