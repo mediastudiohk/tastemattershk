@@ -316,7 +316,8 @@
       "cart_empty_description": "當前購物籃中沒有商品",
       "click": "點擊",
       "here": "這裡",
-      "to_continue_shopping": "繼續購物。"
+      "to_continue_shopping": "繼續購物。",
+      "promotion_bargains": "促销和特价 - 始终有新优惠"
     },
     "footer": {
       "payment": "付款方式"
@@ -502,7 +503,7 @@
     },
     "delivery_option": {
       "title": "交付選項",
-      "label": "送貨的時候家裡沒有人怎麼辦？\n請選擇以下其中一項：",
+      "label": "送貨的時候家裡沒有人怎麼辦？請選擇以下其中一項：",
       "option1": "請將貨物存放在我家門口",
       "option2": "請向我的禮賓部存款",
       "option3": "請不要存入我的交貨並聯繫我重新安排"
@@ -518,7 +519,10 @@
       "shipping": "船運",
       "total": "全部的",
       "calculated_on_the_next_step": "下一步計算"
-    }
+    },
+    "information": "信息",
+    "shipping": "船運",
+    "payment": "支付"
   },
   "shopify": {
     "notices": {
@@ -526,10 +530,31 @@
         "bundle_requires_components": "捆綁產品“%{name}”無法添加到購物車。",
         "gift_card_with_components_not_supported": "捆綁產品“%{name}”無法添加到購物車。"
       }
+    },
+    "checkout": {
+      "shipping": {
+        "split_cart_merchandise_shipment_number": "貨件 %{number}（共 %{total}）"
+      }
     }
   },
   "home": {
     "show_all_product": "顯示所有產品",
     "home_title": "家"
+  },
+  "customer_accounts": {
+    "orders": {
+      "order_status": {
+        "attempted_to_deliver_label": "已嘗試交付",
+        "there_was_a_problem_label": "有問題"
+      }
+    },
+    "profile_preview_bar": {
+      "customize_button": "客製化",
+      "hide_bar": "隱藏欄",
+      "navigate_to_admin": "導航至管理員",
+      "previewing": "您正在預覽：",
+      "saved_at": "已於{{date}} {{time}}保存",
+      "viewing": "您正在查看："
+    }
   }
 }

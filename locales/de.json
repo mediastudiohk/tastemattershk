@@ -316,7 +316,8 @@
       "cart_empty_description": "Derzeit befinden sich keine Artikel im Warenkorb",
       "click": "Klicken",
       "here": "Hier",
-      "to_continue_shopping": "um weiter einzukaufen."
+      "to_continue_shopping": "um weiter einzukaufen.",
+      "promotion_bargains": "Aktionen und Schnäppchen - Immer ein neues Angebot"
     },
     "footer": {
       "payment": "Zahlungsmethoden"
@@ -501,7 +502,7 @@
     },
     "delivery_option": {
       "title": "Liefermöglichkeit",
-      "label": "Was sollen wir tun, wenn zum Zeitpunkt der Lieferung niemand zu Hause ist?\nBitte wählen Sie eine der folgenden Optionen aus:",
+      "label": "Was sollen wir tun, wenn zum Zeitpunkt der Lieferung niemand zu Hause ist? Bitte wählen Sie eine der folgenden Optionen aus:",
       "option1": "Bitte deponieren Sie die Lieferung vor meiner Haustür",
       "option2": "Bitte zahlen Sie bei meinem Concierge ein",
       "option3": "Bitte hinterlegen Sie meine Lieferung nicht und kontaktieren Sie mich, um einen neuen Termin zu vereinbaren"
@@ -517,7 +518,10 @@
       "shipping": "Versand",
       "total": "Gesamt",
       "calculated_on_the_next_step": "Wird im nächsten Schritt berechnet"
-    }
+    },
+    "information": "Information",
+    "shipping": "Versand",
+    "payment": "Zahlung"
   },
   "shopify": {
     "notices": {
@@ -525,10 +529,31 @@
         "bundle_requires_components": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden.",
         "gift_card_with_components_not_supported": "Das Bundle-Produkt „%{name}“ kann nicht zum Warenkorb hinzugefügt werden."
       }
+    },
+    "checkout": {
+      "shipping": {
+        "split_cart_merchandise_shipment_number": "Sendung %{number} von %{total}"
+      }
     }
   },
   "home": {
     "show_all_product": "Alle Produkte anzeigen",
     "home_title": "Heim"
+  },
+  "customer_accounts": {
+    "orders": {
+      "order_status": {
+        "attempted_to_deliver_label": "Versucht zu liefern",
+        "there_was_a_problem_label": "Es gab ein Problem"
+      }
+    },
+    "profile_preview_bar": {
+      "customize_button": "Anpassen",
+      "hide_bar": "Leiste ausblenden",
+      "navigate_to_admin": "Navigieren Sie zu Admin",
+      "previewing": "Sie sehen eine Vorschau:",
+      "saved_at": "Gespeichert am {{date}} um {{time}}",
+      "viewing": "Sie sehen:"
+    }
   }
 }

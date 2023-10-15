@@ -29,6 +29,7 @@
 .pre-checkout-content {
   position: relative;
   display: flex;
+  min-height: 100vh;
 }
 
 .pre-checkout-left {
@@ -446,7 +447,7 @@
 }
 
 .delivery-district-description {
-  font-size: 0.64rem;
+  font-size: 1.2rem;
 }
 
 .validate-schedule {
