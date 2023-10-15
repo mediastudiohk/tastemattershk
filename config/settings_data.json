@@ -131,7 +131,7 @@
     "checkout_body_background_color": "#fafaf0",
     "checkout_sidebar_background_color": "#ffffff",
     "checkout_body_font": "Open Sans",
-    "checkout_accent_color": "#334fb4",
+    "checkout_accent_color": "#ac1b17",
     "checkout_button_color": "#cbc8ab",
     "sections": {
       "main-password-header": {
@@ -153,12 +153,6 @@
     "blocks": {
       "12795042946931334281": {
         "type": "shopify:\/\/apps\/wishlist-rocket\/blocks\/main\/8d81315d-6d32-4a20-960a-67cfb6cf9e73",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "319724205969189013": {
-        "type": "shopify:\/\/apps\/hulk-form-builder\/blocks\/app-embed\/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": false,
         "settings": {
         }
