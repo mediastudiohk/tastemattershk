@@ -523,5 +523,28 @@
       "total": "Total",
       "calculated_on_the_next_step": "Calculated on the next step"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "general": {
+        "cart": "Basket",
+        "back_to_cart": "Back to basket"
+      },
+      "contact": {
+        "address2_label": "Estate \/ Building \/ Apartment \/ Suite \/ Village",
+        "optional_address2_label": "Estate \/ Building \/ Apartment \/ Suite \/ Village",
+        "address1_label": "Street Name and Number",
+        "city_label": "District"
+      },
+      "payment": {
+        "card_security_notice": "All transactions are secure and encrypted. Taste Matters never accesses or stores your payment information."
+      },
+      "order_summary": {
+        "shipping_label": "Taxes"
+      },
+      "shipping": {
+        "free_rate_label": " "
+      }
+    }
   }
 }
