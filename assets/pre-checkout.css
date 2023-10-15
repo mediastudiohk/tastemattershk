@@ -52,6 +52,7 @@
 .pre-checkout-left_breadcrumbs {
   margin: 32px 0;
   grid-column-gap: 16px;
+  grid-row-gap: 8px;
 }
 
 .checkout_delivery-location {
@@ -422,7 +423,7 @@
 }
 
 .back-to-basket {
-  color: rgb(51, 79, 180);
+  color:  #ac1b17;
   font-weight: normal;
 }
 
@@ -433,6 +434,10 @@
 .delivery-option label {
   margin-bottom: 0;
   font-weight: normal;
+}
+
+.delivery-option label.checkout_section-label {
+  margin-bottom: 12px;
 }
 
 .delivery-option input {

@@ -229,7 +229,7 @@ cart-items {
 .my-basket_heading-wrapper {
   position: relative;
   display: block;
-  padding-bottom: 16px;
+  padding-bottom: 4px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -788,5 +788,5 @@ cart-items {
 }
 
 .page-title {
-  margin: 28px 0 47px;
+  margin: 28px 0 32px;
 }

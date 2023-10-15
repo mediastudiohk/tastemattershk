@@ -24,7 +24,7 @@
           </a>
 
           <div class="pre-checkout-left_breadcrumbs flex items-center breadcrumb-font-size">
-            <a href="{{ routes.cart_url }}" style="color: rgb(51,79,180)">{{ 'sections.header.basket' | t }}</a>
+            <a href="{{ routes.cart_url }}" style="color: #ac1b17">{{ 'sections.header.basket' | t }}</a>
             <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,45 @@
               </svg>
             </div>
             <span style="color: #6b6b69">
-              {{ 'pre-checkout.checkout' | t }}
+              {{ 'pre-checkout.information' | t }}
+            </span>
+
+            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
+              </svg>
+            </div>
+            <span style="color: #6b6b69">
+              {{ 'pre-checkout.shipping' | t }}
+            </span>
+
+            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
+              </svg>
+            </div>
+            <span style="color: #6b6b69">
+              {{ 'pre-checkout.payment' | t }}
             </span>
           </div>
 
@@ -100,10 +138,10 @@
             {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
           </div>
 
-          <div class="delivery-heading margin-bottom margin-tiny">
+          <div class="delivery-heading margin-bottom margin-small">
             {{ 'pre-checkout.delivery_schedule.title' | t }}
           </div>
-          <div class="margin-bottom margin-medium mb-14 text-14-all">
+          <div class="margin-bottom mb-14 text-14-all">
             <div class="text-display-inline text-14">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
             <div id="delivery-location" class="checkout_delivery-location text-14"></div>
             <div class="text-14">{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
@@ -330,6 +368,7 @@
 </div>
 
 <script>
+  
   {% comment %} check empty object {% endcomment %}
     const isEmptyObject = (obj) => {
       return Object.keys(obj).length === 0;
@@ -1115,4 +1154,5 @@
         }
       }
     }
+
 </script>

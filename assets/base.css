@@ -3220,7 +3220,7 @@ h2 {
 }
 
 .w-form {
-  margin: 0 0 15px;
+  margin: 0 0 32px;
 }
 
 input.w-button {
@@ -3431,6 +3431,7 @@ input.w-button {
 .show-all-products {
   margin-left: 0 !important;
   margin-right: 0 !important;
+  margin-bottom: 32px;
 }
 
 .popover-add-to-basket {

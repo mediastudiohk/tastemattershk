@@ -28,7 +28,7 @@
   );
   box-shadow: 0 4px 11px -3px #dadbd2;
   color: #716359;
-  font-size: 17.6px;
+  font-size: 16px;
   line-height: 1.2;
   font-weight: 400;
 }
@@ -69,7 +69,7 @@ img-v2 {
   top: 6%;
   right: 0%;
   bottom: auto;
-  background-color: #dd2e2e;
+  background-color: #ac1b17;
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);

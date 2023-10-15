@@ -102,6 +102,9 @@
     line-height: 1.5;
     font-weight: 400;
     font-variant: small-caps;
+    width: 100%;
+    border-bottom: 1px solid #bebebe;
+    padding-bottom: 4px;
   }
 
   strong {
@@ -237,7 +240,7 @@
                           {{ block.settings.subtext }}
                         </div>
                     {%- endcase -%}
-                    <div class="footer-line hidden"> </div>
+                    <div class="footer-line hidden"></div>
                   </div>
                 {%- endfor -%}
               </div>
@@ -327,7 +330,10 @@
       </div>
       <div class="padding-global footer-wrapper">
         <div class="container-large">
-          <div class="footer-content">{{ section.settings.footer }} {{ 'now' | date: '%Y' }}</div>
+          <div class="footer-content">
+            {{ section.settings.footer }}
+            {{ 'now' | date: '%Y' }}
+          </div>
         </div>
       </div>
     {%- endunless -%}

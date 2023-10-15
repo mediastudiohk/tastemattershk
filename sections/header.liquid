@@ -655,9 +655,9 @@
                 flex: 1;
               }
 
-              .title-large .title-large-child {
+              /* .title-large .title-large-child {
                 min-height:68px;
-              }
+              } */
             {% endstyle %}
             {%- liquid
               assign titleLarge = false
@@ -685,7 +685,7 @@
                             loading="lazy"
                             style="width:100%; aspect-ratio: 3 / 1.5"
                         ></a>
-                        <a style="font-size:20px" href="{{ childLink.url }}" 
+                        <a style="font-size:18px" href="{{ childLink.url }}" 
                           class="title-large-child">
                           {{- childLink.title -}}
                         </a>
