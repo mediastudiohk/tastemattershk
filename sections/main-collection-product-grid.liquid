@@ -311,14 +311,14 @@
             {% if link.child_active or link.active %}
               <div
                 class="that-padding text-font-small-caps"
-                style="color: #2f2f2f;"
+                style="color: #716359;"
               >
                 <a href="{{ link.url }}">{{ link.title }} </a>
               </div>
               {% for childLink in link.links %}
                 <div class="childStyle child-decore text-font-small-caps">
                   {% comment %} <div class="this-padding" style="color:{% if childLink.active %}#716359{% else %}#2f2f2f{% endif %};"> {% endcomment %}
-                    <div class="this-padding" style="color: #2f2f2f;">
+                    <div class="this-padding" style="color: #716359;">
                     <a
                       {% comment %} href="{{ link.url }}/{{ childLink.url }}" {% endcomment %}
                       href="{{ childLink.url }}"
@@ -330,7 +330,7 @@
                     {% for childOfChild in childLink.links %}
                       <a
                         class="this-padding text-font-small-caps"
-                        style="background-color:white; font-size:16px; color: #2f2f2f;"
+                        style="background-color:white; font-size:16px; color: #716359;"
                         href="{{ childOfChild.url }}"
                       >
                         {{- childOfChild.title -}}
