@@ -29,6 +29,7 @@
 .pre-checkout-content {
   position: relative;
   display: flex;
+  min-height: 100vh;
 }
 
 .pre-checkout-left {
@@ -52,6 +53,7 @@
 .pre-checkout-left_breadcrumbs {
   margin: 32px 0;
   grid-column-gap: 16px;
+  grid-row-gap: 8px;
 }
 
 .checkout_delivery-location {
@@ -422,7 +424,7 @@
 }
 
 .back-to-basket {
-  color: rgb(51, 79, 180);
+  color:  #ac1b17;
   font-weight: normal;
 }
 
@@ -435,13 +437,17 @@
   font-weight: normal;
 }
 
+.delivery-option label.checkout_section-label {
+  margin-bottom: 12px;
+}
+
 .delivery-option input {
   margin: 0;
   flex-shrink: 0;
 }
 
 .delivery-district-description {
-  font-size: 0.64rem;
+  font-size: 1.2rem;
 }
 
 .validate-schedule {

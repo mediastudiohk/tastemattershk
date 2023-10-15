@@ -37,7 +37,18 @@
                     <tbody role="rowgroup">
                       {% assign sortedItems = cart.items | sort: 'sku' %}
                       {% for item in sortedItems %}
-                        <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                        {% assign index = item.index %}
+                        {% assign indexStriped = forloop.index | modulo: 2 %}
+                        {% assign tableStriped = sortedItems.size | modulo: 2 %} 
+                        {%comment%} tableStriped == 0 even {%endcomment%} 
+                        {%comment%} tableStriped == 1 odd {%endcomment%} 
+                         
+                        {% assign position = forloop.index0 %}
+                        <tr
+                          id="CartDrawer-Item-{{ index }}"
+                          role="row"
+                          class="cart-item{%if indexStriped == 0 and tableStriped == 1 %} table-striped {%elsif indexStriped == 1 and tableStriped == 0 %} table-striped{%endif%}"
+                        >
                           <td class="edge"></td>
                           <td class="quantity" role="cell" headers="CartDrawer-ColumnProductImage">
                             {{ item.quantity }}x
@@ -156,7 +167,12 @@
                   {{ 'sections.cart.subtotal' | t }}
                   <span class="item-cart-style"
                     >({{ cart.item_count }}
-                    {% if cart.item_count == 1 %}{{ 'sections.cart.item' | t }}{% else %}{{ 'sections.cart.items' | t }}{% endif %})</span
+                    {% if cart.item_count == 1 -%}
+                      {{- 'sections.cart.item' | t -}}
+                    {%- else -%}
+                      {{- 'sections.cart.items' | t -}}
+                    {%- endif -%}
+                    )</span
                   >
                 </div>
                 {% if cart.total_price < 50000 %}
@@ -190,7 +206,7 @@
               >
                 {{ 'sections.cart.proceed_to_checkout' | t }}
               </button>
-              {%else %}
+            {% else %}
               <a
                 class="checkout_button child"
                 href="{% if request.locale.primary == false %}{% if request.locale.iso_code == 'zh-TW' %}/zh{%else%}/{{ request.locale.iso_code }}{% endif %}{% endif %}/pages/pre-checkout"
@@ -204,13 +220,13 @@
           <span class="hidden">line</span>
         </div>
       {%- endif -%}
-
-      
     </div>
   </div>
 </cart-drawer>
 
 <script>
+  console.log("cart.items", {{ cart.items | json }})
+
   document.addEventListener('DOMContentLoaded', function () {
     function isIE() {
       const ua = window.navigator.userAgent;
@@ -229,6 +245,4 @@
       document.querySelector('#cart').submit();
     }); <a href="/">Click here</a> to continue shopping.
   });
-
-  console.log("cart.items", {{ cart.items | json }})
 </script>

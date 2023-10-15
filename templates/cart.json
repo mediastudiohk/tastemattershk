@@ -25,7 +25,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Promotions & Bargains - Always a New Offer",
-        "color_title": "#DF0505",
+        "color_title": "#ac1b17",
         "collection": "all",
         "products_to_show": 5,
         "redirect_all": false

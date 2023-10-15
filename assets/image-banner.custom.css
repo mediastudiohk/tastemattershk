@@ -11,8 +11,8 @@
   padding-top: 8px;
   padding-bottom: 8px;
   grid-auto-columns: 1fr;
-  grid-column-gap: 8px;
-  grid-row-gap: 8px;
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
   -ms-grid-columns: 2fr 1fr;
   grid-template-columns: 2fr 1fr;
   -ms-grid-rows: auto auto;
@@ -121,8 +121,8 @@
 .home_grid-heading {
   position: relative;
   z-index: 1;
-  padding-top: 16px;
-  padding-right: 32px;
+  padding-top: 40;
+  padding-right: 64px;
   color: #fff;
   font-size: 3.8rem;
   text-align: right;
