@@ -41,7 +41,7 @@
 .category-box {
   background-color: #fafaf0;
   overflow: auto;
- -ms-overflow-style: none;
+  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
@@ -103,6 +103,13 @@
 
 .image-item {
   text-align: center;
+}
+
+.nav-cart-icon {
+  background: url("http://www.tastematters.com.hk/skin/frontend/default/theme369/images/icons/cart_toplink.png")
+    left center no-repeat;
+    width: 18px;
+    height: 18px;
 }
 
 @media screen and (max-width: 991px) {

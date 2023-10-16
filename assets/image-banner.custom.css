@@ -126,9 +126,10 @@
   color: #fff;
   font-size: 3.8rem;
   text-align: right;
-  text-shadow: 1px 1px 14px rgb(0 0 0 / 30%);
+  text-shadow: 1px 1px 14px rgb(0 0 0);
   font-variant: small-caps;
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .slideshow__media-link a {
