@@ -432,6 +432,10 @@
   gap: 1rem;
 }
 
+.delivery-option input[type='radio'] {
+  accent-color: #ac1b17;
+}
+
 .delivery-option label {
   margin-bottom: 0;
   font-weight: normal;
