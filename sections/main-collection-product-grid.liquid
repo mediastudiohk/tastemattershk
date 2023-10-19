@@ -96,7 +96,9 @@
     flex-direction: column;
     border-radius: 4px;
     font-size: 18px;
-    line-height: 21.12px;
+    line-height: 19.2px;
+    background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+    color: #716359;
   }
 
   .collection-image {
@@ -284,25 +286,49 @@
           {% for link in section.settings.menu.links %}
             {% style %}
               .childStyle {
-                border-top: 0.25px solid #d8d8d8;
+                border-top: 1px solid #d8d8d8;
+              }
+
+              .that-padding {
+                padding: 16px 0 10px 20px;
+                background: #f8f8f8;
+                border-radius: 4px 4px 0 0;
               }
               .this-padding {
-                padding: 9px 27px;
+                padding: 12px 15px 9px 21px;
+                background: #f8f8f8;
               }
-              .that-padding {
-                padding: 9px;
-                margin-left: 4px;
+
+              .lv2-active {
+                background-color: white;
+                position: relative;
               }
-              .that-padding:hover {
+
+              .lv2-active::after {
+                position: absolute;
+                bottom: 0;
+                content: '';
+                width: calc(100% - 42px);
+                left: 21px;
+                border-bottom: 1px solid #efeeec;
+              }
+
+              .that-padding:hover,
+              .this-padding:hover,
+              .child-padding:hover {
                 color: #bebebe !important;
               }
+
+              .child-padding {
+                padding: 4.5px 27px 5px;
+                font-size: 18px !important;
+              }
+
               .child-decore {
                 display: flex;
                 flex-direction: column;
               }
-              .child-decore .this-padding:hover {
-                color: #bebebe !important;
-              }
+          
               .first {
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
@@ -316,9 +342,15 @@
                 <a href="{{ link.url }}">{{ link.title }} </a>
               </div>
               {% for childLink in link.links %}
-                <div class="childStyle child-decore text-font-small-caps">
+                <div
+                  class="childStyle child-decore text-font-small-caps"
+                  style="{% if childLink.active or childLink.child_active %}background-color: white; padding-bottom: 16px;{% endif %}"
+                >
                   {% comment %} <div class="this-padding" style="color:{% if childLink.active %}#716359{% else %}#2f2f2f{% endif %};"> {% endcomment %}
-                    <div class="this-padding" style="color: #716359;">
+                  <div
+                    class="this-padding {% if childLink.active or childLink.child_active %}lv2-active{% endif %}"
+                    style="{% if link.links.last %}border-radius: 0 0 4px 4px;{% endif %}"
+                  >
                     <a
                       {% comment %} href="{{ link.url }}/{{ childLink.url }}" {% endcomment %}
                       href="{{ childLink.url }}"
@@ -329,7 +361,7 @@
                   {% if childLink.child_active or childLink.active %}
                     {% for childOfChild in childLink.links %}
                       <a
-                        class="this-padding text-font-small-caps"
+                        class="child-padding text-font-small-caps"
                         style="background-color:white; font-size:16px; color: #716359;"
                         href="{{ childOfChild.url }}"
                       >
@@ -450,93 +482,88 @@
     }
   }
 
-    //Get ".requestFrom"
-    const requestFormElement = document.getElementById('request-form');
+  //Get ".requestFrom"
+  const requestFormElement = document.getElementById('request-form');
 
-    window.onload = function () {
-        var x = document.getElementsByClassName("g-container")[0];
-        x.id="request-form-content"
+  window.onload = function () {
+    var x = document.getElementsByClassName('g-container')[0];
+    x.id = 'request-form-content';
 
+    // Create SVG
+    const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svgElement.setAttribute('aria-hidden', 'true');
+    svgElement.setAttribute('focusable', 'false');
+    svgElement.setAttribute('class', 'icon icon-close');
+    svgElement.setAttribute('fill', 'none');
+    svgElement.setAttribute('viewBox', '0 0 32 32');
 
-      // Create SVG
-      const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      svgElement.setAttribute('aria-hidden', 'true');
-      svgElement.setAttribute('focusable', 'false');
-      svgElement.setAttribute('class', 'icon icon-close');
-      svgElement.setAttribute('fill', 'none');
-      svgElement.setAttribute('viewBox', '0 0 32 32');
+    // Create path and set d propertyxs
+    const pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    pathElement.setAttribute(
+      'd',
+      'M24.056 23.5004L23.5004 24.056C23.1935 24.3628 22.696 24.3628 22.3892 24.056L16 17.6668L9.61078 24.056C9.30394 24.3628 8.80645 24.3628 8.49961 24.056L7.94403 23.5004C7.63719 23.1936 7.63719 22.6961 7.94403 22.3892L14.3332 16L7.94403 9.61081C7.63719 9.30397 7.63719 8.80648 7.94403 8.49964L8.49961 7.94406C8.80645 7.63721 9.30394 7.63721 9.61078 7.94406L16 14.3333L22.3892 7.94404C22.6961 7.6372 23.1935 7.6372 23.5004 7.94404L24.056 8.49963C24.3628 8.80647 24.3628 9.30395 24.056 9.61079L17.6667 16L24.056 22.3892C24.3628 22.6961 24.3628 23.1936 24.056 23.5004Z '
+    );
+    pathElement.setAttribute('fill', 'white');
 
-      // Create path and set d propertyxs
-      const pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      pathElement.setAttribute(
-        'd',
-        'M24.056 23.5004L23.5004 24.056C23.1935 24.3628 22.696 24.3628 22.3892 24.056L16 17.6668L9.61078 24.056C9.30394 24.3628 8.80645 24.3628 8.49961 24.056L7.94403 23.5004C7.63719 23.1936 7.63719 22.6961 7.94403 22.3892L14.3332 16L7.94403 9.61081C7.63719 9.30397 7.63719 8.80648 7.94403 8.49964L8.49961 7.94406C8.80645 7.63721 9.30394 7.63721 9.61078 7.94406L16 14.3333L22.3892 7.94404C22.6961 7.6372 23.1935 7.6372 23.5004 7.94404L24.056 8.49963C24.3628 8.80647 24.3628 9.30395 24.056 9.61079L17.6667 16L24.056 22.3892C24.3628 22.6961 24.3628 23.1936 24.056 23.5004Z '
-      );
-      pathElement.setAttribute('fill', 'white');
+    // Add "path" in to SVG
+    svgElement.appendChild(pathElement);
 
-      // Add "path" in to SVG
-      svgElement.appendChild(pathElement);
+    const headerElement = document.querySelector('.globo-heading');
 
-      const headerElement = document.querySelector('.globo-heading');
+    // Create SVG button
+    const buttonElement = document.createElement('button');
+    buttonElement.setAttribute('id', 'close-button');
+    buttonElement.setAttribute('type', 'button');
+    buttonElement.setAttribute('class', 'close-button');
+    buttonElement.setAttribute('aria-label', 'Close');
 
-      // Create SVG button
-      const buttonElement = document.createElement('button');
-      buttonElement.setAttribute('id', 'close-button');
-      buttonElement.setAttribute('type', 'button');
-      buttonElement.setAttribute('class', 'close-button');
-      buttonElement.setAttribute('aria-label', 'Close');
+    // SVG into Button
+    buttonElement.appendChild(svgElement);
 
-      // SVG into Button
-      buttonElement.appendChild(svgElement);
+    // Button into header
+    headerElement.appendChild(buttonElement);
 
-      // Button into header
-      headerElement.appendChild(buttonElement);
+    // Create span
+    const requiredFields = document.createElement('span');
+    requiredFields.setAttribute('class', 'required-fields');
+    requiredFields.innerText = '* Required Fields';
 
-      // Create span
-      const requiredFields = document.createElement('span');
-      requiredFields.setAttribute('class', 'required-fields');
-      requiredFields.innerText = '* Required Fields';
+    // Create cancel button
+    const cancelButton = document.createElement('button');
+    cancelButton.setAttribute('type', 'button');
+    cancelButton.setAttribute('class', 'action custombtn');
+    cancelButton.innerText = 'Cancel';
 
-      // Create cancel button
-      const cancelButton = document.createElement('button');
-      cancelButton.setAttribute('type', 'button');
-      cancelButton.setAttribute('class', 'action custombtn');
-      cancelButton.innerText = 'Cancel';
+    //Add event into cancel btn
+    cancelButton.addEventListener('click', function () {
+      requestFormElement.classList.remove('visible');
+    });
 
+    buttonElement.addEventListener('click', function () {
+      requestFormElement.classList.remove('visible');
+    });
 
-      //Add event into cancel btn
-      cancelButton.addEventListener('click', function () {
-        requestFormElement.classList.remove('visible');
-      });
+    //Get ".wizard__footer"
+    const footerElement = document.querySelector('.wizard__footer');
 
-      buttonElement.addEventListener('click', function () {
-        requestFormElement.classList.remove('visible');
-      });
-
-      //Get ".wizard__footer"
-      const footerElement = document.querySelector('.wizard__footer');
-
-      // add button and span "require" into footer
-      footerElement.appendChild(cancelButton, requiredFields);
-      footerElement.appendChild(requiredFields);
-
-
-    };
-    document.addEventListener("click", function(evt) {
-      let flyoutEl = document.getElementById('request-form-content');
-      let text = document.getElementById('request-form-text');
-      targetEl = evt.target; // clicked element
+    // add button and span "require" into footer
+    footerElement.appendChild(cancelButton, requiredFields);
+    footerElement.appendChild(requiredFields);
+  };
+  document.addEventListener('click', function (evt) {
+    let flyoutEl = document.getElementById('request-form-content');
+    let text = document.getElementById('request-form-text');
+    targetEl = evt.target; // clicked element
     do {
-      if(targetEl == flyoutEl || targetEl == text) {
+      if (targetEl == flyoutEl || targetEl == text) {
         return;
       }
       targetEl = targetEl.parentNode;
-    } while (targetEl)
+    } while (targetEl);
     // This is a click outside.
-      requestFormElement.classList.remove('visible');
-    }
-  );
+    requestFormElement.classList.remove('visible');
+  });
 </script>
 
 {% schema %}

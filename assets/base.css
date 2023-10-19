@@ -301,7 +301,7 @@ body,
 }
 
 .content-container-custom {
-  margin-top: 136px;
+  margin-top: 145px;
 }
 
 .background-secondary {
@@ -3551,6 +3551,12 @@ input.w-button {
   border-color: #ff0000 #ff0000 transparent transparent;
 }
 
+@media (min-width: 992px) and (max-width: 1024px) {
+  .content-container-custom {
+    margin-top: 135px;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .margin-top {
     margin-right: 0px;
@@ -3563,7 +3569,7 @@ input.w-button {
   }
 
   .content-container-custom {
-    margin-top: 90px;
+    margin-top: 89px;
   }
 
   .margin-bottom {
