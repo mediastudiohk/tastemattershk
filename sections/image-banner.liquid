@@ -138,6 +138,10 @@
             class="home_grid-image"
           >
         {%- endif -%}
+
+        {%- if section.settings.first_subtext -%}
+          {{ section.settings.first_subtext }}
+        {%- endif -%}
       </a>
       <a href="{{ section.settings.image_link_2 }}" class="home_grid-item">
         {%- if section.settings.image_2 -%}
@@ -152,6 +156,9 @@
             loading="lazy"
             class="home_grid-image"
           >
+        {%- endif -%}
+        {%- if section.settings.second_subtext -%}
+          {{ section.settings.second_subtext }}
         {%- endif -%}
       </a>
     </div>
@@ -190,6 +197,12 @@
       "label": "t:sections.image-banner.settings.image.link"
     },
     {
+      "type": "richtext",
+      "id": "first_subtext",
+      "label": "First image subtext",
+      "default": "<p></p>"
+    },
+    {
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
@@ -198,6 +211,12 @@
       "type": "url",
       "id": "image_link_2",
       "label": "t:sections.image-banner.settings.image_2.link"
+    },
+    {
+      "type": "richtext",
+      "id": "second_subtext",
+      "label": "Second image subtext",
+      "default": "<p></p>"
     }
   ],
   "blocks": [
@@ -237,3 +256,7 @@
   ]
 }
 {% endschema %}
+
+<script>
+  console.log('image banner', {{section.settings | json}})
+</script>
