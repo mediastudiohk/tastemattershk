@@ -267,7 +267,14 @@ slider-component.slider-component-full-width {
   scroll-snap-align: start;
   flex-shrink: 0;
   padding-bottom: 0;
+  opacity: 0;
+  transition: 2s;
+  transition-timing-function: ease-out;
 }
+
+.slideshow__slide[aria-hidden="false"]{
+  opacity: 1;
+} 
 
 @media screen and (max-width: 749px) {
   .slider.slider--mobile {
@@ -367,7 +374,7 @@ slider-component.slider-component-full-width {
   flex-wrap: inherit;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  scroll-behavior: initial;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
 }
