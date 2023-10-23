@@ -15,6 +15,7 @@
         },
         "footer-1": {
           "type": "custom",
+          "disabled": true,
           "settings": {
             "heading": "Latest News",
             "subtext": "<p>koffee radio - time to chill<br\/><br\/>We like to share this radio station and hope you will enjoy the music. <a href=\"http:\/\/www.koffee.com.au\/\" target=\"_blank\"><strong>http:\/\/www.koffee.com.au\/<\/strong><\/a><\/p>",
@@ -22,6 +23,15 @@
           }
         },
         "footer-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Partners",
+            "menu": "partners",
+            "subtext": "",
+            "hide_section_on_mobile": false
+          }
+        },
+        "4369b3b5-6b6d-4c78-92ad-dcce02468c69": {
           "type": "link_list",
           "settings": {
             "heading": "Information",
@@ -43,6 +53,7 @@
         "footer-0",
         "footer-1",
         "footer-2",
+        "4369b3b5-6b6d-4c78-92ad-dcce02468c69",
         "footer-3"
       ],
       "settings": {
