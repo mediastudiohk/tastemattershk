@@ -316,7 +316,7 @@
       "proceed_to_checkout": "Proceed to Checkout",
       "minimum_order": "Please note the minimum order amount is $500",
       "grand_total": "Grand Total",
-      "delivery_fee": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers \n a delivery fee of $150 may apply for orders below $1000.",
+      "delivery_fee": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers a delivery fee of $150 may apply for orders below $1000.",
       "promotion_bargains": "Promotions & Bargains - Always a New Offer"
     },
     "footer": {
@@ -549,7 +549,15 @@
       "shipping": {
         "free_rate_label": " ",
         "shipping_method_title": " "
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "I accept emails with news and offers once in a while"
       }
+    }
+  },
+  "customer_accounts": {
+    "order_details": {
+      "marketing_checkbox_label": "I accept emails with news and offers once in a while"
     }
   }
 }
