@@ -65,7 +65,6 @@
 
     .footer-info-section .footer-disclaimer {
       background: #fcfcf8;
-      border-radius: 8px;
     }
 
     .layout293:not(:last-child) .footer-line {
@@ -74,6 +73,14 @@
       background: #e0daa7;
       margin-top: 20px;
     }
+  }
+
+  .layout293 {
+    width: 100%;
+  }
+
+  .footer-info-section {
+    padding-top: 6px;
   }
 
   @media screen and (max-width: 479px) {
@@ -104,7 +111,8 @@
     font-variant: small-caps;
     width: 100%;
     border-bottom: 1px solid #bebebe;
-    padding-bottom: 4px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
   }
 
   strong {
@@ -131,6 +139,7 @@
     background-color: #fff;
     font-size: 11.2px;
     font-weight: 400;
+    border-radius: 4px;
   }
 
   .footer-disclaimer p {
@@ -213,9 +222,11 @@
                                 </a>
                               {%- endfor -%}
                             </div>
-                            <div class="footer-disclaimer w-richtext" style="color:#2F2F2F">
-                              {{ block.settings.subtext }}
-                            </div>
+                            {% if block.settings.subtext != blank %}
+                              <div class="footer-disclaimer w-richtext" style="color:#2F2F2F">
+                                {{ block.settings.subtext }}
+                              </div>
+                            {% endif %}
                           </div>
                         {%- endif -%}
                       {%- when 'custom' -%}

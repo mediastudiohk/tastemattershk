@@ -30,13 +30,12 @@
   position: relative;
   margin: 0;
   font-size: 3.8rem;
-  text-align: right;
+  text-align: left;
   text-shadow: 1px 1px 14px rgb(0 0 0);
   font-variant: small-caps;
   font-weight: 600;
   letter-spacing: 1px;
   width: 100%;
-  overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-word;
   line-height: 40.6px;
@@ -215,6 +214,11 @@
 @media screen and (max-width: 479px) {
   .home_component {
     height: 350px;
+  }
+
+  .home_grid-heading {
+    padding-top: 16px;
+    padding-right: 24px;
   }
 }
 
