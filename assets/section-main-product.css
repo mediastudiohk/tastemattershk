@@ -187,6 +187,8 @@ variant-selects {
 
 .product-form__input .form__label {
   padding-left: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .product-form__input--dropdown .select::before,
@@ -203,6 +205,8 @@ variant-selects {
   color: #716359;
   font-family: inherit;
   font-size: 1.4rem;
+  min-width: max-content !important;
+  width: max-content !important;
 }
 
 fieldset.product-form__input .form__label {
@@ -293,8 +297,9 @@ fieldset.product-form__input .form__label {
   box-shadow: none;
 }
 
-.product-form__input .select {
-  max-width: 25rem;
+.product-page_content-right .select .icon-caret {
+  right: 1.5rem !important;
+  width: auto !important;
 }
 
 /* .product-form__submit {
@@ -393,7 +398,7 @@ a.product__text {
 }
 
 .product .price__container {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .product .price dl {

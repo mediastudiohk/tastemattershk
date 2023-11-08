@@ -251,16 +251,17 @@
     input.addEventListener('change', (event) => {
       const inputMax = event.target.max;
       const inputValue = event.target.value;
-      if (Number(inputValue) > Number(inputMax)) {
-        popoverAddToBasket[i].classList.add('show')
-         setTimeout(() => {
-          popoverAddToBasket[i].classList.remove('show')
-        }, 5000) 
-        input.value = inputMax;
+      if(!inputMax) {
+        input.value = inputValue;
+      } else {
+        if (Number(inputValue) > Number(inputMax)) {
+          popoverAddToBasket[i].classList.add('show')
+           setTimeout(() => {
+            popoverAddToBasket[i].classList.remove('show')
+          }, 5000) 
+          input.value = inputMax;
+        }
       }
     })
   }
-
-  console.log("cart.items", {{ cart.items | json }})
-
 </script>

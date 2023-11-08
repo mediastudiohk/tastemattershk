@@ -526,7 +526,8 @@
     },
     "information": "Information",
     "shipping": "Shipping",
-    "payment": "Payment"
+    "payment": "Payment",
+    "show_order_summary": "Show order summary"
   },
   "shopify": {
     "checkout": {

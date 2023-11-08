@@ -53,6 +53,7 @@
     .footer-info-section {
       display: flex;
       justify-content: space-between;
+      padding-top: 6px;
     }
 
     .footer-info-section > div {
@@ -222,11 +223,11 @@
                                 </a>
                               {%- endfor -%}
                             </div>
-                            {% if block.settings.subtext != blank %}
+                            {%- if block.settings.subtext != blank -%}
                               <div class="footer-disclaimer w-richtext" style="color:#2F2F2F">
                                 {{ block.settings.subtext }}
                               </div>
-                            {% endif %}
+                            {%- endif -%}
                           </div>
                         {%- endif -%}
                       {%- when 'custom' -%}

@@ -1,213 +1,259 @@
 {{ 'pre-checkout.css' | asset_url | stylesheet_tag }}
+{{ 'global.js' | asset_url | script_tag }}
 
 <div class="hidden current-time">{{ 'now' | date: '%H:%M' }}</div>
 <div class="main-pre-checkout">
-  <div class="pre-checkout-overlay">
-    <span class="hidden">Overlay</span>
-  </div>
-  <div class="padding-global h-full">
-    <div class="container-large-modified h-full">
-      <div class="pre-checkout-content h-full">
-        <div class="pre-checkout-overlay-left">
-          <span class="hidden">Overlay</span>
+  {% comment %} header {% endcomment %}
+  <div class="padding-global main-pre-checkout-header">
+    <div class="container-large-modified main-pre-checkout-header-content">
+      <a
+        href="{{ routes.root_url }}"
+        class="header__heading-link link link--text focus-inset center"
+      >
+        <div class="main-pre-checkout-header-logo">
+          <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%">
         </div>
+      </a>
+      <a href="{{ routes.cart_url }}" class="icon-cart-pre-checkout">
+        {% render 'icon-cart' %}
+      </a>
+    </div>
+  </div>
 
-        <div class="pre-checkout-left padding-section-medium">
-          <div class="hidden pre-checkout-left-overlay"></div>
-          <a
-            href="{{ routes.root_url }}"
-            class="header__heading-link link link--text focus-inset center hidden-logo-mobile"
-          >
-            <div style="display:flex; width: 272px; align-items:center">
-              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%">
-            </div>
-          </a>
-
-          <div class="pre-checkout-left_breadcrumbs flex items-center breadcrumb-font-size">
-            <a href="{{ routes.cart_url }}" style="color: #ac1b17">{{ 'sections.header.basket' | t }}</a>
-            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--ic"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 24 24"
-              >
-                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
-              </svg>
-            </div>
-            <span>{{ 'pre-checkout.delivery_calendar' | t }}</span>
-            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--ic"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 24 24"
-              >
-                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
-              </svg>
-            </div>
-            <span style="color: #6b6b69">
-              {{ 'pre-checkout.information' | t }}
-            </span>
-
-            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--ic"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 24 24"
-              >
-                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
-              </svg>
-            </div>
-            <span style="color: #6b6b69">
-              {{ 'pre-checkout.shipping' | t }}
-            </span>
-
-            <div class="flex breadcrumb-svg" style="width: 12px; height: 12px; flex-shrink: 0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--ic"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 24 24"
-              >
-                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
-              </svg>
-            </div>
-            <span style="color: #6b6b69">
-              {{ 'pre-checkout.payment' | t }}
-            </span>
+  {% comment %} content {% endcomment %}
+  <div class="main-pre-checkout-content">
+    <div class="pre-checkout-overlay">
+      <span class="hidden">Overlay</span>
+    </div>
+    <div class="padding-global h-full">
+      <div class="container-large-modified h-full">
+        <div class="pre-checkout-content h-full">
+          <div class="pre-checkout-overlay-left">
+            <span class="hidden">Overlay</span>
           </div>
 
-          <div class="delivery-heading margin-bottom margin-medium">
-            {{ 'pre-checkout.delivery_details.title' | t }}
-          </div>
+          <div class="pre-checkout-left padding-section-medium">
+            <div class="hidden pre-checkout-left-overlay"></div>
 
-          <div class="flex margin-bottom margin-medium delivery-details" style="grid-column-gap: 16px; flex-wrap: wrap">
-            <div class="flex flex-col region text-14">
-              <label for="Area" class="checkout_section-label">
-                {{- 'pre-checkout.delivery_details.region' | t }} *</label
-              >
-              <select name="" id="Area" class="checkout_section-select area w-select text-14-all">
-                <option value="">{{ 'pre-checkout.select_one' | t }}</option>
-              </select>
-              <span class="validate-schedule">
-                {{ 'pre-checkout.delivery_details.region' | t }}
-                {{ 'pre-checkout.blank_field' | t }}
-              </span>
-            </div>
-
-            <div class="flex flex-col district text-14">
-              <label for="'District" class="checkout_section-label">
-                {{- 'pre-checkout.delivery_details.district' | t }} *</label
-              >
-              <select name="" id="District" class="checkout_section-select district w-select text-14-all">
-                <option value="">
-                  {{ 'pre-checkout.select_one' | t -}}
-                </option>
-              </select>
-
-              <span class="validate-schedule">
-                {{ 'pre-checkout.delivery_details.district' | t }}
-                {{ 'pre-checkout.blank_field' | t }}
-              </span>
-            </div>
-          </div>
-
-          <div class="delivery-district-description text-size-small margin-bottom margin-medium mb-14 ">
-            {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
-          </div>
-
-          <div class="delivery-heading margin-bottom margin-small">
-            {{ 'pre-checkout.delivery_schedule.title' | t }}
-          </div>
-          <div class="margin-bottom mb-14 text-14-all">
-            <div class="text-display-inline text-14">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
-            <div id="delivery-location" class="checkout_delivery-location text-14"></div>
-            <div class="text-14">{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
-          </div>
-
-          <div class="margin-medium m-14" style="margin-left: 0; margin-right: 0; position: relative">
-            <div class="icon-schedule back" onclick="onSchedule('back')">
-              <span class="left"></span>
-            </div>
-            <div class="icon-schedule next" onclick="onSchedule('next')">
-              <span class="right"></span>
+            <div class="delivery-heading margin-bottom margin-medium">
+              {{ 'pre-checkout.delivery_details.title' | t }}
             </div>
 
             <div
-              class="delivery-schedule-wrapper flex flex-col timeslot"
-              id="delivery-schedule-wrapper"
-              {% comment %} onmousedown="return false" {% endcomment %}
+              class="flex margin-bottom margin-medium delivery-details"
+              style="grid-column-gap: 16px; flex-wrap: wrap"
             >
-              <div class="delivery-schedule-item-date-wrapper text-14"></div>
-              <div class="delivery-schedule-item-time-wrapper text-14"></div>
-              <span class="validate-schedule">
-                {{ 'pre-checkout.delivery_schedule.time_slot' | t }}
-                {{ 'pre-checkout.blank_field' | t }}
-              </span>
+              <div class="flex flex-col region text-14">
+                <label for="Area" class="checkout_section-label">
+                  {{- 'pre-checkout.delivery_details.region' | t }} *</label
+                >
+                <select name="" id="Area" class="checkout_section-select area w-select text-14-all">
+                  <option value="">{{ 'pre-checkout.select_one' | t }}</option>
+                </select>
+                <span class="validate-schedule">
+                  {{ 'pre-checkout.delivery_details.region' | t }}
+                  {{ 'pre-checkout.blank_field' | t }}
+                </span>
+              </div>
+
+              <div class="flex flex-col district text-14">
+                <label for="'District" class="checkout_section-label">
+                  {{- 'pre-checkout.delivery_details.district' | t }} *</label
+                >
+                <select name="" id="District" class="checkout_section-select district w-select text-14-all">
+                  <option value="">
+                    {{ 'pre-checkout.select_one' | t -}}
+                  </option>
+                </select>
+
+                <span class="validate-schedule">
+                  {{ 'pre-checkout.delivery_details.district' | t }}
+                  {{ 'pre-checkout.blank_field' | t }}
+                </span>
+              </div>
+            </div>
+
+            <div class="delivery-district-description text-size-small margin-bottom margin-medium mb-14 ">
+              {{ 'pre-checkout.delivery_details.description' | t | newline_to_br }}
+            </div>
+
+            <div class="delivery-heading margin-bottom margin-small">
+              {{ 'pre-checkout.delivery_schedule.title' | t }}
+            </div>
+            <div class="margin-bottom mb-14 text-14-all">
+              <div class="text-display-inline text-14">{{ 'pre-checkout.delivery_schedule.location' | t }}&nbsp;</div>
+              <div id="delivery-location" class="checkout_delivery-location text-14"></div>
+              <div class="text-14">{{ 'pre-checkout.delivery_schedule.select_time' | t }}</div>
+            </div>
+
+            <div class="margin-medium m-14" style="margin-left: 0; margin-right: 0; position: relative">
+              <div class="icon-schedule back" onclick="onSchedule('back')">
+                <span class="left"></span>
+              </div>
+              <div class="icon-schedule next" onclick="onSchedule('next')">
+                <span class="right"></span>
+              </div>
+
+              <div
+                class="delivery-schedule-wrapper flex flex-col timeslot"
+                id="delivery-schedule-wrapper"
+                {% comment %} onmousedown="return false" {% endcomment %}
+              >
+                <div class="delivery-schedule-item-date-wrapper text-14"></div>
+                <div class="delivery-schedule-item-time-wrapper text-14"></div>
+                <span class="validate-schedule">
+                  {{ 'pre-checkout.delivery_schedule.time_slot' | t }}
+                  {{ 'pre-checkout.blank_field' | t }}
+                </span>
+              </div>
+            </div>
+
+            <div class="delivery-heading margin-bottom margin-small">
+              {{ 'pre-checkout.delivery_option.title' | t }}
+            </div>
+            <div class="checkout_field-wrapper margin-bottom margin-small delivery-option text-14">
+              <label for="Area-2" class="checkout_section-label">
+                {{- 'pre-checkout.delivery_option.label' | t | newline_to_br -}}
+              </label>
+              <div class="flex items-center text-14-all">
+                <input
+                  type="radio"
+                  id="doorstep"
+                  name="delivery-option"
+                  value="{{ 'pre-checkout.delivery_option.option1' | t }}"
+                >
+                <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
+              </div>
+              <div class="flex items-center text-14-all">
+                <input
+                  type="radio"
+                  id="concierge"
+                  name="delivery-option"
+                  value="{{ 'pre-checkout.delivery_option.option2' | t }}"
+                >
+                <label for="concierge">{{ 'pre-checkout.delivery_option.option2' | t }}</label>
+              </div>
+              <div class="flex items-center text-14-all">
+                <input
+                  type="radio"
+                  id="contact-me"
+                  name="delivery-option"
+                  value="{{ 'pre-checkout.delivery_option.option3' | t }}"
+                >
+                <label for="contact-me">{{ 'pre-checkout.delivery_option.option3' | t }}</label>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pre-checkout-bottom">
+              <button
+                {% if cart == empty or cart.total_price < 50000 %}
+                  disabled
+                {% endif %}
+                type="button"
+                class="pre-checkout-button text-14"
+                onclick="onCheckout()"
+              >
+                {{ 'pre-checkout.checkout' | t }}
+              </button>
             </div>
           </div>
 
-          <div class="delivery-heading margin-bottom margin-small">
-            {{ 'pre-checkout.delivery_option.title' | t }}
-          </div>
-          <div class="checkout_field-wrapper margin-bottom margin-small delivery-option text-14">
-            <label for="Area-2" class="checkout_section-label">
-              {{- 'pre-checkout.delivery_option.label' | t | newline_to_br -}}
-            </label>
-            <div class="flex items-center text-14-all">
-              <input
-                type="radio"
-                id="doorstep"
-                name="delivery-option"
-                value="{{ 'pre-checkout.delivery_option.option1' | t }}"
-              >
-              <label for="doorstep">{{ 'pre-checkout.delivery_option.option1' | t }}</label>
+          <div class="pre-checkout-right">
+            <div class="hidden pre-checkout-right-overlay">
+              <span class="hidden"></span>
             </div>
-            <div class="flex items-center text-14-all">
-              <input
-                type="radio"
-                id="concierge"
-                name="delivery-option"
-                value="{{ 'pre-checkout.delivery_option.option2' | t }}"
-              >
-              <label for="concierge">{{ 'pre-checkout.delivery_option.option2' | t }}</label>
-            </div>
-            <div class="flex items-center text-14-all">
-              <input
-                type="radio"
-                id="contact-me"
-                name="delivery-option"
-                value="{{ 'pre-checkout.delivery_option.option3' | t }}"
-              >
-              <label for="contact-me">{{ 'pre-checkout.delivery_option.option3' | t }}</label>
+            <div class="padding-section-medium">
+              <div class="div-block-4-copy gridspan1">
+                {% assign sortedItems = cart.items | sort: 'sku' %}
+                {%- for item in sortedItems -%}
+                  <div class="flex cart-item-details text-14">
+                    <div class="cart-item-img">
+                      <img
+                        src="{{ item.image | image_url: width: 1000 }}"
+                        alt="{{ item.image.alt | escape }}"
+                        loading="lazy"
+                        width="62"
+                        height="62"
+                      >
+
+                      <div class="cart-item-quantity">{{- item.quantity -}}</div>
+                    </div>
+
+                    <div class="cart-item-name flex flex-col text-14-all">
+                      <span>{{- item.title -}}</span>
+                    </div>
+
+                    <div class="cart-item-price price-custom text-14-all">
+                      <span>{{ item.final_line_price | money }}</span>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+
+              <div class="discount-code-seperator">
+                <span class="hidden">Line</span>
+              </div>
+
+              <div class="total-amount flex flex-col">
+                <div class="flex justify-between items-center">
+                  <span class="text-block-3">{{ 'pre-checkout.summary.discount' | t }}</span>
+                  <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
+                </div>
+                <div class="flex justify-between items-center sub-total">
+                  <span class="text-block-3">{{ 'pre-checkout.summary.subtotal' | t }}</span>
+                  <div class="price-custom" style="display: inline-block">
+                    {{ cart.total_price | money }}
+                  </div>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-block-3">{{ 'pre-checkout.summary.shipping' | t }}</span>
+                  <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
+                </div>
+              </div>
+
+              <div class="discount-code-seperator">
+                <span class="hidden">Line</span>
+              </div>
+
+              <div class="total-amount">
+                <div class="flex justify-between items-center">
+                  <span class="text-style-grand-total-copy text-17">{{ 'pre-checkout.summary.total' | t }}</span>
+                  <div class="flex items-center">
+                    <span class="text-block-3-copy text-12">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <div class="text-style-grand-total price-custom text-17" style="display: inline-block">
+                      {{ cart.total_price | money }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="discount-code-seperator">
+                <span class="hidden">Line</span>
+              </div>
             </div>
           </div>
 
-          <div class="flex items-center justify-between pre-checkout-bottom">
-            <a href="{{ routes.cart_url }}" class="flex items-center back-to-basket text-14 text-14-all">
-              <div class="flex" style="width: 12px; height: 12px;">
+          <div class="toggle-order-summary" onclick="toggleOrderSummary()">
+            <div style="display:flex; align-items:center; color: #ac1b17" class="text-14">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ph"
+                width="18px"
+                height="18px"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 256 256"
+              >
+                <path fill="#ac1b17"
+                  d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z">
+                </path>
+              </svg>
+              &nbsp;&nbsp;
+              <span class="toggle-order-summary-text">{{ 'pre-checkout.show_order_summary' | t }}</span>
+              &nbsp;
+              <div style="width: 10px; height: 10px; margin-top: 5px" class="flex arrow-down">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -218,149 +264,26 @@
                   height="100%"
                   preserveAspectRatio="xMidYMid meet"
                   viewBox="0 0 24 24"
+                  style="rotate: 90deg; font-weight: 600"
                 >
-                  <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.41z" />
+                  <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
                 </svg>
               </div>
-              <span>{{ 'pre-checkout.back_to_basket' | t }}</span>
+            </div>
+
+            <div class="price-custom" style="display: inline-block">
+              {{ cart.total_price | money }}
+            </div>
+          </div>
+
+          {% comment %} <div class="show-logo-mobile">
+            <a
+              href="{{ routes.root_url }}"
+              class="header__heading-link link link--text focus-inset center"
+            >
+              <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%; height: 100%">
             </a>
-
-            <button
-              {% if cart == empty or cart.total_price < 50000 %}
-                disabled
-              {% endif %}
-              type="button"
-              class="uppercase pre-checkout-button text-14"
-              onclick="onCheckout()"
-            >
-              {{ 'pre-checkout.checkout' | t }}
-            </button>
-          </div>
-        </div>
-
-        <div class="pre-checkout-right">
-          <div class="hidden pre-checkout-right-overlay"></div>
-          <div class="padding-section-medium">
-            <div class="div-block-4-copy gridspan1">
-              {% assign sortedItems = cart.items | sort: 'sku' %}
-              {%- for item in sortedItems -%}
-                <div class="flex cart-item-details text-14">
-                  <div class="cart-item-img">
-                    <img
-                      src="{{ item.image | image_url: width: 1000 }}"
-                      alt="{{ item.image.alt | escape }}"
-                      loading="lazy"
-                      width="62"
-                      height="62"
-                    >
-
-                    <div class="cart-item-quantity">{{- item.quantity -}}</div>
-                  </div>
-
-                  <div class="cart-item-name flex flex-col text-14-all">
-                    <span>{{- item.title -}}</span>
-                  </div>
-
-                  <div class="cart-item-price price-custom text-14-all">
-                    <span>{{ item.final_line_price | money }}</span>
-                  </div>
-                </div>
-              {%- endfor -%}
-            </div>
-
-            <div class="discount-code-seperator">
-              <span class="hidden">Line</span>
-            </div>
-
-            <div class="total-amount flex flex-col">
-              <div class="flex justify-between items-center">
-                <span class="text-block-3">{{ 'pre-checkout.summary.discount' | t }}</span>
-                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
-              </div>
-              <div class="flex justify-between items-center sub-total">
-                <span class="text-block-3">{{ 'pre-checkout.summary.subtotal' | t }}</span>
-                <div class="price-custom" style="display: inline-block">
-                  {{ cart.total_price | money }}
-                </div>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-block-3">{{ 'pre-checkout.summary.shipping' | t }}</span>
-                <span>{{ 'pre-checkout.summary.calculated_on_the_next_step' | t }}</span>
-              </div>
-            </div>
-
-            <div class="discount-code-seperator">
-              <span class="hidden">Line</span>
-            </div>
-
-            <div class="total-amount">
-              <div class="flex justify-between items-center">
-                <span class="text-style-grand-total-copy text-17">{{ 'pre-checkout.summary.total' | t }}</span>
-                <div class="flex items-center">
-                  <span class="text-block-3-copy text-12">HKD&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <div class="text-style-grand-total price-custom text-17" style="display: inline-block">
-                    {{ cart.total_price | money }}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="discount-code-seperator">
-              <span class="hidden">Line</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="toggle-order-summary" onclick="toggleOrderSummary()">
-          <div style="display:flex; align-items:center; color: rgb(51,79,180)" class="text-14">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              class="iconify iconify--ph"
-              width="18px"
-              height="18px"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 256 256"
-            >
-              <path fill="rgb(51,79,180)"
-                d="M100 216a20 20 0 1 1-20-20a20.1 20.1 0 0 1 20 20Zm84-20a20 20 0 1 0 20 20a20.1 20.1 0 0 0-20-20Zm49.3-120.7l-24.2 84.4a28.1 28.1 0 0 1-26.9 20.3H81.8a28.1 28.1 0 0 1-26.9-20.3L30.8 75.5c0-.1-.1-.3-.1-.4L21.8 44H12a12 12 0 0 1 0-24h12.8a20.3 20.3 0 0 1 19.3 14.5L51.3 60h170.4a12.1 12.1 0 0 1 11.6 15.3ZM205.8 84H58.2l19.7 69.1a4.1 4.1 0 0 0 3.9 2.9h100.4a4.1 4.1 0 0 0 3.9-2.9Z">
-              </path>
-            </svg>
-            &nbsp;&nbsp;
-            <span class="toggle-order-summary-text">Show order summary</span>
-            &nbsp;
-            <div style="width: 10px; height: 10px; margin-top: 5px" class="flex arrow-down">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--ic"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 24 24"
-                style="rotate: 90deg; font-weight: 600"
-              >
-                <path fill="currentColor" d="M6.23 20.23L8 22l10-10L8 2L6.23 3.77L14.46 12z" />
-              </svg>
-            </div>
-          </div>
-
-          <div class="price-custom" style="display: inline-block">
-            {{ cart.total_price | money }}
-          </div>
-        </div>
-
-        <div class="show-logo-mobile">
-          <a
-            href="{{ routes.root_url }}"
-            class="header__heading-link link link--text focus-inset center"
-          >
-            <img src="{{ settings.logo | image_url: width: 1000 }}" loading="lazy" style="width:100%; height: 100%">
-          </a>
+          </div> {% endcomment %}
         </div>
       </div>
     </div>
@@ -1154,5 +1077,4 @@
         }
       }
     }
-
 </script>
