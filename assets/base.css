@@ -301,7 +301,7 @@ body,
 }
 
 .content-container-custom {
-  margin-top: 165px;
+  margin-top: 172px;
 }
 
 .background-secondary {
@@ -1839,7 +1839,7 @@ details[open]>.share-button__fallback {
 .select {
   display: flex;
   position: relative;
-  width: 100%;
+  width: max-content;
 }
 
 /* Select */

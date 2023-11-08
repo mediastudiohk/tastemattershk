@@ -6,7 +6,7 @@ const onScrollHeader = () => {
       element.style.width = "20.8rem";
     } else {
       if (innerWidth > 1024) {
-        element.style.width = "30rem";
+        element.style.width = "32.5rem";
       } else if (innerWidth > 768 && innerWidth <= 1024) {
         element.style.width = "25.6rem";
       } else if (innerWidth <= 768 && innerWidth > 479) {

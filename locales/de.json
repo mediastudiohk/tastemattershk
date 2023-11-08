@@ -521,7 +521,8 @@
     },
     "information": "Information",
     "shipping": "Versand",
-    "payment": "Zahlung"
+    "payment": "Zahlung",
+    "show_order_summary": "Bestellübersicht anzeigen"
   },
   "shopify": {
     "notices": {
@@ -532,7 +533,15 @@
     },
     "checkout": {
       "shipping": {
-        "split_cart_merchandise_shipment_number": "Sendung %{number} von %{total}"
+        "split_cart_merchandise_shipment_number": "Sendung %{number} von %{total}",
+        "split_cart_shipping_label": "Methode"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Beim Laden von Shop Pay ist ein Problem aufgetreten",
+          "try_again_later": "Überprüfen Sie Ihre Verbindung oder schließen Sie dieses Fenster und versuchen Sie es in einigen Augenblicken erneut."
+        },
+        "return_to_store": "Zurück zu {{shopName}}"
       }
     }
   },
@@ -553,7 +562,9 @@
       "navigate_to_admin": "Navigieren Sie zu Admin",
       "previewing": "Sie sehen eine Vorschau:",
       "saved_at": "Gespeichert am {{date}} um {{time}}",
-      "viewing": "Sie sehen:"
+      "viewing": "Sie sehen:",
+      "close_preview": "Vorschau schließen",
+      "actions_button": "Aktionen"
     }
   }
 }

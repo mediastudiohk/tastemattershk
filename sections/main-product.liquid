@@ -206,6 +206,8 @@
                         </div>
                       </details>
                     </div>
+                  {%- when 'variant_picker' -%}
+                    {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
                   {%- when 'quantity_selector' -%}
                     <div
                       id="Quantity-Form-{{ section.id }}"
@@ -310,29 +312,29 @@
                       share_link: share_url
                     %}
 
-                  {%- when 'variant_picker' -%}
-                    {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-                    {%- when 'buy_buttons' -%}
-                      <div class="product-page_add-to-cart_wrapper">
-                        <div class="product-page-other-link product-page-other-link-child">
-                          <div class="product-page-other-link-child">
-                            {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
-                          </div>
-                          <a href="#" class="product-other-link w-inline-block email-sharing">
-                            <div class="icon-embed-xxsmall w-embed">
-                            {% render 'icon-email' %}
-                            </div>
-                            <div class="email-text-style">{{ 'products.product.email_to_a_friend' | t }}</div>
-                          </a>
+                  {% comment %} {%- when 'variant_picker' -%}
+                    {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %} {% endcomment %}
+                  {%- when 'buy_buttons' -%}
+                    <div class="product-page_add-to-cart_wrapper">
+                      <div class="product-page-other-link product-page-other-link-child">
+                        <div class="product-page-other-link-child">
+                          {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
                         </div>
-                        {%- if product.metafields.custom.alcohol_warning -%}
-                          <div class="hk-law-notice" style="color:#2f2f2f">
-                            <div class="footer-disclaimer-product w-richtext">
-                              {{ section.settings.noti_law }}
-                            </div>
+                        <a href="#" class="product-other-link w-inline-block email-sharing">
+                          <div class="icon-embed-xxsmall w-embed">
+                          {% render 'icon-email' %}
                           </div>
-                        {%- endif -%}
+                          <div class="email-text-style">{{ 'products.product.email_to_a_friend' | t }}</div>
+                        </a>
                       </div>
+                      {%- if product.metafields.custom.alcohol_warning -%}
+                        <div class="hk-law-notice" style="color:#2f2f2f">
+                          <div class="footer-disclaimer-product w-richtext">
+                            {{ section.settings.noti_law }}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    </div>
                   {%- when 'rating' -%}
                     {%- if product.metafields.reviews.rating.value != blank -%}
                       {% liquid

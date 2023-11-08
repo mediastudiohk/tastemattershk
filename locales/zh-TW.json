@@ -522,7 +522,8 @@
     },
     "information": "信息",
     "shipping": "船運",
-    "payment": "支付"
+    "payment": "支付",
+    "show_order_summary": "顯示訂單摘要"
   },
   "shopify": {
     "notices": {
@@ -533,7 +534,15 @@
     },
     "checkout": {
       "shipping": {
-        "split_cart_merchandise_shipment_number": "貨件 %{number}（共 %{total}）"
+        "split_cart_merchandise_shipment_number": "貨件 %{number}（共 %{total}）",
+        "split_cart_shipping_label": "方法"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "加載 Shop Pay 時出現問題",
+          "try_again_later": "檢查您的連接或關閉此窗口，然後稍後重試。"
+        },
+        "return_to_store": "返回{{shopName}}"
       }
     }
   },
@@ -554,7 +563,9 @@
       "navigate_to_admin": "導航至管理員",
       "previewing": "您正在預覽：",
       "saved_at": "已於{{date}} {{time}}保存",
-      "viewing": "您正在查看："
+      "viewing": "您正在查看：",
+      "close_preview": "關閉預覽",
+      "actions_button": "行動"
     }
   }
 }

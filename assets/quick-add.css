@@ -26,7 +26,7 @@
 .quick-add-modal[open] {
   opacity: 1;
   visibility: visible;
-  z-index: 101;
+  z-index: 99999;
 }
 
 .quick-add-modal__content {
@@ -75,6 +75,10 @@
   overflow-y: auto;
   padding: var(--modal-padding);
   height: 100%;
+}
+
+.quick-add-modal__content-info .product-other-link {
+  display: none !important;
 }
 
 .quick-add-modal__content-info > * {
@@ -132,6 +136,7 @@
 
 quick-add-modal .product:not(.featured-product) .product__view-details {
   display: block;
+  margin-top: 1.2rem;
 }
 
 quick-add-modal .quick-add-hidden,
