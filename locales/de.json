@@ -522,7 +522,9 @@
     "information": "Information",
     "shipping": "Versand",
     "payment": "Zahlung",
-    "show_order_summary": "Bestellübersicht anzeigen"
+    "show_order_summary": "Bestellübersicht anzeigen",
+    "refund_policy": "Rückgaberecht",
+    "privacy_policy": "Datenschutz-Bestimmungen"
   },
   "shopify": {
     "notices": {
@@ -542,6 +544,9 @@
           "try_again_later": "Überprüfen Sie Ihre Verbindung oder schließen Sie dieses Fenster und versuchen Sie es in einigen Augenblicken erneut."
         },
         "return_to_store": "Zurück zu {{shopName}}"
+      },
+      "payment": {
+        "saved_credit_card_cvv_verification": "Zur Verifizierung geben Sie bitte den Sicherheitscode Ihrer Karte ein."
       }
     }
   },
