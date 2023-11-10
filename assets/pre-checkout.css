@@ -77,7 +77,7 @@
   padding-right: 16px;
   z-index: 1;
   position: relative;
-  padding-bottom: 42px;
+  padding-bottom: 0;
 }
 
 .pre-checkout-overlay-left {
@@ -190,6 +190,7 @@
   border: 1px solid #0000;
   line-height: 25.5px;
   font-size: 1.7rem;
+  margin-bottom: 4.8rem;
 }
 
 .pre-checkout-button:disabled {
@@ -535,6 +536,34 @@
   font-size: 14px;
 }
 
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 21px 0;
+  position: relative;
+}
+
+.footer-left::before {
+  content: "";
+  border: 1px solid #DADAD3;
+  position: absolute;
+  top: 0;
+  width: 200%;
+  right: -1.6rem;
+  margin-left: -100%;
+}
+
+.footer-left a {
+  text-decoration: underline;
+  color: #ac1b17;
+  font-size: 14px;
+}
+
+.footer-left a:hover {
+  color: rgb(217, 37, 32);
+}
+
 @media screen and (max-width: 991px) {
   .main-pre-checkout {
     margin-top: -90px;
@@ -590,7 +619,6 @@
 
   .pre-checkout-left {
     padding-top: 21px !important;
-    padding-bottom: 64px;
   }
 
   .pre-checkout-left_breadcrumbs {
@@ -706,6 +734,10 @@
     width: calc(100% + 80px);
     padding: 17px 40px;
   }
+  
+  .footer-left::before {
+    right: -4rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -724,8 +756,9 @@
     margin: 0 -20px;
     width: calc(100% + 40px);
   } 
-  .pre-checkout-left {
-    padding-bottom: 48px;
+
+  .footer-left::before {
+    right: -2rem;
   }
 }
 

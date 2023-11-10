@@ -527,7 +527,9 @@
     "information": "Information",
     "shipping": "Shipping",
     "payment": "Payment",
-    "show_order_summary": "Show order summary"
+    "show_order_summary": "Show order summary",
+    "refund_policy": "Refund Policy",
+    "privacy_policy": "Privacy Policy"
   },
   "shopify": {
     "checkout": {
