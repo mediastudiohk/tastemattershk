@@ -523,7 +523,9 @@
     "information": "信息",
     "shipping": "船運",
     "payment": "支付",
-    "show_order_summary": "顯示訂單摘要"
+    "show_order_summary": "顯示訂單摘要",
+    "refund_policy": "退款政策",
+    "privacy_policy": "隱私權政策"
   },
   "shopify": {
     "notices": {
@@ -543,6 +545,9 @@
           "try_again_later": "檢查您的連接或關閉此窗口，然後稍後重試。"
         },
         "return_to_store": "返回{{shopName}}"
+      },
+      "payment": {
+        "saved_credit_card_cvv_verification": "為了進行驗證，請輸入您的卡片的安全碼。"
       }
     }
   },
