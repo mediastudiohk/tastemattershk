@@ -65,16 +65,33 @@ img-v2 {
 
 .text-block-2 {
   position: absolute;
-  left: -80%;
-  top: 6%;
+  top: 14%;
   right: 0%;
   bottom: auto;
-  background-color: #ac1b17;
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
   color: #fff;
   text-align: center;
+  font-size: 1.2rem;
+  width: 18.5rem;
+  left: -6rem;
+}
+
+.text-block-2.isNew {
+  background-color: #ab1815;
+}
+
+.text-block-2.isSeasonal {
+  background-color: #3a740d;
+}
+
+.text-block-2.isPromotion {
+  background-color: #ccc9a9;
+}
+
+.text-block-2.isBargain {
+  background-color: #bebebe;
 }
 
 * {
@@ -358,3 +375,4 @@ img-v2 {
     -webkit-box-orient: vertical;
   }
 }
+
