@@ -65,7 +65,7 @@ img-v2 {
 
 .text-block-2 {
   position: absolute;
-  top: 14%;
+  top: 11%;
   right: 0%;
   bottom: auto;
   -webkit-transform: rotate(-45deg);
@@ -75,7 +75,9 @@ img-v2 {
   text-align: center;
   font-size: 1.2rem;
   width: 18.5rem;
-  left: -6rem;
+  left: -6.5rem;
+  line-height: 1.5rem;
+  padding-bottom: 1px;
 }
 
 .text-block-2.isNew {
@@ -324,6 +326,7 @@ img-v2 {
     background-image: none;
     padding-left: 8px;
     width: fit-content;
+    padding: 4px 6px 4px 6px;
   }
 
   .add-to-basket-button:disabled,
@@ -350,6 +353,7 @@ img-v2 {
     font-size: 24px;
     justify-content: space-between;
     flex-wrap: nowrap;
+    margin-top: 8px;
   }
 
   .product-price-wrapper {
@@ -373,6 +377,10 @@ img-v2 {
     overflow: hidden;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+  }
+
+  .product-original-price-row {
+    margin-bottom: -3px;
   }
 }
 
