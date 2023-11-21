@@ -1002,21 +1002,56 @@
         method: "POST",
       });
       let totalAmount = 0;
-      items = items.filter((item) => item.variant_id != 46005240889638);
+      items = items.filter((item) => item.variant_id != 47151453765926);
       for (let i = 0; i < items.length; i++) {
         totalAmount += items[i].price * items[i].quantity;
       }
       const area = areaSelect.value;
+      if (area && area === "Islands" && totalAmount < 100000) {
+        let addItems = [];
+        addItems.push({
+          id: 47151453765926,
+          quantity: 1,
+        });
+        const formData = {
+          items: addItems,
+        };
+        await fetch(window.Shopify.routes.root + "cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      }
       if (items && items.length > 0) {
+        const noneSkuItems = items.filter((x) => !x.sku || x.sku === '');
+        for (let i = 0; i < noneSkuItems.length; i++) {
+          let addItems = [];
+          addItems.push({
+            id: noneSkuItems[i].variant_id,
+            quantity: noneSkuItems[i].quantity,
+          });
+          const formData = {
+            items: addItems,
+          };
+          await fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+        }
         const hasSkuItems = items
           .filter((x) => x.sku && x.sku !== "")
           .sort((a, b) => {
             let fa = a.sku.toLowerCase(),
               fb = b.sku.toLowerCase();
-            if (fa < fb) {
+            if (fa > fb) {
               return 1;
             }
-            if (fa > fb) {
+            if (fa < fb) {
               return -1;
             }
             return 0;
@@ -1038,41 +1073,6 @@
             body: JSON.stringify(formData),
           });
         }
-        const noneSkuItems = items.filter((x) => !x.sku || x.sku == "");
-        for (let i = 0; i < noneSkuItems.length; i++) {
-          let addItems = [];
-          addItems.push({
-            id: noneSkuItems[i].variant_id,
-            quantity: noneSkuItems[i].quantity,
-          });
-          const formData = {
-            items: addItems,
-          };
-          await fetch(window.Shopify.routes.root + "cart/add.js", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-        }
-      }
-      if (area && area === "Islands" && totalAmount < 100000) {
-        let addItems = [];
-        addItems.push({
-          id: 46005240889638,
-          quantity: 1,
-        });
-        const formData = {
-          items: addItems,
-        };
-        await fetch(window.Shopify.routes.root + "cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
       }
       return (window.location.href = "/checkout");
     }

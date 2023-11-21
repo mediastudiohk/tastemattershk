@@ -528,8 +528,8 @@
     "shipping": "Shipping",
     "payment": "Payment",
     "show_order_summary": "Show order summary",
-    "refund_policy": "Refund Policy",
-    "privacy_policy": "Privacy Policy"
+    "refund_policy": "Delivery & Returns",
+    "privacy_policy": "Privacy & Security"
   },
   "shopify": {
     "checkout": {
@@ -544,23 +544,42 @@
         "city_label": "District"
       },
       "payment": {
-        "card_security_notice": "All transactions are secure and encrypted. Taste Matters never accesses or stores your payment information."
+        "card_security_notice": "All transactions are secure and encrypted. Taste Matters never accesses or stores your payment information.",
+        "markets_pro_disclaimer_privacy_policy": "Privacy & Security",
+        "billing_address_title": "Billing Address"
       },
       "order_summary": {
         "shipping_label": "Taxes"
       },
       "shipping": {
         "free_rate_label": " ",
-        "shipping_method_title": " "
+        "shipping_method_title": " ",
+        "title": "Delivery Address"
       },
       "marketing": {
-        "accept_marketing_checkbox_label": "I accept emails with news and offers once in a while"
+        "accept_marketing_checkbox_label": "I accept emails with news and offers once in a while",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Privacy & Security"
+          }
+        }
+      },
+      "shop_policies": {
+        "refund_policy": "Delivery & Returns",
+        "privacy_policy": "Privacy & Security"
       }
     }
   },
   "customer_accounts": {
     "order_details": {
-      "marketing_checkbox_label": "I accept emails with news and offers once in a while"
+      "marketing_checkbox_label": "I accept emails with news and offers once in a while",
+      "returns": {
+        "return_and_refund_modal_header": "Delivery & Returns"
+      }
+    },
+    "shop_policies": {
+      "refund_policy": "Delivery & Returns",
+      "privacy_policy": "Privacy & Security"
     }
   }
 }
