@@ -20,7 +20,7 @@
 
 .main-pre-checkout-header-logo {
   display: flex;
-  max-width: 325px;
+  max-width: 21rem;
   align-items: center;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .icon-cart-pre-checkout:hover svg path {
-  stroke: rgb(206, 55, 101);
+  stroke: rgb(217, 27, 32);
 }
 
 .main-pre-checkout-content {
@@ -564,9 +564,15 @@
   color: rgb(217, 37, 32);
 }
 
+@media (min-width: 991px) and (max-width: 1024px) {
+  .main-pre-checkout {
+    margin-top: -152px;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .main-pre-checkout {
-    margin-top: -90px;
+    margin-top: -105px;
   }
 
   .pre-checkout-content {
@@ -742,7 +748,7 @@
 
 @media screen and (max-width: 767px) {
   .main-pre-checkout {
-    margin-top: -60px;
+    margin-top: -86px;
   }
 
   .pre-checkout-right-overlay {
@@ -763,6 +769,10 @@
 }
 
 @media screen and (max-width: 479px) {
+  .main-pre-checkout {
+    margin-top: -71px;
+  }
+
   .pre-checkout-right-overlay {
     left: -20px;
     right: -20px;
@@ -776,8 +786,5 @@
   .pre-checkout-bottom {
     flex-direction: column-reverse;
     gap: 10px;
-  }
-  .main-pre-checkout-header-logo {
-    max-width: 256px;
   }
 }
