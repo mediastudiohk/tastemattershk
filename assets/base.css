@@ -3917,3 +3917,7 @@ input.w-button {
     width: 100% !important;
 }
 }
+
+.wishlist-whale-launcher {
+  display: none !important;
+}

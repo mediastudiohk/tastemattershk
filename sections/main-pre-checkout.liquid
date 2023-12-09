@@ -539,7 +539,7 @@
         },
     ]
 
-    const url = 'https://msh.api.vmodev.link/api';
+    const url = 'https://service-tm.mediastudio.space/api';
     let cutoffTime = null;
     let dayDiff = 1;
     let dates = [];
@@ -1002,7 +1002,7 @@
         method: "POST",
       });
       let totalAmount = 0;
-      items = items.filter((item) => item.variant_id != 47151453765926);
+      items = items.filter((item) => item.variant_id != 47020144918806);
       for (let i = 0; i < items.length; i++) {
         totalAmount += items[i].price * items[i].quantity;
       }
@@ -1010,7 +1010,7 @@
       if (area && area === "Islands" && totalAmount < 100000) {
         let addItems = [];
         addItems.push({
-          id: 47151453765926,
+          id: 47020144918806,
           quantity: 1,
         });
         const formData = {
