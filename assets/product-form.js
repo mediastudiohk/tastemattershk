@@ -13,14 +13,14 @@ if (!customElements.get("product-form")) {
           document.querySelector("cart-drawer");
         this.submitButton = this.querySelector('[type="submit"]');
 
-        if (document.querySelector("cart-drawer")) {
+        if (document.querySelector("cart-drawer") && this.submitButton) {
           this.submitButton.setAttribute("aria-haspopup", "dialog");
         }
       }
 
       onSubmitHandler(evt) {
         evt.preventDefault();
-        if (this.submitButton.getAttribute("aria-disabled") === "true") return;
+        if (this.submitButton && this.submitButton.getAttribute("aria-disabled") === "true") return;
 
         this.handleErrorMessage();
 
