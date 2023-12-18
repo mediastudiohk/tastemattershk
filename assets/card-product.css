@@ -384,3 +384,24 @@ img-v2 {
   }
 }
 
+#close-button {
+  background-color: #dddbc7;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.55);
+  cursor: pointer;
+  z-index: 5;
+  width: 37px;
+  height: 37px;
+  float: right;
+}
+
+.required-fields {
+  font-size: 0.7rem;
+  color: #2f2f2f;
+  line-height: 1.6;
+  flex-basis: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: start;
+}
