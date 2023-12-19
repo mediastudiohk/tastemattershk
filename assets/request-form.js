@@ -53,7 +53,7 @@ window.onload = function () {
   // Create cancel button
   const cancelButton = document.createElement("button");
   cancelButton.setAttribute("type", "button");
-  cancelButton.setAttribute("class", "action custombtn");
+  cancelButton.setAttribute("class", "action cancel-button");
   cancelButton.innerText = "Cancel";
 
   //Add event into cancel btn
