@@ -1,0 +1,107 @@
+.customer.login {
+  max-width: 1280px !important;
+  margin: auto;
+}
+
+.recover-content {
+  max-width: 47.8rem;
+  margin: auto;
+}
+
+.login-content {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.login-content-item {
+  border: 1px solid #ececec;
+  padding: 18px 20px 20px;
+  width: 460px;
+  background-color: #fff;
+  min-height: 260px;
+  border-radius: 4px;
+  text-align: left;
+  box-sizing: content-box;
+}
+
+.login-content-item h2 {
+  padding: 0 0 15px;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 21px;
+  font-variant: small-caps;
+  color: #716359;
+  font-weight: 400;
+  margin-bottom: 7px;
+  line-height: 1.25;
+}
+
+.login-content-item p {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 13px 0 12px;
+  margin: 0;
+}
+
+.login-content-item .login-content-item-btn {
+  float: right;
+}
+
+.login-content-item .login-content-item-btn a,
+.login-content-item .login-content-item-btn button {
+  background: url("nav-next.png") right 6px center no-repeat,
+    linear-gradient(to bottom, #fff 0, rgba(248, 248, 248, 0) 100%);
+  background-color: #f8f8f8;
+  padding: 2px 35px 3px 9px;
+  color: #867c75;
+  border: 1px solid #ddddda;
+  border-radius: 5px !important;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 15px;
+  min-width: fit-content;
+}
+
+.login-content-item .login-content-item-btn a:hover,
+.login-content-item .login-content-item-btn button:hover {
+  background: url("nav-next.png") right 6px center no-repeat,
+  linear-gradient(to bottom, rgba(248, 248, 248, 0) 0, #fff 100%);
+}
+
+
+.login-content-item .login-content-item-btn a:hover {
+  color: #867c75;
+}
+
+.login-content-item .login-content-item-btn button {
+  margin: 0;
+}
+
+.login-content-item form {
+  margin-top: 0;
+}
+
+.login-content-item a {
+  text-decoration: none;
+}
+
+.login-content-item .field label {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+  .login-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .login-content {
+    align-items: normal;
+  }
+
+  .login-content-item {
+    width: auto;
+  }
+}
