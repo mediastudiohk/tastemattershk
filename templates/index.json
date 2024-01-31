@@ -6,7 +6,6 @@
         "template--17916243542313__59b79c8e-fb36-4300-98b3-aac56d3cad5c-16783549921595e6ca-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/italian_430x_129a238a-6ed5-4ccd-bdd2-bb73e23eaaca.webp",
             "heading": "Italian Antipasti",
             "link": ""
           }
@@ -14,7 +13,6 @@
         "f69311a3-f930-4998-8d51-d499882132dd": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/organicbeverage_430x_430x_65136dc9-cafc-4687-ad9e-e196a4d99a16.webp",
             "heading": "Organic Juice",
             "link": ""
           }
@@ -22,7 +20,6 @@
         "4fef4e16-4125-45d4-9b85-047a71dd05a9": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image_banner_430x_d850ee93-f287-460a-9ba9-efb73b7a6e4a.jpg",
             "heading": "Genuine German Sausages",
             "link": ""
           }
@@ -53,9 +50,9 @@
       ],
       "settings": {
         "change_slides_speed": 5,
-        "image": "shopify:\/\/shop_images\/italian_430x_427b8da0-5897-4ab7-b29e-35b750174b24.webp",
+        "image": "shopify:\/\/shop_images\/New_Website_5.png",
         "image_link": "#",
-        "first_subtext": "<p>First line<\/p><p>Second line<\/p><p>Third line<\/p>",
+        "first_subtext": "",
         "image_link_2": "#",
         "second_subtext": "<p>German Asparagus<\/p><p>$288 \/ kg<\/p>"
       }
