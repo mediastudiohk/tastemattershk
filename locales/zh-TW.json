@@ -413,7 +413,11 @@
       "title": "登入",
       "sign_in": "登入",
       "submit": "提交",
-      "login_create_account_title": "登錄或者創建一個帳戶"
+      "login_create_account_title": "登錄或者創建一個帳戶",
+      "new_customer": "新客戶",
+      "new_customer_description": "透過在我們的商店建立帳戶，您將能夠更快地完成結帳流程、儲存多個送貨地址、查看和追蹤帳戶中的訂單等等。",
+      "registered_customer": "註冊客戶",
+      "haveAnAccount": "如果您有我們的帳戶，請登入。"
     },
     "orders": {
       "title": "訂單記錄",
@@ -506,7 +510,8 @@
       "label": "送貨的時候家裡沒有人怎麼辦？請選擇以下其中一項：",
       "option1": "請將貨物存放在我家門口",
       "option2": "請向我的禮賓部存款",
-      "option3": "請不要存入我的交貨並聯繫我重新安排"
+      "option3": "請不要存入我的交貨並聯繫我重新安排",
+      "option": "選項"
     },
     "no_delivery": "沒有送貨",
     "back_to_basket": "回到購物籃",
@@ -547,7 +552,11 @@
         "return_to_store": "返回{{shopName}}"
       },
       "payment": {
-        "saved_credit_card_cvv_verification": "為了進行驗證，請輸入您的卡片的安全碼。"
+        "saved_credit_card_cvv_verification": "為了進行驗證，請輸入您的卡片的安全碼。",
+        "store_credit": {
+          "no_fixed_selling_plans": "您不能將商店積分與延期購買選項一起使用"
+        },
+        "order_edit_banner_updated_order_label": "更新訂單"
       }
     }
   },

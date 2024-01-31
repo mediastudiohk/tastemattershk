@@ -142,6 +142,11 @@
                 >
                 <label for="contact-me">{{ 'pre-checkout.delivery_option.option3' | t }}</label>
               </div>
+
+              <span class="validate-schedule">
+                {{ 'pre-checkout.delivery_option.title' | t | capitalize }}
+                {{ 'pre-checkout.blank_field' | t }}
+              </span>
             </div>
 
             <div class="flex items-center justify-between pre-checkout-bottom">
@@ -392,7 +397,9 @@
     const timeSlotValidate = timeSlotElement.querySelector(".validate-schedule");
   
     const timeByDateStorage = localStorage.getItem('timeByDate');
-  
+
+    const optionElement = document.querySelector(".delivery-option")
+    const optionValidate = optionElement.querySelector(".validate-schedule");
     const inputRadio = document.querySelectorAll('input[name="delivery-option"]');
   
     const cutoffTimeStorage = localStorage.getItem('cutoffTime');
@@ -596,6 +603,7 @@
         districtSelect.addEventListener('change', (event) => {
             const { value } = event.target;
             timeSlotValidate.classList.remove('invalid');
+            optionValidate.classList.remove('invalid');
             
             deliveryLocation.innerHTML = `${areaSelect.value} / ${value}`;
             timeByDate = {
@@ -635,6 +643,7 @@
         districtValidate.classList.remove('invalid');
         districtSelect.classList.remove('invalid');
         timeSlotValidate.classList.remove('invalid');
+        optionValidate.classList.remove('invalid');
         if(value !== "") {
             areaValidate.classList.remove('invalid');
             areaSelect.classList.remove('invalid');
@@ -819,7 +828,7 @@
 
     timeByDate = {
     ...timeByDate,
-    option: optionExits ? timeByDate.option : inputRadio[0].value
+    option: optionExits ? timeByDate.option : ""
     }
     localStorage.setItem('timeByDate', JSON.stringify(timeByDate));
   
@@ -960,7 +969,7 @@
         radio.checked = (timeByDate.option || JSON.parse(timeByDateStorage)?.option) === radio.value;
         radio.addEventListener('change', (event) => {
             radio.checked = true;
-        
+            optionValidate.classList.remove('invalid');
             timeByDate = {
             ...timeByDate,
             option: event.target.value
@@ -992,9 +1001,15 @@
           behavior: "smooth"
         })
         return;
+      } else if (timeByDate?.option === "") {
+        optionValidate.classList.add('invalid');
+        optionElement.scrollIntoView({
+          behavior: "smooth"
+        })
+        return;
       }
 
-
+      showOverlay();
       const request = await fetch(window.Shopify.routes.root + "cart.js");
       const response = await request.json();
       let items = response.items;
@@ -1007,23 +1022,6 @@
         totalAmount += items[i].price * items[i].quantity;
       }
       const area = areaSelect.value;
-      if (area && area === "Islands" && totalAmount < 100000) {
-        let addItems = [];
-        addItems.push({
-          id: 47020144918806,
-          quantity: 1,
-        });
-        const formData = {
-          items: addItems,
-        };
-        await fetch(window.Shopify.routes.root + "cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-      }
       if (items && items.length > 0) {
         const noneSkuItems = items.filter((x) => !x.sku || x.sku === '');
         for (let i = 0; i < noneSkuItems.length; i++) {
@@ -1073,7 +1071,40 @@
             body: JSON.stringify(formData),
           });
         }
+      if (area && area === "Islands" && totalAmount < 100000) {
+        let addItems = [];
+        addItems.push({
+          id: 47020144918806,
+          quantity: 1,
+        });
+        const formData = {
+          items: addItems,
+        };
+        await fetch(window.Shopify.routes.root + "cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
       }
+      }
+
+      {% comment %} add note  {% endcomment %}
+      const originalDate = timeByDate?.schedule?.date || "";
+      const [year, month, day] = originalDate.split("-");
+      const formattedDate = [day, month, year].join("-");
+
+      let noteContent = `Delivery Date: ${formattedDate}\n`;
+      noteContent += `Delivery Time: ${timeByDate?.schedule?.time}\n`;
+      noteContent += `If at the time of delivery, nobody is home: ${timeByDate?.option}`;
+
+      const bodyNoteContent = JSON.stringify({ note: noteContent });
+      await fetch(`${routes.cart_update_url}`, {
+        ...fetchConfig(),
+        ...{ body: bodyNoteContent },
+      });
+      hideOverlay();
       return (window.location.href = "/checkout");
     }
 
@@ -1097,4 +1128,57 @@
         }
       }
     }
+
+    // Create the overlay container
+    const overlayContainer = document.createElement("div");
+    overlayContainer.id = "overlayContainer";
+    overlayContainer.style.display = "none";
+    overlayContainer.style.position = "fixed";
+    overlayContainer.style.top = "0";
+    overlayContainer.style.left = "0";
+    overlayContainer.style.width = "100%";
+    overlayContainer.style.height = "100%";
+    overlayContainer.style.background = "rgba(0, 0, 0, 0.3)";
+    overlayContainer.style.alignItems = "center";
+    overlayContainer.style.justifyContent = "center";
+    overlayContainer.style.zIndex = "99999";
+
+    // Create the loading icon
+    const loadingIcon = document.createElement("div");
+    loadingIcon.className = "loading-icon";
+    loadingIcon.style.border = "5px solid #f3f3f3"; /* Light gray border */
+    loadingIcon.style.borderTop =
+      "5px solid #ac1b17"; /* Red border for loading effect */
+    loadingIcon.style.borderRadius = "50%";
+    loadingIcon.style.width = "50px";
+    loadingIcon.style.height = "50px";
+    loadingIcon.style.animation = "spin 1s linear infinite"; /* Spin animation */
+    loadingIcon.style.setProperty("display", "flex", "important"); // Apply display: flex !important
+
+    // Append the loading icon to the overlay container
+    overlayContainer.appendChild(loadingIcon);
+
+    // Append the overlay container to the body
+    document.body.appendChild(overlayContainer);
+
+    // Function to show the overlay
+    function showOverlay() {
+      overlayContainer.style.setProperty("display", "flex", "important"); // Apply display: flex !important
+    }
+
+    // Function to hide the overlay
+    function hideOverlay() {
+      overlayContainer.style.setProperty("display", "none", "important"); // Apply display: none !important
+    }
+
+    // Function to handle the rotation animation
+    let rotationAngle = 0;
+    function rotateIcon() {
+      rotationAngle += 10;
+      loadingIcon.style.transform = `rotate(${rotationAngle}deg)`;
+    }
+
+    // Set up the interval to rotate the icon
+    const rotationInterval = setInterval(rotateIcon, 20);
+
 </script>

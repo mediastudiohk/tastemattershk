@@ -475,15 +475,18 @@
 
 .delivery-option div {
   gap: 1rem;
+  width: fit-content;
 }
 
 .delivery-option input[type="radio"] {
   accent-color: #ac1b17;
+  cursor: pointer;
 }
 
 .delivery-option label {
   margin-bottom: 0;
   font-weight: normal;
+  cursor: pointer;
 }
 
 .delivery-option label.checkout_section-label {

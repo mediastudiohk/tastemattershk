@@ -404,7 +404,7 @@
     "log_out": "Log out",
     "login_page": {
       "cancel": "Cancel",
-      "create_account": "Create account",
+      "create_account": "Create an Account",
       "email": "Email",
       "forgot_password": "Forgot your password?",
       "guest_continue": "Continue",
@@ -413,7 +413,11 @@
       "title": "Login",
       "sign_in": "Sign in",
       "submit": "Submit",
-      "login_create_account_title": "Login or Create an Account"
+      "login_create_account_title": "Login or Create an Account",
+      "new_customer": "New Customer",
+      "new_customer_description": "By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.",
+      "registered_customer": "Registered Customer",
+      "haveAnAccount": "If you have an account with us, please log in."
     },
     "order": {
       "title": "Order {{ name }}",
@@ -508,6 +512,7 @@
     "delivery_option": {
       "title": "Delivery Option",
       "label": "What should we do, if at the time of delivery, nobody is home? Please select one of the following:",
+      "option": "Option",
       "option1": "Please deposit my delivery at my doorstep",
       "option2": "Please deposit my delivery at my concierge",
       "option3": "Please do not deposit my delivery and contact me to reschedule"

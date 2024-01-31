@@ -413,7 +413,11 @@
       "title": "Login",
       "sign_in": "Anmelden",
       "submit": "Senden",
-      "login_create_account_title": "einloggen oder Konto erstellen"
+      "login_create_account_title": "einloggen oder Konto erstellen",
+      "new_customer": "Neukunde",
+      "new_customer_description": "Wenn Sie ein Konto in unserem Shop erstellen, können Sie den Bestellvorgang schneller durchlaufen, mehrere Lieferadressen speichern, Ihre Bestellungen in Ihrem Konto anzeigen und verfolgen und vieles mehr.",
+      "registered_customer": "Registrierter Kunde",
+      "haveAnAccount": "Wenn Sie ein Konto bei uns haben, melden Sie sich bitte an."
     },
     "orders": {
       "title": "Bestellhistorie",
@@ -505,7 +509,8 @@
       "label": "Was sollen wir tun, wenn zum Zeitpunkt der Lieferung niemand zu Hause ist? Bitte wählen Sie eine der folgenden Optionen aus:",
       "option1": "Bitte deponieren Sie die Lieferung vor meiner Haustür",
       "option2": "Bitte zahlen Sie bei meinem Concierge ein",
-      "option3": "Bitte hinterlegen Sie meine Lieferung nicht und kontaktieren Sie mich, um einen neuen Termin zu vereinbaren"
+      "option3": "Bitte hinterlegen Sie meine Lieferung nicht und kontaktieren Sie mich, um einen neuen Termin zu vereinbaren",
+      "option": "Möglichkeit"
     },
     "no_delivery": "Keine Lieferung",
     "back_to_basket": "Zurück zum Warenkorb",
@@ -546,7 +551,11 @@
         "return_to_store": "Zurück zu {{shopName}}"
       },
       "payment": {
-        "saved_credit_card_cvv_verification": "Zur Verifizierung geben Sie bitte den Sicherheitscode Ihrer Karte ein."
+        "saved_credit_card_cvv_verification": "Zur Verifizierung geben Sie bitte den Sicherheitscode Ihrer Karte ein.",
+        "store_credit": {
+          "no_fixed_selling_plans": "Sie können das Store-Guthaben nicht mit aufgeschobenen Kaufoptionen verwenden"
+        },
+        "order_edit_banner_updated_order_label": "Aktualisierte Bestellung"
       }
     }
   },
