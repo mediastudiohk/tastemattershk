@@ -6,6 +6,7 @@
         "template--17916243542313__59b79c8e-fb36-4300-98b3-aac56d3cad5c-16783549921595e6ca-0": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/07_Antipasti_02_2f198f44-a420-499e-b86d-4940efd01112.jpg",
             "heading": "Italian Antipasti",
             "link": ""
           }
@@ -13,6 +14,7 @@
         "f69311a3-f930-4998-8d51-d499882132dd": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/0102_Fruit_and_Vegetable_Juice_Front_Page_5f02a14a-a91d-4df0-8bd3-506ca0fdba4b.jpg",
             "heading": "Organic Juice",
             "link": ""
           }
@@ -20,6 +22,7 @@
         "4fef4e16-4125-45d4-9b85-047a71dd05a9": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Nuernberger_Wuerstchen735x453_5201b0fe-dc90-458d-88d7-df7ed3512221.jpg",
             "heading": "Genuine German Sausages",
             "link": ""
           }
@@ -53,8 +56,9 @@
         "image": "shopify:\/\/shop_images\/New_Website_5.png",
         "image_link": "#",
         "first_subtext": "",
+        "image_2": "shopify:\/\/shop_images\/Kohl_und_Pinkel_jan_18_no_2bearbeitet_394x221_bb340196-75f3-4c7c-86b8-b5e9fea9f863.jpg",
         "image_link_2": "#",
-        "second_subtext": "<p>German Asparagus<\/p><p>$288 \/ kg<\/p>"
+        "second_subtext": ""
       }
     },
     "featured_collection": {
