@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "您的密碼",
       "login_form_error": "密碼錯誤！",
       "login_form_submit": "輸入",
-      "admin_link_html": "您是商店擁有人嗎？<a href=\"\/admin\" class=\"link underlined-link\">請在此登入<\/a>",
+      "admin_link_html": "您是商店擁有人嗎？<a href=\"/admin\" class=\"link underlined-link\">請在此登入</a>",
       "powered_by_shopify_html": "本商店由 {{ shopify }} 提供技術支援"
     },
     "social": {
@@ -51,7 +51,7 @@
       "close": "關閉分享"
     },
     "slider": {
-      "of": "\/",
+      "of": "/",
       "next_slide": "投影片右側",
       "previous_slide": "投影片左側",
       "name": "投影播放器"
@@ -118,7 +118,7 @@
         "minimum_of": "最少 {{ quantity }} 個",
         "maximum_of": "最多 {{ quantity }} 個",
         "multiples_of": "{{ quantity }} 的倍數",
-        "in_cart_html": "購物車中有 <span class=\"quantity-cart\">{{ quantity }}<\/span> 個"
+        "in_cart_html": "購物車中有 <span class=\"quantity-cart\">{{ quantity }}</span> 個"
       },
       "price": {
         "from_price_html": "從 {{ price }} 起",
@@ -137,8 +137,8 @@
         "view_store_info": "檢視商店資訊",
         "check_other_stores": "查看其他商店的供貨情況",
         "pick_up_available": "可提供取貨服務",
-        "pick_up_available_at_html": "可提供 <span class=\"color-foreground\">{{ location_name }}<\/span> 的取貨服務",
-        "pick_up_unavailable_at_html": "目前無法提供 <span class=\"color-foreground\">{{ location_name }}<\/span> 的取貨服務",
+        "pick_up_available_at_html": "可提供 <span class=\"color-foreground\">{{ location_name }}</span> 的取貨服務",
+        "pick_up_unavailable_at_html": "目前無法提供 <span class=\"color-foreground\">{{ location_name }}</span> 的取貨服務",
         "unavailable": "無法載入取貨服務供應情況",
         "refresh": "重新整理"
       },
@@ -154,7 +154,7 @@
       },
       "view_full_details": "查看完整資訊",
       "include_taxes": "內含稅金。",
-      "shipping_policy_html": "結帳時計算<a href=\"{{ link }}\">運費<\/a>。",
+      "shipping_policy_html": "結帳時計算<a href=\"{{ link }}\">運費</a>。",
       "choose_options": "選擇選項",
       "choose_product_options": "選擇 {{ product_name }} 的選項",
       "value_unavailable": "{{ option_value }} (無法供貨)",
@@ -288,9 +288,9 @@
       "empty": "您的購物車是空的",
       "cart_error": "更新購物車時發生錯誤。請再試一次。",
       "cart_quantity_error_html": "您只能將 {{ quantity }} 項商品加入您的購物車。",
-      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"{{ link }}\">運費<\/a>",
+      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"{{ link }}\">運費</a>",
       "taxes_included_but_shipping_at_checkout": "內含稅金，結帳時計算運費",
-      "taxes_included_and_shipping_policy_html": "內含稅金。結帳時計算<a href=\"{{ link }}\">運費<\/a>。",
+      "taxes_included_and_shipping_policy_html": "內含稅金。結帳時計算<a href=\"{{ link }}\">運費</a>。",
       "taxes_and_shipping_at_checkout": "結帳時計算稅金和運費",
       "headings": {
         "product": "產品",
@@ -303,7 +303,7 @@
       "update": "更新",
       "login": {
         "title": "是否有帳號？",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">登入<\/a>以加速結帳。"
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">登入</a>以加速結帳。"
       },
       "review_basket": "審查籃",
       "proceed_to_checkout": "結帳流程",
@@ -337,7 +337,7 @@
     "collection_template": {
       "title": "商品系列",
       "empty": "找不到任何產品",
-      "use_fewer_filters_html": "使用較少篩選條件或<a class=\"{{ class }}\" href=\"{{ link }}\">全部移除<\/a>"
+      "use_fewer_filters_html": "使用較少篩選條件或<a class=\"{{ class }}\" href=\"{{ link }}\">全部移除</a>"
     },
     "video": {
       "load_video": "載入影片：{{ description }}"
@@ -356,10 +356,10 @@
     }
   },
   "localization": {
-    "country_label": "國家\/地區",
+    "country_label": "國家/地區",
     "language_label": "語言",
     "update_language": "更新語言",
-    "update_country": "更新國家\/地區"
+    "update_country": "更新國家/地區"
   },
   "customer": {
     "account": {
@@ -385,12 +385,12 @@
       "first_name": "名字",
       "last_name": "姓氏",
       "company": "公司",
-      "address1": "地址 1",
-      "address2": "地址 2",
-      "city": "市",
-      "country": "國家\/地區",
-      "province": "省",
-      "zip": "郵政\/郵遞區號",
+      "address1": "街道名稱及門牌號",
+      "address2": "莊園/大廈/公寓/套房/村莊",
+      "city": "區",
+      "country": "國家/地區",
+      "province": "地區",
+      "zip": "郵政/郵遞區號",
       "phone": "電話",
       "set_default": "設為預設地址",
       "add": "新增地址",
@@ -565,21 +565,15 @@
     "home_title": "家"
   },
   "customer_accounts": {
-    "orders": {
-      "order_status": {
-        "attempted_to_deliver_label": "已嘗試交付",
-        "there_was_a_problem_label": "有問題"
+    "order_details": {
+      "marketing_checkbox_label": "I accept emails with news and offers once in a while",
+      "returns": {
+        "return_and_refund_modal_header": "Delivery & Returns"
       }
     },
-    "profile_preview_bar": {
-      "customize_button": "客製化",
-      "hide_bar": "隱藏欄",
-      "navigate_to_admin": "導航至管理員",
-      "previewing": "您正在預覽：",
-      "saved_at": "已於{{date}} {{time}}保存",
-      "viewing": "您正在查看：",
-      "close_preview": "關閉預覽",
-      "actions_button": "行動"
+    "shop_policies": {
+      "refund_policy": "Delivery & Returns",
+      "privacy_policy": "Privacy & Security"
     }
   }
 }

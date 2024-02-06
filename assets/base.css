@@ -1908,6 +1908,7 @@ details[open] > .share-button__fallback {
 .customer .field label {
   font-size: 1.6rem;
   left: calc(var(--inputs-border-width) + 2rem);
+  right: calc(var(--inputs-border-width) + 2rem);
   top: calc(1rem + var(--inputs-border-width));
   margin-bottom: 0;
   pointer-events: none;
@@ -1918,6 +1919,9 @@ details[open] > .share-button__fallback {
   letter-spacing: 0.1rem;
   line-height: 1.5;
   font-weight: 400;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .field__input:focus ~ .field__label,
@@ -3854,7 +3858,7 @@ input.w-button {
   display: flex;
   flex-direction: row-reverse;
   gap: 17px;
-  padding: 22px 0  !important;
+  padding: 22px 0 !important;
 }
 
 .wizard__footer button.next.submit,
