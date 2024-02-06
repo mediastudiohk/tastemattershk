@@ -400,7 +400,7 @@
       "delete": "Delete",
       "delete_confirm": "Are you sure you wish to delete this address?"
     },
-    "log_in": "Log in",
+    "log_in": "Log In",
     "log_out": "Log out",
     "login_page": {
       "cancel": "Cancel",
@@ -411,7 +411,7 @@
       "guest_title": "Continue as a guest",
       "password": "Password",
       "title": "Login",
-      "sign_in": "Sign in",
+      "sign_in": "Log In",
       "submit": "Submit",
       "login_create_account_title": "Login or Create an Account",
       "new_customer": "New Customer",
@@ -551,7 +551,8 @@
       "payment": {
         "card_security_notice": "All transactions are secure and encrypted. Taste Matters never accesses or stores your payment information.",
         "markets_pro_disclaimer_privacy_policy": "Privacy & Security",
-        "billing_address_title": "Billing Address"
+        "billing_address_title": "Billing Address",
+        "credit_card_vaulting_sign_in_banner_button_label": "Log In"
       },
       "order_summary": {
         "shipping_label": "Taxes"
@@ -572,6 +573,19 @@
       "shop_policies": {
         "refund_policy": "Delivery & Returns",
         "privacy_policy": "Privacy & Security"
+      },
+      "customer_account": {
+        "sign_in_link_label": "Log In"
+      },
+      "payment_gateway": {
+        "login_prompt": {
+          "no_access": {
+            "link": "Log In"
+          }
+        }
+      },
+      "thank_you": {
+        "login": "Log In"
       }
     }
   },
@@ -580,7 +594,8 @@
       "marketing_checkbox_label": "I accept emails with news and offers once in a while",
       "returns": {
         "return_and_refund_modal_header": "Delivery & Returns"
-      }
+      },
+      "log_in": "Log In"
     },
     "shop_policies": {
       "refund_policy": "Delivery & Returns",
