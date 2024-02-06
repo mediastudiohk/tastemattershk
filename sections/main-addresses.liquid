@@ -23,10 +23,13 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
       </symbol>
     </svg>
-    <h1>{{ 'customer.addresses.title' | t }}</h1>
-    <a href="{{ routes.account_url }}">
-      {{ 'customer.account.return' | t }}
-    </a>
+
+    <div class="customer__header">
+      <h1>{{ 'customer.addresses.title' | t }}</h1>
+      <a href="{{ routes.account_url }}" class="customer__address__details">
+        {{ 'customer.account.return' | t }}
+      </a>
+    </div>
 
     <div data-address>
       <button
@@ -36,7 +39,7 @@
       >
         {{ 'customer.addresses.add_new' | t }}
       </button>
-      <div id="AddAddress">
+      <div id="AddAddress" class="content-box">
         <h2 id="AddressNewHeading">{{ 'customer.addresses.add_new' | t }}</h2>
         {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
           <div class="field">
@@ -158,11 +161,11 @@
             >
             <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
           </div>
-          <div>
+          <div class="flex items-center" style="margin-top: 1.5rem; cursor: pointer;">
             {{ form.set_as_default_checkbox }}
             <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
           </div>
-          <div>
+          <div class="flex items-center justify-between" style="margin-top: 4rem">
             <button>{{ 'customer.addresses.add' | t }}</button>
             <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
           </div>
@@ -195,7 +198,7 @@
           >
             {{ 'customer.addresses.delete' | t }}
           </button>
-          <div id="EditAddress_{{ address.id }}">
+          <div id="EditAddress_{{ address.id }}" class="content-box">
             <h2>{{ 'customer.addresses.edit_address' | t }}</h2>
             {%- form 'customer_address', address -%}
               <div class="field">
@@ -265,7 +268,7 @@
                 <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
               </div>
               <div>
-                <label for="AddressCountry_{{ form.id }}">
+                <label for="AddressCountry_{{ form.id }}" class="addressCountryEdit">
                   {{ 'customer.addresses.country' | t }}
                 </label>
                 <div class="select">
@@ -285,7 +288,7 @@
                 </div>
               </div>
               <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
-                <label for="AddressProvince_{{ form.id }}">
+                <label for="AddressProvince_{{ form.id }}" class="addressProvinceEdit">
                   {{ 'customer.addresses.province' | t }}
                 </label>
                 <div class="select">
@@ -323,14 +326,14 @@
                 >
                 <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
               </div>
-              <div>
+              <div class="flex items-center" style="margin-top: 1.5rem; cursor: pointer;">
                 {{ form.set_as_default_checkbox }}
-                <label for="address_default_address_{{ form.id }}">
+                <label for="address_default_address_{{ form.id }}" class="address_default_address_edit">
                   {{ 'customer.addresses.set_default' | t }}
                 </label>
               </div>
-              <div>
-                <button>{{ 'customer.addresses.update' | t }}</button>
+              <div class="flex items-center justify-between" style="margin-top: 4rem">
+                <button style="margin-top: 0">{{ 'customer.addresses.update' | t }}</button>
                 <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
               </div>
             {%- endform -%}
