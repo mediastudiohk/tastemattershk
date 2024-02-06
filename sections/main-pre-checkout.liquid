@@ -567,7 +567,7 @@
     }
 
     let timeByDate = {
-        region: (timeByDateStorage ? JSON.parse(timeByDateStorage)?.region : areas[0].value) || "",
+        region: JSON.parse(timeByDateStorage)?.region || "",
         district: JSON.parse(timeByDateStorage)?.district || "",
         schedule: {
           id_schedule_default:  JSON.parse(timeByDateStorage)?.schedule?.id_schedule_default || null,
@@ -1180,5 +1180,4 @@
 
     // Set up the interval to rotate the icon
     const rotationInterval = setInterval(rotateIcon, 20);
-
 </script>

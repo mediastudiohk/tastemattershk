@@ -8,7 +8,7 @@
 
 @media screen and (min-width: 750px) {
   .customer:not(.account):not(.order) {
-    max-width: 47.8rem;
+    max-width: 50rem;
   }
 }
 
@@ -875,16 +875,16 @@ li[data-address] > h2 {
 }
 
 @media only screen and (min-width: 750px) {
-  .addresses form > div:nth-of-type(1) {
+  .addresses form > div:nth-of-type(2) {
     margin-right: 2rem;
   }
 
-  .addresses form > div:nth-of-type(2) {
+  /* .addresses form > div:nth-of-type(3) {
     margin-top: 0;
-  }
+  } */
 
-  .addresses form > div:nth-of-type(1),
-  .addresses form > div:nth-of-type(2) {
+  .addresses form > div:nth-of-type(2),
+  .addresses form > div:nth-of-type(3) {
     box-sizing: border-box;
     flex-basis: calc(50% - 1rem);
   }
