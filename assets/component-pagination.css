@@ -16,7 +16,7 @@
 
 .pagination__list > li {
   flex: 1 0 4.4rem;
-  max-width: 4.4rem;
+  max-width: 2.2rem;
 }
 
 .pagination__list > li:not(:last-child) {
@@ -24,15 +24,22 @@
 }
 
 .pagination__item {
-  color: rgb(var(--color-foreground));
+  color: #bebebe;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 4.4rem;
+  height: 2.2rem;
   width: 100%;
   padding: 0;
   text-decoration: none;
+  background-color: white;
+  border: 1px solid #eaeaea;
+}
+
+.pagination__item-arrow {
+  background-color: transparent;
+  border: 0px solid #eaeaea;
 }
 
 a.pagination__item:hover::after {
@@ -41,6 +48,10 @@ a.pagination__item:hover::after {
 
 .pagination__item .icon-caret {
   height: 0.6rem;
+}
+
+.pagination__item--current {
+  color: #716359;
 }
 
 .pagination__item--current::after {
