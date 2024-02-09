@@ -56,7 +56,6 @@ a.pagination__item:hover::after {
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: currentColor;
 }
 
 .pagination__item--next .icon {
