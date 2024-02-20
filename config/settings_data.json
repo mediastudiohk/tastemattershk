@@ -1,7 +1,8 @@
 {
   "current": {
-    "logo": "shopify:\/\/shop_images\/Taste_Matters_Logo_New-2023_15.png",
+    "logo": "shopify:\/\/shop_images\/Taste_Matters_Logo_New-2023_16.png",
     "logo_width": 90,
+    "favicon": "shopify:\/\/shop_images\/Taste_Matters_Logo_New-2023_16.png",
     "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
@@ -311,7 +312,13 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".h0 {font-size: 26px; font-weight: 300; font-variant: small-caps; text-align: center;}"
+      ".h0 {font-size: 26px; font-weight: 300; font-variant: small-caps; text-align: center;}",
+      "#nav-prev-btn {height: 44px;}",
+      "#nav-next-btn {height: 44px;}",
+      ".product-form__error-message-wrapper .icon-error {display: none;}",
+      ".product-page-back-button .page-back-link {background-color: white;}",
+      ".lv2-active {margin-bottom: 8px;}",
+      ".cart__empty-text {font-size: medium;}"
     ]
   }
 }
