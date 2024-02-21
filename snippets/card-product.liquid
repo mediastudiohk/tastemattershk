@@ -6,11 +6,30 @@
   case card_product.metafields.custom.label
     when 'New'
       assign labelClassName = 'isNew'
+    when 'Neu'
+      assign labelClassName = 'isNew'
+    when '新的'
+      assign labelClassName = 'isNew'
+
     when 'Seasonal'
       assign labelClassName = 'isSeasonal'
+    when 'Saisonal'
+      assign labelClassName = 'isSeasonal'
+    when '季節性'
+      assign labelClassName = 'isSeasonal'
+
     when 'Promotion'
       assign labelClassName = 'isPromotion'
+    when 'Förderung'
+      assign labelClassName = 'isPromotion'
+    when '晉升'
+      assign labelClassName = 'isPromotion'
+
     when 'Bargain'
+      assign labelClassName = 'isBargain'
+    when 'Schnäppchen'
+      assign labelClassName = 'isBargain'
+    when '便宜貨'
       assign labelClassName = 'isBargain'
   endcase
 -%}

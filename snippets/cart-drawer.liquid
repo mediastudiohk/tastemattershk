@@ -165,14 +165,14 @@
               <div class="item-cart-container">
                 <div class="totals__subtotal text-font-small-caps" style="color: #867C75;">
                   {{ 'sections.cart.subtotal' | t }}
-                  <span class="item-cart-style"
+                  <div class="item-cart-style"
                     >({{ cart.item_count }}
                     {% if cart.item_count == 1 -%}
                       {{- 'sections.cart.item' | t -}}
                     {%- else -%}
                       {{- 'sections.cart.items' | t -}}
                     {%- endif -%}
-                    )</span
+                    )</div
                   >
                 </div>
                 {% if cart.total_price < 50000 %}

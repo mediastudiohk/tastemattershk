@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "Dein Passwort",
       "login_form_error": "Falsches Passwort!",
       "login_form_submit": "Eingeben",
-      "admin_link_html": "Bist du der Shop-Inhaber? <a href=\"\/admin\" class=\"link underlined-link\">Hier einloggen<\/a>",
+      "admin_link_html": "Bist du der Shop-Inhaber? <a href=\"/admin\" class=\"link underlined-link\">Hier einloggen</a>",
       "powered_by_shopify_html": "Dieser Shop wird unterstützt von {{ shopify }}"
     },
     "social": {
@@ -118,7 +118,7 @@
         "minimum_of": "Mindestens {{ quantity }}",
         "maximum_of": "Maximal {{ quantity }}",
         "multiples_of": "In {{ quantity }}er Schritten",
-        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}<\/span> im Warenkorb"
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> im Warenkorb"
       },
       "price": {
         "from_price_html": "Von {{ price }}",
@@ -137,8 +137,8 @@
         "view_store_info": "Shop-Informationen anzeigen",
         "check_other_stores": "Verfügbarkeit in anderen Shops überprüfen",
         "pick_up_available": "Abholung verfügbar",
-        "pick_up_available_at_html": "Abholung bei <span class=\"color-foreground\">{{ location_name }}<\/span> verfügbar",
-        "pick_up_unavailable_at_html": "Abholung bei <span class=\"color-foreground\">{{ location_name }}<\/span> derzeit nicht verfügbar",
+        "pick_up_available_at_html": "Abholung bei <span class=\"color-foreground\">{{ location_name }}</span> verfügbar",
+        "pick_up_unavailable_at_html": "Abholung bei <span class=\"color-foreground\">{{ location_name }}</span> derzeit nicht verfügbar",
         "unavailable": "Verfügbarkeit für Abholungen konnte nicht geladen werden",
         "refresh": "Aktualisieren"
       },
@@ -154,8 +154,8 @@
       },
       "view_full_details": "Vollständige Details anzeigen",
       "include_taxes": "inkl. MwSt.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Versand<\/a> wird beim Checkout berechnet",
-      "choose_options": "Optionen auswählen",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Versand</a> wird beim Checkout berechnet",
+      "choose_options": "Auswählen",
       "choose_product_options": "Optionen für {{ product_name }} auswählen",
       "value_unavailable": "{{ option_value }} – nicht verfügbar",
       "variant_sold_out_or_unavailable": "Variante ausverkauft oder nicht verfügbar",
@@ -172,12 +172,12 @@
       "availability": "Verfügbarkeit",
       "select_quantity": "Wählen Sie die Menge",
       "email_to_a_friend": "E-Mail an einen Freund",
-      "storage_information": "Speicherinformationen",
+      "storage_information": "Lagerhinweise",
       "country_of_origin": "Herkunftsland",
       "ingredients": "Zutaten",
-      "nutrition": "Ernährung",
+      "nutrition": "Brennwerte",
       "allergens": "Allergene",
-      "submit_a_product_wish": "Senden Sie einen Produktwunsch"
+      "submit_a_product_wish": "Produktwunsch senden"
     },
     "modal": {
       "label": "Medien-Galerie"
@@ -278,19 +278,19 @@
       "basket": "Korb"
     },
     "cart": {
-      "title": "Dein Warenkorb",
+      "title": "Ihr Warenkorb",
       "caption": "Artikel im Warenkorb",
       "remove_title": "{{ title }} entfernen",
       "subtotal": "Zwischensumme",
       "new_subtotal": "Neue Zwischensumme",
       "note": "Spezielle Bestellanweisungen",
       "checkout": "Auschecken",
-      "empty": "Dein Warenkorb ist leer",
-      "cart_error": "Beim Aktualisieren deines Warenkorbs ist ein Fehler aufgetreten. Bitte versuche es erneut.",
-      "cart_quantity_error_html": "Du kannst deinem Warenkorb nur {{ quantity }} Stück dieses Artikels hinzufügen.",
-      "taxes_and_shipping_policy_at_checkout_html": "Steuern und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet",
+      "empty": "Ihr Warenkorb ist leer",
+      "cart_error": "Beim Aktualisieren Ihres Warenkorbs ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      "cart_quantity_error_html": "Sie können Ihrem Warenkorb nur {{ quantity }} Stück dieses Artikels hinzufügen.",
+      "taxes_and_shipping_policy_at_checkout_html": "Steuern und <a href=\"{{ link }}\">Versand</a> werden beim Checkout berechnet",
       "taxes_included_but_shipping_at_checkout": "Inklusive Steuern, Versand wird beim Checkout berechnet",
-      "taxes_included_and_shipping_policy_html": "Inklusive Steuern. <a href=\"{{ link }}\">Versand <\/a> wird beim Checkout berechnet",
+      "taxes_included_and_shipping_policy_html": "Inklusive Steuern. <a href=\"{{ link }}\">Versand </a> wird beim Checkout berechnet",
       "taxes_and_shipping_at_checkout": "Steuern und Versand werden beim Checkout berechnet",
       "headings": {
         "product": "Produkt",
@@ -302,15 +302,15 @@
       },
       "update": "Aktualisieren",
       "login": {
-        "title": "Hast du ein Konto?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logge dich ein<\/a>, damit es beim Checkout schneller geht."
+        "title": "Haben Sie ein Konto?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logge dich ein</a>, damit es beim Checkout schneller geht."
       },
       "review_basket": "Warenkorb überprüfen",
-      "proceed_to_checkout": "Prozess zur Kasse",
+      "proceed_to_checkout": "Weiter zur Kasse",
       "update_shopping_cart": "Warenkorb aktualisieren",
       "minimum_order": "Bitte beachten Sie den Mindestbestellwert $500",
       "grand_total": "Gesamtsumme",
-      "delivery_fee": "Der Mindestbestellwert beträgt 500 $.\nFür Kunden von Discovery Bay, Tung Chung &amp; Yat Tung Estate\nFür Bestellungen unter 1.000 US-Dollar kann eine Liefergebühr von 150 US-Dollar anfallen.",
+      "delivery_fee": "Der Mindestbestellwert beträgt $500\nFür Kunden in Discovery Bay, Tung Chung &amp; Yat Tung Estate\nfällt für Bestellungen unter $1.000 eine Liefergebühr von $150 an.",
       "item": "Artikel",
       "items": "Artikel",
       "cart_empty_description": "Derzeit befinden sich keine Artikel im Warenkorb",
@@ -320,7 +320,7 @@
       "promotion_bargains": "Aktionen und Schnäppchen - Immer ein neues Angebot"
     },
     "footer": {
-      "payment": "Zahlungsmethoden"
+      "payment": "Zahlungsoptionen"
     },
     "featured_blog": {
       "view_all": "Alle anzeigen",
@@ -337,7 +337,7 @@
     "collection_template": {
       "title": "Kategorie",
       "empty": "Keine Produkte gefunden",
-      "use_fewer_filters_html": "Verwende weniger Filter oder <a class=\"{{ class }}\" href=\"{{ link }}\">entferne alle<\/a>"
+      "use_fewer_filters_html": "Verwenden Sie weniger Filter oder <a class=\"{{ class }}\" href=\"{{ link }}\">entferne alle</a>"
     },
     "video": {
       "load_video": "Video laden: {{ description }}"
@@ -356,10 +356,10 @@
     }
   },
   "localization": {
-    "country_label": "Land\/Region",
+    "country_label": "Land/Region",
     "language_label": "Sprache",
     "update_language": "Sprache aktualisieren",
-    "update_country": "Land\/Region aktualisieren"
+    "update_country": "Land/Region aktualisieren"
   },
   "customer": {
     "account": {
@@ -386,9 +386,9 @@
       "last_name": "Nachname",
       "company": "Unternehmen",
       "address1": "Straßenname und Nummer",
-      "address2": "Anwesen \/ Gebäude \/ Wohnung \/ Suite \/ Dorf",
+      "address2": "Anwesen / Gebäude / Wohnung / Suite / Dorf",
       "city": "Bezirk",
-      "country": "Land\/Region",
+      "country": "Land/Region",
       "province": "Region",
       "zip": "PLZ",
       "phone": "Telefonnummer",
@@ -398,7 +398,7 @@
       "cancel": "Abbrechen",
       "edit": "Bearbeiten",
       "delete": "Löschen",
-      "delete_confirm": "Bist du sicher, dass du diese Adresse löschen möchtest?"
+      "delete_confirm": "Sind Sie  sicher, dass Sie diese Adresse löschen möchten?"
     },
     "log_in": "Einloggen",
     "log_out": "Abmelden",
@@ -406,7 +406,7 @@
       "cancel": "Abbrechen",
       "create_account": "Konto erstellen",
       "email": "E-Mail",
-      "forgot_password": "Hast du dein Passwort vergessen?",
+      "forgot_password": "Haben Sie Ihr Passwort vergessen?",
       "guest_continue": "Fortfahren",
       "guest_title": "Als Gast fortsetzen",
       "password": "Passwort",
@@ -494,29 +494,29 @@
   "pre-checkout": {
     "delivery_calendar": "Lieferkalender",
     "delivery_details": {
-      "title": "Lieferdetails",
+      "title": "Liefergebiet",
       "region": "Region",
       "district": "Bezirk",
-      "description": "Der Mindestbestellwert beträgt 500 $.\nFür Kunden von Discovery Bay, Tung Chung &amp; Yat Tung Estate\nFür Bestellungen unter 1.000 US-Dollar kann eine Liefergebühr von 150 US-Dollar anfallen."
+      "description": "Der Mindestbestellwert beträgt $500\nFür Kunden in Discovery Bay, Tung Chung &amp; Yat Tung Estate\nfällt für Bestellungen unter $1.000 eine Liefergebühr von $150 an"
     },
     "delivery_schedule": {
-      "title": "Lieferungsplan",
-      "location": "Dies sind die nächstmöglichen Liefertermine für Ihre Lieferadresse in:",
+      "title": "Liefertermin",
+      "location": "Unten aufgeführt sind die nächstmöglichen Liefertermine für Ihre Lieferadresse in:",
       "select_time": "Bitte wählen Sie einen Tag und eine Uhrzeit aus.",
       "time_slot": "Zeitfenster"
     },
     "delivery_option": {
-      "title": "Liefermöglichkeit",
+      "title": "Lieferoption",
       "label": "Was sollen wir tun, wenn zum Zeitpunkt der Lieferung niemand zu Hause ist? Bitte wählen Sie eine der folgenden Optionen aus:",
       "option1": "Bitte deponieren Sie die Lieferung vor meiner Haustür",
-      "option2": "Bitte zahlen Sie bei meinem Concierge ein",
+      "option2": "Bitte geben Sie die Lieferung bei meinem Concierge für mich ab",
       "option3": "Bitte hinterlegen Sie meine Lieferung nicht und kontaktieren Sie mich, um einen neuen Termin zu vereinbaren",
-      "option": "Möglichkeit"
+      "option": "Option"
     },
     "no_delivery": "Keine Lieferung",
     "back_to_basket": "Zurück zum Warenkorb",
-    "checkout": "Kasse",
-    "select_one": "Wähle eins...",
+    "checkout": "Weiter zur Kasse",
+    "select_one": "Bitte auswählen...",
     "blank_field": "darf nicht leer sein!",
     "summary": {
       "discount": "Rabatt",
@@ -529,8 +529,8 @@
     "shipping": "Versand",
     "payment": "Zahlung",
     "show_order_summary": "Bestellübersicht anzeigen",
-    "refund_policy": "Rückgaberecht",
-    "privacy_policy": "Datenschutz-Bestimmungen"
+    "refund_policy": "Lieferbedingungen",
+    "privacy_policy": "Datenschutz-& Sicherheit"
   },
   "shopify": {
     "notices": {
@@ -563,7 +563,68 @@
       },
       "order_summary": {
         "duties_included_label": "Der Gesamtbetrag beinhaltet alle anfallenden Steuern und Zölle, es fallen keine zusätzlichen Kosten bei der Lieferung an"
+      },
+      "customer_payment_methods": {
+        "delete_customer_mandate": {
+          "generic_error": "Bei der Verarbeitung Ihrer Anfrage ist ein Problem aufgetreten.",
+          "success_message": "Ihre Zahlungsmethode wurde erfolgreich gelöscht"
+        }
+      },
+      "throttle": {
+        "too_many_attempts": {
+          "description": "Bitte versuchen Sie es in ein paar Minuten erneut"
+        },
+        "line_to_check_out": "Sie sind  in der Schlange zum Checkout",
+        "cart_summary_heading": "Ihr Warenkorb",
+        "inventory": {
+          "partial_inventory_banner": "Ein Teil Ihres Warenkorbs ist ausverkauft und steht beim Checkout nicht zum Kauf zur Verfügung.",
+          "sold_out": {
+            "heading": "Ihr Warenkorb ist ausverkauft",
+            "storefront_body": "Gehen Sie zurück zum Shop, um weiter einzukaufen",
+            "no_storefront_body": "Leider ist der Artikel, den Sie kaufen möchten, nicht mehr verfügbar."
+          }
+        }
+      },
+      "general": {
+        "choose_delivery_strategy": "Wählen Sie eine Zustellmethode"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "In Abständen akzeptiere ich Emails mit Neuigkeiten und Angeboten"
+      },
+      "shipping_errors": {
+        "empty_state": "Bitte geben Sie Ihre Lieferadresse ein, um verfügbare Versandarten anzuzeigen."
+      },
+      "customer_account": {
+        "have_an_account_label": "Hast Sie ein Konto?",
+        "save_my_information_label": "Informationen speichern für meinen nächsten Besuch"
+      },
+      "thank_you": {
+        "thank_you_title_payments_app_pending_default": "Ihre Zahlung wird verarbeitet",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Ihre Bestellung wurde empfangen",
+        "thank_you_title_payments_app_failed_pending_payment": "Ihre Zahlung konnte nicht verarbeitet werden.",
+        "thank_you_confirmed_order_with_email": "Sie erhalten zur Bestätigung in Kürze eine E-Mail mit Ihrer Bestellnummer.",
+        "thank_you_confirmed_order_with_phone": "Sie erhalte zur Bestätigung in Kürze eine SMS mit Ihrer Bestellnummer.",
+        "thank_you_confirmed_order_with_email_and_phone": "Sie erhalten zur Bestätigung in Kürze eine E-Mail mit Ihrer Bestellnummer.",
+        "thank_you_confirmed_order_with_email_payment": "Sie haben eine Zahlung für Ihre  Bestellung %{date} vorgenommen.",
+        "thank_you_confirmed_order_with_phone_payment": "Sie haben eine Zahlung für Ihre Bestellung %{date} vorgenommen.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Sie haben eine Zahlung für Ihre Bestellung %{date} vorgenommen."
+      },
+      "stock": {
+        "empty_cart_label": "Ihr Warenkorb ist leer"
+      },
+      "contact": {
+        "address1_label": "Strassenname und Nummer",
+        "address2_label": "Estate / Building / Apartment / Suite / Village",
+        "optional_address2_label": "Estate / Building / Apartment / Suite / Village",
+        "city_label": "Distrikt"
       }
+    },
+    "page_titles": {
+      "shopping_cart": "Ihr Warenkorb"
+    },
+    "challenge": {
+      "message": "Um fortzufahren, lassen Sie uns wissen, dass Sie kein Roboter sind.",
+      "error": "Ihre Antwort war nicht korrekt, bitte versuchen Sie es noch einmal."
     }
   },
   "home": {
@@ -572,10 +633,11 @@
   },
   "customer_accounts": {
     "order_details": {
-      "marketing_checkbox_label": "I accept emails with news and offers once in a while",
+      "marketing_checkbox_label": "In Abständen akzeptiere ich Emails mit Neuigkeiten und Angeboten",
       "returns": {
         "return_and_refund_modal_header": "Delivery & Returns"
-      }
+      },
+      "log_in": ""
     },
     "shop_policies": {
       "refund_policy": "Delivery & Returns",

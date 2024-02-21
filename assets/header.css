@@ -107,10 +107,13 @@
 }
 
 .nav-cart-icon {
-  background: url("http://www.tastematters.com.hk/skin/frontend/default/theme369/images/icons/cart_toplink.png")
-    left center no-repeat;
-    width: 18px;
-    height: 18px;
+  background: url("cart_toplink.png") left center no-repeat;
+  width: 18px;
+  height: 18px;
+}
+
+.linkhover:hover .nav-cart-icon {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 991px) {
