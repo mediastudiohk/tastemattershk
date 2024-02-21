@@ -11,7 +11,7 @@
       "settings": {
         "title": "Promotions & Bargains - Always a New Offer",
         "color_title": "#ac1b17",
-        "collection": "all",
+        "collection": "cart-bargain-products",
         "products_to_show": 5,
         "redirect_all": false
       }
