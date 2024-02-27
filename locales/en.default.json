@@ -42,7 +42,7 @@
     "cart": {
       "view": "View my cart ({{ count }})",
       "view_empty_cart": "View my cart",
-      "item_added": "Item added to your cart"
+      "item_added": "Product added to your cart"
     },
     "share": {
       "close": "Close share",
@@ -109,7 +109,7 @@
       "add_to_cart": "Add to cart",
       "add_to_basket": "Add to basket",
       "added_to_basket": "Added to your basket",
-      "submit_a_product_wish": "Submit a product wish",
+      "submit_a_product_wish": "Submit a Product Wish",
       "choose_options": "Choose",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
@@ -279,11 +279,11 @@
     },
     "cart": {
       "title": "My Basket",
-      "caption": "Cart items",
+      "caption": "Cart Products",
       "remove_title": "Remove {{ title }}",
       "subtotal": "Subtotal",
-      "item": "item",
-      "items": "items",
+      "item": "Product",
+      "items": "Products",
       "new_subtotal": "New subtotal",
       "note": "Order special instructions",
       "checkout": "Check out",
@@ -316,7 +316,7 @@
       "proceed_to_checkout": "Proceed to Checkout",
       "minimum_order": "Please note the minimum order amount is $500",
       "grand_total": "Grand Total",
-      "delivery_fee": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers a delivery fee of $150 may apply for orders below $1000.",
+      "delivery_fee": "The minimum order amount is $500.  For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers a delivery fee of $150 may apply for orders below $1000",
       "promotion_bargains": "Promotions & Bargains - Always a New Offer"
     },
     "footer": {
@@ -501,7 +501,7 @@
       "title": "Delivery Details",
       "region": "Region",
       "district": "District",
-      "description": "The minimum order amount is $500. \n For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers \n a delivery fee of $150 may apply for orders below $1000."
+      "description": "The minimum order amount is $500.  For Discovery Bay, Tung Chung &amp; Yat Tung Estate customers  a delivery fee of $150 may apply for orders below $1000"
     },
     "delivery_schedule": {
       "title": "Delivery Schedule",

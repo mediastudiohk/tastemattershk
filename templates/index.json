@@ -64,7 +64,7 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured Products",
+        "title": "Signature Offers",
         "color_title": "#716539",
         "collection": "frontpage",
         "products_to_show": 20,
